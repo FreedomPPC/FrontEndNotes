@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!--1.在组件内部使用<router-view>标签 2.在路由器对象中给组件定义子路由-->
+		<style type="text/css">
+			#mini{
+				background: #CCCCCC;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<button v-link="{path:'/home'}">Home</button>
+			<button v-link="{path:'/about'}">About</button>
+			
+			<div>
+				<router-view></router-view>
+			</div>
+		</div>
+		
+		
+		<template id="home">
+			<h1 id="mini">Home</h1>
+			<p>{{msg}}</p>
+			
+			<div>
+				<a v-link="{path:'/home/news'}">News</a>
+				<a v-link="{path:'/home/messages/123'}">Messages</a>
+			</div>
+			<div>
+				<router-view></router-view>
+			</div>
+		</template>
+		<template id="news">
+			<ul>
+				<li>New01</li>
+				<li>New02</li>
+				<li>New03</li>
+			</ul>
+		</template>
+		<template id="messages">
+			<ul>
+				<li>Message01</li>
+				<li>Message02</li>
+				<li>Message03</li>
+			</ul>
+		</template>
+		
+		
+		
+		<template id="about">
+			<h1>About</h1>
+			<p>this is about component</p>
+		</template>
+	</body>
+	<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/vue-router.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var Home = Vue.extend({
+		template:"#home",
+		data:function(){
+			return{
+				msg:"This is Home component!"
+			}
+		}
+		});
+		//声明嵌套路由组件;
+		var News = Vue.extend({
+			template:"#news"
+		});
+		var Message = Vue.extend({
+			template:"#messages"
+		});
+		
+		var About = Vue.extend({
+				template: '#about'
+			})
+		
+		var router = new VueRouter();
+		
+		//映射
+		router.map({
+			'/home':{
+				component:Home,
+				//定义子路由;
+				subRoutes:{
+					'/news':{component:News},
+					'/messages':{component:Message},
+				}
+			},
+			'/about':{component:About}
+		})
+		
+		router.redirect({'/':'/home'});
+		
+		var App = Vue.extend({});
+		router.start(App,'#app');
+	</script>
+</html>

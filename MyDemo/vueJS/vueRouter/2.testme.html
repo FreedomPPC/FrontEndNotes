@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>testme</title>
+</head>
+<body>
+	<div id="app">
+		<button v-link="{path:'/home'}">Home</button>
+		<button v-link="{path:'/about'}">About</button>
+		
+		<div>
+			<router-view></router-view>
+		</div>
+	</div>
+	
+	<template id="home">
+		<h1>Home</h1>
+		<p>{{msg}}</p>
+	</template>
+	
+	<template id="about">
+		<h1>About</h1>
+		<p>this is about component</p>
+	</template>
+</body>
+<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/vue-router.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	var Home = Vue.extend({
+		template:"#home",
+		data:function(){
+			return{
+				msg:"This is Home component!"
+			}
+		}
+	});
+	
+	var About = Vue.extend({
+			template: '#about'
+		})
+	
+	var router = new VueRouter();
+	
+	router.map({
+		'/home':{component:Home},
+		'/about':{component:About}
+	})
+	
+	router.redirect({'/':'/home'});
+	
+	var App = Vue.extend({});
+	router.start(App,'#app');
+</script>
+</html>

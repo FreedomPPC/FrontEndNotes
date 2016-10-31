@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function(){
+				new Vue({
+					el:".static",
+					data: {
+					  isA: true,
+					  isB: true
+					}
+				})
+			}
+		</script>
+	</head>
+	<body>
+		<div class="static" v-bind:class="{ 'class-a': isA, 'class-b': isB }">9999999999999999999999999</div>
+		<!--<div class="static class-a"></div>-->
+	</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<meta charset="UTF-8"/>
+	<title>父组件和子组件</title>
+	
+    <body>
+        <div id="app">
+            <parent-component>
+
+            </parent-component>
+        </div>
+    </body>
+    <script src="../js/vue.js"></script>
+    <script>
+        /*父组件和子组件
+			我们可以在组件中定义并使用其他组件，这就构成了父子组件的关系。
+         */
+        var Child = Vue.extend({
+            template: '<p>This is a child component!</p>'
+        })
+        
+        var Parent = Vue.extend({
+            // 在Parent组件内使用<child-component>标签
+            template :'<p>This is a Parent component</p><hr><child-component></child-component>',
+            components: {
+                // 局部注册Child组件，该组件只能在Parent组件内使用
+                'child-component': Child
+            }
+        })
+        
+        // 全局注册Parent组件
+        Vue.component('parent-component', Parent)
+        
+        new Vue({
+            el: '#app'
+        })
+        /*我们分几个步骤来理解这段代码：
+
+		1.var Child = Vue.extend(...)定义一了个Child组件构造器
+		2.var Parent = Vue.extend(...)定义一个Parent组件构造器
+		3.components: { 'child-component': Child }，将Child组件注册到Parent组件，并将Child组件的标签设置为child-component。
+		4.template :'<p>This is a Parent component</p><child-component></child-component>'，在Parent组件内以标签的形式使用Child组件。
+		5.Vue.component('parent-component', Parent) 全局注册Parent组件
+		6.在页面中使用<parent-component>标签渲染Parent组件的内容，同时Child组件的内容也被渲染出来
+		
+		
+		Child组件是在Parent组件中注册的，它只能在Parent组件中使用，确切地说：子组件只能在父组件的template中使用。
+
+		请注意下面两种子组件的使用方式是错误的：
+		
+		1. 以子标签的形式在父组件中使用
+		
+		<div id="app">
+		    <parent-component>
+		        <child-component></child-component>
+		    </parent-component>
+		</div>
+		为什么这种方式无效呢？因为当子组件注册到父组件时，Vue.js会编译好父组件的模板，模板的内容已经决定了父组件将要渲染的HTML。
+		<parent-component>…</parent-component>相当于运行时，它的一些子标签只会被当作普通的HTML来执行，<child-component></child-component>不是标准的HTML标签，会被浏览器直接忽视掉。
+		
+		2. 在父组件标签外使用子组件
+		
+		<div id="app">
+		    <parent-component>
+		    </parent-component>
+		    <child-component>
+		    </child-component>
+		</div>
+         */
+    </script>
+</html>

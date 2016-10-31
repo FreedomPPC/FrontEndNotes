@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.expand-transition {
+			  transition: all 2s ease;
+			  height: 30px;
+			  padding: 5px;
+			  background-color:#ccc;
+			  overflow: hidden;
+			}
+			/* .expand-enter 定义进入的开始状态 */
+			/* .expand-leave 定义离开的结束状态 */
+			.expand-enter, .expand-leave {
+			  height: 10px;
+			  padding: 0 10px;
+			  opacity: 1;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="example">
+			<div v-if="show" transition="expand">hello</div>
+			<button v-on:click="show=!show">toggle</button>
+		</div>
+	</body>
+	<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		 Vue.transition('expand', {
+			  beforeEnter: function (el) {
+			    el.textContent = 'beforeEnter'
+			  },
+			  enter: function (el) {
+			    el.textContent = 'enter'
+			  },
+			  afterEnter: function (el) {
+			    el.textContent = 'afterEnter'
+			  },
+			  enterCancelled: function (el) {
+			    // handle cancellation
+			  },
+			  beforeLeave: function (el) {
+			    el.textContent = 'beforeLeave'
+			  },
+			  leave: function (el) {
+			    el.textContent = 'leave'
+			  },
+			  afterLeave: function (el) {
+			    el.textContent = 'afterLeave'
+			  },
+			  leaveCancelled: function (el) {
+			
+			  }
+			})
+			new Vue({
+			  el: '#example',
+			  data:{
+			   show: true
+			  }
+			})
+
+	</script>
+</html>

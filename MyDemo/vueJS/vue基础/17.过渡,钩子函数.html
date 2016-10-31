@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.expand-transition {
+			  transition: all .3s ease;
+			  height: 30px;
+			  padding: 10px;
+			  background-color: #eee;
+			  overflow: hidden;
+			}
+			.expand-enter, .expand-leave {
+			  height: 0;
+			  padding: 0 10px;
+			  opacity: 0;
+			}
+
+		</style>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+		window.onload = function(){
+			new Vue({
+			  el: '#demo',
+			  data: {
+			    show: true,
+			    transitionName: 'Idle'
+			  },
+			  transitions: {
+			    expand: {
+			      beforeEnter: function (el) {
+			        el.textContent = 'beforeEnter'
+			      },
+			      enter: function (el) {
+			        el.textContent = 'enter'
+			      },
+			      afterEnter: function (el) {
+			        el.textContent = 'afterEnter'
+			      },
+			      beforeLeave: function (el) {
+			        el.textContent = 'beforeLeave'
+			      },
+			      leave: function (el) {
+			        el.textContent = 'leave'
+			      },
+			      afterLeave: function (el) {
+			        el.textContent = 'afterLeave'
+			      }
+			    }
+			  }
+			});
+			document.getElementsByTagName('button')[0].onclick = function(){
+				
+				document.getElementsByClassName('expand-transition')[0].style.display = "none"; 
+			}
+		}
+		</script>
+	</head>
+	<body>
+		<div id="demo">
+		  <div class="expand-transition">afterEnter</div>
+		  <button>Toggle</button>
+		</div>
+	</body>
+</html>

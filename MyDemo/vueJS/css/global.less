@@ -1,0 +1,49 @@
+@marginPX:10px;
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background: white;
+}
+.container {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.container div {
+    text-align: center;
+    flex: 1;
+    border: 1px solid #ccc;
+    padding: @marginPX;
+    margin-right: @marginPX;
+}
+.container div.active {
+    color: deepskyblue;
+    border-color: orange !important;
+}
+.search {
+    margin-top: @marginPX;
+    display: flex;
+    justify-content: center;
+    input {
+        width: 80%;
+        height: 30px;
+        margin-left: @marginPX;
+        margin-right: @marginPX;
+        border-radius: 5px;
+        box-shadow: 2px 2px orange;
+    }
+    button {
+        width: 20%;
+        height: 30px;
+        border-radius: 5px;
+        margin-right: @marginPX;
+    }
+}
+.list {
+    padding: @marginPX;
+    background: deepskyblue;
+    margin-top: @marginPX;
+}

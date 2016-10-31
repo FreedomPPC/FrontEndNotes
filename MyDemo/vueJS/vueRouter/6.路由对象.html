@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!--1.在组件内部使用<router-view>标签 2.在路由器对象中给组件定义子路由-->
+		<style type="text/css">
+			#mini{
+				background: #CCCCCC;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<button v-link="{path:'/home'}">Home</button>
+			<button v-link="{path:'/about'}">About</button>
+			<div>
+				<router-view></router-view>
+			</div>
+			<div>
+				<!--
+					在使用了 vue-router 的应用中，路由对象会被注入每个组件中，赋值为 this.$route ，
+					并且当路由切换时，路由对象会被更新。
+
+					路由对象暴露了以下属性：
+					
+					$route.path 
+					字符串，等于当前路由对象的路径，会被解析为绝对路径，如 "/home/news" 。
+					$route.params 
+					对象，包含路由中的动态片段和全匹配片段的键值对
+					$route.query 
+					对象，包含路由中查询参数的键值对。例如，对于 /home/news/detail/01?favorite=yes ，
+					会得到 $route.query.favorite == 'yes' 。
+					$route.router 
+					路由规则所属的路由器（以及其所属的组件）。
+					$route.matched 
+					数组，包含当前匹配的路径中所包含的所有片段所对应的配置参数对象。
+					$route.name 
+					当前路径的名字，如果没有使用具名路径，则名字为空。
+				-->
+			    <p>当前路径：{{$route.path}}</p>
+			    <p>当前参数：{{$route.params | json}}</p>
+			    <p>路由名称：{{$route.name}}</p>
+			    <p>路由查询参数：{{$route.query | json}}</p>
+			    <p>路由匹配项：{{$route.matched | json}}</p>
+			</div>
+		</div>
+		
+		
+		<template id="home">
+			<h1 id="mini">Home</h1>
+			<p>{{msg}}</p>
+			
+			<div>
+				<a v-link="{path:'/home/news'}">News</a>
+				<a v-link="{path:'/home/messages'}">Messages</a>
+			</div>
+			<div>
+				<router-view></router-view>
+			</div>
+			
+		</template>
+		<template id="news">
+			<ul>
+				<!--4种不同的v-link方式-->
+				<li v-link="{ path:'/home/news/detail/01?favorite=yes' }">New01</li>
+				<li herf="javascript:viod(0)" @click="viewDetail">New02</li>
+				<!--
+					另外，带有 v-link 指令的元素，如果 v-link 对应的 URL 匹配当前的路径，该元素会被添加特定的class，
+					该class的默认名称为v-link-active。
+					例如，当我们访问/home/news/detail/03这个URL时，根据匹配规则，会有3个链接被添加v-link-active。
+				-->
+				<li v-link="{ path:'/home/news/detail/03'}" >New03</li>
+				<li v-link="{name:'detail',params:{id:'04'}}">New04</li>
+			</ul>
+			<div>
+				<!--具名路径的标签-->
+				<router-view></router-view>
+			</div>
+			
+		</template>
+		
+		<!--在有些情况下，给一条路径加上一个名字能够让我们更方便地进行路径的跳转，尤其是在路径较长的时候。
+			我们再追加一个组件NewsDetail，该组件在访问/home/news/detail路径时被渲染-->
+		<template id="newsDetail">
+			<div>
+				NewsDetail ---{{$route.params.id}}#######
+			</div>
+		</template>
+		<template id="messages">
+			<ul>
+				<li>Message01</li>
+				<li>Message02</li>
+				<li>Message03</li>
+			</ul>
+		</template>
+		
+		<template id="about">
+			<h1>About</h1>
+			<p>this is about component</p>
+		</template>
+	</body>
+	<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/vue-router.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var Home = Vue.extend({
+		template:"#home",
+		data:function(){
+			return{
+				msg:"This is Home component!"
+			}
+		}
+		});
+		//声明嵌套路由组件;
+		var News = Vue.extend({
+			template:"#news",
+			methods:{
+				viewDetail:function(){
+					this.$route.router.go({
+						name:'detail',
+						params:{
+							id:'02'
+						},
+						query:{
+							liyunhao:'like'
+						}
+					})
+				}
+			}
+		});
+		
+		//定义具名路径属性;
+		var NewsDetail = Vue.extend({
+			template:"#newsDetail"
+		});
+		
+		var Message = Vue.extend({
+			template:"#messages"
+		});
+		
+		var About = Vue.extend({
+				template: '#about'
+			})
+		
+		var router = new VueRouter();
+		
+		//映射
+		router.map({
+			'/home':{
+				component:Home,
+				//定义子路由;
+				subRoutes:{
+					'/news':{
+						name:'news',
+						component:News,
+						//具名路径映射
+						subRoutes:{
+							'detail/:id':{
+								name:'detail',
+								component:NewsDetail,
+							}
+						}
+					},
+					'/messages':{component:Message},
+				}
+			},
+			'/about':{component:About}
+		})
+		
+		router.redirect({'/':'/home'});
+		
+		var App = Vue.extend({});
+		router.start(App,'#app');
+	</script>
+</html>

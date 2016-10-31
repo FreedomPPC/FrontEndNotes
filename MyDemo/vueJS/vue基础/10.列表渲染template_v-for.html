@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		.divider {
+			background: linear-gradient(60deg, red, blue, yellow);
+		}
+	</style>
+	<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		window.onload = function() {
+			var vm = new Vue({
+				el: 'body',
+				data: {
+					a: true,
+					items: [{
+						msg: 'pBubble1'
+					}, {
+						msg: 'pBubble2'
+					}]
+				}
+			})
+		}
+	</script>
+
+</head>
+
+<body>
+	<!--
+			类似于 template v-if，也可以将 v-for 用在 <template> 标签上，以渲染一个包含多个
+			元素的块。
+		-->
+	<ul>
+		<template v-for="item in items" v-if="a">
+			<li>{{ item.msg }}</li>
+			<li class="divider">pBubbleLi</li>
+		</template>
+		<li>
+			1111
+		</li>
+	</ul>
+</body>
+
+</html>

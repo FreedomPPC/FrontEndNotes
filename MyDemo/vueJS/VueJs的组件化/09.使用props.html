@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			table{
+				border:1px solid red;
+				border-collapse: collapse;
+			}
+			td{
+				border: 1px solid red;
+			}
+		</style>
+	</head>
+	<body>
+		<!--4.将父组件数据通过已定义好的props属性传递给子组件：-->
+		<div id="app">
+			<!--
+				注意：在子组件中定义prop时，使用了camelCase命名法。由于HTML特性不区分大小写，
+				camelCase的prop用于特性时，需要转为 kebab-case（短横线隔开）。
+				例如，在prop中定义的myName，在用作特性时需要转换为my-name。
+			-->
+		    <my-component v-bind:my-name="name" v-bind:my-age="age" :my-gender = "gender"></my-component>
+		</div>
+		<!--3.定义子组件的HTML模板：-->
+		<template id="myComponent">
+		    <table>
+		        <tr>
+		            <th colspan="2">
+	                	子组件数据
+		            </th>
+		        </tr>
+		        <tr>
+		            <td>my name</td>
+		            <td>{{ myName }}</td>
+		        </tr>
+		        <tr>
+		            <td>my age</td>
+		            <td>{{ myAge }}</td>
+		        </tr>
+		          <tr>
+		            <td>my Gender</td>
+		            <td>{{ myGender }}</td>
+		        </tr>
+		    </table>
+		</template>
+	</body>
+	<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		//1.组件实例的作用域是孤立的。这意味着不能并且不应该在子组件的模板内直接引用父组件的数据。
+		//可以使用 props 把数据传给子组件。
+		var vm = new Vue({
+		    el: '#app',
+		    data: {
+		        name: 'keepfool',
+		        age: 28,
+		        gender:'male'
+
+		    },
+		    components: {
+		        'my-component': {
+		            template: '#myComponent',
+		            props: ['myName', 'myAge','myGender']
+		        }
+		    }
+		});
+		//2.为了便于理解，你可以将这个Vue实例看作my-component的父组件。
+		//果我们想使父组件的数据，则必须先在子组件中定义props属性，也就是props: ['myName', 'myAge']这行代码。
+	</script>
+</html>

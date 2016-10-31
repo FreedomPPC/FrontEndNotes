@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		CSS Transition
+		要使用 CSS Transition 动画，只需要在目标元素上添加 v-transition 指令：
+		
+		<p class="msg" v-if="show" v-transition>Hello!</p>
+		然后，你需要为目标元素定义两个 CSS 类：.v-enter 和 .v-leave. 这其中：
+		
+		.v-enter 代表元素刚刚被插入 DOM 瞬间的状态。它会在插入前被添加，然后 Vue.js 会强制浏览器刷新视图，
+		然后 v-enter 会被立刻移除，从而触发 transition。
+		.v-leave 代表元素即将被从 DOM 中移除的瞬间的状态。Vue.js 会在侦听到 transitionend 事件以后移除它。
+		需要注意的是你得确保该元素在添加这两个类的时候会触发 CSS transition，
+		不然 Vue.js 侦听不到 transitionend 事件，动画就卡在那里了。
+		
+		.msg {
+		    transition: all .3s ease;
+		    height: 30px;
+		    padding: 10px;
+		    background-color: #eee;
+		    overflow: hidden;
+		}
+		.msg.v-enter, .msg.v-leave {
+		    height: 0;
+		    padding: 0 10px;
+		    opacity: 0;
+		}
+		现在，当 show 变化的时候，Vue.js 会插入/移除该元素，并自动在合适的时候添加 CSS 类。
+	</body>
+</html>

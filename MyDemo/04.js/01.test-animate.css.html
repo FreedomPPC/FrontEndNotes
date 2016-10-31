@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./assets/animate.css" media="screen" title="no title">
+  <script src="./bower_components/jquery/dist/jquery.min.js" charset="utf-8"></script>
+  <title>Document</title>
+  <style media="screen">
+    #div{
+      font-size: 30px;
+      color:rgb(228, 151, 22);
+      margin: 100px 0 0 100px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+
+  <div  id="div">Animate.css</div>
+  <button>Animate</button>
+
+</body>
+<script type="text/javascript">
+  $('button').on('click',function(){
+    $('#div').addClass('animated bounceOutLeft');
+  });
+</script>
+</html>

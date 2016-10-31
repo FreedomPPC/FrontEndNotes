@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		v-link指令
+		用了这么久的v-link指令，是该介绍一下它了。
+		
+		v-link 是一个用来让用户在 vue-router 应用的不同路径间跳转的指令。该指令接受一个 JavaScript 表达式，
+		并会在用户点击元素时用该表达式的值去调用 router.go。
+		
+		具体来讲，v-link有三种用法：
+		
+		<!-- 字面量路径 -->
+		<a v-link="'home'">Home</a>
+		
+		<!-- 效果同上 -->
+		<a v-link="{ path: 'home' }">Home</a>
+		
+		<!-- 具名路径 -->
+		<a v-link="{ name: 'detail', params: {id: '01'} }">Home</a>
+		v-link 会自动设置 <a> 的 href 属性，你无需使用href来处理浏览器的调整，原因如下：
+		
+		它在 HTML5 history 模式和 hash 模式下的工作方式相同，所以如果你决定改变模式，或者 IE9 浏览器退化为 hash 模式时，都不需要做任何改变。
+		
+		在 HTML5 history 模式下，v-link 会监听点击事件，防止浏览器尝试重新加载页面。
+		
+		在 HTML5 history 模式下使用 root 选项时，不需要在 v-link 的 URL 中包含 root 路径。
+	</body>
+</html>

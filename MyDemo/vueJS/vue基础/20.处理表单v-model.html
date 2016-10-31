@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function(){
+				new Vue({
+				    el: '#demo',
+				    data: {
+				        msg      : 'hi!',
+				        checked  : true,
+				        picked   : 'one',
+				        selected : 'two',
+				        multiSelect: ['one','two' ,'three']
+				    }
+				})
+			}
+		</script>
+	</head>
+	<body>
+		<form id="demo">
+		    <!-- 普通文字输入 -->
+		    <p><input type="text" v-model="msg"> {{msg}}</p>
+		    <!-- 多选按钮 -->
+		    <p><input type="checkbox" v-model="checked"> {{checked ? "yes" : "no"}}</p>
+		    <!-- 单选按钮 -->
+		    <p>
+		        <input type="radio" name="picked" value="one" v-model="picked">
+		        <input type="radio" name="picked" value="two" v-model="picked">
+		        {{picked}}
+		    </p>
+		    <!-- 单选下拉 -->
+		    <p>
+		        <select v-model="selected">
+		            <option>one</option>
+		            <option>two</option>
+		            <option>three</option>
+		        </select>
+		        {{selected}}
+		    </p>
+		    <!-- 多选下拉 -->
+		    <p>
+		        <select v-model="multiSelect" multiple>
+		            <option>one</option>
+		            <option>two</option>
+		            <option>three</option>
+		        </select>
+		        {{multiSelect}}
+		    </p>
+		</form>
+	</body>
+</html>

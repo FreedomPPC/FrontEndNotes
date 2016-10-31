@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function(){
+				var demo = new Vue({
+					el:"#app",
+					data:{
+						newTodo:"",
+						todos:[
+							{text:"add some todos"},
+						]
+					},
+					methods:{
+						addTodo:function(){
+							var text = this.newTodo.trim();
+							if(text){
+								this.todos.push({text:text});
+								this.newTodo = '';
+							}
+							
+						},
+						removeTodo:function(index){
+							this.todos.splice(index,1);
+							
+						},
+					}
+				})
+			}
+		</script>
+	</head>
+	<body>
+		<div id="app">
+		  <input v-model="newTodo" v-on:keyup.enter="addTodo">
+		  <ul>
+		    <li v-for="todo in todos" >  <!--v-for指令显示数组元素;-->
+		      <span>{{ todo.text }}</span>
+		      <button v-on:click="removeTodo($index)">Delete</button>
+		    </li>
+		  </ul>
+		</div>
+	</body>
+</html>

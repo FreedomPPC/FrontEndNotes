@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+		    <my-component>
+		    </my-component>
+		</div>
+		
+		<template id="myComponent">
+		    <div>
+		        <h2>{{ msg }}</h2>
+		        <button v-on:click="showMsg">Show Message</button>
+		    </div>
+		</template>
+	</body>
+	<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+	//尽管使用组件就像使用一般的HTML元素一样，但它毕竟不是标准的HTML元素，为了让浏览器能够识别它，
+	//组件会被解析为标准的HTML片段，然后将组件的标签替换为该HTML片段。
+	//这段代码定义了一个my-component组件，<my-component><my-component>不是标准的HTML元素，浏览器是不理解这个元素的。
+	//在创建一个Vue实例时，除了将它挂载到某个HTML元素下，还要编译组件，将组件转换为HTML片段。
+	//除此之外，Vue实例还会识别其所挂载的元素下的<my-component>标签，然后将<my-component>标签替换为HTML片段。
+	//组件在使用前，经过编译已经被转换为HTML片段了，组件是有一个作用域的，那么组件的作用域是什么呢？
+	//可以将它理解为组件模板包含的HTML片段，组件模板内容之外就不是组件的作用域了。
+	    new Vue({
+	        el: '#app',
+	        components: {
+	            'my-component': {
+	                template: '#myComponent',
+	                data: function() {
+	                    return {
+	                        msg: 'This is a component!'
+	                    }
+	                },
+	                methods: {
+	                    showMsg: function() {
+	                        alert(this.msg)
+	                    }
+	                }
+	            }
+	        }
+	    })
+	 </script>
+	
+</html>

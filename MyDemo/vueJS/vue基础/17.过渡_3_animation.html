@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		CSS Animation 使用方式和 transition 大同小异，换成使用 v-animation 指令，
+		不同的地方是 v-enter 现在不是在插入后立刻移除，而是在侦听到 animationend 事件后才移除。
+
+		<p class="animated" v-if="show" v-animation>Look at me!</p>
+		CSS 里你需要定义两个动画 keyframes，分别对应进场和出场动画：（这里省略了webkit前缀）
+		
+		.animated {
+		    display: inline-block;
+		}
+		
+		.animated.v-enter {
+		    animation: fadein .5s;
+		}
+		
+		.animated.v-leave {
+		    animation: fadeout .5s;
+		}
+		
+		@keyframes fadein {
+		    0% {
+		        transform: scale(0);
+		    }
+		    50% {
+		        transform: scale(1.5);
+		    }
+		    100% {
+		        transform: scale(1);
+		    }
+		}
+		
+		@keyframes fadeout {
+		    0% {
+		        transform: scale(1);
+		    }
+		    50% {
+		        transform: scale(1.5);
+		    }
+		    100% {
+		        transform: scale(0);
+		    }
+		}
+	</body>
+</html>

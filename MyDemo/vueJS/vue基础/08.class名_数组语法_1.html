@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.classA{
+				color:red;
+			}
+		</style>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function(){
+				new Vue({
+					el:".static",
+					data: {
+					  classA: 'class-a',
+					  classB: 'class-b'
+					}
+				})
+			}
+		</script>
+	</head>
+	<body>
+		<div class="static" v-bind:class="[classA, classB]">111</div>
+	</body>
+</html>

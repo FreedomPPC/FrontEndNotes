@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function(){
+				var vm = new Vue({
+				  el: '#example',
+				  data: {
+				    name: 'Vue.js'
+				  },
+				  // 在 `methods` 对象中定义方法
+				  methods: {
+				    greet: function (event) {
+				      // 方法内 `this` 指向 vm
+				      alert('Hello ' + this.name + '!')
+				      // `event` 是原生 DOM 事件
+				      alert(event.target.tagName)
+				    },
+				    handleChange:function(){
+				    	console.log("触发change事件")
+				    }
+				  }
+				})
+				
+				// 也可以在 JavaScript 代码中调用方法
+//				vm.greet() // -> 'Hello Vue.js!'
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div id="example">
+			<button v-on:click="greet">Greet</button>
+			<input type="text" v-on:change = "handleChange"/>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function(){
+				var VM = new Vue({
+					el:"#example",
+					methods:{
+						say:function(word){
+							alert(word)
+						},
+					}
+				});
+				var button = document.querySelectorAll('button')[0];
+				button.onclick = function(){
+					alert("1");
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="example">
+			<button v-on:click='say("hi")' v-on:mouseover="style">SayHi</button>
+			<button v-on:click='say("what")'>SayWhat</button>
+		</div>
+	</body>
+</html>

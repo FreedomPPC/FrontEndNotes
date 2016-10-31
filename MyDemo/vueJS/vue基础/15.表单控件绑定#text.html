@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function(){
+			 	var VM = new Vue({
+			 		el:'body',
+			 		data:{
+			 			message:''
+			 		}
+			 	})
+			}
+		</script>
+	</head>
+	<body>
+		<span>Message is:{{message}}</span><br />
+		<input type="text" v-model="message" placeholder="edit me" />
+	</body>
+</html>

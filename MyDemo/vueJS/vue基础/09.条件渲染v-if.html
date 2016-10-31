@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				opacity: 0;
+				/*-webkit-appearance: button;*/
+				/*appearance: none;*/
+			}
+		</style>
+	</head>
+	<body>
+		<div id="aaa" v-if='a' onclick="alert('aaa')">
+			a
+		</div>
+		<div v-else onclick="alert('aaa')">
+			pBubbleMe
+		</div>
+		<input type="radio" />
+		<hr />
+		<!--
+			因为 v-if 是一个指令，需要将它添加到一个元素上。但是如果我们想切换多个元素呢？
+			此时我们可以把一个 <template> 元素当做包装元素，并在上面使用 v-if，最终的渲染
+			结果不会包含它.
+			
+		-->
+		<template v-if="b && a">
+			<h1>v-if = b</h1>
+		</template>
+		<hr />
+		<template v-if="page == 1">
+		  <h1>Title  v-if="page == 1"</h1>
+		  <p>Paragraph 1</p>
+		  <p>Paragraph 2</p>
+		</template>
+		
+		
+		<!--不同的是有 v-show 的元素会始终渲染并保持在 DOM 中。v-show 是简单的切换元素的 CSS 属性 display--> 
+		
+	</body>
+	<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			
+				var vm = new Vue({
+					el: 'body',
+					data: {
+						a: false,
+						b:true,
+						page:1,
+					},
+					ready: function() {
+						console.log(this.a);
+					}
+				})
+			
+		</script>
+</html>

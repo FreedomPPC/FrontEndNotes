@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		.el {
+			width: 80px;
+			height: 20px;
+			border: 1px solid deeppink;
+		}
+	</style>
+	<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		/*
+		 * 可计算属性 (computed properties) 就是不存在于原始数据中，而是在运行时实时计算出来的属性
+		 */
+		window.onload = function() {
+			var user = {
+				firstname: 'John',
+				lastname: 'Doe'
+			}
+			var vm = new Vue({
+				el: '#demo',
+				data: {
+					user,
+					items: ['joy', 'shark', 'moonlight']
+				},
+				computed: {
+					fullname: function() {
+						return this.user.firstname + " " + this.user.lastname;
+					},
+
+				},
+				ready: function() {
+					console.log(this.fullname);
+					var btn = document.getElementsByTagName('button')[0];
+					var vm = this;
+					btn.onclick = function() {
+
+						vm.items.splice(0, vm.items.length);
+						console.log(vm.items.length)
+					}
+				
+
+				},
+			});
+
+		}
+	</script>
+</head>
+
+<body>
+	<div id="demo">
+		<div>{{fullname}}</div>
+		<button>delete</button>
+		<ul v-for="el in items">
+			<li>
+				<div class="el">{{el}}</div>
+			</li>
+		</ul>
+	</div>
+</body>
+
+</html>

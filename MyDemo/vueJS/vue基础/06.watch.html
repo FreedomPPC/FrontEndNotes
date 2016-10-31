@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+
+    {{a}}
+  </div>
+</body>
+<script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript">
+
+  var vm = new Vue({
+    el:"#app",
+    data: {
+      a: 1
+    },
+    methods:{
+      handleclick:function(){
+        var that = this;
+        document.onclick = function(){
+          that.a++;
+          // alert('aaaa');
+        }
+      }
+    },
+    ready:function(){
+      this.handleclick();
+    },
+    watch: {
+      'a': function (val, oldVal) {
+        console.log("newValue:"+val,"oldValue:"+oldVal)
+        if(val == 5){
+          document.documentElement.style.background = "deepskyblue"
+        }
+      },
+      // 方法名
+      // 'b': 'someMethod',
+      // // 深度 watcher
+      // 'c': {
+      //   handler: function (val, oldVal) { /* ... */ },
+      //   deep: true
+      // }
+    }
+  })
+  //  vm.a = 2 // -> new: 2, old: 1
+</script>
+
+</html>

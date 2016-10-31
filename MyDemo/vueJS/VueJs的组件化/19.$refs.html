@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			组件个数较多时，我们难以记住各个组件的顺序和位置，通过序号访问子组件不是很方便。
+			在子组件上使用v-ref指令，可以给子组件指定一个索引ID：
+			
+			<template id="parent-component">
+			    <child-component1 v-ref:cc1></child-component1>
+			    <child-component2 v-ref:cc2></child-component2>
+			    <button v-on:click="showChildComponentData">显示子组件的数据</button>
+			</template>
+			在父组件中，则通过$refs.索引ID访问子组件的实例：
+			
+			showChildComponentData: function() {
+			    alert(this.$refs.cc1.msg);
+			    alert(this.$refs.cc2.msg);
+			}
+		-->
+		<div id="app">
+		    <parent-component></parent-component>
+		</div>
+		
+		<template id="parent-component">
+		    <child-component1 v-ref:cc1></child-component1>
+		    <child-component2 v-ref:cc2></child-component2>
+		    <button v-on:click="showChildComponentData">显示子组件的数据</button>
+		</template>
+		
+		<template id="child-component1">
+		    <h2>This is child component 1</h2>
+		</template>
+		
+		<template id="child-component2">
+		    <h2>This is child component 2</h2>
+		</template>
+
+	</body>
+	<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		 Vue.component('parent-component', {
+	        template: '#parent-component',
+	        components: {
+	            'child-component1': {
+	                template: '#child-component1',
+	                data: function() {
+	                    return {
+	                        msg: 'child component 111111'
+	                    }
+	                }
+	            },
+	            'child-component2': {
+	                template: '#child-component2',
+	                data: function() {
+	                    return {
+	                        msg: 'child component 222222'
+	                    }
+	                }
+	            }
+	        },
+	        methods: {
+	            showChildComponentData: function() {
+	                alert(this.$refs.cc1.msg);
+			    	alert(this.$refs.cc2.msg);
+	            }
+	        }
+	    })
+	
+	    new Vue({
+	        el: '#app'
+	    })
+	</script>
+</html>

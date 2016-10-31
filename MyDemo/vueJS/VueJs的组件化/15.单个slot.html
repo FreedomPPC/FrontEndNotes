@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+		    <my-component>
+		        <h1>Hello Vue.js!</h1>
+		    </my-component>
+
+		    <my-component>
+		    </my-component>
+		</div>
+		<template id="myComponent">
+		    <div class="content">
+		        <h2>This is a component!</h2>
+		        <slot>如果没有分发内容，则显示slot中的内容</slot>
+		        <p>Say something...</p>
+		    </div>
+		</template>
+	</body>
+	<script src="../js/vue.js"></script>
+	<script>
+	//为了让组件可以组合，我们需要一种方式来混合父组件的内容与子组件自己的模板。
+	//这个处理称为内容分发，Vue.js 实现了一个内容分发 API，使用特殊的 <slot> 元素作为原始内容的插槽。
+	//发现上面代码中h1替换了slot;
+
+	    Vue.component('my-component', {
+	        template: '#myComponent'
+	    })
+
+	    new Vue({
+	        el: '#app'
+	    })
+	</script>
+</html>

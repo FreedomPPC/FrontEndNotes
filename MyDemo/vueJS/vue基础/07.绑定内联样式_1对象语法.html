@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function(){
+				new Vue({
+					el:"body",
+					data:{
+						activeColor:'red',
+						fontSize:30,
+						obj:'url(../img/1.png)'
+					}
+				})
+			}
+		</script>
+	</head>
+	<body>
+		<div id="demo" v-bind:style="{color:activeColor,fontSize:fontSize+'px'}">123</div>
+		<div v-bind:style="{background:obj}" style="width:200px;height:200px"></div>
+		<div style="background:url(../img/1.png);width:100px;height:100px"></div>
+	</body>
+</html>

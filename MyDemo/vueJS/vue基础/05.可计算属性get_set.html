@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>可计算属性get,set</title>
+	<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		window.onload = function(){
+			var demo = new Vue({
+				el:'#demo',
+			    data: {
+			        firstName: 'Foo',
+			        lastName: 'Bar'
+			    },
+			    computed: {
+			        fullName: {
+			            // 可以用一个包含 $get 和 $set 两个函数的对象来定义可计算属性
+			            $get: function () {
+			                return this.firstName + ' ' + this.lastName
+			            },
+			            $set: function (newValue) {
+			                var names = newValue.split(' ')
+			                this.firstName = names[0]
+			                this.lastName = names[names.length - 1]
+			            }
+			        }
+			    },
+			    ready:function(){
+			    	console.log(this.fullName)
+			    }
+			})
+			// get 一下
+			demo.fullName // 'Foo Bar'
+			// set 一下
+			demo.fullName = 'Michael Jordan'
+			demo.firstname // 'Michael'
+			demo.lastname // 'Jordan'
+			
+		}
+	</script>
+</head>
+<body>
+	<div id="demo">
+		
+	</div>
+</body>
+</html>

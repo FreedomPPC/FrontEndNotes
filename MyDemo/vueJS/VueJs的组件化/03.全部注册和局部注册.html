@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+
+<body>
+    <div id="app">
+        <!-- 3. my-component只能在#app下使用-->
+        <p>只能挂载到#APP下的my-component组件</p>
+        <my-component></my-component>
+        <hr>
+        <p>挂载到#app下的her-component组件</p>
+        <her-component></her-component>
+    </div>
+    <hr>
+    <p>挂载到body上的her-component的组件</p>
+    <her-component></her-component>
+
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    /*全局注册和局部注册
+    		调用Vue.component()注册组件时，组件的注册是全局的，这意味着该组件可以在任意Vue实例下使用。
+    		如果不需要全局注册，或者是让组件使用在其它组件内，可以用选项对象的components属性实现局部注册。
+         */
+    // 1.创建一个组件构造器
+    var myComponent = Vue.extend({
+        template: '<h1>This is my first component!</h1>'
+    })
+
+    //全局her-component爱挂载在哪就在哪
+    var herComponent = Vue.extend({
+        template: "<h1>this is herComponent!!</h1>"
+    });
+    Vue.component('her-component', herComponent);
+
+
+    new Vue({
+        el: '#app',
+        components: {
+            // 2. 将myComponent组件注册到Vue实例下
+            'my-component': myComponent
+        }
+    });
+
+    //全局组件挂载到body下
+    new Vue({
+        el: 'body'
+    })
+
+
+    /*由于my-component组件是注册在#app元素对应的Vue实例下的，所以它不能在其它Vue实例下使用。
+
+		<div id="app2">
+		    <!-- 不能使用my-component组件，因为my-component是一个局部组件，它属于#app-->
+		    <my-component></my-component>
+		</div>
+
+		<script>
+		    new Vue({
+		        el: '#app2'
+		    });
+		</sript>
+     */
+</script>
+
+</html>

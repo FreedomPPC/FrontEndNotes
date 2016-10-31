@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <style type="text/css">
+        	.classObject{
+        		color:red;
+        	}
+        	
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <my-component v-bind:show="nice" ></my-component>
+            <button v-on:click="noColor">noColor</button>
+        </div>
+        
+        <template id="myComponent">
+            <div class="dialog" v-bind:class="{classObject: show}" v-bind:style="{fontSize:size +'px'}">This is a component!</div>
+            
+        </template>
+    </body>
+    <script src="../js/vue.js"></script>
+    <script>
+        
+        Vue.component('my-component',{
+            template: '#myComponent',
+            data:function(){
+            	return {
+            		size:40
+            	}
+            },
+            props:["show"],
+        })
+        
+        var VM = new Vue({
+           el: '#app',
+           data:{
+           	size:20,
+           	nice: true,
+           },
+           methods:{
+           	noColor:function(){
+              if(this.nice == true){
+           		 this.nice = false;
+              }else{
+                this.nice = true;
+              }
+           		
+           	}
+           }
+        });
+        
+        // VM.noColor();
+    </script>
+</html>

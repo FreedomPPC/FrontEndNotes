@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="css/custom.css"/>
+	</head>
+	<body>
+		<div id="app">
+			<div class="row">
+				<div class="col-xs-offset-2 col-xs-8">
+					<div class="page-header">
+						<h2>Router Basic - 01</h2>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-2 col-xs-offset-2">
+					<!--第四步;使用v-link指令;在a元素上使用v-link指令跳转到指定路径;-->
+					<div class="list-group">
+						<a class="list-group-item" v-link="'/home'">Home</a>
+						<a class="list-group-item" v-link="{path:'/about'}">About</a>
+					</div>
+				</div>
+				<div class="col-xs-6">
+					<div class="panel">
+						<div class="panel-body">
+							<!--第五步;在页面上使用<router-view></roouter-view标签,他用于渲染匹配的组件-->
+							<router-view></router-view>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		<template id="home">
+			<div>
+				<h1>Home</h1>
+				<p>{{msg}}</p>
+			</div>
+		</template>
+		<template id="about">
+			<div>
+				<h1>About</h1>
+				<p>This is the tutorial about vue-router.</p>
+			</div>
+		</template>
+	</body>
+	<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/vue-router.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		//第一步,引入vuejs和vue-routerjs;创建home和about组件;
+//		var Home = Vue.extend({
+//			template:'<div><h1>Home</h1><p>{{msg}}</p></div>'
+//			data:function(){
+//				return:{
+//					msg:'Hello,Vue-Router',
+//				}
+//			}
+//		});
+//		
+//		var About = Vue.extend({
+//			template:'<div><h1>About</h1><p>This is the tutorial about vue-router.</p></div>',
+//		})
+
+		var Home = Vue.extend({
+			template: '#home',
+			data: function() {
+				return {
+					msg: 'Hello, vue router!'
+				}
+			}
+		})
+
+		var About = Vue.extend({
+			template: '#about'
+		})
+		
+		//第二步:创建router;调用构造器;VurRouter;创建一个路由器实例router;
+		var router = new VueRouter();
+		
+		//第三步:映射路由;调用router的map方法映射路由,每条路由以key-value的形式存在;key是路径;value是组件;
+		router.map({
+			'/home':{component:Home},
+			'/about':{component:About}
+		});
+		
+		//重定向 设置首页,这样第一次打开页面,就不会出现空白;
+		router.redirect({'/':'/home'})
+		
+		//第六步;启动路由;路由器运行需要一个根组件;router.start(App.'#app');表示router会创建一个App实例,并且挂在到#app
+		//元素;
+		
+		//注意:使用vue-router的应用;不需要显示地创建Vue实例;而是调用start方法将根组件挂载到某个元素上;
+		var App = Vue.extend({});
+		router.start(App,'#app');
+		
+	</script>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+    	table{
+    		width: 400px;
+    		height:400px;
+    		border:1px solid black;
+    		border-spacing: 0;
+    		border-collapse: collapse;
+    	}
+    	td{
+    		border:1px solid black;
+    		text-align: center;
+    	}
+    </style>
+
+    </head>
+
+    <body>
+        <div id="app">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Sex</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="person in people">
+                        <td>{{ person.name }}</td>
+                        <td>{{ person.age  }}</td>
+                        <td>{{ person.sex  }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+    <script src="../js/vue.js"></script>
+    <script>
+    /*v-for指令基于一个数组渲染一个列表，它和JavaScript的遍历语法相似：
+     * v-for="item in items"  items是一个数组，item是当前被遍历的数组元素。
+     *
+     * 我们在选项对象的data属性中定义了一个people数组，然后在#app元素内使用v-for遍历people数组，
+     * 输出每个person对象的姓名、年龄和性别。
+     */
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                people: [{
+                    name: 'Jack',
+                    age: 22,
+                    sex: 'Male'
+                }, {
+                    name: 'Bill',
+                    age: 22,
+                    sex: 'Male'
+                }, {
+                    name: 'Tracy',
+                    age: 22,
+                    sex: 'Female'
+                }, {
+                    name: 'Chris',
+                    age: 36,
+                    sex: 'Male'
+                }]
+            }
+        })
+    </script>
+
+</html>

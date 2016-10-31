@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+		
+		组件的el和data选项
+		传入Vue构造器的多数选项也可以用在 Vue.extend() 或Vue.component()中，不过有两个特例： data 和el。
+		Vue.js规定：在定义组件的选项时，data和el选项必须使用函数。
+		
+		下面的代码在执行时，浏览器会提出一个错误
+		
+		Vue.component('my-component', {
+		    data: {
+		        a: 1
+		    }
+		})
+		会报错,说data必须是一个function
+		
+		另外，如果data选项指向某个对象，这意味着所有的组件实例共用一个data。
+		我们应当使用一个函数作为 data 选项，让这个函数返回一个新对象：
+		
+		Vue.component('my-component', {
+		    data: function(){
+		        return {a : 1}
+		    }
+		})
+		</script>
+	</body>
+</html>

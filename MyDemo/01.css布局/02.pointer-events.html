@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .active{
+      pointer-events: none;
+      /*pointer-events是消除点击拖拽等事件*/
+    }
+  </style>
+</head>
+<body>
+  <div class="div1">
+    <button>click me</button>
+  </div>
+</body>
+<script type="text/javascript">
+  var btn = document.querySelector('button');
+  btn.onclick = function() {
+    alert(123);
+    btn.setAttribute('class','active')
+  }
+</script>
+</html>

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style>
+		div{
+			width:10rem;
+			height: 10rem;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="app" @click="greeting()">
+		<button  v-show="show">点我</button>
+	</div>
+</body>
+<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+
+	var vm = new Vue({
+		el:'#app',
+		data:{
+			show:false,
+		},
+		methods:{
+			greeting(){
+				this.show = !this.show;
+			}
+		}
+	})
+</script>
+</html>

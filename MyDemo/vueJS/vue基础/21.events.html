@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script src="../js/vue.js" charset="utf-8"></script>
+<script type="text/javascript">
+    /*
+            vue中的events是一个对象,键是监听的事件,值是相应的回调.注意这些事件是vue事件而不是dom事件.
+            值也可以是方法的名称.在实例化的过程中,vue实例会调用对象的每个键
+         */
+    var vm = new Vue({
+        events: {
+            'hook:created': function() {
+                console.log('created!')
+            },
+            greeting: function(msg) {
+                console.log(msg)
+            },
+            // 也可以是方法的名字
+            bye: 'sayGoodbye'
+        },
+        methods: {
+            sayGoodbye: function() {
+                console.log('goodbye!')
+            }
+        },
+    }) // -> created!
+    vm.$emit('greeting', 'hi!') // -> hi!
+    vm.$emit('bye') // -> goodbye!
+</script>
+
+</html>

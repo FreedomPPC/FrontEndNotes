@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			下面这段代码定义了两个组件：child-component和它的父组件parent-component。
+			在子组件中，通过this.$parent可以访问到父组件的实例。
+
+			注意：尽管可以访问父链上任意的实例，不过子组件应当避免直接依赖父组件的数据，尽量显式地使用 props 传递数据。
+			另外，在子组件中修改父组件的状态是非常糟糕的做法，因为：
+			1.这让父组件与子组件紧密地耦合；
+			2. 只看父组件，很难理解父组件的状态。因为它可能被任意子组件修改！理想情况下，只有组件自己能修改它的状态。
+		-->
+		<div id="app">
+		    <parent-component></parent-component>
+		</div>
+
+		<template id="parent-component">
+		    <child-component></child-component>
+		</template>
+
+		<template id="child-component">
+		    <h2>This is a child component</h2>
+		    <button v-on:click="showParentComponentData">显示父组件的数据</button>
+				<grandson-component></grandson-component>
+		</template>
+
+		<template id="grandson-component">
+			<h3>I am grandson-component!!!</h3>
+			<button  v-on:click="showFather">显示child-component数据</button>
+		</template>
+
+	</body>
+	<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		Vue.component('parent-component', {
+	        template: '#parent-component',
+	        components: {
+	            'child-component': {
+	                template: '#child-component',
+									data:function(){
+										return{
+											message:"I am grandson-component father"
+										}
+									},
+	                methods: {
+	                    showParentComponentData: function() {
+	                        alert(this.$parent.msg)
+	                    },
+	                },
+									components:{
+										'grandson-component':{
+											template:'#grandson-component',
+											methods:{
+													showFather:function(){
+														alert(this.$parent.message);
+													}
+											}
+										}
+									},
+	            }
+	        },
+	        data: function() {
+	            return {
+	                msg: 'parent component message'
+	            }
+	        },
+					ready:function(){
+						this.$http.post({
+
+						})
+					}
+
+	    })
+	    new Vue({
+	        el: '#app'
+	    })
+	</script>
+</html>

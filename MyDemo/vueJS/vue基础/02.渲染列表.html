@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		window.onload = function() {
+			var demo = new Vue({
+				el: '#app',
+				data: {
+					todos: [{
+						text: 'Learn JavaScript1'
+					}, {
+						text: 'Learn Vue.js'
+					}, {
+						text: 'Build Something Awesome'
+					}],
+					activeId: Math.random(),
+
+				},
+				methods: {
+					expand(id) {
+						if (id == this.activeId) {
+							this.activeId = 0;
+							return;
+						}
+						this.activeId = id;
+					},
+				}
+			})
+		}
+	</script>
+</head>
+
+<body>
+	<div id="app">
+		<ul>
+			<li v-for="message in todos" @click="expand($index)">
+				{{ message.text }}
+				<p v-if="activeId == $index">攻略攻略攻略攻略攻略攻略攻略攻略攻略攻略</p>
+			</li>
+		</ul>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<link rel="stylesheet/less" href="../css/global.css" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<div id="app">
+			{{num}}
+			<son-component v-bind:items="items" name="navbar" :active="active"></son-component>
+			<search-component></search-component>
+			<list-component v-bind:lists="lists" :num.sync="num"></list-component>
+		</div>
+		<template id="search">
+			<div class="search">
+				<input type="text">
+				<button>查询</button>
+			</div>
+		</template>
+
+		<template id="sonComponent">
+			<div class="container" style="display:flex;">
+				<div v-for="el in items" :class="{'active':active==$index}" @click="select($index)">{{el}}</div>
+			</div>
+		</template>
+
+		<template id="listCell">
+			<div>
+				<div v-for="el in lists" class="list" @click="notifyNum">
+					<div>{{el.status}}</div>
+					<div>{{el.user}}</div>
+					<div>{{el.phone}}</div>
+					<div>{{el.address}}</div>
+				</div>
+			</div>
+		</template>
+	</body>
+	<script src="../js/less.js"></script>
+	<script type="text/javascript" src="../js/vue.js"></script>
+	<script>
+	
+		var demo = new Vue({
+			name: 'index',
+			el: "#app",
+			data: {
+				num:0,
+				active: 0,
+				items: ["全部", "待入住", "已入住", "已退房"],
+				lists: [],
+				filter: {
+					all: [],
+					checkto: [],
+					checkin: [],
+					checkout: []
+				}
+			},
+			events: {
+				//2.父组件中接受
+				'tab': function(event) {
+					// console.log(event.target + "-" + event.value);
+					this.active = event.value;
+					switch(this.active) {
+						case 1:
+							this.lists = [].concat(this.filter.checkto);
+							break;
+						case 2:
+							this.lists = [].concat(this.filter.checkin);
+							break;
+						case 3:
+							this.lists = [].concat(this.filter.checkout);
+							break;
+						default:
+							this.lists = [].concat(this.filter.all);
+							break;
+					}
+				}
+			},
+			methods: {
+				inidata: function(orders) {
+					var orders = [{
+						'status': '待入住',
+						'user': 'bruce',
+						'phone': 15688956547,
+						'address': '火星'
+					}, {
+						'status': '已入住',
+						'user': 'Nick',
+						'phone': 15238956547,
+						'address': '水星'
+					}, {
+						'status': '已退房',
+						'user': 'Mouse',
+						'phone': 152354956547,
+						'address': '地球'
+					}, ];
+					this.lists = [].concat(orders);
+					this.filter.all = [].concat(orders);
+					var temp = [
+						[],
+						[],
+						[]
+					];
+					orders.map(function(el) {
+						switch(el.status) {
+							case "待入住":
+								temp[0].push(el);
+								break;
+							case "已入住":
+								temp[1].push(el);
+								break;
+							case "已退房":
+								temp[2].push(el);
+						};
+					})
+					this.filter.checkto = [].concat(temp[0]);
+					this.filter.checkin = [].concat(temp[1]);
+					this.filter.checkout = [].concat(temp[2]);
+
+				}
+			},
+			watch: {
+				'active': function(idx) {
+					// console.log(idx);
+				},
+				'num':function(idx){
+					console.log('父组件的num:'+idx);
+					
+				}
+			},
+			ready: function() {
+				this.inidata();
+				
+			},
+			components: {
+				'son-component': {
+					name: "tab",
+					template: "#sonComponent",
+					props: ['items', 'name', 'active'],
+					methods: {
+						//1.子组件中事件派发;
+						select: function(idx) {
+							this.$dispatch('tab', {
+								target: this.name,
+								value: idx,
+							});
+						}
+					}
+				},
+				'search-component': {
+					template: "#search",
+				},
+				'list-component': {
+					name: "list-cell",
+					template: "#listCell",
+					data: function() {
+						return {
+
+						}
+					},
+					props: {
+						lists:Array,
+						num:{
+							Number,
+							default:0
+						}
+					},
+					methods:{
+						notifyNum(){
+							this.num++;
+							console.log('子组件的num:'+this.num)
+						}
+					},
+					ready(){
+					}
+				}
+			}
+		})
+	</script>
+
+</html>

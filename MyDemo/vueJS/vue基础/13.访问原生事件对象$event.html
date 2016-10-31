@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+		/*
+		 * 有时也需要在内联语句处理器中访问原生 DOM 事件。可以用特殊变量 $event 把它传入方法
+		 */
+		window.onload = function(){
+			
+			var VM = new Vue({
+				el:"#example",
+				methods:{
+					say:function(word,event){
+						console.log(word);
+						alert(event.target.tagName.toLowerCase());
+						event.preventDefault();
+					}
+				}
+			});
+		}
+		</script>
+	</head>
+	<body>
+		<div id="example">
+			<button v-on:click="say('HI',$event)">$Event</button>
+		</div>
+	</body>
+</html>

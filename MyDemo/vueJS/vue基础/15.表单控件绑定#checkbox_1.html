@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function(){
+				var VM = new Vue({
+					el:"#example",
+					data:{
+						checkey:'false',
+					},
+				});
+				function checkTF(){
+					var _input = document.getElementsByTagName('input')[0];
+					var _lable = document.getElementsByTagName('label')[0];
+					_input.checked = false;
+					if(_input.type == checkbox &&_input.checked){
+						_lable.innerHTML = 'true'
+					}else{
+						_lable.innerHTML = 'false'
+					}
+				}
+				checkTF();
+			}
+		</script>
+	</head>
+	<body>
+		<div id="example">
+			<input type="checkbox" id="checkbox" v-model="checkey">
+			<label for="checkbox">{{checkey}}</label>
+		</div>
+	</body>
+</html>

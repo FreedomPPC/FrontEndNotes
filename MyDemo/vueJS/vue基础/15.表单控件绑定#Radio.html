@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="example">
+			<input type="radio" id="one" value="one" v-model="picked" />
+			<label for="one">one</label><br />
+			<input type="radio" id="two" value="two" v-model="picked" />
+			<label for="two">two</label><br />
+			<span>Picked:{{picked}}</span>
+		</div>
+		
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+		window.onload = function(){
+			
+			new Vue({
+				el:"#example",
+				data:{
+					picked:[]
+				}
+			});
+		}
+		</script>
+	</body>
+</html>

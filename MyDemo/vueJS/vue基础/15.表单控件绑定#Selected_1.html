@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function(){
+				new Vue({
+					el:"#example",
+					data:{
+						selected:[]
+					}
+				})
+			}
+		</script>
+	</head>
+	<body>
+		<div id="example">
+			<select name="" v-model="selected">
+				<option selected>A</option>
+				<option>B</option>
+				<option>C</option>
+			</select>
+			<span>Selected:{{selected}}</span>
+		</div>
+	</body>
+</html>

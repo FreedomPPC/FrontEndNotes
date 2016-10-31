@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		JS 函数动画需要通过 Vue.effect 方法来注册一个效果，包括一个进场函数和一个出场函数：
+
+		Vue.effect('my-effect', {
+		    enter: function (el, insert, timeout) {
+		        // insert() 会将元素插入 DOM
+		    },
+		    leave: function (el, remove, timeout) {
+		        // remove() 会将元素移除出 DOM
+		    }
+		})
+		<p v-effect="my-effect"></p>
+		第三个参数 timeout 是一个 Vue.js 版本的 setTimeout 函数。使用方法完全一样，但使用这个函数的好处是，
+		当一个元素的状态切换过快，上一个动画函数设置的 timer 还没有触发就进入下一个动画函数的时候，
+		 Vue.js 会确保之前未触发的 timer 都被取消，不需要开发者手动管理 timer。
+	</body>
+</html>

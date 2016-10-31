@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function(){
+				new Vue({
+					el:"#demo",
+					data:{
+						myStyle:{
+							color:'red',
+							fontSize:'30px',
+						}
+					}
+				})
+			}
+		</script>
+	</head>
+	<body>
+		<div id="demo" v-bind:style="myStyle">123</div>
+	</body>
+</html>
