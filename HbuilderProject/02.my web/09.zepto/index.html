@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<style type="text/css">
+			html{
+				font-size: 20px;
+			}
+		</style>
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<script src="js/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				var _div = $("#div");//id选择器选择器;
+				console.log(_div);
+				
+				var _ul = $(".ul");//类选择器;
+				console.log(_ul);
+				
+				var _span = $("span");//标签选择器
+				console.log(_span);
+				
+				var _input = $("input[name=username]");
+				console.log(_input);
+				//层级选择器,子选择器;$(".ul>span")表示选择ul下面子集的span,包含选择器会一直往下查找,不管多少层次;
+				var _s1 = $(".ul>span");//子选择器,只选取子元素;
+				console.log(_s1.length);//输出为1;
+				
+				var _s2 = $(".ul span");//包含选择器,选取ul下面所有的span元素;
+				console.log(_s2.length);//输出为3;
+				
+				//4.兄弟选择器;
+				var _in = $(".ul>span").siblings('input');
+				console.log(_in);
+				
+				var _li = $(".ul>span").prev();
+				console.log(_li.html());
+				
+				//5.伪类选择器；
+				$(".ul>li").eq(2).css({'fontSize':'40px'});
+				
+				$(".ul>li").not(".abc").css({'color':'red'});
+				
+				//6.zepto操作dom的api；dom节点操作就是对节点的增删改;
+				$("button").click(function(){
+					var $li = $("<div>Hello I am a New DIV</div>");//zepto创建元素
+					
+					//1 append();往元素后面追加元素
+//					$(".ul").append($li);
+
+					//2.appendTo();
+//					$li.appendTo($(".ul"));
+					
+					//3.prepend();内容元素往前放;
+//					$(".ul").prepend($li);
+					
+					//4.prependTo();
+//					$li.prependTo($(".ul"));
+
+					//5.after();在元素后面添加;
+//					$("#ds").after($li);
+					
+					//6.before();
+//					$("#ds").before($li);
+				});
+				
+			});
+		</script>
+	</head>
+	<body>
+		<div id="div">
+			this is a div
+			<ul class="ul">
+				<li>one</li>
+				<li class="abc">two</li>
+				<li class="abc">three</li>
+				<li class="c">four</li>
+					<span>this is ul's span<br />
+						<span>this is child span<br />
+							<span>this grandson span</span>
+						</span>
+					</span>
+			</ul>
+			<span>this is a span</span>
+			<input type="text" name="username" />
+			<button id="btn">对节点进行操作</button>
+			
+			<div id="ds">I am DS Div</div>
+		</div>
+	</body>
+</html>

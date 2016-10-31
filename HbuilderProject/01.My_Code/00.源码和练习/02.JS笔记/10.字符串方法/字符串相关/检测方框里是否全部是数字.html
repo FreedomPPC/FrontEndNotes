@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>检测方框里是否全为数字</title>
+	<script>
+		window.onload =function () {
+		
+			//封装一个函数,判断字符串是否全为数字;
+			function detectNum(str){
+				var len = str.length;
+				var n = 0;
+				for(var i=0;i<len;i++){
+					n = str.charCodeAt(i);
+					if(n<48 || n>57){
+						return false;
+					}
+				}
+				return true;
+			}
+
+			//开始判断文本框中的数值
+			var aBtn = document.getElementsByTagName('input');
+			
+			aBtn[1].onclick = function () {
+				var content = aBtn[0].value;
+				if( detectNum(content) ){
+					alert('恭喜'+ content +'全为数字');
+				
+				}
+				else{
+					alert('输入有误');
+				
+				}
+			}
+
+		}
+				
+				
+		
+	</script>
+</head>
+<body>
+	<input type="text">
+	<input type="button" value="检测是否全为数字">
+
+</body>
+</html>

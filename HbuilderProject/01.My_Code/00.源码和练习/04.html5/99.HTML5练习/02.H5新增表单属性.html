@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			form{
+				margin:0 auto;
+			}
+			input{
+				margin-top:20px;
+			}
+		</style>
+	</head>
+	<body>
+		<form oninput="x.value=parseInt(ranged.value)">
+			<span>color:</span><input type="color" title="颜色值" /><br />
+			<span>search:</span><input type="search" placeholder="我是search类型" /><br />
+			<span>week:</span><input type="week" title="我是week类型" /><br />
+			<span>month:</span><input type="month" title="我是month类型" /><br />
+			<span>date:</span><input type="date" title="我是date类型" /><br />
+			<span>datetime:</span><input type="datetime" title="我是datetime类型" /><br />
+			<span>datetime-local:</span><input type="datetime-local" title="我是datetime-local类型" /><br />
+			
+			<span>tel:</span><input type="tel" title="我是tel类型" /><br />
+			<span>url:</span><input type="url" title="我是url网址类型" /><br />
+			<span>range:</span><input  id="ranged" type="range" title="我是range类型"  step="1" min="0" max="100" /> = <output name="x" for="a "></output><br />
+			
+			<input type="submit" value = "提交" />
+		</form>
+	</body>
+	
+</html>

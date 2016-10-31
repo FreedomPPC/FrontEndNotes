@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<!--<script src="jquery.js"></script>-->
+<script>
+//$(function(){})	//阻塞 -> 同步
+
+//非阻塞 - 异步
+/*setTimeout(function() {
+	alert(1);
+}, 2000);
+
+alert(2);*/
+
+window.onload = function() {
+	
+	var oBtn = document.getElementById('btn');
+	
+	
+	oBtn.onclick = function() {
+		
+		var xhr = null;
+		try {
+			xhr = new XMLHttpRequest();
+		} catch (e) {
+			xhr = new ActiveXObject('Microsoft.XMLHTTP');
+		}
+		
+		xhr.open('post','2.post.php',true);
+		//post方式，数据放在send()里面作为参数传递
+		xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');//申明发送的数据类型
+		//post没有缓存问题
+		//无需编码
+		xhr.send('username=刘伟&age=30');
+		
+		xhr.onreadystatechange = function() {
+			
+			if ( xhr.readyState == 4 ) {
+				if ( xhr.status == 200 ) {
+					alert( xhr.responseText );
+				} else {
+					alert('出错了,Err：' + xhr.status);
+				}
+			}
+			
+		}
+		
+	}
+}
+</script>
+</head>
+
+<body>
+	<input type="button" value="按钮" id="btn" />
+</body>
+</html>

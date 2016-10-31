@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title>向左滚动</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			ul {
+				position: relative;
+			}
+			li {
+				width: 500px;
+				height: 200px;
+				left: 0;
+				top: 0;
+				position: absolute;
+				opacity: 1;
+			}
+			img {
+				width: 500px;
+				height: 200px;
+			}
+			#btn {
+				width: 500px;
+				height: 100px;
+				position: absolute;
+				top: 200px;
+				font-size: 0;
+			}
+			#btn img {
+				width: 100px;
+				height: 100px;
+				opacity: 0.3;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<ul id="img-list">
+				<li><img src="imgs/1.jpg" /></li>
+				<li><img src="imgs/2.jpg" /></li>
+				<li><img src="imgs/3.jpg" /></li>
+			</ul>
+			<div id="btn">
+				<img src="imgs/1.jpg" />
+				<img src="imgs/2.jpg" />
+				<img src="imgs/3.jpg" />
+			</div>
+		</div>
+
+		<a href="javascript:;" id="pre">上一页</a>
+		<a href="javascript:;" id="next">下一页</a>
+		
+		<script type="text/javascript" src="../../utility.js"></script>
+		<script type="text/javascript">
+			window.onload = function () {
+				var imgList = document.getElementById('img-list');
+				var lis = imgList.getElementsByTagName('li');
+
+				var btnContainer = document.getElementById('btn');
+				var imgBtns = btnContainer.getElementsByTagName('img');
+
+				var imgIndex = 0;
+				var imgZIndex = 0;
+				var timer = -1;
+
+				for (var i=0; i<imgBtns.length; i++) {
+					imgBtns[i].index = i;
+					imgBtns[i].onclick = function () {
+						imgIndex = this.index - 1;
+						clearTimeout(timer);
+						show();
+					}
+				}
+
+				for (var i=0; i<lis.length; i++) {
+					if (i === imgIndex) {
+						continue;
+					}
+
+					lis[i].style.opacity = 0;
+				}
+
+				imgBtns[imgIndex].style.opacity = 1;
+
+				function show () {
+					imgIndex++;
+					imgZIndex++;
+
+					if (imgIndex >= lis.length) {
+						imgIndex = 0;
+					}
+
+					utility.movement.move(imgBtns[imgIndex], 'opacity', 100);
+					for (var i=0; i<imgBtns.length; i++) {
+						if (i === imgIndex) {
+							continue;
+						}
+
+						imgBtns[i].style.opacity = 0.3;
+					}
+					
+					lis[imgIndex].style.zIndex = imgZIndex;
+					utility.movement.move(lis[imgIndex], 'opacity', 100, hide);
+					
+				}
+
+				function hide () {
+
+					for (var i=0; i<lis.length; i++) {
+						if (i === imgIndex) {
+							continue;
+						}
+
+						utility.movement.move(lis[i], 'opacity', 0);
+					}
+
+					timer = setTimeout(show, 3000);
+				}
+
+				timer = setTimeout(show, 3000);
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>ajax zepto</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+		<style>
+			*{padding: 0;margin: 0;}
+			.cxt{
+				width:100%;
+				height: 400px;
+				background-color: #acacac;
+			}
+			input{
+				width:80%;
+				display: block;
+				height: 32px;
+				border-radius: 4px;
+			}
+		</style>
+		<script type="text/javascript" src="lib/zepto.min.js" ></script>
+		<script>
+			$(function(){
+				//ajax &jquery ajax写法几乎一致
+//				$.ajax({
+//					type:"get",
+//					url:"http://datainfo.duapp.com/shopdata/getBanner.php",
+//					async:true,
+//					dataType:"jsonp",
+//					success:function(data){
+//						console.log(data);
+//					}
+//				});
+				//get,post,getJSON,load
+				//get主要是讲$.ajax里面的type写死了
+				//getJSON将$.ajax里面dataType写死了
+				//$.ajax是所有ajax方法的底层
+				
+				
+//				getJSONP('http://datainfo.duapp.com/shopdata/getBanner.php',function(data){
+//					 var img=JSON.parse(data[0].goodsBenUrl)[0];
+//					 var $img=$('<img src="'+img+'"/>');
+//					 $(".cxt").append($img);
+//				});
+				
+				$(".cxt").swipeUp(function(){//滑动的总函数
+					console.log("finger is UP");
+					
+				});
+				$(".cxt").swipeLeft(function(){//滑动的总函数
+					console.log("finger is Left");
+					
+				});
+				$("input").tap(function(){
+					$(this).val("please enter your info");//比pc事件快
+				});
+				
+			});
+			function get(url,callback){
+				$.ajax({
+					type:"get",
+					url:url,
+					async:true,
+					success:function(data){
+						//alert("my define ajax");
+						callback(data);
+					}
+				});
+			}
+			function getJSONP(url,callback){
+				$.ajax({
+					type:"get",
+					url:url,
+					async:true,
+					dataType:"jsonp",
+					success:function(data){
+						//alert("my define ajax");
+						callback(data);
+					}
+				});
+			}
+			
+		</script>
+	</head>
+	<body>
+	  <div class="cxt">
+	     <input type="text" />
+	  </div>
+	</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form action="localstorage2.html">
+		
+		注册：<input type="text" name=""><br>
+		密码：<input type="password" name="">
+		<input type="submit" name="" value="提交">
+	</form>
+	<script type="text/javascript" src="jquery-1.12.3.js"></script>
+	<script type="text/javascript">
+
+		$('input').eq(2).click(function(){
+			localStorage.name=$('input').eq(0).val();
+			localStorage.pass=$('input').eq(1).val();
+			alert('注册成功')
+		})
+	</script>
+</body>
+</html>

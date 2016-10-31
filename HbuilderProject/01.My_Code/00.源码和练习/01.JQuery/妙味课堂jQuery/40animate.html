@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+#div1{ width:100px; height:100px; background:red;}
+#div2{ width:100px; height:100px; background:red; margin-top:10px;}
+</style>
+<script src="jquery-1.10.1.min.js"></script>
+<script>
+
+//animate() : 
+//第一个参数 : {} 运动的值和属性
+
+//第二个参数 : 时间(运动快慢的)  默认 : 400
+
+//第三个参数 : 运动形式 只有两种运动形式 ( 默认 : swing(慢快慢) linear(匀速) )
+
+//第四个参数 :  回调函数
+
+$(function(){
+
+	$('#div1').click(function(){
+		
+		/*$(this).animate({width : 300} , 2000 , 'linear',function(){
+			$(this).animate({height : 300});
+		});*/
+		
+		$(this).animate({width : 300} , 2000).delay(1000).animate({height : 300} , 2000);
+		
+	});
+	
+	
+	$('#div2').click(function(){
+		
+		//$('#div1').stop();   //默认 : 只会阻止当前运动
+		
+		//$('#div1').stop(true); //阻止后续的运动
+		
+		//$('#div1').stop(true,true); //可以立即停止到指定的目标点
+		
+		$('#div1').finish();  //立即停止到所有指定的目标点
+		
+	});
+	
+	
+});
+
+</script>
+</head>
+
+<body>
+<div id="div1"></div>
+<div id="div2"></div>
+
+</body>
+</html>

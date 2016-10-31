@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>正则表达式前向和反前向声明</title>
+</head>
+<body>
+	<script>
+		/*正则表达式中的前向和反前向声明
+			(?=a):前向声明;匹配到后面接a的字符
+			(?!a);反前向声明;//匹配后面不接a的字符;
+		*/
+
+		var str  ='abcacae';//我们只想匹配ab中的a怎么做呢?就用到反前向声明;
+		var re = /a(?=b)/g;
+		var reF = /a(?!b)/g;
+
+		alert('前向声明'+str.replace(re,'*'));
+		alert('反前向声明'+str.replace(reF,'*'));
+
+	</script>
+</body>
+</html>

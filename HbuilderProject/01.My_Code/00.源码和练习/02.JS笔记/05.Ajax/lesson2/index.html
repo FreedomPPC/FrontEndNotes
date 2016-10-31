@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>留言本</title>
+	<link rel="stylesheet" href="css.css" type="text/css" />
+    <script src="ajax.js"></script>
+    <script src="guestbook.js"></script>
+</head>
+
+<body>
+	<div id="header"></div>
+
+	<div id="container">
+
+		<div id="list">
+		<!--<dl>
+				<dt>
+					<strong>zmouse</strong> 说 :
+				</dt>
+				<dd>内容</dd>
+				<dd class="t">
+					<a href="javascript:;" id="support">顶(<span>0</span>)</a>
+					 | 
+					<a href="javascript:;" id="oppose">踩(<span>0</span>)</a>
+				</dd>
+			</dl>-->
+		</div>
+        <div id="showMore">显示更多...</div>
+
+		<div id="sidebar">
+        
+        	<div id="user" style="margin-bottom: 10px;">
+            	<h4><span id="userinfo"></span> <a href="" id="logout">退出</a></h4>
+            </div>
+        
+			<!-- 注册 -->
+			<div id="reg">
+				<h4>注册</h4>
+				<div>
+					<p>用户名：<input type="text" name="username" id="username1"></p>
+                    <p id="verifyUserNameMsg"></p>
+					<p>密码：<input type="password" name="password" id="password1"></p>
+                    <p><input type="button" value="注册" id="btnReg" /></p>
+				</div>
+			</div>
+
+			<!-- 登陆 -->
+			<div id="login">
+				<h4>登陆</h4>
+				<div>
+					<p>用户名：<input type="text" name="username2" id="username2"></p>
+					<p>密码：<input type="password" name="password2" id="password2"></p>
+                    <p><input type="button" value="登陆" id="btnLogin" /></p>
+				</div>
+			</div>
+			
+			<!-- 留言发表 -->
+			<div id="sendBox">
+				<h4>发表留言</h4>
+				<div>
+					<textarea id="content"></textarea>
+					<input type="button" value="提交" class="btn1" id="btnPost" />
+				</div>
+			</div>
+		</div>
+
+	</div>
+	
+</body>
+</html>

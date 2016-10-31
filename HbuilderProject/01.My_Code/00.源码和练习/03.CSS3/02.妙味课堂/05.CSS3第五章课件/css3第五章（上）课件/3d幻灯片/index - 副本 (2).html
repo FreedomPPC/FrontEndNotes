@@ -1,0 +1,158 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+ul{margin:0;padding:0;}
+li{ list-style:none;}
+img{border:none;}
+body{ text-align:center;}
+#box{width:800px;height:360px; margin:100px auto 50px; position:relative;}
+#box ul{ position:absolute;left:0;top:0;width:0;height:0;overflow:hidden;}
+#box li{width:800px;height:360px; position:absolute;left:0;top:0;}
+#show{width:800px;height:360px; position:absolute;left:0;top:0; display:block;-webkit-perspective:1000px;}
+#show .div2{-webkit-transform-style:preserve-3d; position:relative; -webkit-transition:0.5s all ease;width:50px;height:360px;float:left;-webkit-backface-visibility: hidden;}
+#show a{width:50px;height:360px; position:absolute;left:0;top:0;}
+#show .img1{background:url(1.jpg) no-repeat;}
+#show .img2{background:url(2.jpg) no-repeat;-webkit-transform-origin:top;-webkit-transform: translateZ(-360px)  rotateX(90deg); background:url(2.jpg) no-repeat;}
+#show span{background:#333;width:360px;height:360px;left:0;top:0; position:absolute; -webkit-transform-origin:left;-webkit-transform: rotateY(90deg);}
+#show .span2{left:50px;}
+</style>
+<script>
+window.onload=function()
+{
+	var oBox=document.getElementById("box");
+	var aImg=oBox.getElementsByTagName("ul")[0].getElementsByTagName("img");
+	var aLi=oBox.getElementsByTagName("ul")[0].getElementsByTagName("li");
+	var oShow=document.getElementById("show");
+	var oPrev=document.getElementById("prev");
+	var oNext=document.getElementById("next");
+	var iLength=oShow.offsetWidth/50;
+	oShow.iNow=0;
+	oShow.aUrl=[];
+	oShow.off=false;
+	for(var i=0;i<iLength;i++)
+	{
+		var oDiv=document.createElement("div");
+		oDiv.className="div2";
+		oDiv.style.zIndex=i>iLength/2?iLength-i:i;
+		oDiv.innerHTML="<a href='#' class='img1' style='background-position:-"+i*50+"px 0px'></a><a href='#' class='img2' style='background-position:-"+i*50+"px 0px'></a><span class='span1'></span><span class='span2'></span>";
+		oDiv.time=null;
+		oShow.appendChild(oDiv);
+	}
+	for(var i=0;i<aImg.length;i++)
+	{
+		oShow.aUrl.push(aImg[i].getAttribute('src'));
+	}
+	oNext.onmousedown=function()
+	{
+		if(oShow.off)
+		{
+			return false;
+		}
+		oShow.off=true;
+		var iNext=oShow.iNow+1;
+		if(iNext>=oShow.aUrl.length)
+		{
+			iNext=0;
+		}
+		tab(iNext);
+		setTimeout(
+			function()
+			{
+				oShow.off=false;
+			},iLength*100+100+800
+		)
+	};
+	oPrev.onmousedown=function()
+	{
+		if(oShow.off)
+		{
+			return false;
+		}
+		oShow.off=true;
+		var iNext=oShow.iNow-1;
+		if(iNext<0)
+		{
+			iNext=oShow.aUrl.length-1;
+		}
+		tab(iNext);
+		setTimeout(
+			function()
+			{
+				oShow.off=false;
+			},iLength*100+100+800
+		)
+	};
+};
+function tab(iNext)
+{
+	var oShow=document.getElementById("show");
+	var aImg2=oShow.getElementsByClassName("img2");
+	var aDiv=oShow.getElementsByTagName("div");
+	for(var i=0;i<aImg2.length;i++)
+	{
+		aImg2[i].style.backgroundImage="url("+oShow.aUrl[iNext]+")";
+	}
+	for(var i=0;i<aDiv.length;i++)
+	{
+		var iTime=i*100;
+		starmove(aDiv[i],iTime);
+	}
+	oShow.iNow=iNext;
+}
+function starmove(obj,iTime)
+{
+	var aImg1=obj.getElementsByClassName("img1")[0];
+	var aImg2=obj.getElementsByClassName("img2")[0];
+	var aSpan1=obj.getElementsByClassName("span1")[0];
+	var aSpan2=obj.getElementsByClassName("span2")[0];
+	obj.style.WebkitTransition="1s -webkit-transform ease";
+	aSpan1.style.WebkitTransition=aSpan2.style.WebkitTransition=aImg1.style.WebkitTransition=aImg2.style.WebkitTransition="50ms -webkit-transform ease";
+	setTimeout(
+		function()
+		{
+			aImg1.style.WebkitTransform="translateZ(180px)";
+			aImg2.style.WebkitTransform="translateZ(-180px) rotateX(90deg)";
+			aSpan2.style.WebkitTransform=aSpan1.style.WebkitTransform="translateZ(180px) rotateY(90deg)";
+			setTimeout(
+				function()
+				{
+					obj.style.WebkitTransform="translateZ(-180px) rotateX(-90deg)";
+					setTimeout(
+						function()
+						{
+							
+							aSpan1.style.WebkitTransition=aSpan2.style.WebkitTransition=obj.style.WebkitTransition=aImg1.style.WebkitTransition=aImg2.style.WebkitTransition="none";
+							aImg1.style.backgroundImage=aImg2.style.backgroundImage;
+							obj.style.WebkitTransform="rotateX(0deg)";									
+							aSpan1.style.WebkitTransform="rotateY(90deg)";
+							aSpan2.style.WebkitTransform="rotateY(90deg)";
+							aImg1.style.WebkitTransform="translateZ(0px)";
+							aImg2.style.WebkitTransform="translateZ(0px) rotateX(-90deg)";
+						},1000
+					);
+				},40);
+		},iTime
+	);
+	
+}
+</script>
+</head>
+<body>
+<div id="box">
+    <ul>
+        <li><a href="#"><img src="1.jpg" alt=""/></a></li>
+        <li><a href="#"><img src="2.jpg" alt=""/></a></li>
+        <li><a href="#"><img src="3.jpg" alt=""/></a></li>
+        <li><a href="#"><img src="4.jpg" alt=""/></a></li>
+        <li><a href="#"><img src="5.jpg" alt=""/></a></li>
+    </ul>
+    <div id="show">
+    </div>
+</div>
+<input type="button" id="prev" value="上一张" />
+<input type="button" id="next" value="下一张" />
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var str ='sdjksfssscfssdd';
+
+		function test(){
+			var num =0;
+			var value = null;
+			var arr = str.split('');//字符串分割成数组
+			arr.sort();//数组排序
+			str = arr.join('');//数组转变成字符串;
+			
+			var re = /(\w)\1+/g;//括号代表re整体的子集,\1代表后面跟着的都是想同的字符;
+
+			str.replace(re,function(a,b){//前面的参数代表整体;后面的代表子集;
+				// alert(a);//弹出的是整个字符串;
+				// alert(b);//弹出的是单个字符;
+				if(num<a.length){
+					num = a.length;
+					value = b;
+				}
+
+			});
+
+			return '最长的字符为:'+value+',长度为:'+num;
+		}
+		alert(test())
+	</script>
+</body>
+</html>

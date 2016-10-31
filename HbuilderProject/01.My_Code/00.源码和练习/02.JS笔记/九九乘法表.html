@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>九九乘法表</title>
+</head>
+<body>
+	<script>
+		
+		for(var i=1;i<=9;i++){
+			for(var j=1;j<=i;j++){
+				document.write(j+'*'+i+"="+i*j+' ')
+			}
+			document.write('<br/>');
+			
+
+		}
+		document.write('<br/>')
+
+		//函数封装法
+		function productTable(a,b){
+			for(var i=a;i<=b;i++){
+			for(var j=1;j<=i;j++){
+				document.write(j+'*'+i+"="+i*j+' ')
+			}
+			document.write('<br/>');
+			
+
+		}
+		}
+		productTable(11,20);
+
+	</script>
+</body>
+</html>

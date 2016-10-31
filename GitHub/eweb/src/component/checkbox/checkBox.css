@@ -1,0 +1,17 @@
+@charset "UTF-8";
+.checkBox {
+
+}
+
+.checkBox .checkone{
+  cursor: pointer;margin-right: 15px;
+
+}
+
+.checkBox .checked span {
+  color: #ea5404;
+}
+
+.checkBox .unchecked span {
+  color: #c8c8c8;
+}

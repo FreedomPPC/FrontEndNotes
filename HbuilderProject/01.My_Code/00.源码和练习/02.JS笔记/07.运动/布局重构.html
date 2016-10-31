@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>好多好多div一起下落,哈哈</title>
+	<style type="text/css">
+		#ul1{
+			width: 1000px;
+			position: releative;
+		}
+		#ul1 li{
+			width: 40px;
+			height: 40px;
+			background:yellow;
+			list-style: none;
+			float:left;
+			margin-left:20px;
+		}
+
+	</style>
+	
+	<script>
+		window.onload = function (){
+			var oUl = document.getElementById('ul1');
+			var oLi = oUl.getElementsByTagName('li');
+			var oBtn = document.getElementById('btn1');
+			
+			for(var i=0;i<oLi.length;i++){
+				oLi[i].timer = null;
+				oLi[i].style.left = oLi[i].offsetLeft+'px';
+				oLi[i].style.top = oLi[i].offsetTop + 'px';
+				
+			}
+			for(var i=0;i<oLi.length;i++){
+				oLi[i].style.position = 'absolute';
+				oLi[i].style.margin = 0;
+			}
+			
+			
+		}
+	</script>
+</head>
+<body>
+<input type="button" name="btn1" id="btn1" value="走你" />
+<ul id="ul1">
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	
+</ul>
+
+
+
+</body>
+</html>

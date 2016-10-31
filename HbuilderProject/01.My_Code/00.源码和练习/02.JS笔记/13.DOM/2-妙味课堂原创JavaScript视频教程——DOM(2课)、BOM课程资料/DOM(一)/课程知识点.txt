@@ -1,0 +1,14 @@
+﻿
+DOM基础	43:56
+1. DOM简介、DOM标准、DOM节点
+2. 获取元素的子节点：childNodes、兼容性问题
+3. 节点类型：nodeType、文本节点、元素节点
+4. children的使用
+5. 获取元素父节点parentNode
+6. 获取定位元素的父节点offsetParent
+7. 获取首尾子元素：firstChild、firstElementChild、lastChild、lastElementChild
+8. 获取兄弟节点：nextSibling、nextElemnetSibling、previousSibling、previousElementSibling
+9. 元素属性操作：“.”与“[]”回顾、setAttribute、getAttribute、removeAttribute
+10. 通过className获取元素、封装getByClass函数
+
+

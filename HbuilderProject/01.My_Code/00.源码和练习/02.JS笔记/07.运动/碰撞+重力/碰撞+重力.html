@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+		
+			#div1{
+				width:100px;
+				height: 100px;
+				position: absolute;
+				background:yellow;
+				border-radius: 100%;
+				top:40px;	
+			}
+		</style>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../startMove.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+		window.onload = function () {
+			var oDiv = document.getElementById('div1');
+			var oBtn = document.getElementById('btn1');
+			oBtn.onclick = function () {
+				startMove(oDiv,12,8);
+			}
+			
+		}
+
+			
+//			function startMove(obj,iSpeedX,iSpeedY){
+//				
+//				clearInterval(obj.timer);
+//				obj.timer = setInterval(function( ){ 
+//					
+//					
+//					iSpeedY += 3;
+//					
+//					var l = obj.offsetLeft + iSpeedX;
+//					var t = obj.offsetTop + iSpeedY;
+//					
+//					if(t >= document.documentElement.clientHeight-obj.offsetHeight)
+//					{
+//						iSpeedY *= -0.8;
+//						iSpeedX *= 0.8;
+//						t = document.documentElement.clientHeight-obj.offsetHeight;
+//					}
+//					else if(t <= 0)
+//					{
+//						iSpeedY *= -1;
+//						iSpeedX *= 0.8;
+//						t = 0;
+//					};
+//					
+//					if(l >= document.documentElement.clientWidth - obj.offsetWidth)
+//					{
+//						iSpeedX *= -0.8;
+//						l = document.documentElement.clientWidth - obj.offsetWidth
+//					}
+//					else if(l <= 0)
+//					{
+//						iSpeedX *= -0.8;
+//						l = 0;
+//					};
+//					
+//					//解决一个小bug;
+//					if(Math.abs(iSpeedY)<1){
+//						iSpeedY = 0;
+//					};
+//					
+//					if(Math.abs(iSpeedX)<1){
+//						iSpeedX = 0;
+//					};
+//					
+//					obj.style.left = l + 'px';
+//					obj.style.top = t+'px';
+//					document.title = 'ispeedx:'+iSpeedX;
+//					
+//				},30);
+//			}
+		</script>
+	</head>
+	<body>
+		<input type="button" id="btn1" value="小弹球"/>
+		<div id="div1">
+			
+		</div>
+	</body>
+</html>

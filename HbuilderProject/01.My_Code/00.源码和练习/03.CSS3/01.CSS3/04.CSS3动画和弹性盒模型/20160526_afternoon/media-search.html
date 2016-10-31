@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width,initial-scale:1.0">
+	<style>
+       .navigator-bar{
+      	display: flex;
+      	background: #000
+      }
+      .navigator-bar label{
+      	color:#000;
+      	line-height: 50px;
+      	text-align: center;
+      	background: #eee;
+      	padding:5px 20px;
+      }
+
+       @media screen and (max-width:500px)  {
+       	   .navigator-bar label{
+		      	 flex-grow : 1;
+		    }
+       }
+
+       @media screen and (min-width:500px) {
+       	   .navigator-bar{
+		      	justify-content:flex-end;
+		    }
+
+
+       }
+
+    
+      
+
+	</style>
+</head>
+<body>
+	<div class="navigator-bar">
+		<label for="" class="link">link1</label>
+		<label for="" class="link">link2</label>
+		<label for="" class="link">link3</label>
+		<label for="" class="link">link4</label>
+	</div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+	表单：数据的提交
+    	action : 数据提交的地址，默认是当前页面
+        method : 数据提交的方式，默认是get方式
+        	1.get
+            	把数据名称和数据值用=连接，如果有多个的话，那么他会把多个数据组合用&进行连接，然后把数据放到url?后面传到指定页面
+                url长度限制的原因，我们不要通过get方式传递过多的数据
+            2.post
+            	理论上无限制
+        enctype : 提交的数据格式，默认application/x-www-form-urlencoded
+    <form action="1.post.php" method="post">
+    	<input type="text" name="username" />
+        <input type="text" name="age" />
+        <input type="submit" value="提交" />
+    </form>
+</body>
+</html>

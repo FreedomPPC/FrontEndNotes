@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>第一个ReactJS</title>
+		<!---1.搭建框架环境 引入不同的框架所依赖js lib-->
+		
+		<!--react.minjs reactjs的最核心的js,定义的虚拟dom模型,以及react如何做一些数据更新，支持组件化算法都在这个js里面-->
+		<script type="text/javascript" src="lib/react.min.js" ></script>
+		<!--react-dom定义了react可以操作dom api 结构--->
+		<script type="text/javascript" src="lib/react-dom.min.js" ></script>
+		<!--jsx方式写html结构,browser.min.js就是将我们写的 jsx变成可执行的html代码-->
+		<script type="text/javascript" src="lib/browser.min.js" ></script>
+		
+		<!---2.遵循ReactJS 定制的规范和标准--->
+		  <!--规范1.  在哪个js文件里面写react组件的时候，在引入这个js文件的时候，需要将type指定 text/babel -->
+		  <!--规范2.  声明组件名称要大写-->
+		  <!--规范3.  React.createClass({})创建组件 里面放的是一个对象 ，
+		  	                         实现对象里面render子方法，
+		                                    在render子方法中通过return()
+		                                    返回jsx语法作为你要在页面中显示html内容-->
+		  <!--规范4. jsx JavaScript xml语法  xml数据存储的格式 
+		  	        jsx语法规范, 只有一个开头节点和结尾节点
+		  -->
+		  <!--规范5.声明一个组件之后,通过ReactDOM.render()把组件渲染到页面中
+		  	  ReactDOM.render(param1.param2);
+		  	  param1    <组件名称/>  || <组件名称></组件名称>
+		  	  param2    组件被渲染的位置
+		  -->
+		  <!--react js  jsx中 注释 {/**内容**/} -->
+		  <!--
+		  	1.样式如何控制？
+		  	2.js事件？
+		  	3.工作量如何优化？
+		  	
+		  	优点:乍一看很高端
+		  	
+		  -->
+		  <!--用react写html的时候，需要把class写成className 才能生效-->
+	</head>
+	<body>
+		<div id="s"></div>
+	</body>
+		<script type="text/babel">
+			//声明一个组件 
+			var ReactComponent=React.createClass({
+				render:function(){
+					return(
+						  <section id="sec" title="this is section">
+							  <div className="header">Hello I am React JS first comp</div>
+							  <div >Hello I am React JS secound comp </div>
+							  {/**<span>this is span</span>**/}
+						  </section>
+					);
+				}
+			});
+			//组件渲染到页面上
+			ReactDOM.render(<ReactComponent></ReactComponent>,document.getElementById("s"));
+			
+		</script>  
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script type="text/javascript">
+	/*
+	 * sessionStorage
+		session临时回话，从页面打开到页面关闭的时间段
+		窗口的临时存储，页面关闭，本地存储消失
+		Storage API
+			setItem():
+			设置数据，key\value类型，类型都是字符串
+			可以用获取属性的形式操作
+			getItem():
+			获取数据，通过key来获取到相应的value
+			removeItem():
+			删除数据，通过key来删除相应的value
+			clear():
+			删除全部存储的值
+	 */
+		//当我新开一个窗口或者关闭窗口重新打开时,回话就结束;localStorage就不会;
+		//localStorage不删除就会一直在;如果打开两个窗口;页面间的存储是相互的,如果一个页面删除;
+		//另一个页面也不会存在了;
+		window.onload = function(){
+			var aBtn = document.getElementsByTagName('button');
+			var oInput = document.getElementsByTagName('input')[0];
+			
+			aBtn[0].onclick = function(){
+				window.localStorage.setItem('key',oInput.value);
+			}
+			aBtn[1].onclick = function(){
+				alert(window.localStorage.getItem('key'));
+			}
+			aBtn[2].onclick = function(){
+				window.localStorage.removeItem('key');
+			}
+		}
+	</script>
+	<body>
+		<button>设置</button>
+		<button>获取</button>
+		<button>删除</button>
+		<input type="text"/>
+	</body>
+</html>

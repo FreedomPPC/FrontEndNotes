@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>点击切换div样式</title>
+
+	<style type="text/css">
+		#container{
+			width:900px;
+			height:550px;
+			border: solid 2px black;
+			position:relative;
+		}
+		.text{
+			margin-top:20px;
+		}
+		.text span{
+			font-size:26px;
+			font-weight:bold;
+		}
+		.text input{
+			width:97px;
+			height:36px;
+			background: red;
+			border:0;
+		}
+		#box{
+			width: 100px;
+			height:100px;
+			border:solid 3px black;
+			margin-top:50px;
+			margin-left:50px;
+		}
+		.box-set{
+			width:314px;
+			height:214px;
+			border:solid 14px #999;
+			position: absolute;
+			left:500px;
+			top:280px;
+			display:none;
+
+		}
+
+		
+		.mybox1{
+			width:314px;
+			height:50px;			
+			margin-top:10px;
+			
+		}
+		
+		.mybox2{
+			width:314px;
+			height:50px;			
+			
+		}
+		.mybox3{
+			width:314px;
+			height:50px;			
+			
+			
+		}
+		.mybox1 p,.mybox2 p,.mybox3 p{
+			font-size:16px;
+			float:left;
+			margin-left:5px;
+		}
+		.mybox1 div,.mybox2 div,.mybox3 div{
+			width:40px;
+			height:30px;
+			float:left;
+			background:rgb(239,239,239);
+			border:solid 1px #999;
+			margin-left:15px;
+			margin-top:10px;
+			line-height: 30px;
+			text-align: center;
+			cursor: pointer;
+			
+		}
+		#recover,#sure{
+			width:50px;
+			height:30px;
+			background: rgb(0,41,82);
+			color: white;
+			font-weight: bold;
+			float:left;
+			font-size: 16px;
+			text-align: center;
+			line-height: 30px;
+			margin-top:10px;
+			margin-left:50px;
+			cursor: pointer;
+		}
+
+		#redme:hover{background: red;}
+		#yellowme:hover{background: yellow;}
+		#blueme:hover{background: blue;}
+		
+	</style>
+	<script>
+		window.onload = function () {
+			//设置button属性
+			var btn = document.getElementById('btn');
+			var boxSet = document.getElementsByClassName('box-set')[0];
+			var container =document.getElementById('container');
+			btn.onclick = function (){
+				boxSet.style.display='block';
+				container.style.background = 'rgb(128,128,128)';
+				boxSet.style.background="white";
+				boxSet.style.border='solid 3px black';
+
+			}
+
+			//设置背景属性
+			var changeBox = document.getElementById('box');
+			var becomeRed = document.getElementById('redme');
+			var becomeYellow = document.getElementById('yellowme');
+			var becomeBlue = document.getElementById('blueme');
+
+			becomeRed.onclick =function(){
+				changeBox.style.background="red";
+			}
+
+			becomeYellow.onclick =function(){
+				changeBox.style.background="yellow";
+			}
+
+			becomeBlue.onclick =function(){
+				changeBox.style.background="blue";
+			}
+
+			//设置宽度属性
+			var width2 = document.getElementById('width2');
+			var width3 = document.getElementById('width3');
+			var width4 = document.getElementById('width4');
+
+			width2.onclick = function (){
+				changeBox.style.width = 200 + 'px';
+			}
+			width3.onclick = function (){
+				changeBox.style.width = 300 + 'px';
+			}
+			width4.onclick = function (){
+				changeBox.style.width = 400 + 'px';
+			}
+
+			//设置高度属性
+
+			var height2 = document.getElementById('height2');
+			var height3 = document.getElementById('height3');
+			var height4 = document.getElementById('height4');
+
+			height2.onclick = function (){
+				changeBox.style.height = 200 + 'px';
+			}
+			height3.onclick = function (){
+				changeBox.style.height = 300 + 'px';
+			}
+			height4.onclick = function (){
+				changeBox.style.height = 400 + 'px';
+			}
+
+
+			//设置恢复和确认属性
+			var recover = document.getElementById('recover');
+			var sure = document.getElementById('sure');			
+			recover.onclick = function () {
+				changeBox.style = '';
+				boxSet.style.display='none';
+				container.style.background = '';
+
+			}
+
+			sure.onclick = function () {
+				boxSet.style.display='none';
+				container.style.background = '';
+			}
+
+		}
+
+	</script>
+</head>
+<body>
+	<div id="container">
+		<div class="text">
+			<span>请为下面的DIV设置样式:</span>
+			<input type="button" value="点击设置" id="btn">
+		</div>
+
+		<div id="box">
+			
+		</div>
+
+		<div class="box-set">
+
+			<div class="mybox1" >
+            	<p>请选择背景颜色:</p>
+                <div  id="redme">红</div>
+                <div  id="yellowme">黄</div>
+                <div  id="blueme">蓝</div>
+				
+			</div>
+
+			<div class="mybox2">
+				<p>请选择宽(px):</p>
+                <div id="width2">200</div>
+                <div id="width3">300</div>
+                <div id="width4">400</div>
+			</div>
+
+			<div class="mybox3">
+				<p>请选择高(px):</p>
+                <div id="height2">200</div>
+                <div id="height3">300</div>
+                <div id="height4">400</div>
+			</div>
+			<div id="recover">恢复</div>
+			<div id="sure">确认</div>
+		</div>
+	</div>
+</body>
+</html>

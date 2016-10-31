@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<style type="text/css">
+			
+		</style>
+		<script src="js/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('#search').tap(function(){
+					
+					var _text = $("input[name='username']").val();
+					var _httpurl = "http://127.0.0.1:8020/My_Code/98.rest-api/service/data.json";
+					$.get(_httpurl,function(data){
+						for(var i=0;i<data.length;i++){
+							if(data[i].username==_text){
+								var _address = data[i].address;
+								var _option = '<option>请选择</option><option>'+_address+'</option>'
+								$('.form>div').eq(0).find('span').html(data[i].username);
+								$('.form>div').eq(1).find('span').html(data[i].email);
+								$('.form>div').eq(2).find('span').html(data[i].phone);
+								$('.form>div').eq(3).find('select').html();
+								$('.form>div').eq(3).find('select').append(_option);
+								
+							}
+						}
+					})
+				})
+			})
+
+
+		</script>
+	</head>
+	<body>
+		<div class="ctx">
+			<input type="text" name="username" /><button id="search" type="button">搜索</button>
+			<div class="form">
+				<div>用户名: <span></span></div>
+				<div>Email: <span></span></div>
+				<div>Phone: <span></span></div>
+				<div>所在地区: <select name=""><option>请选择:</option></select></div>
+			</div>
+		</div>
+	</body>
+</html>

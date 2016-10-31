@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<style>
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript">
+window.onload=function ()
+{
+	var oBtn=document.getElementById('btn1');
+	var oUl=document.getElementById('ul1');
+	
+	oBtn.onclick=function ()
+	{
+		var iStart=new Date().getTime();
+		var oFrag=document.createDocumentFragment();
+		var i=0;
+		
+		for(i=0;i<100000;i++)
+		{
+			var oLi=document.createElement('li');
+			
+			oFrag.appendChild(oLi);
+		}
+		
+		oUl.appendChild(oFrag);
+		
+		alert(new Date().getTime()-iStart);
+	}
+}
+</script>
+</head>
+
+<body>
+<input id="btn1" type="button" value="碎片"/>
+<ul id="ul1">
+</ul>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			background:#000;
+		}
+		#c{
+			background: #fff;
+		}
+		span{
+			color:#000;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function () {
+			var c = document.getElementById("c");
+			var ctx = c.getContext("2d");
+
+			ctx.moveTo(200,200)//圆心.
+			ctx.arc(200,200,100,0,90*Math.PI/180,true);
+			ctx.closePath();
+			ctx.strokeStyle ="yellow";
+			
+			ctx.stroke();
+
+		}
+	</script>
+</head>
+<body>
+	<canvas id="c" width="400" height="400">
+		<span>您的浏览器不支持Canvas</span>		
+	</canvas>
+</body>
+</html>

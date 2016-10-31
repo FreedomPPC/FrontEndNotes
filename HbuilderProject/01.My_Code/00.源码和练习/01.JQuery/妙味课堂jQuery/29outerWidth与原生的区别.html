@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+#div1{ width:100px; height:100px; background:red; display:none;}
+</style>
+<script type="text/javascript" src="jquery-1.10.1.min.js"></script>
+<script>
+
+//outerWidth()
+
+//offsetWidth : 是获取不到隐藏元素的值
+
+$(function(){
+
+	//alert( $('#div1').get(0).offsetWidth );
+	
+	alert( $('#div1').outerWidth() );
+
+});
+
+
+
+</script>
+</head>
+
+<body>
+<div id="div1">div</div>
+
+</body>
+</html>

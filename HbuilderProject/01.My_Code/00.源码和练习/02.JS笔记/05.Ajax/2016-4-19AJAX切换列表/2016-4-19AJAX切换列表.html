@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title>分页</title>
+		<style type="text/css"></style>
+	</head>
+	<body>
+		<!-- // <script type="text/javascript" src="../utility.js"></script> -->
+		<h3>当前位置：首页>人事大厅>办事指南</h3>
+
+		<ul id="list"></ul>
+
+		<div class="page" id="page">
+			<a href="javascript:;" id="first">首页</a>
+			<a href="javascript:;" id="previous">上一页</a>
+			<a href="javascript:;" id="1">1</a>
+			<a href="javascript:;" id="2">2</a>
+			<a href="javascript:;" id="3">3</a>
+			<a href="javascript:;" id="next">下一页</a>
+			<a href="javascript:;" id="last">末页</a>
+		</div>
+		<!-- // <script type="text/javascript" src="../../utility.js"></script> -->
+		<script type="text/javascript">
+			window.onload = function () {
+				var links = document.getElementsByTagName('a');
+				var len = links.length;
+				var filename = 'page1.json';
+				var curPageNum;
+
+				loadData(filename);
+
+				for (var i=0; i<len; i++) {
+					links[i].onclick = function () {
+						if (this.id === 'first') {
+							filename = 'page1.json';
+						}
+
+						if (this.id === 'last') {
+							filename = 'page3.json';
+						}
+
+						if (/\d+/.test(this.id)) {
+							filename = 'page' + this.id + '.json';
+						}
+
+						if (this.id === 'previous' || this.id === 'next') {
+							var curPageNum = filename.match(/\d+/)[0];
+							if (this.id === 'previous') {
+								
+								--curPageNum;
+								if (curPageNum === 0) {
+									curPageNum = 3;
+								}
+
+								filename = 'page' + curPageNum + '.json';
+							}
+
+							if (this.id === 'next') {
+								++curPageNum;
+								if (curPageNum === 4) {
+									curPageNum = 1;
+								}
+
+								filename = 'page' + curPageNum + '.json';
+							}
+						}
+
+						loadData(filename);
+					}
+				}
+
+				function loadData(filename) {
+					var xhr = new XMLHttpRequest();
+					xhr.onreadystatechange = function () {
+						if (xhr.readyState === 4) {
+							if (xhr.status === 200 || xhr.status === 0) {
+								console.log(xhr.responseText);
+								var data = JSON.parse(xhr.responseText);
+
+								createList(data);
+							} else {
+
+							}
+						}
+					}
+
+					xhr.open('get', filename, true);
+					xhr.send();
+				}
+			}
+
+			function createList(data) {
+				var len = data.length;
+				var listUl = document.getElementById('list');
+
+				listUl.innerHTML = '';
+				
+				for (var i=0; i<len; i++) {
+					var li = document.createElement('li');
+
+					var titleSpan = document.createElement('span');
+					titleSpan.innerHTML = data[i].title;
+					var timeSpan = document.createElement('span');
+					timeSpan.innerHTML = data[i].time;
+
+					li.appendChild(titleSpan);
+					li.appendChild(timeSpan);
+
+					listUl.appendChild(li);
+
+				}
+			}
+		</script>
+	</body>
+</

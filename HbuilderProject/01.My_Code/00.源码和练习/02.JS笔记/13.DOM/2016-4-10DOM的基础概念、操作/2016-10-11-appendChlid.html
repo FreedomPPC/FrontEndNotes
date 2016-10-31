@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+	<ul id="myList1">
+		<li>Coffee</li>
+		<li>Tea</li>
+	</ul>
+	
+	<ul id="myList2">
+		<li>Water</li>
+		<li>Milk</li>
+	</ul>
+
+	<p id="demo">请点击按钮把项目从一个列表移动到另一个列表中。</p>
+
+	<button onclick="myFunction()">亲自试一试</button>
+
+	<script>
+	//appendChild() 方法向节点添加最后一个子节点;
+		myFunction();
+		function myFunction()
+		{
+		var node=document.getElementById("myList2").lastChild;
+		document.getElementById("myList1").appendChild(node);
+		}
+	</script>
+
+</body>
+</html>

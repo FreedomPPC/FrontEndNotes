@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+    	#box{
+    		width:200px;
+    		height:200px;
+    		background: white;
+    		border-bottom: 1px solid black;
+    	}
+    	span{
+    		font-size: 20px;
+    		color:black;
+    		font-family: "微软雅黑";
+    		
+    	}
+    	#box1{
+    		width:200px;
+    	}
+    </style>
+    <title></title>
+    <script type="text/javascript">
+    	
+   		document.addEventListener('plusready', function(){
+   			//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
+   			//1.非实时监控;
+// 			var _accelerometer = plus.accelerometer;
+// 			_accelerometer.getCurrentAcceleration()Acceleration(function(acce){
+// 				var _x = acce.xAxis;
+// 				var _y = acce.yAxis;
+// 				var _z = acce.zAxis;
+// 				
+// 				document.getElementById("x").innerHTML = _x;
+// 				document.getElementById("y").innerHTML = _y;
+// 				document.getElementById("z").innerHTML = _z;
+// 				
+// 			},function(){})
+
+			//2.实时监控数据
+			var _accelerometer = plus.accelerometer;
+   			
+   			_accelerometer.watchAcceleration(function(acce){
+   				var _x = acce.xAxis;
+   				var _y = acce.yAxis;
+   				var _z = acce.zAxis;
+   				
+   				document.getElementById("x").innerHTML = _x;
+   				document.getElementById("y").innerHTML = _y;
+   				document.getElementById("z").innerHTML = _z;
+   				
+   			},function(){},{frequency:1000});
+   			
+	   		//获取位置信息,
+	   		var _location = plus.geolocation;
+	   		_location.getCurrentPosition(function(loc){
+	   			//在loc里面得到当前的位置信息;
+	   			//var xx = loc;
+	   			var xx = loc.coords.altitude;
+	   			var yy = loc.coords.longitude;
+	   			var zz = loc.coords.accuracy;
+	   			
+	   			//数据绑定;
+	   			document.getElementById("xx").innerHTML = xx;
+	   			document.getElementById("yy").innerHTML = yy;
+	   			document.getElementById("zz").innerHTML = zz;
+	   			
+	   			
+//	   			alert(JSON.stringify(loc));//将object变成字符串显示(JSON.stringify(loc))loc对象;
+	   		});
+   		});
+   		
+    </script>
+</head>
+<body>
+	<div id="box">
+		<span>重力加速度X:</span><span id="x"></span><br />
+		<span>重力加速度Y:</span><span id="y"></span><br />
+		<span>重力加速度Z:</span><span id="z"></span><br />
+	</div>
+	
+	<div id="box1">
+		<span>经度:</span><span id="xx"></span><br />
+		<span>维度:</span><span id="yy"></span><br />
+		<span>海拔:</span><span id="zz"></span><br />
+	</div>
+</body>
+</html>

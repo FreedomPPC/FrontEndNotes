@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>new FileReader()读取文件信息</title>
+	<style>
+		#div1{
+			width:300px;
+			height: 300px;
+			border:1px solid red;
+			margin:20px auto;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var oDiv = document.querySelector("#div1");
+
+			oDiv.ondragenter = function(){
+				oDiv.innerHTML = '可以释放文件';
+			};
+
+			oDiv.ondragover = function(ev){
+				ev.preventDefault();
+			};
+			oDiv.ondragleave = function(){
+				oDiv.innerHTML = '请将文件拖拽到此区域'
+			};
+			oDiv.ondrop = function(ev){
+				ev.preventDefault();
+				var myFiles = ev.dataTransfer.files;
+				// alert(myFiles[0].type);
+				//创建一个读取文件信息对象;
+				var fR = new FileReader();
+				//将传进来的对象转成文件信息;readAsDataURL方法;
+				fR.readAsDataURL(myFiles[0]);
+				//当读取文件成功完成的时候触发该事件;onload事件;
+				fR.onload = function(){
+					alert(this.result);//this. result , 来获取读取的文件数据，如果是图片，将返回base64格式的图片数据
+
+					//****通过这个可以进行拖拽上传,在ajax2中可以拖拽文档压缩包进行上传,不会像ajax1只可以文本上传;
+				}
+
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<div id="div1">请将文件拖拽到此区域!</div>
+</body>
+</html>

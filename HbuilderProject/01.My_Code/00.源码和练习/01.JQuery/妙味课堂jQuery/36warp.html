@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script src="jquery-1.10.1.min.js"></script>
+<script>
+
+//wrap() : 包装
+
+//wrapAll() : 整体包装
+
+//wrapInner() : 内部包装
+
+//unwrap() : 删除包装 ( 删除父级 : 不包括body )
+
+$(function(){
+	
+	//$('span').wrapInner('<div>');
+	
+	$('span').unwrap();
+	
+});
+
+</script>
+</head>
+
+<body>
+
+<span>span</span>
+<div>
+<span>span</span>
+</div>
+<span>span</span>
+
+</body>
+</html>

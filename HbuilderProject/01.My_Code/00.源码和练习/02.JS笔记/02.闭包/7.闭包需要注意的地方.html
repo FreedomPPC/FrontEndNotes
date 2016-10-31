@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 * IE下会引发内存泄漏;
+			 * 内存泄漏也称作"存储渗漏"，用动态存储分配函数动态开辟的空间，在使用完毕后未释放，
+			 * 结果导致一直占据该内存单元。直到程序结束。(其实说白了就是该内存空间使用完毕之后未回收)
+			 * 即所谓内存泄漏。
+				内存泄漏形象的比喻是"操作系统可提供给所有进程的存储空间正在被某个进程榨干"，
+				最终结果是程序运行时间越长，占用存储空间越来越多，最终用尽全部存储空间，整个系统崩溃。
+				所以"内存泄漏"是从操作系统的角度来看的。这里的存储空间并不是指物理内存，而是指虚拟内存大小，
+				这个虚拟内存大小取决于磁盘交换区设定的大小。由程序申请的一块内存，如果没有任何一个指针指向它，
+				那么这块内存就泄漏了。
+			 * 
+			 */
+			//因为oDiv 在onclick里面也被调用;所以发生内存泄漏之后,内存不会被收回;变量还会累加占用内存;
+			//内存泄漏:当一个变量(这个变量是一个获取dom节点;或者是一个数组对象;)的一个属性,去引用一个内部函数;
+			//而这个内部函数当中的变量,又去引用外部的变量(就像下面的oDiv一样);这样互相引用就会出现内存泄漏的问题;
+			//
+//			window.onload = function(){
+//				var oDiv = document.getElementById("div");
+//				oDiv.onclick = function(){
+//					alert(oDiv.id);
+//				}
+//				
+//				//解决办法;让他从中间截断;
+//				window.onunload = function(){
+//					oDiv.onclick = null;
+//				}
+//			}
+
+
+			//第二种解决办法;
+			window.onload = function(){
+				var oDiv = document.getElementById("div");
+				var _id = oDiv.id;
+				oDiv.onclick = function(){
+					alert(_id);
+				}
+				oDiv = null;
+			}
+		</script>
+		
+		<div id="div">111</div>
+	</body>
+</html>

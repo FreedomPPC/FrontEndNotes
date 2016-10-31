@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Show and hide</title>
+        <style>
+            * {
+                margin: 0;
+            }
+
+            .container {
+                top: 0;
+                position: relative;
+                margin-left: 10px;
+                float: left;
+                /*display: inline-block;*/
+                width: 300px;
+            }
+
+            .container div {
+                height: 100px;
+                background: #66ff66;
+                text-align: center;
+                vertical-align: middle;
+                font-size: 50px;
+                cursor: pointer;
+            }
+
+            .container div span {
+                line-height: 100px;
+            }
+        </style>
+    </head>
+    <body>
+        <div style="vertical-align: top;">
+            <div class="container">
+                <div id="clickme1">
+                    <span>Click here</span>
+                </div>
+                <img id="book1" src="imgs/1.jpg" style="display:none;" width="300">
+            </div>
+
+            <div class="container">
+                <div id="clickme2">
+                    <span>Click here2</span>
+                </div>
+                <img id="book2" src="imgs/1.jpg" style="display:none;" width="300">
+            </div>
+
+            <div class="container">
+                <div id="clickme3">
+                    <span>Click here3</span>
+                </div>
+                <img id="book3" src="imgs/1.jpg" style="display:none;" width="300">
+            </div>
+
+            <div class="container">
+                <div id="clickme4">
+                    <span>Click here3</span>
+                </div>
+                <img id="book4" src="imgs/1.jpg" style="display:none;" width="300">
+                <p id="animation-done"
+                   style="display: none; width: 100%;background: #000;color: #FFFFFF;font-size: large">Animation
+                    Complete</p>
+            </div>
+        </div>
+
+
+        <script src="../vendor/jquery-1.12.1.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#clickme1').click(function () {
+                    if ($('#book1').is(':hidden')) {
+                        $('#book1').slideDown();
+                    } else {
+                        $('#book1').slideUp();
+                    }
+
+                });
+
+                $('#clickme2').click(function () {
+                    if ($('#book2').is(':hidden')) {
+                        $('#book2').slideDown(5000);
+                        $('#book3').slideDown(5000, 'linear');
+                    } else {
+                        $('#book2').slideUp(5000);
+                        $('#book3').slideUp(5000, 'linear');
+                    }
+
+                });
+
+                $('#clickme3').click(function () {
+                    if ($('#book3').is(':hidden')) {
+                        $('#book3').slideDown(5000, 'swing');
+                    } else {
+                        $('#book3').slideUp(5000, 'swing');
+                    }
+                });
+
+                $('#clickme4').click(function () {
+                    if ($('#book4').is(':hidden')) {
+                        $('#book4').slideDown(5000, 'linear', function () {
+                            $('#animation-done').show();
+                        });
+                    } else {
+                        $('#book4').slideUp(5000, 'linear', function () {
+                            $('#animation-done').hide();
+                        });
+                    }
+                });
+            })
+        </script>
+    </body>
+</html>

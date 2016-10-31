@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>getStyle行间样式</title>
+	<style>
+		#div{
+			width:200px;
+			height:200px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<h3>我们都知道,JS中document.body.style中的style是设置的行间样式;</h3>
+	<h3>我们是获取不到style标签里的样式的,除非用到getStyle()</h3>
+	<div id="div">I am A Div</div>
+
+	<script>
+		function getStyle(obj,attr){
+			if(obj.currentStyle){
+				//IE下;
+				return obj.currentStyle[attr];
+			}else{
+				//火狐下;false的参数不加在火狐前面的版本是不兼容的3.6版本;false没有实际意义;
+				return getComputedStyle(obj,false)[attr];
+			}
+		}
+		window.onload = function(){
+			var oDiv = document.getElementById('div');
+			// alert(oDiv.style.width);//这样直接读取是读取不到的;必须通过函数获取;
+			alert(getStyle(oDiv,'background-color'));
+			//复合样式我们不可以直接写;比如background就是复合样式;必须backgroundColor
+		}
+	</script>
+
+</body>
+<script type="text/javascript">
+	function getStyle(obj,attr){
+		if(obj.currentStyle){
+			return obj.currentStyle[attr];
+		}else{
+			return getComputedStyle(obj,flase)[attr];
+		}
+	}
+</script>
+</html>

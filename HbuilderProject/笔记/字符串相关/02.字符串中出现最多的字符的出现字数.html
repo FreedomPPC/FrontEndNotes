@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>查找字符串中出现最多的字符和个数</title>
+</head>
+<body>
+	<script>
+		var str ='sdjksfssscfssdd';
+		var num = 0;
+		var value = null;
+		function test(str){
+			var obj = {};//创建一个对象,把相同的字符都保存在对象下的数组当中;a:[a,a,a,a,a...];
+
+			for(var i=0;i<str.length;i++){
+				if(!obj[str[i]]){//如果obj.s不存在就创建一个obj.s
+					obj[str[i]]=[];
+				};
+
+				obj[str[i]].push(str[i]);
+			}
+
+			for(var attr in obj){
+				if(num<obj[attr].length){//判断,找出最长的数组,然后赋值给num;
+					num = obj[attr].length;
+					value = obj[attr][0];//所有字符都一样所以第零个就行;
+				}
+			}
+
+			return '最长的字符为:'+value+',长度为:'+num;
+
+		}
+
+		alert(test(str));
+	</script>
+</body>
+</html>

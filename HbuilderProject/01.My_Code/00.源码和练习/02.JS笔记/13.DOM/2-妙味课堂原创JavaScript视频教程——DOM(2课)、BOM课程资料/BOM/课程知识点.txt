@@ -1,0 +1,17 @@
+
+BOM.avi	38:55
+
+1. window.open() 方法及相关参数
+2. 运行代码框实例
+3. document.write() 方法
+4. about:blank 打开新窗口及返回值
+5. close()关闭当前窗口及新开窗口特性
+6. window.navigator.userAgent 检测浏览器版本
+7. window.location 读写地址栏
+8. 可社区尺寸、滚动距离
+9. 系统对话框及返回值
+10. 侧边栏广告实例
+11. window.onscroll 事件及处理窗口变化等细节
+12. 解决滚动条闪烁问题：固定定位与滑动效果
+13. 返回顶部效果实例
+14. 解决定时器与事件冲突的问题

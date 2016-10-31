@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title></title>
+		<style type="text/css">
+			body{
+				background-color:rgb(177, 208,224); 
+				font: normal 12px Trebuchet MS; 
+				color:#000;
+			}
+			.roundedCorners{ 
+				width:220px; 
+				padding:10px;
+				background-color:#DDEEF6; 
+				box-shadow: 0px 0px 10px 0px #888888;
+				border:1px solid #DDEEF6;
+				border-radius:6px;
+				margin: auto;
+			}
+			.roundedCorners-textbox{ 
+				border:1px solid #999; 
+				width:160px;
+			}
+			#checkbox {
+				margin-left: 30px;
+				border:1px solid #999; 
+				width:20px;
+			}
+		</style>
+	</head>
+	<body>
+
+		<div class="roundedCorners">
+			<label>账号</label>
+			<input id="username" type="text" class="roundedCorners-textbox" /><br /><br />
+			<label>密码</label>
+			<input id="password" type="text" class="roundedCorners-textbox" /><br /><br />
+			<br/><br/>
+			<input type="button" id="submit" value="确定" />
+			<input type="button" id="reset" value="清空" />
+		</div>
+
+		<script type="text/javascript">
+			function setCookie(name, value, days) {
+				var nameStr = encodeURIComponent(name);
+				var valueStr = encodeURIComponent(value);
+
+				var cookieStr = nameStr + '=' + valueStr;
+
+				if (days) {
+					var msOfDays = 1000 * 60 * 60 * 24;
+					var today = new Date();
+					var after = new Date(today.getTime() + msOfDays*days);
+					cookieStr += ';expires=' + after;
+				}
+
+				document.cookie = cookieStr;
+			}
+
+			function getCooike(name) { 
+				var array = decodeURIComponent(document.cookie).split('; ');
+				var key_value;
+				for (var i=0; i<array.length; i++) {
+					key_value = array[i].split('=');
+					if (key_value[0] === name) {
+						return key_value[1];
+					}
+				}
+
+				return '';
+			}
+
+			function removeCookie(name) {
+				setCookie(name, '', -1);
+			}
+
+			window.onload = function () {
+				var submitBtn = document.getElementById('submit');
+				var resetBtn = document.getElementById('reset');
+
+				var userInput = document.getElementById('username');
+				var pwInput = document.getElementById('password');
+
+				userInput.value = getCooike('username');
+				pwInput.value = getCooike('password');
+				submitBtn.onclick = function () {
+					setCookie('username', userInput.value);
+					setCookie('password', pwInput.value);
+				}
+
+				resetBtn.onclick = function () {
+					removeCookie('username');
+					removeCookie('password');
+					//reload: 重新加載頁面，參數為true，全部從服務中加載資源，
+					//如果為false，則有可能從緩存中加載資源
+					location.reload(true);
+				}
+			}
+		</script>
+	</body>
+</html>

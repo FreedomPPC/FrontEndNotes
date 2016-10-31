@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="lib/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				$("input").eq(1).click(function(){
+					var _text = $("input").eq(0).val();
+					var url = "http://10.2.163.228:6060/rest/WebService/register?phone=";
+					$.get(url+_text,function(data){
+						data = JSON.parse(data);
+						var _status = data.status;
+						var _message = data.message;
+						  if(_status=="1"){
+						  	alert("注册成功");
+						  }else{
+						  	alert("注册失败");
+						  }
+					})
+				})
+			});
+
+		</script>
+	</head>
+	<body>
+		<form action="">
+			<input type="text" placeholder="请输入电话号码" pattern="[0-9]{11}" title="wrong phone number"/>
+			<input type="submit" value="提交"/>
+		</form>
+	</body>
+</html>

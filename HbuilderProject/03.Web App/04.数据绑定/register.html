@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>注册 实现数据从前端提交到后端</title>
+		<style>
+			.cxt{
+				width:100%;
+				height: 12rem;
+				background-color: #ACACAC;
+				overflow: hidden;
+			}
+			.cxt>div{
+				width:100%;
+				height: 2rem;
+				margin-top:0.5rem;
+			}
+		</style>
+	</head>
+	<script type="text/javascript" src="lib/zepto.min.js" ></script>
+	<script>
+		$(function(){
+			//1.get方法一般用于数据的查询
+			
+			//2.post用法上面 将页面数据得到,发送到服务端,解析服务端回传状态值
+			
+			$(".register").click(function(){
+				
+				var http='http://datainfo.duapp.com/shopdata/userinfo.php';//注册地址
+				//获取提交到服务端的值
+				var _username=$("input[name='username']").val();
+				var _password=$("input[name='password']").val();
+				var _status="register";
+				//变成服务端可以识别的json 严格参考接口文档  key 一定和接口文档里面规定的一样
+				var _json={};
+				_json.userID=_username;
+				_json.password=_password;
+				_json.status=_status;
+				console.log(_json);
+				//发起注册请求
+				$.post(http,_json,function(data){
+					    if(data=="0"){
+							   alert("重名");
+						}else if(data=="1"){
+							   alert("注册成功");
+						}else{
+							   alert("注册失败");
+						}
+				});
+			});
+		});
+	</script>
+	<body>
+		<div class="cxt">
+			<div>用户名<input type="text" name="username"/></div>
+			<div>密码<input type="text" name="password"/></div>
+			<div>确认密码<input type="text" name="repassword"/></div>
+			<div><button class="register">注册</button></div>
+		</div>
+	</body>
+</html>

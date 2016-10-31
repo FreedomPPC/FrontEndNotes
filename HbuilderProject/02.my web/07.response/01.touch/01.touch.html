@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+		<style type="text/css">
+			.box{
+				width:100%;
+				height:400px;
+				background-color: #ccc;
+			}
+			
+		</style>
+		<script src="01.touch.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function(){
+				var _box = document.getElementsByClassName('box')[0];
+				//1.当js库中返回的是一个对象时候;相当于调用了一个方法;
+				$._touch(_box,function(s){console.log('s')});
+
+				//2.当js库中返回的是一个函数的时候;$本身就是一个函数,
+				// $(_box,function(s){console.log('s')});
+			}
+		</script>
+	</head>
+	<body>
+		<div class="box"></div>
+	</body>
+</html>

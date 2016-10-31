@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//1.什么是微信开发 基于微信的混合开发
+			  /**微信本身就是一个(原生)混合的app**/
+			  /**将我们自己写的网站嵌入到微信中 并可以打开**/
+			  /**还可以在我们这个网站上面调用微信提供的接口,被调用的微信接口肯定是微信原生的api,但是我们是使用js去调用的
+			   * 相当于dcloud开发中plus.对象方式调用原生api
+			   * **/
+			  //1.首先需要一个公网服务器地址 让我们把写的webapp部署进去
+			  //2.webapp部署到公网以后，可以分享到微信，也可以在微信中打开，能调用微信的一些接口吗?
+			  //3.还需要在公网服务器上面架设一些后端服务     /token程序 主要就是在后端直接和微信里面的验证接口进行打交道
+			  //验证完毕以后,token程序才会向页面里面吐出验证成功的一些信息，这时候我们才可以调用微信的接口
+		</script>
+		/******验证完毕以后 ，前端就可以使用微信里面的api了*****/
+		<!--jssdk ,dcloud里面plus对象-->
+		<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+		<script>
+		    //1.声明我要调用微信里面的那些接口
+			wx.config({
+				debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+			    appId: '', // 必填，公众号的唯一标识                    //webapp绑定的 微信号 (后端给我们提供)
+			    timestamp: '<?php echo time();?>', // 必填，生成签名的时间戳
+			    nonceStr: '<?php echo $nonceStr;?>', // 必填，生成签名的随机串
+			    signature: '<?php echo $signature;?>',// 必填，签名 最核心的信息(服务端给我们提供)
+			    jsApiList: ["onMenuShareQQ","onMenuShareWeibo"] // 必填，需要使用的JS接口列表      //面试时候最常问的 填写调用微信接口的列表  
+			    //分享到朋友圈,分享到qq空间,打开二维码,以及调用支付
+			});
+			//2.下一步是不是就是开始正式调用了
+			wx.ready(function(){
+				//开始调用想调用的一些api
+				wx.onMenuShareQQ({
+					title:"",//分享标题
+					img:"",//分享图片
+					link:"",//链接
+					success:function(){
+						
+					}
+				});
+			});
+			
+			function share(){
+				wx.onMenuShareWeibo({
+					
+				});
+			}
+		</script>
+		<div ontouchstart="share();">Click me</div>
+	</body>
+</html>

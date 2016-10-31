@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var o = {
+				$n:0,
+				get r(){
+					return this.$n++
+				},
+				set r(n){
+					if(n>=this.$n){
+						this.$n = n;
+					}
+					else{
+						throw "序列号的值不可以比当前小"
+					}
+				}
+			};
+			
+			console.log(o.r);
+			console.log(o.r);
+//			o.r = 0;
+//			console.log(o.r);
+			
+			o.r = 4;
+			console.log(o.r);
+			
+		</script>
+	</body>
+</html>

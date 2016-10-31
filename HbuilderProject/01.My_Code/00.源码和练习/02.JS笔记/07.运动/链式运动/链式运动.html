@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div1{
+				width: 100px;
+				height: 100px;
+				background: yellow;
+				border:1px solid #1F83E8;
+				border-radius: 5px;
+				margin-top:20px;
+				margin-left: 20px;
+				filter:alpha(opacity:30);
+				opacity: 0.3;
+			}
+		</style>
+		<script src="clianMove.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function (){
+				var oBtn = document.getElementById('btn1');
+				var oDiv = document.getElementById('div1');
+				oBtn.onclick = function ()
+				{
+					startMove(oDiv,'width',400,function()
+					{
+						startMove(oDiv,'height',400,function()
+						{
+							startMove(oDiv,'opacity',100,function()
+							{
+								startMove(oDiv,'opacity',30,function()
+								{
+									startMove(oDiv,'height',100,function()
+									{
+										startMove(oDiv,'width',100);
+									});
+								});
+							});
+						});
+					});
+				}
+			}
+		</script>
+	</head>
+		
+	<body>
+		<input type="button" name="" id="btn1" value="点我链式运动" />
+		
+		<div id="div1"></div>
+	</body>
+</html>

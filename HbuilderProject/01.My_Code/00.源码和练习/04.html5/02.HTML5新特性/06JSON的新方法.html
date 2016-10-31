@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script src="json2.js"></script>
+<script>
+
+/*var a = {
+	name : 'hello'
+};
+
+var b = a;
+
+b.name = 'hi';
+
+alert( a.name );*/
+
+
+/*var a = {
+	name : 'hello'
+};
+
+var b = {};
+
+for(var attr in a){
+	b[attr] = a[attr];
+}
+
+b.name = 'hi';
+
+alert( a.name );*/   //视频 : 对象的引用
+
+
+var a = {
+	name : { age : 100 }
+};
+
+var str = JSON.stringify(a);
+
+var b = JSON.parse(str);
+
+b.name.age = 200;
+
+alert( a.name.age );
+
+</script>
+</head>
+
+<body>
+</body>
+</html>

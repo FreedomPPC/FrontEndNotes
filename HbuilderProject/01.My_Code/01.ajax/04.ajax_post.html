@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			button{
+				width:40px;
+				height:40px;
+				background: deeppink;
+			}
+			
+		</style>
+		<script type="text/javascript">
+			window.onload = function (){
+				var oBtn = document.getElementById("btn_1");
+				
+				oBtn.onclick = function(){
+					var xhr = null;
+					if(window.XMLHttpRequest){
+						xhr = new XMLHttpRequest();
+					}else{
+						xhr = new ActiveXObject("Microsoft.XMLHTTP");
+					}
+					xhr.open('post','2.post.php',true);
+					xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
+					
+					xhr.send('username=彬彬&age=18');
+					
+					xhr.onreadystatechange = function(){
+						if(xhr.readyState == 4){
+							if(xhr.status == 200 || xhr.status == 0){
+								alert(xhr.responseText)
+							}else{
+								alert("Error:"+xhr.status);
+							}
+						}
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<button id="btn_1">Ajax</button>
+		<h4>Ajax中get方法和post方法的区别</h4>
+		<p>1 传输数据的时候,get方法将参数放在URL里面'url?username=leo&age=19',
+		而Post方法将参数放在send('username=leo&age=19')里面进行参数传输</p>
+			
+		<p>2 在处理缓存问题上get方法需要加上new Date().getTime()的事件戳,而post不需要进行缓存的处理.</p>
+		<p>3 处理编码问题上,如果参数中包含有中文,get方法需要加上encodeURI("中文"),</p>
+		<p>而post在请求头里面已经处理了这个问题,
+			xhr.setRequestHeader('content-type','application/x-www-form-urlencoded')</p>
+	</body>
+</html>

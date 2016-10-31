@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>移动端交互事件</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+		<style>
+			*{padding: 0;margin: 0;}
+			.cxt{
+				width: 100%;
+				height:400px;
+				background-color: #acacac;
+			}
+		</style>
+		<script>
+			//需求:给div添加监听 侦测三个不同事件的触发时间和触发目的
+			
+			//1.在dom里面直接绑定事件 <div ontouchstart="funName();" ontouchmove="funName();" ontouchend="funName();"></div>
+			//2.获取div, var _cxt=document.getElem("cxt")[0].addEventListener("事件名称",回调,false);
+			window.onload=function(){
+				var startX,startY;//开始的x y
+				var moveX,moveY;//运动中的x y
+				var endX,endY;//结束的x y
+				var _cxt=document.getElementsByClassName("cxt")[0];
+				//监听touchstart
+				_cxt.addEventListener("touchstart",function(event){
+					//console.log(event);//通过event.touches获取当前div中的所有手指列表
+					startX=event.touches[0].clientX;
+					startY=event.touches[0].clientY;
+					console.log("touch start x&&"+startX+"***start y&&"+startY);
+					//swiper,zepto框架内部移动端事件定义和计算都是这样的思路
+					//1.计算得到不同阶段的位置点 2.换算 3.判断手势的行为
+					//2.start x 200px, y 300px, end x 400px y 300px  2.计算 结果>0  3.说明手势行为是向右
+				},false);
+				//监听touchmove
+				_cxt.addEventListener("touchmove",function(event){
+					console.log("touch is moving");
+					moveX=event.touches[0].clientX;
+					moveY=event.touches[0].clientY;
+					console.log("touch move x&&"+moveX+"***start y&&"+moveY);
+					console.log(event);
+					
+				},false);
+				//监听touchend
+				_cxt.addEventListener("touchend",function(event){
+					console.log("touch is end");//touch end时候获取位置 event.changedTouches[0].clientX||clientY
+					endX=event.changedTouches[0].clientX;
+					endY=event.changedTouches[0].clientY;
+					console.log("touch end x&&"+endX+"***end y&&"+endY);
+				},false);
+				//总结 三个事件可以用于侦测手机屏幕上面手指的行为
+				
+				//往后demo 基于touch实现一套自定义封装机制，能够识别手势在屏幕上面上下左右的滑动
+				//谁去用我们写的框架
+				//框架功能是什么
+				//框架怎么用好用
+				
+				//框架具体的设计和实现这个框架
+			}
+		</script>
+	</head>
+	<body>
+		<div class="cxt"></div>
+	</body>
+</html>

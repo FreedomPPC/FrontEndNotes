@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+
+</style>
+</head>
+<body>
+	<canvas id="cvs" width="500" height="500" style="background:#eee"></canvas>
+	<script>
+
+;(function go(){
+  var cvs = document.getElementById("cvs");
+
+  var ctx = cvs.getContext("2d");
+  ctx.clearRect(0,0,500,500);
+  //default butt
+  ctx.beginPath()
+  ctx.strokeStyle = "#f00";
+  ctx.lineWidth = 10;
+  //线条开头结尾的处理措施
+  ctx.lineCap = "butt";
+
+  ctx.moveTo(50,50);
+  ctx.lineTo(100,50);
+
+  ctx.stroke();
+  ctx.closePath();
+
+ //round
+  ctx.beginPath()
+  ctx.strokeStyle = "#0f0";
+  ctx.lineWidth = 10;
+  ctx.lineCap = "round";
+
+  ctx.moveTo(50,100);
+  ctx.lineTo(100,100);
+
+  ctx.stroke();
+  ctx.closePath();
+
+  //square
+  
+  ctx.beginPath()
+  ctx.strokeStyle = "#00f";
+  ctx.lineWidth = 10;
+  ctx.lineCap = "square";
+
+  ctx.moveTo(50,150);
+  ctx.lineTo(100,150);
+
+  ctx.stroke();
+  ctx.closePath();
+
+})();
+	</script>
+</body>
+</html>

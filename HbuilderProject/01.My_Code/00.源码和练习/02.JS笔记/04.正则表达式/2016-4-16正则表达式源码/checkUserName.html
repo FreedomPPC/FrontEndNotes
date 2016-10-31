@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title></title>
+		<style type="text/css">
+			span {
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		
+		
+		<script type="text/javascript">
+			//判断用户名输入是否合法
+			//要求用户名只能是数字、字母和下划线，且第一个不能是数字，长度为6-20
+			function checkUserName () {
+				var username = '.Xiaoming1';
+				var isChar, isNum, isUnderscore;
+				
+				if (username.length > 20 || username.length < 6) {
+					alert('长度只能在6-20之间');
+					return;
+				}
+
+				for (var i=0; i<username.length; i++) {
+					// isNum = false;
+					// isUnderscore = false;
+					// isChar = false;
+
+					//判断是否为数字
+					var charCode = username.charCodeAt(i);
+					if (charCode>=48 && charCode<=57) {
+						isNum = true;
+					}
+					//判断是否为数字的第二种方法，以下类似，省略
+					// var charactor = username[i];
+					// if (charactor>'0' && charactor<'9') {
+					// 	isNum = true;
+					// }
+
+					//判断是否为大写字母或者小写字母
+					if ((charCode>=65&&charCode<=90) || (charCode>=97&&charCode<=122)) {
+						isChar = true;
+					}
+
+					//判断是否为下划线
+					if (charCode === 95) {
+						isUnderscore = true;
+					}
+					
+					if (i===0 && isNum) {
+						alert('第一个字符，不能是数字!');
+						return;
+					}
+
+					if (!isNum && !isUnderscore && !isChar) {
+						alert('只能输入数字、字母、下划线');
+						break;
+					}
+
+				}
+			}
+
+			checkUserName();
+		</script>
+	</body>
+</html>

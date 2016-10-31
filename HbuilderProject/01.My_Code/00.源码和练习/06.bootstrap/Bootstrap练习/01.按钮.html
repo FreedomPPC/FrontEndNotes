@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		
+		<link rel="stylesheet" type="text/css" href="../dist/css/bootstrap.min.css"/>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="../js/dropdown.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/button.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.dropdown-toggle{
+				background:pink;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div class="btn-group" role="group" aria-label="...">
+		  <button type="button" class="btn btn-default">Left</button>
+		  <button type="button" class="btn btn-default">Middle</button>
+		  <button type="button" class="btn btn-default">Right</button>
+		</div>
+		
+		<!-- Single button -->
+		<!--按钮式下拉菜单-->
+		<div class="btn-group">
+		  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		    Action <span class="caret"></span>
+		  </button>
+		  <ul class="dropdown-menu">
+		    <li><a href="#">Action</a></li>
+		    <li><a href="#">Another action</a></li>
+		    <li><a href="#">Something else here</a></li>
+		    <li role="separator" class="divider"></li>
+		    <li><a href="#">Separated link</a></li>
+		  </ul>
+		</div>
+		
+	</body>
+</html>

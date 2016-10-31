@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>变量不加var变全局变量</title>
+</head>
+<body>
+	<script>
+		function aaa(){
+			var a = 10;
+		}
+		alert(a);//这个是找不到的,因为a此时是一个局部变量;
+
+
+		function aaa(){
+			a = 10;
+		}
+		alert(a);//可以找到,因为a此时没加var是一个局部变量;相当于在外部定义了一个var a;然后内部赋值;
+
+		function aaa(){
+			var a=b=10;//赋值的写法,当然这样是不好的;
+			//10赋值给b,b赋值给a;a前面加了var是局部变量;b没加,所以b是全局变量;
+		}
+		alert(a);//找不到a,因为a是局部变量;
+		alert(b);//b可以找到;
+	</script>
+</body>
+</html>

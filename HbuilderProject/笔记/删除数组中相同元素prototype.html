@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		
+		Array.prototype.newArray = function(){
+			var _arr = new Array();
+			var _obj = {};
+			for(var i=0;i<this.length;i++){
+				var  value = this[i];
+				if(!_obj[value]){
+					_obj[value] = 1;
+					_arr.push(value);
+				}
+			}
+			return _arr;
+		}
+		var arr = [1,1,2,3,4,2]
+		alert(arr.newArray());
+	</script>
+</body>
+</html>

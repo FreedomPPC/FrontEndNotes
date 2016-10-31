@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<style>
+#ul1 {background:red;}
+#ul2 {background:yellow;}
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+window.onload=function ()
+{
+	var oBtn=document.getElementById('btn1');
+	var oUl=document.getElementById('ul1');
+	
+	oBtn.onclick=function ()
+	{
+		var aLi=oUl.getElementsByTagName('li');
+		var arr=[];
+		var i=0;
+		
+		//1.转成数组
+		for(i=0;i<aLi.length;i++)
+		{
+			arr[i]=aLi[i];
+		}
+		
+		//2.数组排序
+		arr.sort(function (li1, li2){
+			return parseInt(li1.innerHTML)-parseInt(li2.innerHTML);
+		});
+		
+		//3.重新插入
+		for(i=0;i<arr.length;i++)
+		{
+			oUl.appendChild(arr[i]);
+		}
+	};
+};
+</script>
+</head>
+
+<body>
+<input id="btn1" type="button" value="排序Li" />
+<ul id="ul1">
+	<li>32</li>
+	<li>12</li>
+	<li>87</li>
+	<li>9</li>
+	<li>18</li>
+</ul>
+</body>
+</html>

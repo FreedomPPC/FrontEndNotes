@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>mobile动画</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />		
+		<style type="text/css">
+			@keyframes move_from_top{
+				from{transform:translateY(-100%)}
+				
+			}
+			@keyframes move_from_bottom{
+				from{
+					transform: translateY(100%);
+					}
+				
+			}
+			@keyframes move_from_viewport{
+				from{}
+				to{
+					transform:translateY(-100%)
+				}
+				
+			}
+			html,body{height: 100%;}
+			body{margin:auto;overflow: hidden;color:#fff;font-size: 100px}
+			section{
+				position: relative;
+				height: 100%;
+				width: 100%;
+			}
+
+			.hide{
+				display: none;
+			}
+			
+			.wrap{
+				position: absolute;
+				width:100%;
+				height: 100%;
+				animation-timing-function: linear;
+				animation-fill-mode: forwards;
+				animation-duration: 0.5s;
+				
+			}
+			.wrap_item_1{
+				background: orangered;
+				animation-name: move_from_top;
+			}
+			.wrap_item_2{
+				background: firebrick;
+			}
+			.wrap_item_3{
+				background: yellow;
+			}
+			.wrap_item_4{
+				background: blueviolet;
+			}
+			.wrap_item_5{
+				background: greenyellow;
+			}
+			
+		</style>
+		
+	</head>
+	<body>
+		<section>
+			<div class="wrap wrap_item_1">Page1</div>
+			<div class="wrap wrap_item_2 hide">Page2</div>
+			<div class="wrap wrap_item_3 hide">Page3</div>
+			<div class="wrap wrap_item_4 hide">Page4</div>
+			<div class="wrap wrap_item_5 hide">Page5</div>
+		</section>
+		
+		<script type="text/javascript">
+			window.onload = function (){
+				var box = [];
+				var wraps = document.querySelectorAll(".wrap");
+				var count = 0;
+				var eHandler = function(){
+					wraps[count].style.animationName = "move_from_viewport";
+					count = (++count)%5;
+					wraps[count].className = wraps[count].className.replace(/\s*hide/," ");
+					wraps[count].style.animationName = "move_from_bottom"; 
+				}
+				
+				box.forEach.call(wraps,function(item,index){
+					item.addEventListener('touchstart',eHandler);
+				});
+			}
+		</script>
+	</body>
+</html>

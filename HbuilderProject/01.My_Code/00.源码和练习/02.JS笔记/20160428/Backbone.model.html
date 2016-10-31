@@ -1,0 +1,89 @@
+﻿<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title></title>
+    </head>
+    <body>
+        <div id="container">
+            <h1>页面初始值，敬请期待！！！</h1>
+        </div>
+        <button>改变数据</button>
+        <input type="text" id="ui" />
+        <!-- import library js files -->
+        <script src="vendor/underscore.js"></script>
+        <script src="vendor/jquery-1.12.3.js"></script>
+        <script src="vendor/backbone.js"></script>
+
+        <!-- process files -->
+        <script>
+            var data = ['backbone model test content!!!'];
+            /***************************************************/
+            //创建一个Model
+            /***************************************************/
+            var Model = Backbone.Model.extend({
+                initialize: function () {
+
+                },
+
+                getData: function () {
+                    //正常情况下，这里应该从ajax取数据，然后将返回的数据设置到model中。
+
+                    //保存数据,当利用model的set保存数据时，
+                    //model会触发一个change事件给自己，表明model内的数据发生了变化
+                    this.set({
+                        content: data
+                    });
+                },
+                
+                setData: function (content) {
+                    //正常情况下，这里应该是用ajax向服务器保存数据，数据保存成功后，
+                    //再更新model
+                    this.set({
+                        content: content
+                    });
+                }
+            });
+
+            //把model和view之间建立联系，实现model的数据更新后，view也自动更新画面
+            //1. 将model对象，作为view的构造函数的一个参数传入。
+            var View = Backbone.View.extend({
+                el: '#container',
+                initialize: function (options) {
+                    this.model = options.model;
+                    var self = this;
+                    //监听chang事件，当model中的数据发生变化，这个事件就会被触发，
+                    //于是，view就可以进行相应的画面的刷新。
+                    this.model.on('change', function () {
+                        self.update(self.model.get('content'));
+                    });
+                    document.getElementById('ui').onkeyup = function () {
+                        self.model.setData(this.value);
+                    }
+                },
+                update: function (data) {
+                    var tpl = '<div><a><h1><%=hello%></h1></a></div>';
+
+                    var template = _.template(tpl);
+                    var htmlContent = template({
+                        hello: data
+                    });
+
+                    this.el.innerHTML = htmlContent;
+                }
+            });
+
+            var myModel = new Model();
+
+            var myView = new View({
+                model: myModel
+            });
+            
+            document.getElementsByTagName('button')[0].onclick = function () {
+                myModel.getData();
+            }
+
+
+        </script>
+    </body>
+</html>

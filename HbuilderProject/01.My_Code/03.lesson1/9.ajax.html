@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<!--<script src="jquery.js"></script>-->
+<script>
+//$(function(){})	//阻塞 -> 同步
+
+//非阻塞 - 异步
+/*setTimeout(function() {
+	alert(1);
+}, 2000);
+
+alert(2);*/
+
+window.onload = function() {
+	
+	var oBtn = document.getElementById('btn');
+	
+	
+	oBtn.onclick = function() {
+		
+		var xhr = null;
+		try {
+			xhr = new XMLHttpRequest();
+		} catch (e) {
+			xhr = new ActiveXObject('Microsoft.XMLHTTP');
+		}
+		/*
+			1.缓存 在url？后面连接一个随机数，时间戳
+			2.乱码 编码encodeURI
+		*/
+		xhr.open('get','2.get.php?username='+encodeURI('刘伟')+'&age=30&' + new Date().getTime(),true);
+		xhr.send();
+		
+		xhr.onreadystatechange = function() {
+			
+			if ( xhr.readyState == 4 ) {
+				if ( xhr.status == 200 ) {
+					alert( xhr.responseText );
+				} else {
+					alert('出错了,Err：' + xhr.status);
+				}
+			}
+			
+		}
+		
+	}
+}
+</script>
+</head>
+
+<body>
+	<input type="button" value="按钮" id="btn" />
+</body>
+</html>

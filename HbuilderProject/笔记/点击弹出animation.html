@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<style>
+			
+			#box{
+				margin:100px auto;
+				width: 200px;
+				height: 200px;	
+				border:1px red solid;
+				position: relative;
+			}
+			.about{
+				width: 200px;
+				height: 200px;
+				border:solid 1px deeppink;
+				background: #CCCCCC;
+				opacity: 0.5;
+				position:absolute;
+				top:0px;
+				left: 0px;
+				z-index: 20;
+				display: none;
+			}
+			.what{
+				width: 20px;
+				height: 20px;
+				background: deepskyblue;
+				position: absolute;
+				bottom: 0px;
+				right: 0px;
+				text-align:center ;
+				line-height: 20px;
+				z-index: 10;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div class="about">
+				this is question mark explain!!
+				<button class="close">关闭</button>
+			</div>
+			<div class="what">
+				?
+			</div>
+		</div>
+	</body>
+	<script src="lib/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(".what").bind('click',function(){
+			$(".about").fadeIn();
+			$(".what").slideUp();
+			$("body").css({'background':"#ccc"})
+			$(".close").bind('click',function(){
+				$(".about").fadeOut();
+				$(".what").slideDown();
+				$("body").css({'background':""})
+			});
+		});
+	</script>
+</html>

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>变量的查找</title>
+</head>
+<body>
+	<script>
+		//变量的查找就是就近原则去寻找var定义的变量;当就近没有的话就会查找外层,外层没有再找外层;
+
+		var a = 10;
+		function aaa(){
+			alert(a);
+			var a = 20;	
+		}
+
+		aaa();//结果是undefined,
+		分析:当函数调用的时候,因为函数内部有var 定义的a变量,所以就不会找外部的;但是alert(a);先执行,a没有定义,所以是undefined;
+
+
+
+
+		var a =10;
+		function aaa(){
+			var a = 20;
+			alert(a);
+		}
+		aaa();//很显然结果是20;
+
+
+		var a=10;
+		function aaa(){
+			a = 20;
+			alert(a);
+		}
+		aaa();//20;
+		分析:函数调用之后,进入函数,因为函数内部没有var定义的变量;所以会去外部寻找,找到10之后,进入函数,20又赋值给了a,所以结果是20;
+
+		var a= 10;
+		function aaa(){
+			alert(a);
+			a = 20;
+		}
+		aaa();//10;
+
+
+		var  a = 10;
+		function aaa(){
+			bbb();
+			alert(a);
+			function bbb(){
+				var a = 20;
+			}
+		}
+		aaa();//20;
+	</script>
+</body>
+</html>

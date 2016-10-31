@@ -1,0 +1,75 @@
+﻿<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title></title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            //1. 工厂模式
+            function Person(name, age) {
+                var o = {};
+                o.name = name;
+                o.age = age;
+                o.sayHi = function () {
+
+                }
+
+                return o;
+            }
+
+            var person = Person('Xiaocui', 18);
+
+            //缺点：不能判断创建的对象的类型instanceof===>构造
+
+            //2. 构造函数
+            function Person(name, age) {
+                this.name = name;
+                this.age = age;
+                this.sayHi = function () {
+
+                }
+            }
+
+            var person = new Person();
+            //new的时候，JS引擎干了很多事
+            //1. 创建了一个对象
+            //2. 把this指针，指向了这个对象
+            //3. 执行构造函数，属性和方法，就被追加到了对象上
+            //4. 返回了这个对象
+            //5. 创建了一个属性__proto__，指向了这个对象的构造函数的prototype
+
+            //缺点：每次创建一个对象，都会实例化这个对象里面的所有函数，浪费资源 ===>
+
+            //3. 原型的方式
+            function Person() {
+            }
+            Person.prototype.name = 'XiaoMing';
+            Person.prototype.age = 18;
+            Person.prototype.sayHi = function () {
+
+            }
+
+            var person = new Person();
+
+            //缺点:
+            // 1. 创建对象时，无法传递参数
+            // 2. 当原型中，有引用类型的属性时，可能被某个对象无意间修改，这样所有这个类的对象的这个属性，就都被修改了，危险 ===>
+
+            //4. 混合
+            function Person(name, age) {
+                this.name = name;
+                this.age = age;
+                this.exs = ['a', 'b', 'c', 'd'];
+            }
+
+            Person.prototype.sayHi = function () {
+
+            }
+
+            var person = new Person();
+
+            //这种方法，成为了比较常用的创建类的方式。
+        </script>
+    </body>
+</html>

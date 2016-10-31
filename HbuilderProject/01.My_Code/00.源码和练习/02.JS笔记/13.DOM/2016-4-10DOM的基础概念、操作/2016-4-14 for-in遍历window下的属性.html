@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>for in 遍历window下的属性</title>
+</head>
+<body>
+	<script type="text/javascript">
+		window.onload = function () {
+			var str = '';
+			var num = 0;
+			for(var attr in document){
+				str += num+'.'+attr +':'+document[attr]+'<br/>';
+				num++;
+			}
+			document.body.innerHTML = str;
+		}
+	</script>
+</body>
+</html>

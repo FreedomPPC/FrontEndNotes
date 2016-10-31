@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+      .box{width:100px;height:100px;background:red; position: absolute;left:0;top:0;}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+	<script src="jquery-2.2.1.min.js"></script>
+	<script>
+ 
+	//参数说明
+	/**
+        dom   要操作的元素
+        cssRules  如{
+			width : "100px",
+			height : "300px",
+			opacity : 0.5
+        },
+        duration : 动画从头尾的过渡时间
+        fn ： 动画结束后的回调
+	**/
+	function run(dom,cssRules,duration,fn){
+		var objSpan = {},
+		    units = {},
+		    timelette = 10,
+		    rate = timelette/(duration||3000);
+
+		    for(var k in cssRules){
+		    	//保存变化属性的从头到尾的变化落差
+		    	objSpan[k] = parseFloat(cssRules[k])-parseFloat(getComputedStyle(dom)[k]);
+		    	var unit = (cssRules[k]+"").match(/[a-z]+/);
+		    	//保存每个变化属性的单位
+		    	units[k] = unit?unit[0]:"";
+		    }
+
+		    (function(){
+		    	//动画终止条件  取决于duration 是否小于 0
+		    	var stop = ((duration-=timelette)<=0);
+                for(var k in cssRules){
+                	//每次元素属性变化的微增量
+                	dom.style[k] = parseFloat(getComputedStyle(dom)[k])+objSpan[k]*rate+units[k];
+                }
+                //是否终止动画的条件
+                !stop&&setTimeout(arguments.callee,timelette);
+                //动画结束后，执行回调
+                stop&&fn&&fn();
+		    })();
+
+	}
+
+	$.extend({
+		run : run
+	})
+	</script>
+</body>
+</html>

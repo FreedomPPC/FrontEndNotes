@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>show Demo</title>
+        <style>
+            div {
+                width: 600px;
+                height: 600px;
+                background: deeppink;
+            }
+        </style>
+    </head>
+    <body>
+        <button id="display">显示</button>
+        <button id="hide">隐藏</button>
+        <div></div>
+        <script src="../vendor/jquery-1.12.1.js"></script>
+        <script>
+            $('#display').click(function () {
+//               $('div').show(10000,'linear');
+                $('div').fadeIn(3000, 'linear');
+            });
+
+            $('#hide').click(function () {
+//                $('div').hide(10000, 'linear');
+                $('div').fadeOut(3000, 'linear');
+            });
+        </script>
+    </body>
+</html>

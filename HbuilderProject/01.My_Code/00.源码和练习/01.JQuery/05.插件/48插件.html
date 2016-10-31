@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+#div1{ width:100px; height:100px; background:red; position:absolute;}
+</style>
+<script src="jquery-1.10.1.min.js"></script>
+<script>
+
+//$.extend : 扩展工具方法下的插件形式  $.xxx() $.yyy()
+
+//$.fn.extend  :  扩展到JQ对象下的插件形式  $().xxx()  $().yyy()
+
+$.extend({
+	leftTrim : function(str){
+		return str.replace(/^\s+/,'');
+	},
+	rightTrim : function(){},
+	aaa : function(){
+		alert(1);
+	},
+	bbb : function(){}
+});
+
+$.fn.extend({
+	
+	drag : function(){
+		
+		//this : $('#div1')
+		
+		var disX = 0;
+		var disY = 0;
+		
+		var This = this;
+		
+		this.mousedown(function(ev){
+			
+			disX = ev.pageX - $(this).offset().left;
+			disY = ev.pageY - $(this).offset().top;
+			
+			$(document).mousemove(function(ev){
+				
+				This.css('left' , ev.pageX - disX);
+				This.css('top' , ev.pageY - disY);
+				
+			});
+			
+			$(document).mouseup(function(){
+				$(this).off();
+			});
+			
+			return false;
+			
+		});
+		
+	},
+	aaa : function(){
+		alert(2);
+	}
+	
+});
+
+
+</script>
+<script>
+
+
+//$.trim()
+//$.leftTrim()
+
+/*var str = '  hello  ';
+
+alert( '('+$.leftTrim(str)+')' );*/
+
+$(function(){
+	
+	$('#div1').drag();
+	
+});
+
+
+$.aaa();  // 1
+$().aaa();  //2
+
+</script>
+</head>
+
+<body>
+<div id="div1"></div>
+</body>
+</html>

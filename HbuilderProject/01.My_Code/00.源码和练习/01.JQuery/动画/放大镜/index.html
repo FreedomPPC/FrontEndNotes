@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>放大镜演示</title>
+		<style type="text/css">
+			*{ 
+				padding:0; 
+				margin:0;
+			}
+			body{ 
+				font-size:12px;
+				font-family:"宋体";
+				color:#000000; 
+				background-color:#FFFFFF;
+			}
+			img{ 
+				vertical-align:middle;
+				border:none;
+			}
+			#box{
+				width:350px;
+				height:350px; 
+				margin:50px; 
+				border:1px solid #930; 
+				position:relative;
+			}
+			#small{
+				position:absolute; 
+				background:#CCC;
+				width:350px; 
+				height:350px;
+			}
+			#small p{
+				position:absolute;
+				background:#F00; 
+				left:0; 
+				top:0; 
+				width:100px; 
+				height:100px; 
+				opacity:0.2;
+			}
+			#big{
+				position:absolute; 
+				left:400px; 
+				height:200px; 
+				width:200px; 
+				border:1px solid #666; 
+				overflow:hidden;
+			}
+			#big img{
+				position:absolute
+			}
+		</style>
+		<script type="text/javascript" src="js/jquery-1.9.0.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				//小方块跟鼠标移动（就是让小方块left值和top值跟鼠标移动而变化）
+				$("#small").mousemove(function(e){
+					var mleft=e.pageX-($("#small").offset().left)-($("#mx").width()/2),
+						mtop=e.pageY-($("#small").offset().top)-($("#mx").height()/2);
+				
+					//把鼠标的移动现在在方框中
+					var maxleft=$("#small").width()-($("#mx").width());
+					var maxtop=$("#small").height()-($("#mx").height());
+					if(mleft<=0){
+						mleft=0;
+					}else if(mleft>maxleft){
+							mleft=maxleft;
+					}
+					if(mtop<=0){
+						mtop=0;
+					}else if(mtop>maxtop){
+						mtop=maxtop;
+					}
+
+					$("#mx").css({"left":mleft,"top":mtop});
+				
+					//让两边相对应要求big下面img的left值和top值
+					var	bleft=-mleft*2;
+					var	btop=-mtop*2;
+					$("#big>img").css({"left":bleft,"top":btop});
+				});
+			})
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<div id="small">
+		    	<img src="images/1md.jpg" width="350" height="350" /><p id="mx"></p>
+		    </div>
+		    <div id="big"><img src="images/1md.jpg" width="700" height="700" /></div>
+		</div>
+	</body>
+</html>

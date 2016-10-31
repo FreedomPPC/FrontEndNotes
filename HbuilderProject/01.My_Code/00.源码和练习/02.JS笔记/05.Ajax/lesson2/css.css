@@ -1,0 +1,89 @@
+@charset "utf-8";
+
+body {
+	margin: 0; padding: 0;
+	background: url("images/bg.gif");
+}
+
+h1,h2,h3,h4,h5,h6 { margin: 0; padding: 0;}
+
+a {text-decoration: none; color: #444;}
+
+.hide {
+	display: none;
+}
+.show {
+	display: block;
+}
+
+.btn1 {
+	padding: 0 12px; margin-left: 0px;
+	display: inline-block;
+	height: 28px; line-height: 28px; font-size: 14px;
+	border: 1px solid #D9D9D9; background-color: #FAFAFA;
+}
+
+#header {
+	position: relative;
+	height: 42px; background-color: #FFF; border-bottom: 1px solid #CCC;
+}
+#wrapper {
+	margin: 0 auto; overflow: hidden;
+	width: 1000px; height: 42px; border-right: 1px solid #EEE;
+}
+#wrapper a.loginNav {
+	padding: 0 10px; float: right;
+	width: 100px; height: 42px; border-left: 1px solid #EEE;
+	text-align: center; line-height: 42px;
+}
+#wrapper a.loginNav:hover {
+	color: #9A0000;
+}
+
+#container {
+	margin: 10px auto; position: relative;
+	width: 1000px;
+}
+
+#sidebar {
+	padding: 10px; position: absolute; top: 0px; right: 0px;
+	width: 300px; border: 1px solid #CCC; background-color: white;
+}
+#sidebar h4 {
+	padding: 5px;
+	height: 24px; line-height: 24px; background-color: #CCC;
+}
+
+#sendBox {
+	width: 300px;
+}
+#sendBox div {
+	margin: 5px 0;
+}
+#sendBox textarea {
+	margin-bottom: 5px;
+	width: 294px; height: 140px;
+}
+
+#list {
+	width:	660px;
+}
+#list dl {
+	margin: 0 0 10px 0; padding: 10px;
+	border: 1px solid #CCC; background-color: white;
+}
+#list dt {
+	height: 30px; line-height: 30px;
+}
+#list dd.t {
+	text-align: right;
+}
+
+#list dd.t a {margin: 0 5px;}
+
+#showMore {
+	width:	640px;
+	margin: 0 0 10px 0; padding: 10px;
+	border: 1px solid #CCC; background-color: white; text-align: center;
+	cursor: pointer;
+}

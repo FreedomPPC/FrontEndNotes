@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Attribute & Property</title>
+    </head>
+    <body>
+        <div id="1"></div>
+        <div id="2"></div>
+        <div id="3"></div>
+        <div id="4"></div>
+        <div id="5"></div>
+        <input type="text" value="nothing" name="user" id="user-name" class="red" customer1="qianfeng"/>
+        <script src="../vendor/jquery-1.12.1.js"></script>
+        <script>
+            //取得一个元素的attr.
+            alert($('input').attr('customer1'));
+
+            //设置一个元素的attribute
+            $('input').attr('type', 'button');
+
+            //设置一个元素的多个属性
+            $('input').attr({
+                value: 'something',
+                name: 'administrator',
+                id: 'client'
+            });
+
+            alert($('#user-name').length);
+        </script>
+    </body>
+</html>

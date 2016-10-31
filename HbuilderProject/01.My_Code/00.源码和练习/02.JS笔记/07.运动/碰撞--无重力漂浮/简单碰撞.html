@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style type="text/css">
+			#div1{
+				width: 100px;
+				height: 100px;
+				position:absolute;
+				
+			}
+			img{
+				width: 100px;
+				height: 100px;
+				border-radius:50%;
+			}
+			input{
+				border-radius:5px;
+			}
+		</style>
+		<meta charset="UTF-8">
+		<title>小彬彬弹球</title>
+		<script type="text/javascript">
+			var iSpeedX = 6;
+			var iSpeedY = 8;
+			
+			function startMove(){
+				
+				setInterval(function(){
+					var oDiv =document.getElementById('div1');
+					var l = oDiv.offsetLeft + iSpeedX;
+					var t = oDiv.offsetTop + iSpeedY;
+					var iHeight = document.documentElement.clientHeight;
+					var iWidth =document.documentElement.clientWidth;
+					
+					if(t >= iHeight - oDiv.offsetHeight)
+					{
+						iSpeedY *= -1;
+						t = iHeight - oDiv.offsetHeight;
+					}
+					else if(t <=0)
+					{
+						iSpeedY *= -1;
+						t = 0;
+					};
+					
+					if(l>= iWidth - oDiv.offsetWidth)
+					{
+						iSpeedX *= -1;
+						l = iWidth - oDiv.offsetWidth
+					}
+					else if(l <= 0)
+					{
+						iSpeedX *= -1;
+						l = 0;
+					}
+					
+					oDiv.style.left = l + 'px';
+					oDiv.style.top = t +'px';
+				},30);
+				
+				
+				
+			}
+		</script>
+	</head>
+	<body>
+		<input type="button" id="btn1" value="小彬彬弹球"  onclick="startMove()"/>
+		<div id="div1">
+			<img src="../傻吊.png"/>
+		</div>
+	</body>
+</html>

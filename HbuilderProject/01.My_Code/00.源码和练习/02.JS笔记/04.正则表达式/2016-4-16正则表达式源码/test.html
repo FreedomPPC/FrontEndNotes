@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title></title>
+		<style type="text/css">
+			span {
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<label>用户名：</label><input type="text" />
+		<span>请输入有效的用户名</span>
+		<script type="text/javascript">
+			// var pattern = /^0\d{2,3}-\d{8}$/
+			// alert(pattern.test('010-74839876'));
+
+			/*============================================================*/
+			//判断一个字符串，是不是手机号码
+			//手机号码特点：1开头，11位数字
+			// var mobileRegexp = /^1\d{10}$/;
+			// alert(mobileRegexp.test('13942091322'));
+
+			/*============================================================*/
+			//判断一个字符中，开始是不是有空白字符
+			// var headSpaceRegExp = /^\s{1,}/
+			// alert(headSpaceRegExp.test('							 	aaaajajaj'));
+
+			/*============================================================*/
+			//判断一个字符中，结尾是不是有空白字符
+			// var tailSpaceRegExp = /\s+$/;
+			// alert(tailSpaceRegExp.test('ajaja    			'));
+
+			/*============================================================*/
+			//判断一个字符串，是否为有效的数值
+			// var numRegExp = /^\d+(\.\d+)?$/;
+			// alert(numRegExp.test('01'));
+
+			/*============================================================*/
+			//检验一个用户名，是否符合下列规则：
+			//1. 数字字母和下划线组成
+			//2. 长度要在6-20之间
+			// var userRegExp = /^\w{6,20}$/;
+			// var username = 'cui'
+			// alert(userRegExp.test(username));
+
+			/*============================================================*/
+			//匹配元音字母
+			// var vowelRegExp = /^[aeiou]$/i
+			// alert(vowelRegExp.test('A'));
+
+			/*============================================================*/
+			// var lowerCaseRegExp = /[a-zA-Z0-9_]/
+			// alert(lowerCaseRegExp.test('2'));
+
+			/*============================================================*/
+			//检验一个用户名，是否符合下列规则：
+			//1. 数字字母和下划线组成
+			//2. 长度要在6-20之间
+			//3. 首位不能是数字
+
+			// var userRegExp = /^[a-zA-Z_]\w{5,19}$/;
+			// var username = 'cui'
+			// alert(userRegExp.test(username));
+
+			/*============================================================*/
+			//选择分支处理
+			// var str = 'baidu bing, qianfeng';
+			// var searchEnRegExp = /baidu|google|sougou/;
+			// alert(searchEnRegExp.test(str));
+
+
+			/*============================================================*/
+			// 美国邮编的规则是5位数字，或者用连字号间隔的9位数字，如下：
+			// 12934 、12478-5687
+			// var USPCRegexp = /^(\d{5}|\d{5}-\d{4})$/;
+			// alert(USPCRegexp.test('12345-4444'));
+
+			/*============================================================*/
+			// 判断重复的字符串是否存在
+			// var str = 'I work realy realy realy realy realy realy realy hard';
+			
+			// var duplicatedRegExp = /(realy\s*){2,}(hard)/
+			// alert(duplicatedRegExp.test(str));
+			
+
+			/*============================================================*/
+			// 捕获 见ppt P.13
+			// 取得邮箱地址的用户名和域名。例如：
+			// cui.jingnan@qianfeng.com
+			// var emailRegExp = /(.+)@(.+)/
+			// emailRegExp.test('cui.jingnan@qianfeng.com');
+			// alert(RegExp.$1);
+			// alert(RegExp.$2);
+
+			/*============================================================*/
+			//删除首尾的空白字符。
+			//方法1：
+			// var headSpaceRegExp = /^\s+/;
+			// var tailSpaceRegExp = /\s+$/;
+			// var str = '  	a   ';
+			// var newStr = str.replace(headSpaceRegExp, '').replace(tailSpaceRegExp, '');
+			// alert(str.length);
+			// alert(newStr.length);
+
+			//方法2:
+			// var str = '    a     ';
+			// var bothSidesSpaceRegExp = /^\s+(\S+)\s+$/;
+			// bothSidesSpaceRegExp.test(str);
+
+			// var newStr = str.replace(bothSidesSpaceRegExp, RegExp.$1);
+
+			// alert(str.length);
+			// alert(newStr.length);
+
+
+			/*============================================================*/
+			//取到<meta ******* />这种结果
+			// var str = '<head><meta charset='utf-8' /><title></title><style type="text/css">span {display: none;}</style></head>';
+			// var regExp = /<meta[^>]+>/
+
+			/*============================================================*/
+			//贪婪匹配和懒惰匹配
+			// var str = 'aabab';
+			// var regExp = /a.*?b/;
+			// var array = str.match(regExp);
+
+			// alert(array);
+
+			/*============================================================*/
+			//正则表达式的选项i, g, m
+			//找到每行的第一个字符
+			// var str = 'hello world\nI like Javascript';
+			// var regExp = /^.(e)/m;
+			// var array = str.match(regExp);
+			// alert(array);
+
+
+
+			//删除每一行行首的空白字符
+			// var str = '  hello world\n        I like Javascript';
+
+			// var regExp = /^\s+/mg;
+			// var newStr = str.replace(regExp, '');
+
+			// alert(newStr);
+
+			/*============================================================*/
+			//exec
+			// var str = 'xiao';
+
+			// var regExp = /./g
+			// var array = regExp.exec(str);
+			// alert(array);
+			// array = regExp.exec(str);
+			// alert(array);
+			// array = regExp.exec(str);
+			// alert(array);
+			// array = regExp.exec(str);
+			// alert(array);
+			// array = regExp.exec(str);
+			// // array为null，当下次再执行exec时，会字符串的开始，进行查找
+			// alert(array);
+			// array = regExp.exec(str);
+			// alert(array);
+
+
+			
+			
+
+
+
+
+		</script>
+	</body>
+</html>

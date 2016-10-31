@@ -1,0 +1,61 @@
+﻿<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title></title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            /*============================================================*/
+            //工厂模式
+            //创建类
+            //1. 创建了一个Object对象,
+            //2. 在Object对象上追加属性、方法
+            //3. 将这个对象返回给函数外部
+
+            //用类来创建对象：直接调用函数
+            function Person(name, age) {
+                var o = new Object();
+                o.name = name;
+                o.age = age;
+
+                o.sayHi = function () {
+                    alert('I am ' + o.name + ',I am ' + o.age + ' years old');
+                }
+
+                return o;
+            }
+
+            var xiaoMing = Person('xiaoMing', 12);
+            //            xiaoMing.sayHi();
+
+            var cuiHua = Person('cuiHua', 18);
+            //            cuiHua.sayHi();
+            /*============================================================*/
+            //判断一个对象，是否是由一个类创建的，可以用运算符 instanceof
+            var str = new String();
+//            alert(cuiHua instanceof String === true);
+
+            /*============================================================*/
+            function Dog(name, age, category) {
+                var o = new Object();
+                o.name = name;
+                o.age = age;
+                o.category = category;
+                o.bark = function () {
+                    alert('旺旺！！');
+                }
+                return o;
+            }
+
+            var wangCai = Dog();
+//            wangCai.bark();
+
+            alert(wangCai instanceof Dog);
+            alert(wangCai instanceof Person);
+            alert(wangCai instanceof Object);
+            // 工厂模式的缺点：没有办法判断，创建出来的对象，
+            // 到底时属于哪个类（因为都是通过new Object创建并返回的）
+        </script>
+    </body>
+</html>

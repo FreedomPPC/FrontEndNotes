@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+
+</style>
+</head>
+<body>
+	<canvas id="cvs" width="500" height="500" style="background:#eee"></canvas>
+	<script>
+
+;(function go(){
+  var cvs = document.getElementById("cvs");
+
+  var ctx = cvs.getContext("2d");
+  ctx.clearRect(0,0,500,500);
+  ctx.fillStyle = "#0f0";
+  ctx.fillRect(0,0,50,50);
+  
+  ctx.strokeStyle = "#00f";
+  ctx.lineWidth = 3;
+  ctx.fillStyle = "#f00";
+  //设置字体
+  //参数  font-size  font-family
+  ctx.font="50px fantasy";
+  //填充字体
+  ctx.fillText("HELLO WORLD !!",50,50);
+  //描边字体
+  ctx.strokeText("HELLO WORLD !!",50,50);
+  
+  var res= ctx.measureText("H");
+  console.log(res);
+})();
+	</script>
+</body>
+</html>

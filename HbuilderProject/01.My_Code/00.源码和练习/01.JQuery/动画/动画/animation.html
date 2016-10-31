@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+      .box{width:100px;height:100px;background:red; }
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+	<script src="jquery-2.2.1.min.js"></script>
+	<script>
+    var box = document.querySelector(".box");
+    var objSpan = {
+    	width : 400 - parseFloat(getComputedStyle(box)["width"]),
+    	height : 400 - parseFloat(getComputedStyle(box)["height"])
+    }
+    var duration = 3000;
+    var timelette = 10 ;
+    // var 
+	var rate = timelette/duration;
+	// (function(){
+	//     var stop = ((duration-=timelette)<=0);
+	//     box.style.width =  parseFloat(getComputedStyle(box)["width"])+objSpan.width*rate+"px";
+	//     box.style.height =  parseFloat(getComputedStyle(box)["height"])+objSpan.height*rate+"px";
+	//     !stop&&setTimeout(arguments.callee,timelette)
+	// })();
+
+	function run(){
+		var stop = ((duration-=timelette)<=0);
+	    box.style.width =  parseFloat(getComputedStyle(box)["width"])+objSpan.width*rate+"px";
+	    box.style.height =  parseFloat(getComputedStyle(box)["height"])+objSpan.height*rate+"px";
+	    !stop&&setTimeout(run,timelette)
+	}
+
+	run();
+	</script>
+</body>
+</html>

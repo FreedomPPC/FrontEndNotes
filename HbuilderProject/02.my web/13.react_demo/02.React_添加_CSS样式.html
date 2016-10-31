@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/react.css"/>
+		<!--1.搭建框架环境,引入不同的框架所依赖的js-->
+		<!--react.min.js是react.js中最核心的的js,定义的虚拟的dom模型,以及react如何做一些数据更新,支持组件化算法都在这个js里面-->
+		<script src="lib/react.min.js" type="text/javascript" charset="utf-8"></script>
+		<!--react-dom定义了reac可以操作dom api结构-->
+		<script src="lib/react-dom.min.js" type="text/javascript" charset="utf-8"></script>
+		<!--jsx方式写html页面结构,browser.min.js就是将我们写jsx变成可执行的html代码;-->
+		<script src="lib/browser.min.js" type="text/javascript" charset="utf-8"></script>
+		
+	</head>
+	<body>
+		<div id="s"></div>
+		<script type = "text/babel">
+		/*
+		 * 两种方式控制样式 1.外部CSS	控制我创建元素样式;
+		 * 我创建出来的ReactComponent是组件+css+js+img;
+		 * 
+		 * ********************************************************************
+		 * 方式2. inner css 是以object形势,并且object css属性要和原生js属性一致;
+		 * 在react js中如果我不想把某个变量放在jsx中 需要用{变量括起来}
+		 * //1.写多个标签，给不同的创建的元素添加样式 ---写多个 json object
+			var _style={
+					width:"100%",
+					height:"6rem",
+					backgroundColor:"#acacac",
+					color:"red",
+					fontSize:"28px",
+					textAlign:"center"
+					
+				};
+			//2.第二种方法:创建的组件是变量,变量具有原型链
+				//1.将一些样式挂载到原型链上面去 
+				//2.在render函数里面 通过 var _style=this.STYLE;//CSS给原型链挂载的一个属性名称
+				//3.在组件中 通过style={_style.具体属性名称}
+		 */
+		
+		
+	    //声明一个组件
+		var ReactComponent = React.createClass({
+			render:function(){
+				var _style=this.STYLE;
+				return(
+					<div>
+						<header className="header">
+							<div className="icon"></div>
+							<div className="font"></div>
+							<div className="list"></div>
+						</header>
+						<section style={_style._sec_style}>
+							this is section
+						</section>
+						<div style={_style._div_style}></div>
+					</div>
+				);
+			}
+		});
+		ReactComponent.prototype.STYLE = {
+			_sec_style:{
+					    width:"100%",
+						height:"6rem",
+						backgroundColor:"#acacac",
+						color:"red",
+						fontSize:"28px",
+						textAlign:"center"
+			},
+						
+		    _div_style:{
+		    	    width:"100%",
+		    	    height:"4rem",
+		    	    backgroundColor:"#000000"
+		    }			
+			
+		}
+		//组件渲染到页面上
+		ReactDOM.render(<ReactComponent/>,document.getElementById('s'));		
+	</script>
+
+	</body>
+</html>

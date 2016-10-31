@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title></title>
+		<style type="text/css">
+			div {
+				width: 100px;
+				height: 100px;
+				position: absolute;
+				top: 150px;
+				left: 0;
+				background: red;
+			}
+			button {
+				height: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<button>走你</button>
+		<div></div>
+		<script type="text/javascript">
+			var goBtn = document.getElementsByTagName('button')[0];
+			var movableDiv = document.getElementsByTagName('div')[0];
+
+			goBtn.onclick = function () {
+//				movableDiv.style.left = '500px';
+
+				var id = setInterval(function () {
+					if (movableDiv.offsetLeft === 500) {
+						clearInterval(id);
+						return;
+					}
+					movableDiv.style.left = movableDiv.offsetLeft + 1 + 'px';
+					movableDiv.style.width = movableDiv.offsetWidth + 1 + 'px';
+				}, 15);
+			}
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,21 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.box {
+	padding-top: 10px;
+	padding-left: 10px;
+	float: left;
+	font-size: 0;
+}
+
+.pic {
+	border: 1px solid #ccc;
+	padding: 10px;
+}
+
+.pic img {
+	width: 250px;
+	height: auto;
+}

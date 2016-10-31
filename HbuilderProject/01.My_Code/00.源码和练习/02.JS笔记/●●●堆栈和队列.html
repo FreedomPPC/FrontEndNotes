@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>堆栈和队列</title>
+</head>
+<body>
+	<script>
+	//堆栈，队列；
+    //push() 和pop()方法允许将数组当做栈来使用.push()方法是在数组的尾部添加一个或多个元素,并放回数组新的长度.pop()则相反;它删除数组的最后一个元素,减小数组的长度并返回它删除的值.注意,两种方法都修改并替换原始数组
+    // 而生成的一个修改版的新数组.组合使用push()和pop();能够用JavaScript组数实现先进后出的栈.
+    // (1)堆栈；
+    // var stack = {};
+    // stack.data = [];
+    // stack.push = function(item){
+    //     return stack.data.push(item);
+    // }
+    // stack.pop = function(item){
+    //     return stack.data.pop(item);
+    // }
+    // stack.push('第一个push的元素');
+    // stack.push('第二个push的元素');
+    // stack.push('第三个push的元素');
+
+    // alert('pop()第一个删除的元素为'+stack.pop());
+    // alert('pop()第一个删除的元素为'+stack.pop());
+    // alert('pop()第一个删除的元素为'+stack.pop());
+
+    //(2)队列；
+   /* unshift()和shift()方法非常类似于push()和pop();
+    不一样的是前者是在数组的头部而非尾部进行元素的插入和删除操作.unshift();
+    在数组的头部添加一个或者多个元素,
+    并将已存在的元素移动到更高索引的位置来获得足够的空间,
+    最后返回数组新的长度,shift();删除数组的第一个元素并将其返回,然后把所有
+    随后的元素下移一个位置来填补数组头部的空缺.*/
+    var stack = {};
+    stack.data = [];
+    stack.push = function(item){
+        return stack.data.push(item);
+    }
+    stack.shift = function(item){
+        return stack.data.shift(item);
+    }
+    stack.push('第一个push的元素');
+    stack.push('第二个push的元素');
+    stack.push('第三个push的元素');
+    alert('此时数组为:'+stack.data);
+
+    alert('shift第一个删除的元素为'+stack.shift());
+    alert('shift第二个删除的元素为'+stack.shift());
+    alert('shift第三个删除的元素为'+stack.shift());
+	</script>
+</body>
+</html>

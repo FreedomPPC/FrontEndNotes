@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title></title>
+		<style type="text/css"></style>
+	</head>
+	<body>
+		<!--script type="text/javascript" src="../utility.js"></script>
+		<script type="text/javascript" src="js/script.js"></script-->
+		<script type="text/javascript">
+			function createPerson(name, age, job) {
+				var o = new Object();
+				// o.name = name;
+				// o.age = age;
+				// o.job = job;
+				var n = 9;
+				o.sayName = function () {
+					if (n>0) {
+
+					 alert(name)
+					 n--;
+					} else {
+						alert('n===0');
+					}
+				}
+				return o;
+			}
+			
+			var xiaoming = createPerson('xiaoming', 33, 'actor');
+			var cuihua = createPerson('cuihua', 18, 'waitress');
+
+			xiaoming.sayName();
+			cuihua.sayName();
+			//xiaoming的类型是什么？
+			//如果此时，还有一个学生的工厂函数，创建的对象，又是什么类型
+			//===>构造函数
+		</script>	
+	</body>
+</html>

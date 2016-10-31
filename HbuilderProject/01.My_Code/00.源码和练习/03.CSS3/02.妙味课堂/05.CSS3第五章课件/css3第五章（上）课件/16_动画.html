@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+@-webkit-keyframes move
+{
+	0%{
+		width:100px;
+	}
+	100%
+	{
+		width:500px;
+	}	
+}
+@-moz-keyframes move
+{
+	0%{
+		width:100px;
+	}
+	100%
+	{
+		width:500px;
+	}	
+}
+@keyframes move
+{
+	0%{
+		width:100px;
+	}
+	100%
+	{
+		width:500px;
+	}	
+}
+.box{height:100px;background:red;}
+.move{ -webkit-animation:2s move;-moz-animation:2s move;animation:2s move;width:500px;}
+</style>
+</head>
+<body>
+<div class="box move" id="box"></div>
+<!--<script>
+document.getElementById("box").onclick=function()
+{
+	this.className="box move";
+	addEnd(this,fn);
+};
+function fn()
+{
+	alert("end");
+}
+function addEnd(obj,fn)
+{
+	obj.addEventListener('webkitAnimationEnd',fn, false);
+	obj.addEventListener('animationend',fn, false);
+}
+</script>-->
+</body>
+</html>

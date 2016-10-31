@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'/>
+        <title></title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            #container {
+                position: relative;
+                border-left: 5px solid deeppink;
+                border-right: 5px solid deeppink;
+                width: 700px;
+                height: 300px;
+                z-index: 1000;
+                overflow: hidden;
+            }
+
+            #img-list {
+                top: 0;
+                position: absolute;
+                list-style: none;
+                font-size: 0;
+
+            }
+
+            #img-list img {
+                /*display: block;*/
+                width: 700px;
+                height: 300px;
+            }
+
+            ul#buttons {
+                position: absolute;
+                left: 710px;
+                top: 0;
+                font-size: 0;
+            }
+
+            #buttons img {
+                width: 200px;
+                height: 100px;
+                display: inline-block;
+                opacity: 0.3;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <ul id="img-list">
+                <li><img src="imgs/1.jpg"></li>
+                <li><img src="imgs/2.jpg"></li>
+                <li><img src="imgs/3.jpg"></li>
+                <li><img src="imgs/1.jpg"></li>
+            </ul>
+
+        </div>
+        <ul id="buttons">
+            <li><img src="imgs/1.jpg"></li>
+            <li><img src="imgs/2.jpg"></li>
+            <li><img src="imgs/3.jpg"></li>
+        </ul>
+        <a href="javascript:;" id="pre">前一页</a>
+        <a href="javascript:;" id="next">后一页</a>
+        <script src="../utility.js"></script>
+        <script type="text/javascript">
+
+            //取得li的高度
+            var lis = document.getElementById('container').getElementsByTagName('li');
+            var scrollHeight = lis[0].offsetHeight;
+
+            var currentIndex = 0;
+            var timerId;
+            var imgList = document.getElementById('img-list');
+            var isMoving = false;
+            function moveNext() {
+                currentIndex++;
+
+                //计算需要图片列表滚动到的位置
+                var position = -(currentIndex * scrollHeight);
+
+//                imgList.style.top = position + 'px';
+                isMoving = true;
+                utilities.movement.move(imgList, 'top', position, function () {
+                    isMoving = false;
+                    if (currentIndex === lis.length - 1) {
+                        imgList.style.top = 0;
+                        currentIndex = 0;
+                    }
+                    timerId = setTimeout(moveNext, 2000);
+                });
+
+            }
+
+            function bindImgBtn() {
+                var btnBoard = document.getElementById('buttons');
+                var btns = btnBoard.getElementsByTagName('li');
+                var len = btns.length;
+                for (var i = 0; i < len; i++) {
+                    btns[i].index = i;
+                    btns[i].onclick = function () {
+                        clearTimeout(timerId);
+                        currentIndex = this.index - 1;
+                        moveNext();
+                    }
+                }
+//                alert()
+            }
+            function bindPageBtn() {
+                var preBtn = document.getElementById('pre');
+                preBtn.onclick = function () {
+                    if (isMoving) {
+                        return;
+                    }
+                    clearTimeout(timerId);
+                    if (currentIndex === 0) {
+                        currentIndex = lis.length - 3;
+                    } else {
+                        currentIndex -= 2;
+                    }
+                    moveNext();
+                }
+
+
+                var nextBtn = document.getElementById('next');
+                nextBtn.onclick = function () {
+                    if (isMoving) {
+                        return;
+                    }
+                    clearTimeout(timerId);
+                    moveNext();
+                }
+            }
+
+            bindImgBtn();
+
+            bindPageBtn();
+
+
+            timerId = setTimeout(moveNext, 2000);
+        </script>
+    </body>
+</html>

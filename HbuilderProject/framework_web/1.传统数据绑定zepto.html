@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<style type="text/css">
+			.box{
+				width:400px;
+				height:400px;
+				background: silver;
+				margin:40px auto;
+			}
+		</style>
+		<title></title>
+		
+		<script src="lib/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				var _http="http://127.0.0.1:8020/HbuilderProject/my%20web/98.rest-api/service/liyunhao.json"
+				$.ajax({
+					type:"get",
+					url:_http,
+					async:true,
+					success:function(data){
+//						console.log(data);
+						//第一种方式:
+//						var _name=data.name;
+//						var _age=data.age;
+//						var _gender=data.gender;
+//						var _mobile=data.mobile;
+//						
+//						$("#name").html("姓名:"+_name);
+//						$("#age").html("年龄:"+_age);
+//						$("#gender").html("性别:"+_gender);
+//						$("#mobile").html("电话:"+_mobile);
+						
+						//第二种for in方式;
+//						for(var key in data){
+//							$("#"+key).html(data[key]);
+//						}
+						//第三种方式修改id变为data属性;
+//						for(var key in data){
+//							
+//							$("span[data="+key+"]").html(data[key]);
+//						}
+
+						//第四种方式:
+						var config={name:"name",age:"age",gender:"gender",mobile:"mobile"};
+						var _nodes =$('[data]');
+						console.log(_nodes);
+						for(var i=0;i<_nodes.length;i++){
+							for(var key in config){
+								if(_nodes[i].getAttribute("data") == key){
+									_nodes[i].innerHTML = data[config[key]];
+								}
+							}
+						}
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div class="box">
+			<div><span data="name"></span></div>
+			<div><span data="age"></span></div>
+			<div><span data="gender"></span></div>
+			<div><span data="mobile"></span></div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*在JS当中函数声明不可以写在运算符的运算过程当中,比如if的括号当中,for循环的括号当中
+			 因为写进去之后,函数的名字就找不到了,因为必须写在全局或者局部才能找到;
+			 * */
+			var x=1;
+			if(function f(){}){//if括号中返回假的有false,空对象(null);空字符串,零;其他都返回真
+				x+= typeof f;
+			}
+			alert(x);//这种写法是不被允许的;但是还是会执行if判断,typeof f是undefined;是个字符串;
+			//进行字符串拼接后1+'undefined' = '1undefined';
+		</script>
+	</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style id="css">
+body,ul,ol{margin:0;padding:0;}
+li{ list-style:none;}
+.wrap{width:800px;margin:100px auto 0;}
+#picList{width:800px;height:360px; -webkit-perspective:800px; } 
+#picList li{width:25px;height:360px; position:relative; -webkit-transform-style:preserve-3d; -webkit-transform-origin:center center -180px;float:left;}
+#picList a{width:100%;height:100%; position:absolute;left:0;top:0;}
+#picList li a:nth-of-type(1){ background:url(3d幻灯片/1.jpg) no-repeat; }
+#picList li a:nth-of-type(2){ background:url(3d幻灯片/2.jpg) no-repeat; top:-360px; -webkit-transform-origin:bottom; -webkit-transform:rotateX(90deg)}
+#picList li a:nth-of-type(3){ background:url(3d幻灯片/3.jpg) no-repeat; -webkit-transform:translateZ(-360px) rotateX(180deg);}
+#picList li a:nth-of-type(4){ background:url(3d幻灯片/4.jpg) no-repeat; -webkit-transform-origin:top; -webkit-transform:rotateX(-90deg); top:360px;}
+#picList li span{ position:absolute;width:360px;height:360px;background:#333;}
+#picList li span:nth-of-type(1){ -webkit-transform-origin:left; -webkit-transform:rotateY(90deg);left:0;}
+#picList li span:nth-of-type(2){ -webkit-transform-origin:right; -webkit-transform:rotateY(-90deg);right:0;}
+
+#btns{float:right; padding:10px 0;}
+#btns li{width:40px;height:40px;background:#000;color:#fff; border-radius:50%; font:italic 30px/40px Arial;float:left;margin:0 5px; text-align:center; cursor:pointer;}
+#btns .active{ background:#f60;}
+</style>
+<script>
+window.onload=function()
+{
+	var oPicList=document.getElementById("picList");
+	var oCss=document.getElementById("css");
+	var aBtns=document.getElementById("btns").getElementsByTagName("li");
+	var aLi=null;
+	var sLi="";
+	var sCss="";
+	var iLiw=25;
+	var iZindex=0;
+	var iNow=0;
+	var iLength=oPicList.clientWidth/iLiw;
+	for(var i=0;i<iLength;i++)
+	{
+		i>iLength/2?iZindex--:iZindex++;
+		sLi+='<li><a href="#"></a><a href="#"></a><a href="#"></a><a href="#"></a><span></span><span></span></li>';
+		sCss+="#picList li:nth-of-type("+(i+1)+") a{ background-position:-"+i*iLiw+"px 0;}";
+		sCss+="#picList li:nth-of-type("+(i+1)+"){z-index:"+iZindex+"}";
+		
+	}
+	oPicList.innerHTML=sLi;
+	oCss.innerHTML+=sCss;
+	aLi=oPicList.children;
+	for(var i=0;i<aBtns.length;i++)
+	{
+		(function(a){
+			aBtns[a].onclick=function()
+			{
+				for(var i=0;i<aLi.length;i++)
+				{
+					aLi[i].style.transition="0.5s "+i*50+"ms";
+					aLi[i].style.WebkitTransform="rotateX(-"+a*90+"deg)";
+				}	
+				this.className="active";
+				aBtns[iNow].className="";
+				iNow=a;
+			};	
+		})(i)
+	}
+};
+</script>
+</head>
+<body>
+<div class="wrap">
+	<ul id="picList">
+    	
+    </ul>
+    <ol id="btns">
+    	<li class="active">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ol>
+</div>
+</body>
+</html>

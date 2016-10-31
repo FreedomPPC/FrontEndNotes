@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title></title>
+		<style type="text/css">
+			#info-board{
+				background: pink;
+				position: fixed;
+				top: 100px;
+				left: 100px;
+				width: 100px;
+				height: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function setCookie (name, value, days) {
+				var nameStr = window.encodeURIComponent(name);
+				var valueStr = window.encodeURIComponent(value);
+				var cookieStr = nameStr + '=' + valueStr;
+
+				if (days !== undefined) {
+					var date = new Date();
+					date.setDate(date.getDate() + days);
+					cookieStr += (';expires=' + date);
+				}
+
+				console.log(cookieStr);
+
+				document.cookie = cookieStr;
+			}
+
+			function getCookie (name) {
+				var allCookies = window.decodeURIComponent(document.cookie);
+				var cookieArray = allCookies.split('; ');
+				// alert(cookieArray);
+				var key_value;
+				// var cookieName, cookieValue;
+				for (var i=0; i<cookieArray.length; i++) {
+					key_value = cookieArray[i].split('=');
+					// alert(key_value);
+					if (key_value[0] === name) {
+						return key_value[1];
+					}
+				}
+
+				return '';
+			}
+
+			function removeCookie (name) {
+				setCookie(name, '', -1);
+			}
+
+			setCookie('user', 'hahah', 7);
+			// alert(document.cookie);
+			alert(getCookie('password'));
+		</script>
+	</body>
+</html>

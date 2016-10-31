@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oInput = document.getElementsByTagName('input');
+			var oText = document.getElementsByTagName('textarea')[0];
+			//2.当页面重新打开的时候,通过设置好的关键字(key值)获取本地的存储数据;
+			if(window.localStorage.getItem('name')){
+				oInput[0].value = window.localStorage.getItem('name');
+			}
+			if(window.localStorage.getItem('gender')){
+				for(var i=1;i<oInput.length;i++){
+					if(oInput[i].value == window.localStorage.getItem('gender')){
+						oInput[i].checked = true;
+					}
+				}
+			}
+			if(window.localStorage.getItem('myText')){
+				oText.value = window.localStorage.getItem('myText');
+			}
+			//1.当浏览器关闭的时候,保存数据.
+			window.onunload = function (){
+				if(oInput[0].value){
+					window.localStorage.setItem('name',oInput[0].value);
+				}
+				for(var i=1;i<oInput.length;i++){
+					if(oInput[i].checked == true){
+						window.localStorage.setItem('gender',oInput[i].value);
+					}
+				}
+				if(oText.value){
+					window.localStorage.setItem('myText',oText.value);
+				}
+			}
+			
+		}
+	</script>
+	<body>
+		<form>
+			<p>用户名:<input type="text" placeholder="请填写用户名" /></p>
+			<p>性别: <input type="radio" name="gender"/>男<input type="radio" name="gender"/>女 </p>
+			<textarea rows="20" cols="40"></textarea>
+		</form>
+		
+	</body>
+</html>

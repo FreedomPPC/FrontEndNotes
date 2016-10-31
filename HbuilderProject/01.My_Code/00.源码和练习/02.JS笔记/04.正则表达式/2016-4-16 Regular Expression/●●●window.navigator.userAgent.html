@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>window.navigator.userAgent</title>
+</head>
+<body>
+	<script>
+	//判断浏览器版本.
+		if(window.navigator.userAgent.search(/firefox/i) != -1)
+		{
+			alert('火狐');
+		}
+		else if(window.navigator.userAgent.search(/chrome/i) != -1)
+		{
+			alert('谷歌chrome');
+		}
+		else if(window.navigator.userAgent.search(/msie/i) != -1)
+		{
+			alert('微软IE');
+		}
+	</script>
+	
+</body>
+</html>

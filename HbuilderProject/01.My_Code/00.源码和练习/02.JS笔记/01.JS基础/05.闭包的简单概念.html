@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>闭包的简单概念</title>
+</head>
+<body>
+	<script>
+	//闭包:大函数中套了很多个小函数;
+		function aaa(){			//父函数;
+			var a = 12;
+			function bbb(){		//子函数;
+				alert(a);		//子函数可以使用父函数的局部变量;
+			}
+			bbb();
+		}
+		aaa();
+	</script>
+</body>
+</html>

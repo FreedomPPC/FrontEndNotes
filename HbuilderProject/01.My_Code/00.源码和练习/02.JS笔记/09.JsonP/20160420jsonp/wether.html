@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title></title>
+		<style type="text/css">
+			td {
+				width: 100px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<!--用本地的js文件，来模拟JSONP-->
+		<table border=1>
+			<thead>
+				<tr>
+					<td>日期</td>
+					<td>星期</td>
+					<td>城市</td>
+					<td>气温</td>
+					<td>ICON</td>
+					<td>天气</td>
+				</tr>
+			</thead>
+			<tbody>
+
+			</tbody>
+		</table>
+		<script type="text/javascript">
+			function processData (data) {
+				// alert(JSON.stringify(str));
+				if (data.success === '1') {
+					var weatherArr = data.result;
+					var len = weatherArr.length;
+					for (var i=0; i<len; i++) {
+						createTR(weatherArr[i]);
+					}
+				} else {
+					alert('服务器出错，请稍后尝试！！');
+				}
+			}
+
+			function createTR(oneDayWeather) {
+				var tr = document.createElement('tr');
+				
+				createTD(tr, oneDayWeather.days);
+				createTD(tr, oneDayWeather.week);
+				createTD(tr, oneDayWeather.citynm);
+				createTD(tr, oneDayWeather.temperature);
+				var iconContent = '<img src=' + oneDayWeather.weather_icon + ' />';
+				createTD(tr, iconContent);
+				createTD(tr, oneDayWeather.weather);
+
+				var tbody = document.getElementsByTagName('tbody')[0];
+				tbody.appendChild(tr);
+			}
+
+			function createTD (tr, content) {
+				var td = document.createElement('td');
+				td.innerHTML = content;
+				tr.appendChild(td);
+			}
+			function loadWetherData(city) {
+				//通过新建一个script标签，加载一个script文件
+				var script = document.createElement('script');
+				//文件加载完成后，浏览器就会自动的解析，并执行这个文件中的代码。
+				script.src = 'http://api.k780.com:88/?app=weather.future&weaid='+city+'&&appkey=10003&sign=b59bc3ef6191eb9f747dd4e83c99f2a4&format=json&jsoncallback=processData';
+
+				document.body.appendChild(script);
+				//如果执行的这段代码中，调用的是我们在全局作用域定义好的函数，
+
+				//那么，我们请求的数据，就可以通过这个函数的参数，传递进来。
+			}
+
+			window.onload = function () {
+
+				loadWetherData('大连');
+
+			}
+		</script>
+	</body>
+</html>

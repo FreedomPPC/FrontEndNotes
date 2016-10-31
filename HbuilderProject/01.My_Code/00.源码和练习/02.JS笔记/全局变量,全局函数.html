@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//全局变量是window下的一个属性,全局函数也一样,是window下的函数.
+		var a =12;
+		// alert(a);
+		// alert(window.a);
+
+		function show ( ) {
+			// alert(this);
+		}
+		// show();
+		//window.show();
+		//调用show()之后,弹出的是[object window];
+
+		//相当于
+		window.show=function () {
+			alert(this);
+		}
+		show();
+		//this就指向了window;
+	</script>
+</body>
+</html>

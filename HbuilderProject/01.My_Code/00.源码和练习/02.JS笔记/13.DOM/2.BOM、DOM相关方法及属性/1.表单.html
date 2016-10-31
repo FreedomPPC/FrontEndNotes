@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script>
+window.onload = function() {
+	
+	var oForm = document.getElementById('form1');
+	//var oText = document.getElementById('text1');
+	
+	//获取表单中一个元素  表单.元素name
+	
+	document.onclick = function() {
+		//alert(oText.value);
+		
+		alert( oForm.username.value );
+		
+	}
+	
+}
+</script>
+</head>
+
+<body>
+	<form id="form1">
+    	<input type="text" id="text1" name="username" value="" />
+    </form>
+</body>
+</html>

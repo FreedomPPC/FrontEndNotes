@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'/>
+        <title></title>
+        <style type="text/css">
+            .movable {
+                width: 150px;
+            }
+
+            div {
+                width: 100px;
+                height: 100px;
+                position: absolute;
+                top: 150px;
+                left: 0;
+                background: red;
+                border: 1px solid green;
+            }
+
+            .movable {
+                width: 1000px;
+            }
+
+            button {
+                height: 100px;
+            }
+
+            #div2 {
+                top: 300px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <button>走你</button>
+        <div id="div2"></div>
+        <div class="movable"></div>
+        <script type="text/javascript">
+            var goBtn = document.getElementsByTagName('button')[0];
+            var movableDiv = document.getElementsByClassName('movable')[0];
+            var div2 = document.getElementById('div2');
+
+            goBtn.onclick = function () {
+                var currentLeft, currentWidth, currentHeight;
+                var id = setInterval(function () {
+                    currentWidth = parseInt(getStyle(movableDiv,'width'));
+                    if (currentWidth <=100) {
+                        clearInterval(id);
+                        return;
+                    }
+                    movableDiv.style.width = currentWidth - 2 + 'px';
+                }, 30);
+
+                var moveId = setInterval(function () {
+                    currentLeft = parseInt(getStyle(div2, 'left'));
+                    if (currentLeft >= 500) {
+                        clearInterval(moveId);
+                        return;
+                    }
+                    div2.style.left = currentLeft + 3 + 'px';
+                }, 30);
+
+                var heightId = setInterval(function () {
+                    currentHeight = parseInt(getStyle(div2, 'height'));
+                    if (currentHeight >= 700) {
+                        clearInterval(heightId);
+                        return;
+                    }
+                    div2.style.height = currentHeight + 3 + 'px';
+                }, 30);
+            }
+
+            function getStyle(el, prop) {
+                if (el.currentStyle) {
+                    return el.currentStyle[prop];
+                } else {
+                    return window.getComputedStyle(el)[prop];
+                }
+
+            }
+
+        </script>
+    </body>
+</html>

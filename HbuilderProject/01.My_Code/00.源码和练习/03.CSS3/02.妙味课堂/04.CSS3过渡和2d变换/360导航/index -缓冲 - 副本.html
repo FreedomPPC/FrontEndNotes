@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+body{ background:#f9f9f9;}
+#menu{width:50px;height:50px; position:fixed;right:20px; bottom:20px; }
+#menu_list{height:42px;width:42px; position:relative;margin:4px;}
+#menu_list img{ border-radius:21px; position:absolute;left:0;top:0; -webkit-transition:0.5s all ease;}
+#home{width:50px;height:50px;background:url(home.png) no-repeat; border-radius:25px; position:absolute; left:0;top:0;}
+</style>
+<script>
+window.onload=function()
+{
+	var oBtn=document.getElementById("home");
+	var aMenus=document.getElementById("menu_list").getElementsByTagName("img");
+	oBtn.off=true;
+	setCss(oBtn,{$Transition:"0.5s ease all"})
+	for(var i=0;i<aMenus.length;i++)
+	{
+		aMenus[i].deg=90/(aMenus.length-1)*i;
+		aMenus[i].onclick=function()
+		{
+			setCss(this,{$Transition:"0.5s all ease",$Transform:"rotate(-360deg) scale(2)",opacity:0.3});	
+			this.addEventListener('webkitTransitionEnd',function(){end(this)},false);
+			this.addEventListener('transitionend',function(){end(this)},false);
+			
+		};	
+	}
+	oBtn.onclick=function()
+	{
+		if(this.off)
+		{
+			setCss(this,{$Transform:"rotate(-360deg)"});
+		}
+		else
+		{
+			setCss(this,{$Transform:"rotate(0deg)"});
+		}
+		for(var i=0;i<aMenus.length;i++)
+		{
+			toMove(aMenus[i],i*100,this.off);
+		}
+		this.off=!this.off;
+	};
+};
+function setCss(obj,oAttr)
+{
+	var sName="";
+	var aName=["Webkit","Moz","O"];
+	for(sName in oAttr)
+	{
+		if(sName.charAt(0)==="$")
+		{
+			for(var i=0;i<aName.length;i++)
+			{
+				obj.style[aName[i]+sName.substring(1)]=oAttr[sName];
+			}
+		}
+		else
+		{
+			obj.style[sName]=oAttr[sName];
+		}
+	}
+}
+function end(obj)
+{
+	setCss(obj,{$Transition:"none",$Transform:"rotate(-360deg)",opacity:1});
+}
+function toMove(obj,delay,bType)
+{
+	if(bType)
+	{
+		var oXY=getXY(obj.deg,150);
+		setCss(obj,{$Transition:"0.5s "+delay+"ms all ease",$Transform:"rotate(-360deg)",left:-Math.round(oXY.x)+"px",top:-Math.round(oXY.y)+"px"});
+	}
+	else
+	{
+		setCss(obj,{$Transition:"0.5s all ease",$Transform:"rotate(0deg)",left:"0px",top:"0px"});
+	}
+}
+function getXY(iDeg,iRadius)
+{
+	if(iDeg==0)
+	{
+		return {x:0,y:iRadius};
+	}
+	else if(iDeg==90)
+	{
+		return {x:iRadius,y:0};
+	}
+	return {x:Math.sin(iDeg*Math.PI/180)*iRadius,y:Math.cos(iDeg*Math.PI/180)*iRadius};
+}
+</script>
+</head>
+<body>
+<div id="menu">
+	<div id="menu_list">
+    	<img src="prev.png" alt=""/>
+        <img src="open.png" alt="" />
+        <img src="clos.png" alt="" />
+        <img src="full.png" alt="" />
+        <img src="refresh.png" alt="" />
+    </div>
+	<div id="home"></div>
+</div>
+</body>
+</html>

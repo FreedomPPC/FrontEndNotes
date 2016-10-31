@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title></title>
+    <style type="text/css">
+    	*{
+    		padding:0;
+    		margin: 0;
+    	}
+    	.header{
+    		width:400px;
+    		height:400px;
+    		background: #ccc;
+    	}
+    	.add{
+    		width: 50px;
+    		height:50px;
+    		border-radius: 50%;
+    		background: linear-gradient(red,blue);
+    	}
+    	img{
+    		width:100px;
+    		height:100px;
+    	}
+    </style>
+    <script type="text/javascript">
+    	
+   		document.addEventListener('plusready', function(){
+   			//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
+   			
+   		});
+   		//打开相册api;
+   		//选择单个相册图片;
+// 		function pickImg(){
+// 			var _ga = plus.gallery; //获取相册管理对象;
+// 			_ga.pick(
+// 				function(path){
+// 					alert("get img src"+path);
+// 					var _path = plus.io.convertLocalFileSystemURL(path);
+// 					
+// 					var img = document.createElement("img");
+// 					img.src = _path;
+// 					document.getElementById("img").appendChild(img);
+// 				}
+// 			)
+// 			
+// 		}
+   		
+   		function pickImg(){
+   			var _ga = plus.gallery; //获取相册管理对象;
+   			_ga.pick(
+   				function(path){
+   					//{file:[path1,path2]};
+   					//alert("get img src"+JSON.stringify(path));
+   					var _io = plus.io;
+   					
+   					for(var key in path.files){
+   						//alert(path.files[key]);
+   						var img = document.createElement("img");
+   						var _path = path.files[key];//得到每个图片路径;
+   						img.src=_io.convertLocalFileSystemURL(_path);//每个图片路径转换成全路径;
+   						document.getElementById("img").appendChild(img);
+   						
+   						var aImg = document.getElementsByTagName('img');
+   						for(var i=0;i<aImg.length;i++){
+   							aImg[i].onclick = function(){
+   								
+   								this.parentNode.removeChild(this);
+   							}
+   						}
+   					}
+// 					
+   				},
+   				function(){},
+   				{multiple:true}
+   			)
+   			
+   		}
+   		
+    </script>
+</head>
+<body>
+	<div class="header">
+		<div onclick="pickImg()" class="add"></div>
+	</div>
+	<div id="img" class="img">
+		
+	</div>
+</body>
+</html>

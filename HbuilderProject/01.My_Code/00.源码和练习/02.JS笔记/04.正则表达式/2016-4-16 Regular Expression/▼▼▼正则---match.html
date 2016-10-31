@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>正则---match</title>
+</head>
+<body>
+	<script type="text/javascript">
+	//match,用来匹配符合正则要求的
+	var str = 'sdf e443 fedef 55 4534353 66gg dff 99';
+	var re = /\d/;
+	var re1 = /\d/g;
+	var re2 = /\d\d/g;
+	var re3 = /\d+/g;
+	console.log('/\d/:'+str.match(re));
+	console.log('/\d/g:'+str.match(re1));
+	console.log('/\d\d/g:'+str.match(re2));
+	console.log('/\d+/g:'+str.match(re3));
+	//只有一个\d 的时候,只会显示第一个出现的数字;
+	//加上g之后就会显示全部的数字,但是只能单个单个的显示.
+	//  /\d\d/g,只能显示两位数,多位数字就显示不出来了.
+	// /\d+/g;这样就会显示全部的正确的数字了;
+
+	</script>
+</body>
+</html>

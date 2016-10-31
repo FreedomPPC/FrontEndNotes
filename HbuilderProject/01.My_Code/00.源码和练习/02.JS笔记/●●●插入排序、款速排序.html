@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>插入排序</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// 有一个从小到大排好序的数组[3, 5, 33, 88, 111]。现输入一个数，
+		// 要求按原来的规律将它插入数组中。
+		var numbers = [3, 5, 33, 88, 111];
+		//在某些库中，函数的命名会有2或者4，
+		//2 代表 to, 4 代表 for
+
+		var number = 900;
+
+		function insertNum2Array (num, array) {
+
+			for (var i=0; i<array.length; i++) {
+				if (num < array[i]) {
+					array.splice(i, 0, num);
+					break;
+				}
+			}
+
+			if (i === array.length) {
+				array.push(num);
+			}
+		}
+
+		insertNum2Array(number, numbers);
+
+		//插入排序
+		var array = [5,30,1,-2,100];
+		var sortedArray = [];
+
+		for(var i=0; i<array.length; i++) {
+			insertNum2Array(array[i], sortedArray);
+		}
+
+		// alert(sortedArray);
+
+
+		//快速排序
+
+		function quickSort(array, start ,end) {
+			if (start >= end) {
+				return;
+			}
+
+			var index = partition(array, start, end);
+			quickSort(array, start ,index-1);
+			quickSort(array, index+1, end);
+		}
+
+		function partition(array, start, end) {
+			var pivot = array[start];
+			var i = start;
+			var j = end;
+
+			while(i!==j) {
+				for (; j>i; j--) {
+					if (array[j] < pivot) {
+						array[i] = array[j];
+						i++;
+						break;
+					}
+				}
+
+				for (; i<j; i++) {
+					if (array[i] > pivot) {
+						array[j] = array[i]
+						j--;
+						break;
+					}
+				}
+
+			}
+
+			array[i] = pivot;
+			return i;
+		}
+
+		quickSort(numbers, 0, numbers.length-1);
+	</script>
+</body>
+</html>

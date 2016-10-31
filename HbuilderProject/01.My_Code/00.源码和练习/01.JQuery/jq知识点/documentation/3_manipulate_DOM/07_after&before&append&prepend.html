@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Attribute & Property</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            #innerBlock, #inner {
+                width: 100px;
+                height: 100px;
+                margin: 20px;
+                padding: 30px;
+                border: 10px solid pink;
+                background: darksalmon;
+                /*float: left;*/
+            }
+
+            #outerBlock {
+                /*position: relative;*/
+                width: 500px;
+                height: 500px;
+                background: black;
+                /*margin: 100px;*/
+                overflow: hidden;
+            }
+
+            .beforeA {
+                width: 100px;
+                height: 30px;
+                background: #000;
+                border: green solid 1px;
+                color: yellow;
+            }
+        </style>
+    </head>
+    <body>
+        <ul>
+            <li><a>1</a></li>
+            <li><a>2</a></li>
+            <li><a>3</a></li>
+            <li><a>4</a></li>
+            <li><a>5</a></li>
+        </ul>
+        <!--<div id="outerBlock">-->
+        <!--<div id="innerBlock">innerBlock</div>-->
+        <!--</div>-->
+        <!--<div id="inner"></div>-->
+        <div class="beforeA"></div>
+        <div class="beforeA"></div>
+        <div class="beforeA"></div>
+        <div class="beforeA"></div>
+        <div class="beforeA"></div>
+        <div class="beforeA"></div>
+        <script src="../vendor/jquery-1.12.1.js"></script>
+        <script>
+            /************************************/
+            /***********after********************/
+            /************************************/
+            //在inner的元素后面，追加了一个新生成的元素。
+            //            $('#inner').after('<div><h1>test</h1></div>');
+
+            //在inner的元素后边，追加innerBlock的div
+            //            $('#inner').after($('#innerBlock'));
+
+
+            //            var $links = $('a');
+            //将上面的div后面，放入对应顺序的li里面的a标签
+            //            $('div').after(function (index) {
+            //                // 因为在执行外after之后，li中的第一个a标签，被移到了第一个div的后面
+            //                // 于是$('li a')这个数组发生了变化，我们每次都取li下面的第一个a标签。
+            ////                return $('li a')[0];
+            //                return links[index];
+            //            });
+
+
+            //原生的getElementsByTagName取得的结果，与页面上的元素，是关联的。
+            //如果页面上的元素，在getElementsByTagName调用结束之后，有所改变，
+            //getElementsByTagName之前调用时返回的结果（HTMLCollection）,也会实时的发生变化
+            var links = document.getElementsByTagName('a');
+            alert('links.length=' + links.length);
+
+            //把HTMLCollection中的所有元素，push到我们自己创建的一个空数组中，
+            //这样，就将元素和页面的结构之间的联系给砍断了。
+            //所以，页面的结构再变化，我们的自己的这个数组是不会变的。
+
+            //var linksArray = Array.prototype.slice.apply(links);
+
+            var linksArr = [];
+            for (var i = 0; i < links.length; i++) {
+                linksArr.push(links[i]);
+            }
+
+
+            alert('linksArr.length=' + linksArr.length);
+
+            $('ul').append('<li><a>6</a></li>');
+
+            alert('links.length=' + links.length);
+            alert('linksArr.length=' + linksArr.length);
+
+            //before、append、prepend等其他的与after类似。
+            //insertBefore、appendTo、prependTo与insertAfter类似。
+
+
+        </script>
+    </body>
+</html>

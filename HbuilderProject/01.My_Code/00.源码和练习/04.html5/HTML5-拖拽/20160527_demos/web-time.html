@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="./index.css" type="text/css">
+</head>
+<body>
+	<div class="time"></div>
+</body>
+<script>
+	var dom = document.querySelector(".time");
+	// setTimeout
+	// (function(duration){
+	// 	function dateFmt(t){
+	// 		return t<10?"0"+t:t;
+	// 	}
+	// 	var d = new Date(),
+	// 		h = dateFmt(d.getHours()),
+	// 		m = dateFmt(d.getMinutes()),
+	// 		s = dateFmt(d.getSeconds());
+	// 	dom.innerHTML = h+":"+m+":"+s;
+	// 	setTimeout(arguments.callee,duration||1000);
+
+	// }(1000))
+	// setInterval
+	// setInterval(function(duration){
+	// 	function dateFmt(t){
+	// 		return t<10?"0"+t:t;
+	// 	}
+	// 	var d = new Date(),
+	// 		h = dateFmt(d.getHours()),
+	// 		m = dateFmt(d.getMinutes()),
+	// 		s = dateFmt(d.getSeconds());
+	// 	dom.innerHTML = h+":"+m+":"+s;
+	// },1000);
+	// requestAnimationFrame
+	(function(){
+		function dateFmt(t){
+			return t<10?"0"+t:t;
+		}
+		var d = new Date(),
+			h = dateFmt(d.getHours()),
+			m = dateFmt(d.getMinutes()),
+			s = dateFmt(d.getSeconds());
+		dom.innerHTML = "当前时间 : "+h+" : "+m+" : "+s;
+		requestAnimationFrame(arguments.callee);
+
+	}(1000))
+</script>
+</html>

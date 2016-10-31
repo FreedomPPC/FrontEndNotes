@@ -1,0 +1,53 @@
+﻿<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title></title>
+    </head>
+    <body>
+
+        <script type="text/javascript">
+            // this是系统给函数自动创建的一个变量，
+            // 在函数定义的时候，没有办法决定他的指向，this的指向，是在函数调用的时候决定的。
+            // 通常的情况下，this指针，指向前面调用的这个函数的对象，
+            // 如果没有通过对象来调用函数，那么，this指向window
+
+            var name = 'global';
+            var object = {
+                name: 'object',
+                sayName: function (age, gender) {
+                    console.log(this.name + ' says: I am ' + gender + ' and I am ' + age);
+                }
+            }
+
+            var person = {
+                name: 'XiaoMing'
+            }
+
+            //            object.sayName();
+
+            //            var globalFunction = object.sayName;
+
+            //            globalFunction();
+
+            //            setTimeout(function () {
+            //                object.sayName();
+            //            }, 3000);
+
+            //            setTimeout(object.sayName, 3000);
+
+
+            /***=================================================================***/
+                //函数对象，有两个特殊的方法，这两个方法，可以实现改变函数内this指针的指向
+                //这两个方法，就是apply和call
+                //apply这个函数，第一个参数，就是this指针指向的对象，第二参数，是一个数组，这个数组中，装的是函数需要的参数。
+                //例如：
+            object.sayName(27, 'male');
+            object.sayName.apply(person, [40, 'unknown']);
+            //call这个函数，跟apply用法类似，只不过，参数不是通过数组的形式传递的，而是通过一个一个参数传递的。
+            object.sayName.call(window, 40, 'female doctor');
+
+
+        </script>
+    </body>
+</html>

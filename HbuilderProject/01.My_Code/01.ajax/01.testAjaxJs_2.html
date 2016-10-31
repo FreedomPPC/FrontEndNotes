@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="ajax.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function () {
+				var oBtn = document.querySelector('#btn');
+				oBtn.onclick = function (){
+					//1.封装的ajax函数,有四个参数,如果没有参数,就要传一个空字符串
+					ajax('get','2.get.php','username=leo&age=18',function(data){
+						//alert(data);这个data代表的是xhr.responseText;
+						
+						document.documentElement.innerHTML = data;
+					});
+				}
+			}
+		</script>
+	</head>
+	<body>
+		1.封装一个ajax函数,然后调用函数.
+		<button id="btn">Ajax</button>
+		<ul id="ul1"></ul>
+	</body>
+</html>

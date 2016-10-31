@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>React生命周期</title>
+		<script src="lib/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/react.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/react-dom.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/browser.min.js" type="text/javascript" charset="utf-8"></script>
+		
+	</head>
+	<body>
+		<script>
+			/*
+			 * 1.生命周期阶段; 组件生命周期mounted(初始化阶段),update(运行中),unmount(卸载);
+			 * 2.钩子函数的意义; 这些生命周期函数可以让我们很清楚的看到react从开始到结束是怎么样过程;
+			 * 3.初始化生命周期函数; 
+			 * 
+			 * getDefaultProps:设置组件内部属性(一般用于设定组件内部的一些常量);返回对象;
+			 * getInitialState:设置组件内部状态(),返回对象;
+			 * componentWillMount:组件即将加载的时候,获取ajax数据,并解析;
+			 * render:jsx 默认创建jsx---->dom;
+			 * componentDidMount:完成加载过程(挂载的状态);
+			 * 
+			 * 1.在页面中想获取渲染后得到的dom节点;
+			 * 2.和第三方插件使用;
+			 */
+		</script>
+		
+		<script type="text/babel">
+			var ReactComponent = React.createClass({
+				
+				getDefaultProps:function(){
+					console.log("1.getDefaultProps");
+					return{
+						//这里可以引入ajax;
+						url:"http://datainfo.duapp.com/shopdata/getBanner.php",
+					}
+				},
+				
+				getInitialState:function(){
+					console.log("2.getInitialState");
+					return{
+						
+					}
+				},
+				
+				componentWillMount:function(){
+					console.log("3.componentWillMount");
+				},
+				
+				render:function(){
+					console.log("4.render")
+					return(
+						<div id="div">
+							this is comp
+							<img src="" id="img"/>
+						</div>
+					);
+				},
+				
+				componentDidMount:function(){
+					console.log("5.componentDidMount");
+					//挂载jsx--->真是dom;
+					//1.操作真是dom;
+					document.getElementById('div').style.color="red";
+					//2.和第三方插件使用不冲突,这里在head里面引用的是zepto,
+					$.get(this.props.url,function(data){
+						//console.log(data);
+						var point = data.indexOf("(");
+						var _data = data.substring(point+1,data.length-1);
+						//console.log(_data);
+						console.log(typeof _data);
+						_data = JSON.parse(_data);
+						console.log(_data);
+						for(var i=0;i<_data.length;i++){
+							var _src = JSON.parse(_data[i].goodsBenUrl)[1];
+							
+							document.getElementById('img').src=_src;
+							
+						}
+						
+						
+					});
+					
+				}
+			});
+			ReactDOM.render(<ReactComponent/>,document.body)
+		</script>
+	</body>
+</html>

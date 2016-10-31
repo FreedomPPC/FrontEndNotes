@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 *1.cookie的过期时间;
+			 * 如果不设置expires;cookie在关闭浏览器之后消失;
+			 * 通过日期对象控制cookie的过期时间;
+			 * 前面一章讲到了oDate.setDate(oDate.getDate()+num);表示多少天以后;
+			 * 所以可以通过这个控制时间;
+			 * 注释了代码之后,关闭浏览器再重新打开;发现只会弹出user=blue;因为他加了过期时间;
+			 */
+		</script>
+		<script type="text/javascript">
+			var  oDate = new Date();
+			oDate.setDate(oDate.getDate()+7);
+//			document.cookie = "user=bule;expires="+oDate;//expires是内部状态不会被打印
+//			document.cookie = "pass=123";
+			
+			alert(document.cookie);
+		</script>
+	</body>
+</html>

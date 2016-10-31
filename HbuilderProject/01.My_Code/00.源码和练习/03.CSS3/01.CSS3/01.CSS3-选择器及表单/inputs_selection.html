@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+:enabled{
+    border:3px solid red;
+}
+
+:disabled{
+    border:3px solid green;
+}
+
+:checked{
+    
+}
+
+form::selection {
+    background:red;
+    color:green;
+}
+	</style>
+</head>
+<body>
+	<form action="">
+		<input type="checkbox">
+		<input type="radio"/>
+		<hr/>
+		<hr/>
+		<hr/>
+			地址：<input type="url"/> <br>
+		数字: <input type="number"  value="3" min=3   max=9  step=2 /><br/>
+		范围: <input type="range" min=0  max=20  value="1" step=10 /><br/>
+		颜色：<input type="color"/><br/>
+		搜索：<input type="search" name="search"  autofocus/> <br>
+		邮箱：<input type="email"/> <br>
+		日期：<input type="date"/> <br>
+		时间：<input type="time"/> <br>
+		照片：<input type="file" multiple/><br/>
+		本地化日期+时间：<input type="datetime-local"/> <br>
+		周：<input type="week"/> <br>
+		月：<input type="month"/> <br><br><br><br>
+		姓名：<input type="text" pattern="[a-z]+"
+         title="只能输入字母小写"
+		 placeholder="只能输入小写字母"/>
+		<input type="submit" value="GO!!!"/>
+	</form>
+	<script>
+  //验证  :checked
+  document.querySelector(":checked")
+	</script>
+</body>
+</html>

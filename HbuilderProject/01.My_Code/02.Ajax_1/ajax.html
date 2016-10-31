@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset = "utf-8" />
+		<title></title>
+	</head>
+	<body>
+        <input type = "button" id = "btn" value = "读取" />
+		<script>
+			 window.onload = function () {
+			 	var oBtn = document.getElementById("btn");
+			 	oBtn.onclick = function (){
+			 		var xhr = null 
+			 		if(window.XMLHttpRequest){
+			 			xhr = new XMLHttpRequest();
+			 		}else{
+			 			xhr = new ActiveXObject('Microsoft.XMLHTTP');
+			 		}
+
+			 		xhr.open('get','abc.txt?'+new Date().getTime(),true);
+			 		xhr.send(null);
+
+			 		xhr.onreadystatechange = function () {
+			 			if(xhr.readyState == 4){
+			 				if(xhr.status == 200 || xhr.status == 0){
+			 					alert('xhr.responseText:'+xhr.responseText);
+			 				}else{
+			 					alert('读取失败'+xhr.status);
+			 				}
+			 			}
+			 		}
+			 	}
+			 }
+		</script>
+	</body>
+</html>

@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>滚动导航栏</title>
+	<style>
+		li{
+			list-style:none;
+			width:150px;
+			height:30px;
+			background:rgb(212,217,217);
+			margin-top:8px;
+			border:1px solid yellow;
+			border-radius:3px;
+			position: relative;
+
+		}
+		span{
+			width:90px;
+			position:absolute;
+			right:45px;
+		}
+		a{
+			font:16px '微软雅黑';
+			text-decoration: none;
+			line-height: 30px;
+			color:white;
+			
+		}
+			
+
+	</style>
+
+	<script type="text/javascript">
+		window.onload = function(){
+			var aDiv = document.getElementsByTagName('li');
+			
+			var len = aDiv.length;
+			for(var i=0;i<len;i++){
+				// 类似 aDiv[i].index = i;
+				aDiv[i].timer = null;
+
+					aDiv[i].onmouseover = function()
+					{
+						//alert('a');
+						startMove(this,230);
+						 
+					}
+
+					aDiv[i].onmouseout = function () 
+					{
+						// alert('b');
+						startMove(this,150);
+					}
+				}
+
+
+			}
+	
+		//创建运动函数
+		//多个物体同时运动,要传对象参数,每个对象都有一个定时器.obj[i].timer;
+		
+		function startMove(obj,iTarget){
+			
+			clearInterval(obj.timer);
+			obj.timer = setInterval(function(){
+
+				var iSpeed = (iTarget - obj.offsetWidth)/4;
+				iSpeed = iSpeed>0?Math.ceil(iSpeed):Math.floor(iSpeed);
+
+				if(obj.offsetWidth == iTarget)
+				{
+					clearInterval(obj.timer);
+					obj.style.width = iTarget + 'px';
+				}
+				else
+				{
+					obj.style.width = obj.offsetWidth + iSpeed + 'px';
+				}
+			},30);
+
+		}
+			
+			
+			
+	</script>
+</head>
+<body>
+	<ul>
+		
+		<li id="li1"><span><a href="javascript:;">首页 </a></span></li>
+		<li><span><a href="javascript:;">千锋精品课程</a></span></li>
+		<li><span><a href="javascript:;">CSS相关知识</a></span></li>
+		<li><span><a href="javascript:;">关于我们</a></span></li>
+		<li><span><a href="javascript:;">联系我们</a></span></li>
+	</ul>
+	
+</body>
+</html>

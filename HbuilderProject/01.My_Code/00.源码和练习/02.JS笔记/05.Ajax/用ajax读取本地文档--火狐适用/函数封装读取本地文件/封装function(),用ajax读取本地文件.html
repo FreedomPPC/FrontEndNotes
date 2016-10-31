@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>封装function(),用ajax读取本地文件</title>
+	<script type="text/javascript" src='封装function(),用ajax读取本地文件.js'></script>
+	<script type="text/javascript">
+		ajax('abc.txt',function(str){
+			
+			document.body.innerHTML = str;
+		},function(){
+			alert('失败了!');
+		})
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

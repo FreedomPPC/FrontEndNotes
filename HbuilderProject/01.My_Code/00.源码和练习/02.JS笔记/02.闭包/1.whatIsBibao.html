@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 * 1.什么是闭包;
+			 * 特点:
+			 *    1.函数嵌套函数;
+			 *    2.内部函数可以引用外部函数的参数和变量;
+			 * 	  3.闭包里面的参数和变量不会被垃圾回收机制收回;因为bbb()依然会使用着var b=5;
+			 * 
+			 * 2.闭包的好处;
+			 *   好处:
+			 * 		1.希望一个变量长期驻扎在内存当中;
+			 * 		2.可以避免全局变量的污染;
+			 * 		3.私有成员的存在;
+			 */
+		</script>
+		<script type="text/javascript">
+		//1.闭包的写法
+//			function aaa(a){
+//				var b = 5;
+//				function bbb(){
+//					alert(a);
+//					alert(b);
+//				}
+//				
+//			}
+//			aaa();
+
+		//2.闭包的写法;
+		function aaa(a){
+			var a=5;
+			function bbb(){
+				alert(a);
+			}
+			return bbb;
+ 		}
+		var c= aaa();
+		c();
+		</script>
+	</body>
+</html>

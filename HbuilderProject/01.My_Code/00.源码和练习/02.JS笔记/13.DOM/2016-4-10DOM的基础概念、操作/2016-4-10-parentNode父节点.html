@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>parentNode父节点</title>
+	<script type="text/javascript">
+		//1.parentNode,父节点.
+		window.onload = function(){
+			var aA = document.getElementsByTagName('a');
+			//首先用for循环遍历这个aA.
+			for(var i=0;i<aA.length;i++){
+
+			aA[i].onclick = function(){
+				//parentNode没有兼容性问题可以放心使用.
+				//this为指针,指被点击的元素.
+				this.parentNode.style.display = 'none';
+			}
+			}
+		}
+				
+	</script>
+</head>
+<body>
+	<ul>
+		<li>1111111<a href="javascript:;">隐藏</a></li>
+		<li>2222222<a href="javascript:;">隐藏</a></li>
+		<li>3333333<a href="javascript:;">隐藏</a></li>
+		<li>4444444<a href="javascript:;">隐藏</a></li>
+	</ul>
+
+</body>
+</html>

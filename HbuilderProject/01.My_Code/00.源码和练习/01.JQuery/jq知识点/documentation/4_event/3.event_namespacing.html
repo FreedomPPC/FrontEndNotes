@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Event Namespace</title>
+        <style>
+            li {
+                border: #cc0033 solid 1px;
+                width: 200px;
+                cursor: pointer;
+                margin: 3px;
+                list-style: none;
+            }
+
+            ul {
+                border: #2a523c solid 1px;
+                padding: 10px;
+                width: 300px;
+                margin: 10px;
+            }
+
+            .over {
+                background: #66ff66;
+            }
+        </style>
+    </head>
+    <body>
+        <ul>
+            <li>第1行</li>
+            <li>第2行</li>
+            <li>第3行</li>
+            <li>第4行</li>
+        </ul>
+        <input type="button" value="取消name1的click事件" id="unbind-name1-click"/>
+        <input type="button" value="取消name1的所有事件" id="unbind-name1-all"/>
+
+        <script src="../vendor/jquery-1.12.1.js"></script>
+        <script>
+            /**
+             * INFO:事件的命名空间
+             * 在jquery中，可以为监听的事件，追加一个标识，
+             * 以表明这个事件处理程序是哪个模块添加的，或者这个事件处理程序添加的原因等等。
+             * 我们称这种标识，叫做事件的命名空间。
+             * 事件的命名空间，用.name的方式添加在事件名称的后面。
+             * 例如，为click事件添加名称为myPlugin命名空间可以写作 on('click.myPlugin')
+             * 为事件指定命名空间的好处是：
+             * 1. 可以解绑特定命名空间的某个事件，而不影响其他绑定到这个元素上的相同事件的处理程序
+             * 2. 可以为某个特定的元素，解绑所有属于某个命名空间的所有事件，而不影响这个元素的其他事件处理程序
+             */
+            $(document).ready(function () {
+                //INFO: 1. 分别绑定两个带有命名空间(name1,name2)的事件处理程序
+                $('li:first').on('click.name1', function () {
+                    alert('name1 点击事件');
+                });
+
+                $('li:first').on('click.name2', function () {
+                    alert('name2 点击事件');
+                });
+
+                //INFO: 2. 绑定name1的mouseover和mouseout。
+                $('li:first').on('mouseover.name1', function () {
+                    $(this).addClass('over');
+                });
+                $('li:first').on('mouseout.name1', function () {
+                    $(this).removeClass('over');
+                });
+                //INFO: 3.点击button取消name1的click事件
+                $('#unbind-name1-click').on('click', function () {
+                    $('li:first').off('click.name1');
+                });
+
+                //INFO: 4.点击button取消name1的所有事件
+                $('#unbind-name1-all').on('click', function () {
+                    $('li:first').off('.name1');
+                });
+            });
+        </script>
+    </body>
+</html>

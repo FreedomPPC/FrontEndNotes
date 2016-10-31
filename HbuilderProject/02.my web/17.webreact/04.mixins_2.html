@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="lib/react.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/react-dom.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/browser.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/common闭包.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			/*1.什么是mixins?
+			 * mixins是react组件中 提供出来的一个属性;render:function(){};
+			 * 
+			 * 2.能解决什么问题?在开发中 很多功能(js函数构成的模块),存在共性,我们如何提高不同组件中相同功能函数
+			 * 
+			 */
+		</script>
+	</head>
+	<body>
+		<script type="text/babel">
+			//layout组件
+			//mixins属性使用规则;
+			//1.首先考虑将一些公共的函数提取出来;放在一个object中;这些方法被提取出来以后的类型也是object方法类型;
+			
+			//2.使用:哪个组件中需要使用这些公共方法;就可以在改组件中通过mixins:[commonApis];
+			//3.在组件的什么地方使用onchange={this.checkInputValue}
+			
+			
+			var Layout = React.createClass({
+				render:function(){
+					return(
+					  <div>
+					  	this is LayOut
+					  	<Form/>
+					  	<hr/>
+					  	<Login/>
+					  </div>
+					)
+				}
+			});
+			
+			var Form = React.createClass({
+				mixins:[common],
+				render:function(){
+					return(
+					  <div>user:<input onChange={this.checkInputValue} type="text"/></div>
+					)
+				}
+			});
+			
+			var Login = React.createClass({
+				mixins:[common],
+				render:function(){
+					return(
+					  <div>name:<input onChange={this.checkBtnValue} type="text"/></div>
+					)
+				}
+			});
+			ReactDOM.render(<Layout/>,document.body);
+
+		</script>
+	</body>
+</html>

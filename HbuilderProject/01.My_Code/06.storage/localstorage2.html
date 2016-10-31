@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form >
+		<input type="text" name=""><br>
+		<input type="password" name="">
+		<input type="submit" name="" value="登录">
+	</form>
+	<script type="text/javascript" src="jquery-1.12.3.js"></script>
+	<script type="text/javascript">
+		$('input').eq(2).click(function(){
+			if($('input').eq(0).val()===localStorage.name && $('input').eq(1).val()===localStorage.pass ){
+				alert('登录成功')
+			}else{
+				alert('输入有误，请重新输入！')
+			}
+		})
+	</script>
+</body>
+</html>

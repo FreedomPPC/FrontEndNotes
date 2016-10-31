@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<style>
+		
+		@keyframes moveFromTop{
+			from {transform : translateY(-100%)}
+		}
+		
+		@keyframes moveFromBottom{
+			from {transform : translateY(100%)}
+		}
+
+		@keyframes moveFromViewport{
+			form {}
+			to {transform : translateY(-100%)}
+		}
+
+		html,body{height: 100%;}
+		body{margin:auto;overflow: hidden;color:#fff;font-size: 100px}
+		section{
+			position: relative;
+			height: 100%;
+			width: 100%;
+		}
+
+		.wrap{
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			animation-duration : 0.5s;
+			animation-fill-mode : forwards;
+			animation-timing-function : linear;
+		}
+
+
+		.wrap-item-1{
+			background: red;
+			animation-name : moveFromTop;
+		}
+		.wrap-item-2{
+			background: green;
+		}
+		.wrap-item-3{
+			background: blue;
+		}
+		.wrap-item-4{
+			background: yellow;
+		}
+		.wrap-item-5{
+			background: pink;
+		}
+
+		.hide{
+			display: none;
+		}
+
+
+
+	</style>
+</head>
+<body>
+	<section>
+		<div class="wrap wrap-item-1">page1</div>
+		<div class="wrap wrap-item-2 hide">page2</div>
+		<div class="wrap wrap-item-3 hide">page3</div>
+		<div class="wrap wrap-item-4 hide">page4</div>
+		<div class="wrap wrap-item-5 hide">page5</div>
+	</section>
+	<script src="swipe.js"></script>
+	<script>
+		var curPageNum  = 0 ;
+		var wraps = document.querySelectorAll(".wrap");
+		var eHandler = function(e,index){
+			wraps[curPageNum].style.animationName = "moveFromViewport";
+			//这里符乐老师用到的取模也非常机智.
+			curPageNum = (++curPageNum)%5 ;
+			wraps[curPageNum].className = wraps[curPageNum].className.replace(/\s*hide/," ");
+			wraps[curPageNum].style.animationName = "moveFromBottom";
+			
+		};
+
+		//因为wrap没有数组的foreach方法,所以用到了call方法.这样不需要循环遍历,wraps就有了数组的方法哒.叼叼叼!
+		[].forEach.call(wraps,function(item,index){
+			item.addEventListener("touchstart",eHandler);
+		});
+	</script>
+</body>
+</html>

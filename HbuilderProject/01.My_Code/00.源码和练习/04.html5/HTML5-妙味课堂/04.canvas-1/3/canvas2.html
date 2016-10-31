@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+body{ background:black;}
+#c1{ background:white;}
+</style>
+<script>
+
+window.onload = function(){
+	
+	var aInput = document.getElementsByTagName('input');
+	var oImg = document.getElementById('img1');
+	
+	var yImg = new Image();
+	
+	var iNow = 0;
+	
+	yImg.onload = function(){
+		draw(oImg);
+	};
+	
+	yImg.src = oImg.src;
+	
+	function draw(obj){
+		
+		var oC = document.createElement('canvas');
+		var oGC = oC.getContext('2d');
+		
+		oC.width = obj.width;
+		oC.height = obj.height;
+		
+		obj.parentNode.replaceChild(oC,obj);
+		
+		oGC.drawImage(obj,0,0);
+		
+		aInput[1].onclick = function(){
+			
+			if(iNow==3){
+				iNow = 0;
+			}
+			else{
+				iNow++;
+			}
+			toChange();
+			
+		};
+		
+		aInput[0].onclick = function(){
+			
+			if(iNow==0){
+				iNow = 3;
+			}
+			else{
+				iNow--;
+			}
+			toChange();
+			
+		};
+		
+		
+		function toChange(){
+			
+			switch(iNow){
+				case 1:
+				
+					oC.width = obj.height;
+					oC.height = obj.width;
+					oGC.rotate(90*Math.PI/180);
+					oGC.drawImage(obj,0,-obj.height);
+				
+				break;
+				
+				case 2:
+				
+					oC.width = obj.width;
+					oC.height = obj.height;
+					oGC.rotate(180*Math.PI/180);
+					oGC.drawImage(obj,-obj.width,-obj.height);
+					
+				break;
+				
+				case 3:
+				
+					oC.width = obj.height;
+					oC.height = obj.width;
+					oGC.rotate(270*Math.PI/180);
+					oGC.drawImage(obj,-obj.width,0);
+					
+				break;
+				
+				case 0:
+				
+					oC.width = obj.width;
+					oC.height = obj.height;
+					oGC.rotate(0);
+					oGC.drawImage(obj,0,0);
+					
+				break;
+			}
+			
+		}
+		
+	}
+	
+	
+};
+
+</script>
+</head>
+
+<body>
+<input type="button" value="←" />
+<input type="button" value="→" />
+<div>
+	<img src="2.png" id="img1" />
+</div>
+</body>
+</html>
+

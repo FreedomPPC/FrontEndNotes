@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			background: black;
+		}
+		#c{
+			background:white;
+		}
+
+	</style>
+	<script type="text/javascript">
+		window.onload = function () {
+			var c = document.getElementById('c');
+			var ctx = c.getContext("2d");
+			
+
+			var oImage = ctx.createImageData(100,100);
+			//循环把颜色值塞近createImageData;
+			for(var i=0;i<oImage.width*oImage.height;i++){
+				oImage.data[4*i] = 255;
+				oImage.data[4*i+1] = 0;
+				oImage.data[4*i+2] = 0;
+				oImage.data[4*i+3] = 255;
+
+			}
+			ctx.putImageData(oImage,100,100);
+
+
+		}
+	</script>
+</head>
+<body>
+	<canvas id="c" width="400" height="400">
+		<span>您的浏览器不支持canvas</span>
+	</canvas>
+
+</body>
+</html>

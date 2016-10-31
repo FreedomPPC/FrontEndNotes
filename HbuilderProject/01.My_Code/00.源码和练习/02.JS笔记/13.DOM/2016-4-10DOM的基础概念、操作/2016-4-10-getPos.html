@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>grtpos</title>
+	<style type="text/css">
+
+		#div1{
+			padding:40px 50px;
+			background:red;
+			position: relative;
+		}
+		#div2{
+			padding:40px 50px;
+			background:green;
+			position:relative;
+			
+		}
+		#div3{
+			padding:40px 50px;
+			background:orange;
+			position: relative;
+		}
+
+	</style>
+	<script>
+	//通过这个方法可以获取元素到页面的绝对距离,不管父级有没有定位.
+		// window.onload = function(){
+		// 	var oDiv3 = document.getElementById('div3');
+		// 	// alert(oDiv3.offsetTop);
+		// 	var iTop = 0;
+		// 	var obj = oDiv3;
+		// 	while(obj){
+		// 		iTop += obj.offsetTop;
+		// 		obj = obj.offsetParent;
+		// 	}
+		// 	alert(iTop);
+
+			
+		// }
+		//第二种方法,函数封装法.强行求元素到页面的距离.不管父级元素有没有position
+		window.onload = function () {
+			var oDiv3 = document.getElementById('div3');
+
+			var p = getPos(oDiv3);
+			alert('top:'+p.top+' left:'+p.left);
+			function getPos(obj){
+				var pos = {left:0,top:0};
+				while(obj){
+					pos.left += obj.offsetLeft;
+					pos.top += obj.offsetTop;
+					obj = obj.offsetParent;
+				}
+				return pos;
+			}
+		}
+
+	</script>
+</head>
+<body id="body1">
+	
+	<div id="div1">
+		<div id="div2">
+			<div id="div3">
+				</div>
+			</div>
+		</div>
+	</div>
+				
+					
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			(function f(){
+				function f(){return alert(1)};//第一步;
+				return f();//第二步
+				function f(){return alert(2)};//第三步;
+				
+				
+			})();
+			
+			//函数声明的预解析就是在函数调用前就提前解析了;所以上面的第一步和第三步.现在第二步调用之前
+			//提前解析出来了;所以第三步会覆盖第一步;调用函数之后会弹出2;
+			
+		</script>
+	</body>
+</html>

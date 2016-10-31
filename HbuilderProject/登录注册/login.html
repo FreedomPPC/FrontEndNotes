@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/zepto_1.1.3.js" ></script>
+		<script type="text/javascript">
+			$(function(){
+				$(".login").click(function(){
+					var _httpurl = 'http://datainfo.duapp.com/shopdata/userinfo.php';
+					
+					var _username = $("input[name='username']").val();
+					var _password = $("input[name='password']").val();
+					var _status = 'login';
+					console.log("sdfsd"+_password);
+					var _json = {};
+					_json.userID = _username;
+					_json.password = _password;
+					_json.status = _status;
+					console.log(_json);
+					
+					//通过ajax的post方法,判断数据可行不可行;
+					$.ajax({
+						type:'post',
+						url:_httpurl,
+						data:_json,
+						success:function(data){
+							console.log(data);
+							console.log(typeof data);
+							if(data == '0'){
+								console.log('用户名不存在');
+							}else if(data == '2'){
+								console.log('用户名密码不存在');
+							}else{
+								console.log('登录成功');
+							}
+						}
+					});
+				});
+			});
+			
+		</script>
+	</head>
+	<body>
+		<form method="post">
+			<input type="text" name="username" placeholder="请输入用户名"/>
+			<input type="password" name="password" id="pass"/>
+			<input type="button" value="登录"  class="login"/>
+		</form>
+	</body>
+</html>

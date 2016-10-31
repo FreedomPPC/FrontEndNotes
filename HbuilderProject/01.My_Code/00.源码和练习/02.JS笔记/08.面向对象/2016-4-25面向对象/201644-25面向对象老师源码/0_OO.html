@@ -1,0 +1,122 @@
+﻿<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            /*============================================================*/
+            //面向过程 vs. 面向对象
+            //小猫吃食
+            //1. 面向过程
+            function smell (name, food) {
+                alert(name + ' smells ' + food + ' first');
+            }
+
+            function lick (name, food) {
+                alert(name + ' lick ' + food + ' second');
+            }
+
+            function bite (name, food) {
+                alert(name + ' bite ' + food + ' and start eating');
+            }
+            smell('tom', 'fish');
+            lick('tom', 'fish');
+            bite('tom', 'fish');
+
+            //面向对象
+            var cat = {
+                name: 'tom'
+            };
+
+            cat.smell = function (food) {
+                alert(this.name + ' smells ' + food + ' first');
+            }
+
+            cat.lick = function (food) {
+                alert(this.name + ' lick ' + food + ' second');
+            }
+            
+            cat.bite = function (food) {
+                alert(this.name + ' bite ' + food + ' and start eating');
+            }
+
+            cat.eat = function (food) {
+                this.smell(food);
+                this.lick(food);
+                this.bite(food);
+            }
+
+            cat.eat('olio');
+
+            /*============================================================*/
+            //面向对象的特点
+            //1. 封装
+            //2. 继承
+            //3. 多态
+            // 1. 封装：
+            // 将一个操作，隐藏其细节，只对外提供执行这个操作的接口。
+            // 好处：隐藏细节之后，调用者只需要调用接口，就能实现其想要达到的动作。
+            // 当这个接口的内部实现修改，调用者是没有必要知道修改的细节的。
+            // 所以接口内部实现需要修改，调用者无需修改代码，这也就实现了低耦合。
+            // 在其他编程语言中（java，c++）,属性和方法是区分访问级别的。有公有属性，私有属性和保护属性。
+            // 公有属性，是可以通过对象来访问的。私有属性，只能在对象的内部访问。保护属性是继承后，变为子类的私有属性
+            // 但是，在JS中，没有办法可以设置一个属性的访问权限，将之设置为公有或私有，也就是说，在JS中所有的属性和方法，都是公有的。
+
+            //2. 继承
+            //继承，在很大程度上，满足了代码复用的需求。
+            //因为从子类继承自父类（基类、超类）时，他会将父类的属性和方法都遗传下来。
+            //这样子类就不用重新定义共有的属性和方法，而只定义自己的特性就可以了。
+
+            //比如现实中的猫和波斯猫，猫就是基类、波斯猫就是子类。波斯猫，就猫的共有的
+            //属性和方法（猫、胡须、尾巴、傲娇）,波斯猫本身有自己的特点（眼睛有颜色）
+
+            //3. 多态
+            //举例说明：基类为猫，子类吃草猫，基类和子类的eat就不一样。
+            //有一个猫对象cat，还有子类对象eatingGrassCat
+            //这两个对象，eat的实现是不一样的。
+            //多态的意思就是，有一个变量、
+            // 当他指向cat时，调用eat方法，实际就是调用的cat.eat()方法，也就是什么都吃
+            // 当这个变量指向eatingGrassCat的时候，调用eat方法，实际上调用的就是eatingGrassCat。eat()方法 ,也就是只吃草
+            //
+
+            var el = document;
+            el.getElementsByTagName('li');   //取到的是整个文档的所有li
+
+            el = document.getElementById('container');
+            el.getElementsByTagName('li')   //取到的contaier下的所有li
+
+            //其他语言中，变量的类型是强类型的，所以在定义变量时，就要指定这个变量的类型
+            //Dog animal = new Dog();
+            //如果animal指向了cat类型的对象时，编译器就会报错，这样实现多态，就遇到困难了
+            //于是，有一条规则，当一个变量，他的类型是基类的类型，他就可以指向子类类型的对象
+            //上面的animal，就需要在定义的时候，让他的类型为Animal
+            //Animal animal = new Dog();
+            // animal.eat() ===> 调用的就是dog的eat方法
+            //anmal指向了猫对象
+            //animal = new Cat()
+            //animal.eat() ===> 调用的就是cat的eat方法。
+
+            //JS中的对象
+            //对象是属性和方法的一个集合，所以通常情况下，方法是用来操作属性的。
+            //创建一个对象有两种方式
+            var obj  = new Object();
+            var obj2 = {
+                name: 'XiaoQiang',
+                age: 27
+            }
+
+            var str = new String();
+            var arr = new Array();
+
+            /*============================================================*/
+            //1. 类是一坨有相同属性和方法的对象的一个抽象。
+            //   通过抽象出的这个类，我们可以重复的实例化很多既有共性，又有特性的对象。
+            var str1 = new String('hello');
+            var str2 = new String('xiaoMing');
+            //str1和str2，都有字符串对象的所有的方法和属性，而他们之间还有各自维护的一个数据，就是原始的字符串
+            //str1中维护的是'hello'，str2中维护的是'xiaoMing'
+        </script>
+    </body>
+</html>

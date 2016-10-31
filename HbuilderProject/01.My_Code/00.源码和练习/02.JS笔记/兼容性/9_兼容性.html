@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			body{
+				margin: 0;
+			}
+			.box{
+				width: 750px;
+				border: 1px solid #000;
+				overflow: hidden;
+			}
+			.item{
+				width: 200px;
+				height: 200px;
+				background-color: red;
+				margin-left: 50px;
+				float: left;
+				*display: inline;
+			}
+		</style>
+		<!--
+			当元素浮动后再设置margin那么就会产生双倍边距
+			解决方案：
+				针对ie6、7添加display:inline
+		-->
+	</head>
+	<body>
+		<div class="box">
+			<div class="item"></div>
+			<div class="item"></div>
+			<div class="item"></div>
+		</div>
+	</body>
+</html>

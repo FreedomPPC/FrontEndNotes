@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#div1{
+				width: 400px;
+				height:100px;
+				border:1px solid red;
+				background: yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" value="走你"/>
+		<div id="div1"></div>
+		<script>
+			window.onload = function ( ){
+				var oBtn = document.getElementsByTagName('input')[0];
+				oBtn.onclick = function ( ) {
+					var timer = null;
+					
+					clearInterval(timer);
+					timer = setInterval(function(){
+						var oDiv = document.getElementById('div1');
+						
+						if(parseInt(getStyle(oDiv,'width')) == 100){
+							clearInterval(timer);
+							
+						}else{
+							oDiv.style.width = parseInt(getStyle(oDiv,'width'))-2+'px';
+						}
+						
+					},30)
+				}
+			}
+			//该函数可以取到,offsetWidth会引起一些小问题,以后最好用getStyle;
+			function getStyle (obj,attr){
+				if(obj.currentStyle)
+				{
+					return obj.currentStyle[attr];
+				}
+				else
+				{
+					return getComputedStyle(obj,false)[attr];
+				}
+			}
+		</script>
+		
+	</body>
+</html>

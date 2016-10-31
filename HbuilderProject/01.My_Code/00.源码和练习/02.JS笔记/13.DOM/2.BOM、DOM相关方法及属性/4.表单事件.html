@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script>
+window.onload = function() {
+	
+	var oForm = document.getElementById('form1');
+	
+	//onsubmit : 当表单被提交的时候触发
+	
+	oForm.onsubmit = function() {
+		
+		if (this.username.value == '') {
+			alert('请填写用户名');
+			return false;
+		}
+		
+	}
+	
+	//onreset : 当表单要重置的时候触发
+	oForm.onreset = function() {
+		//alert(1);
+		
+		//confirm('你确定要重置？');
+		
+		//alert( confirm('你确定要重置？') );
+		
+		//return true;
+		
+		/*if ( confirm('你确定要重置？') ) {
+			return true;
+		} else {
+			return false;
+		}*/
+		
+		return confirm('你确定要重置？');
+		
+	}
+	
+	confirm('你确定要重置？');
+	document.title = 1;
+	
+}
+</script>
+</head>
+
+<body>
+	<form id="form1" action="http://www.baidu.com">
+    	<input type="text" name="username" />
+        <input type="password" name="password" />
+        <!--<input type="button" value="提交" />-->
+        <input type="submit" value="提交" />
+        <input type="reset" value="重置" />
+    </form>
+</body>
+</html>

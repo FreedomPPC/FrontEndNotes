@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 * 什么是对象?
+			 * 对象是一个整体;对外提供一些操作;
+			 * 
+			 * 什么是面向对象?
+			 * 使用对象时,只关注对象提供的功能;不关注其内部细节;
+			 * 比如jquery;
+			 * 
+			 * 面向对象是一种通用思想并非只有变成中能用;任何事情都可以用;
+			 * 
+			 * 构造函数:普普通通的函数是用来创建一个对象;就叫做构造函数;
+			 */
+			
+			function createPerson(name,gender){
+				var obj = new Object();
+				
+				obj.name = name;
+				obj.gender = gender;
+				
+				obj.showName = function(){
+					alert("我的名字是"+name);
+				}
+				obj.showGender = function(){
+					alert("我的性别是"+gender);
+				}
+				
+				return obj;//构造函数创建一个对象后,要返回对象;
+				
+			}
+			
+			var P1 = createPerson('mingming','人妖');
+			P1.showName();
+			P1.showGender();//创建完之后调用;
+			
+		
+		</script>
+	</body>
+</html>

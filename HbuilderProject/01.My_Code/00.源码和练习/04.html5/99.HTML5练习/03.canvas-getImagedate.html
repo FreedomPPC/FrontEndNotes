@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			background: black;
+		}
+		#c{
+			background:white;
+		}
+
+	</style>
+	<script type="text/javascript">
+		window.onload = function () {
+			var c = document.getElementById('c');
+			var ctx = c.getContext("2d");
+			// var color = "rgba("+Math.random()*256+","+Math.random()*256+","+Math.random()*256+")"
+
+			ctx.fillStyle ="red";
+			ctx.fillRect(0,0,100,100);
+
+			var oImage = ctx.getImageData(0,0,100,100);
+			ctx.putImageData(oImage,100,100);
+			ctx.putImageData(oImage,200,0);
+			ctx.putImageData(oImage,300,100);
+
+
+		}
+	</script>
+</head>
+<body>
+	<canvas id="c" width="400" height="400">
+		<span>您的浏览器不支持canvas</span>
+	</canvas>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device,initial-scale=1.0"/>
+<style> 
+
+#main {
+  width: 350px;
+  height: 100px;
+  border: 1px solid #c3c3c3;
+  display: flex;
+}
+
+#main div {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 40px;
+}
+
+#myBlueDiv
+{
+animation:mymove 5s infinite;
+/*Safari 和 Chrome:*/
+-webkit-animation:mymove 5s infinite;
+}
+
+@keyframes mymove
+{
+50% {flex-basis:200px;}
+}
+
+/*Safari 和 Chrome:*/
+@-webkit-keyframes mymove
+{
+50% {flex-basis:200px;}
+}
+</style>
+
+</head>
+<body>
+
+<p>"蓝色 DIV" 的 flex-basis 属性逐渐地从 40px 变化到 200px，然后再变回来：<p>
+
+<div id="main">
+  <div style="background-color:coral;">红色 DIV</div>
+  <div style="background-color:lightblue;" id="myBlueDiv">蓝色 DIV</div>
+</div>
+
+<p>在 CSS 中，flex-basis 属性是 <em>可动画化（animatable）</em> 的。</p>
+
+<p>Internet Explorer 10、Firefox 和 Opera 支持 CSS 动画。</p>
+<p>Safari 和 Chrome 通过带有前缀 -webkit-，支持 CSS 动画。</p>
+
+</body>
+</html>

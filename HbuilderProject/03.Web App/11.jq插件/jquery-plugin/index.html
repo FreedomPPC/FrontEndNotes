@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Jquery plugin</title>
+		<script type="text/javascript" src="js/jquery-2.1.0.js" ></script>
+		<script type="text/javascript" src="js/jqueryCreateChart.js" ></script>
+		<script>
+		    //1.原理.jquery封装插件 是因为我们可以在jquery对象的原型链上面进行扩展
+		    //  方法1$.fn.extend({object类型的方法}),在实现,再调用
+		    //  方法2$.extend({object类型的方法}),去实现extend中传递进去的object类型的方法,再调用
+		    
+			//2.编写插件 思路是什么?
+			  //1.命名规范:确定插件功能 表单验证插件功能 ,新建js,命名规范                jquery+插件功能.js 
+			  //2.在这个js中 通过我们介绍的两种方法去实现插件功能---插件是一个自运行函数库
+			  
+			//3.调用 
+			//$.fn.extend 第一种方法的实现和调用在页面里面 $(function(){
+				//$().highcharts({});
+			//});
+			$(function(){
+			    //$()选择的一个jquery对象
+				$().highcharts({
+					 title:"this is title",
+				     width:"200",height:"300",
+				     borderRadius:"3",
+				     backgroundColor:"#acacac"});
+				console.log($());
+				
+				//调用 plugin方法
+				$.myAjax({
+					url:'http://127.0.0.1:8020/rest-api/web/service/list.json',
+					type:'get',
+					async:true,
+					//回调函数 将一个参数 传递给了方法,在方法内部产生一些运行结果的时候,可以将一些参数 作为回调参数 传给回调函数 让他在调用 
+					//返回出来
+					success:function(data){
+						console.log(JSON.parse(data));
+						//结果数据
+					}
+				});
+				
+				
+			});
+		</script>
+	</head>
+	<body>
+		<div id="cxt">
+		    
+		</div>
+	</body>
+</html>

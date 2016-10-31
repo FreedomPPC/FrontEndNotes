@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Props&State的混搭使用</title>
+		<script src="lib/react.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/react-dom.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/browser.min.js" type="text/javascript" charset="utf-8"></script>
+		
+	</head>
+	<body>
+		<script>
+			/*
+			 * 主要用于解决___实现类似走秀网中的数据列表;
+			 * 1.一个是父组件,主要是走秀网数据列表的容器;
+			 * 2.一个是子组件,作用是接受父组件传入的数据,并自我解析;
+			 * 合理解决方案:就是通过父组件得到变化的数据(存在state里面),并把这些数据当做属性传递给子组件.
+			 * 
+			 * 
+			 */
+		</script>
+		
+		<script type="text/babel">
+			//需求:主要在父组件中改变父组件中文本框的值,改变后,文本框的值也同步更新到子组件中;
+			//思路1.在父组件中设置默认state,用于存取文本框变化的值;
+			//思路2.给文本框加可以获取值事件,把值存到state中,
+			//思路3.得到的state值传递给子组件(功能专门去解析数据),让子组件自我解析;
+			
+			
+			//1.创建父组件;
+			var MyComp = React.createClass({
+				getInitialState:function(){
+					return{
+						_text:"修改前的值",
+						_value:"",
+						_array:[1,2,3]
+					}
+				},
+				handlChange:function(event){
+					var _value = event.target.value;//得到文本框值;
+					this.setState({_text:_value});	//this.setState({修改的那个属性:修改后的新值})
+					
+				},
+				render:function(){
+					return(
+						<div>
+							{this.state._text}<br />
+							<input onChange={this.handlChange} type="text"/><br />
+							<SonComp name={this.state._text} />
+						</div>
+					);
+				}
+			});
+			
+			//2.创建子组件;
+			var SonComp = React.createClass({
+				//1.没有props时候不执行
+				componentWillReceiveProps: function(nextProps){
+					console.log("1.nextProps");
+				},
+				//2.给开发一个权限 设置组件在接到新props,state以后是否发生更新---写入逻辑 控制数据更新,节省组件性能
+				shouldComponentUpdate:function(nextProps,nextState){
+					//console.log("&&&&&&"+nextState._text);
+					//if(nextState._text=="WUQIANG"){
+						return true;
+					//}else{
+					//	return false;
+					//}
+					
+				},
+				componentWillUpdate:function(nextProps,nextState){
+					//这个函数使用很少 主要日志，记录打印
+					console.log("2.will update 组件即将渲染");
+				},
+				componentDidUpdate:function(){
+					console.log("4.did update 更新结束");
+				},
+
+				render:function(){
+					console.log(this.props.name);
+					
+					var styles={
+						color:"red",
+					};
+					
+					return(
+						<div>
+							this is son comp!<br />
+							<span style={styles}>{this.props.name}</span>
+						</div>
+					);
+				}
+			});
+			ReactDOM.render(<MyComp/>,document.body);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>replaceChild()</title>
+	<style type="text/css">
+		#DIV1{
+			width:200px;
+			height:50px;
+			background:azure;
+		}
+	</style>
+
+	<script>
+		window.onload = function () {
+			var div1 = document.getElementById('DIV1');
+			var btn = document.getElementById('btn');
+			var oP = document.getElementById('p1');
+
+			btn.onclick = function () {
+				/*
+					父级元素.replaceChild(新节点,被替换的节点) 替换子节点;
+				*/
+				// document.body.replaceChild(div1,oP);
+				/*
+					DOM中的
+					appendChild();insertBefore();replaceChild();都可以动态操作动态创建出来的节点,也可以操作已有节点.
+				*/
+				//oP.appendChild(div1);
+
+				document.body.insertBefore(div1,oP);
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="DIV1"></div>
+	<input type="button" value="替换" id='btn'/>
+	<p id="p1">ppppppppp</p>
+	
+</body>
+</html>

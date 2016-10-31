@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	
+	//rotate
+	function draw(deg){
+   
+	   var cvs= document.createElement("canvas"), 
+	　　　　ctx = cvs.getContext("2d");
+	   cvs.width=400;
+	   cvs.height=400;
+	   cvs.style.background="#eee";
+	   document.body.appendChild(cvs);
+	   ctx.clearRect(0,0,ctx.canvas.width,cvs.height);
+	   ctx.fillStyle="#f00";
+	   ctx.save();
+	   ctx.beginPath();
+	   ctx.rotate(deg*Math.PI/180);
+	   ctx.fillRect(100,100,100,100);
+	   ctx.closePath();
+	   ctx.restore();
+	   ctx.beginPath();
+	   ctx.fillStyle="#0f0";
+	   ctx.fillRect(200,200,100,100);
+	   
+	}
+
+	draw(45);
+
+	function draw1(){
+   
+	   var cvs= document.createElement("canvas"), 
+	　　　　ctx = cvs.getContext("2d");
+	   cvs.width=400;
+	   cvs.height=400;
+	   cvs.style.background="#eee";
+	   document.body.appendChild(cvs);
+	   ctx.clearRect(0,0,ctx.canvas.width,cvs.height);
+	   ctx.translate(200,200);
+	   
+	   var r = 100;
+	   ctx.strokeStyle = "#f00";
+	   for(var i=0;i<60;i++){
+	      ctx.beginPath();
+	      
+	      ctx.moveTo(0,-r);
+	      if(i%5){
+	        ctx.lineTo(0,-(r-5));
+	      }else {
+	        ctx.lineTo(0,-(r-10));
+	      }
+	      ctx.rotate(6*Math.PI/180);
+	      ctx.stroke();
+	      ctx.closePath();
+	   }
+	}
+
+	draw1();
+
+	function draw2(deg){
+   
+	   var cvs= document.createElement("canvas"), 
+	　　　　ctx = cvs.getContext("2d");
+	   cvs.width=400;
+	   cvs.height=400;
+	   cvs.style.background="#eee";
+	   document.body.appendChild(cvs);
+	   ctx.clearRect(0,0,ctx.canvas.width,cvs.height);
+	   ctx.fillStyle = "#f00";
+	   ctx.scale(2,1);
+	   ctx.fillRect(100,100,50,50);
+	}
+
+	draw2();
+
+	function draw3(deg){
+   
+	   var cvs= document.createElement("canvas"), 
+	　　　　ctx = cvs.getContext("2d");
+	   cvs.width=400;
+	   cvs.height=400;
+	   cvs.style.background="#eee";
+	   document.body.appendChild(cvs);
+	   ctx.clearRect(0,0,ctx.canvas.width,cvs.height);
+	   ctx.fillStyle = "#f00";
+	   ctx.scale(1,2);
+	   ctx.fillRect(100,100,50,50);
+	}
+
+	draw3();
+</script>
+</html>

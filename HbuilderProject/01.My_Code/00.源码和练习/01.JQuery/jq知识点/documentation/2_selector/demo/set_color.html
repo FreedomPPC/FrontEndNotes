@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Set Color</title>
+        <style>
+            .sele-color {
+                display: inline-block;
+                width: 100px;
+                border: #719dab solid 1px;
+                background: #cccccc;
+                cursor: pointer;
+                margin: 10px;
+            }
+
+            .set-color {
+                width: 100px;
+                height: 100px;
+                border: black solid 1px;
+                display: inline-block;
+                margin: 10px;
+                cursor: pointer;
+            }
+
+            .red {
+                background: red;
+            }
+
+            .yellow {
+                background: yellow;
+            }
+
+            .green {
+                background: green;
+            }
+
+            .blue {
+                background: blue;
+            }
+
+            .red {
+                background: red;
+            }
+        </style>
+    </head>
+    <body>
+        <span class="sele-color">red</span>
+        <span class="sele-color">yellow</span>
+        <span class="sele-color">green</span>
+        <span class="sele-color">blue</span>
+        <br>
+        <div class="set-color">点我,设置被选择的颜色</div>
+        <div class="set-color">点我,设置被选择的颜色</div>
+        <div class="set-color">点我,设置被选择的颜色</div>
+        <div class="set-color">点我,设置被选择的颜色</div>
+        <script type="text/javascript" src="../../vendor/jquery-1.12.1.js"></script>
+        <script>
+            $(function () {
+                var color;
+                var colors = ['red', 'green', 'blue', 'yellow'];
+                $('span').click(function () {
+                    color = $(this).html();
+                });
+
+                $('div').click(function () {
+                    if (color !== undefined) {
+                        $(this).removeClass(colors.join(' ')).addClass(color);
+                    }
+                });
+
+
+            });
+        </script>
+    </body>
+</html>

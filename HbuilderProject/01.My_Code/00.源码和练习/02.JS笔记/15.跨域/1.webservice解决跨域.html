@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+		//这种方法是后端设置一个Http请求的头部,把头部里面的一个属性Access-Control-Allow-Origin属性设置成*;
+			$.ajax({
+				type:"get",
+				url:"http://10.2.163.10:6060/rest/Query",
+				async:true,
+				success:function(data){
+					console.log(data);
+				}
+			});
+		</script>
+		<script type="text/javascript">
+			/*
+			 * 第四种跨域解决办法:CORS来解决;xmlHttpRequest里面属性,属性就可以解决跨域;
+			 * 根本无法解决跨域,本质上还是需要在后端设置http头部和属性才可以,前端无法做到;
+			 * 
+			 * 
+			 * 第5种:代理服务器;
+			 */
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

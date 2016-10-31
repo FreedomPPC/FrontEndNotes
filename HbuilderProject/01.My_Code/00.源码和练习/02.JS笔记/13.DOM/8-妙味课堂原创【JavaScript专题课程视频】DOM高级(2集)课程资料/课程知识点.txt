@@ -1,0 +1,27 @@
+DOM高级（一）.avi		39:45
+
+1. 获取表格元素：tBodies、rows、cells
+2. 表格中 tBodies 的意义
+3. 表格隔行换色实例
+4. 表格添加、删除实例
+5. 修复删除的问题
+6. 表格搜索实例
+7. 消除大小写字母的问题
+8. 解决多个关键字搜索的问题
+
+DOM高级（二）.avi		32:55
+
+1. 实现多关键词搜索
+2. 表格排序实例
+3. appendChild 的新用法
+4. 用sort()对数组进行排序
+5. 用sort()方法对表格进行排序实例
+6. 用!进行简易写法做判断
+7. 表单应用：action、method、name、onsubmit、getElementsByName、onreset
+8. return confirm 的简化版
+9. 表单内容验证相关知识
+
+
+
+
+

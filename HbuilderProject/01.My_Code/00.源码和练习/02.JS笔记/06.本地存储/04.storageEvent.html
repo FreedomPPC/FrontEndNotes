@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+
+window.onload = function(){
+	var aInput = document.getElementsByTagName('input');
+	
+	aInput[0].onclick = function(){
+		
+		window.localStorage.setItem('name',aInput[3].value);
+		
+	};
+	
+	aInput[1].onclick = function(){
+		
+		alert(window.localStorage.getItem('name'));
+		
+	};
+	
+	aInput[2].onclick = function(){
+		
+		window.localStorage.removeItem('name');
+		
+		
+	};
+	
+	window.addEventListener('storage',function(ev){  //当前页面的事件不会触发
+		//alert(123);
+		/*
+		 Storage API
+			存储事件:
+			当数据有修改或删除的情况下，就会触发storage事件
+			在对数据进行改变的窗口对象上是不会触发的,只有共享页面会触发;
+			Key : 修改或删除的key值，如果调用clear(),key为null
+			newValue  :  新设置的值，如果调用removeStorage(),key为null
+			oldValue :  调用改变前的value值
+			storageArea : 当前的storage对象
+			url :  触发该脚本变化的文档的url
+			注：session同窗口才可以,例子：iframe操作
+
+		 */
+		console.log( 'key值":'+ev.key );
+		console.log( 'newValue新设置的值'+ev.newValue );
+		console.log( "oldValue调用前改变的值:"+ev.oldValue );
+		console.log( "当前的storage对象:"+ev.storageArea );
+		console.log( '触发该脚本变化的文档的url:'+ev.url );
+		
+	},false);
+	
+};
+
+</script>
+</head>
+
+<body>
+<input type="button" value="设置" />
+<input type="button" value="获取" />
+<input type="button" value="删除" />
+<input type="text" />
+</body>
+</html>

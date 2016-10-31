@@ -1,0 +1,50 @@
+.accountBox {
+
+}
+
+.accountBox .accountTitleBox {
+  background-color: white;
+
+  /*padding: 15px 0;*/
+}
+
+.accountBox .accountTitleBox .itemone{
+  width: 28%;
+  padding-right: 10px;
+  border-right: 1px solid #ddd;
+  margin-right: 10px;
+}
+.accountBox .accountTitleBox .itemone:last-child {border: 0;}
+.accountBox .accountTitleBox .itemone .itemTitle{
+
+}
+
+.accountBox .accountTitleBox .itemone .itemBox {
+
+}
+
+.accountBox .accountTitleBox .itemone .itemBox .cash {
+    font-size: 30px;
+    margin-top: 4px;
+}
+
+.accountBox .accountTitleBox .itemone .itemBox .unit {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+.accountBox .accountTitleBox .accountTitleIn{
+    max-width: 1024px;
+}
+.accountBox .accountTitleBox .searchBox {
+    /*padding-left: 1%;
+  padding-top: 30px;*/
+}
+
+.accountBox .tableBox {
+}
+.accountBox .tableBox .tableIn{
+  width: 95%;
+  margin: 0px auto;
+  padding: 15px 0;
+}

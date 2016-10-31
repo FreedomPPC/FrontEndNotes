@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 * 事件委托事件源:不管在哪个事件当中,你操作的那个元素就是事件源;
+			 * 兼容性处理:
+			 * 获取事件源;ie: window.event.srcElement 标准下event.target;
+			 * 
+			 * 当鼠标移到ul上,整个ul全部变红,这并不是我们想要的,所以我们需要做一下判断;
+			 * 判断的话要判断节点名字nodeName
+			 * alert(target.tagName);出来的标签名字是大写的,需要toLowerCase()做一下大小写的转换;
+			 * 
+			 */
+			window.onload = function(){
+
+				var oUl = document.getElementById('ul1');
+				var aLi = oUl.getElementsByTagName('li');
+				
+				/*for(var i=0;i<aLi.length;i++){
+					aLi[i].onmouseover = function(){
+						this.style.background = 'red';
+					};
+					
+					aLi[i].onmouseout = function(){
+						this.style.background = '';
+					};
+					
+				}*/
+				
+				oUl.onmouseover = function(evt){
+					var e = evt || window.event;
+					var target = e.srcElement || e.target;
+//					console.log(target.innerHTML);
+//					console.log("tagName:"+target.tagName);  //弹出是一个大写;
+//					console.log("nodeName:"+target.nodeName);//也是大写;
+					if(target.tagName.toLowerCase() == 'li'){
+						
+						target.style.background = "red";
+					}
+				}
+				oUl.onmouseout = function(evt){
+					var e = evt || window.event;
+					var target = e.srcElement || e.target;
+					if(target.tagName.toLowerCase() == 'li'){
+						
+						target.style.background = "";
+					}
+				}
+				
+				
+			};
+        
+		</script>
+		<ul id="ul1">
+			<li>111111</li>
+			<li>222222</li>
+			<li>333333</li>
+		</ul>
+	</body>
+</html>

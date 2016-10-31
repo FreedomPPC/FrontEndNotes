@@ -1,0 +1,173 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>事件处理程序的快捷方式</title>
+        <style>
+            li {
+                border: #cc0033 solid 1px;
+                width: 200px;
+                cursor: pointer;
+                margin: 3px;
+                list-style: none;
+            }
+
+            ul {
+                border: #2a523c solid 1px;
+                padding: 10px;
+                width: 300px;
+                margin: 10px;
+            }
+
+            .over {
+                background: #66ff66;
+            }
+
+            .outer {
+                position: relative;
+                width: 220px;
+                height: 96px;
+                border: solid 1px black;
+                background-color: coral;
+            }
+
+            .inner {
+                position: absolute;
+                top: 40px;
+                left: 40px;
+                border: solid 1px black;
+                background-color: khaki;
+            }
+
+            #outer2 {
+                margin-top: 24px;
+            }
+        </style>
+    </head>
+    <body>
+        <ul>
+            <li>第1行</li>
+            <li>第2行</li>
+            <li>第3行</li>
+            <li>第4行</li>
+        </ul>
+        <div id="txt-container">
+            <input type="text" id="txt"/>
+            <p></p>
+        </div>
+        <button>触发li的点击事件</button>
+        <br><br>
+        <div class="outer" id="outer1">
+            Outer 1
+            <div class="inner" id="inner1">Inner 1</div>
+        </div>
+        <div class="outer" id="outer2">
+            Outer 2
+            <div class="inner" id="inner2">Inner 2</div>
+        </div>
+        <div id="console"></div>
+        <br><br>
+        <form id="submit-test" action="http://www.baidu.com">
+            <input class="target" type="text" value="Field 1">
+            <input type="submit">
+            <select class="target">
+                <option value="option1" selected="selected">Option 1</option>
+                <option value="option2">Option 2</option>
+            </select>
+        </form>
+        <script src="../vendor/jquery-1.12.1.js"></script>
+        <script>
+            //INFO: 1. click()
+            $('li').click(function () {
+                alert(this.innerHTML);
+            });
+
+            $('button').click(function () {
+                $('li').click();
+            });
+
+            //INFO: 2. focus()/blur()
+            $('#txt')
+                    .focus(function () {
+                        $(this).css('background', 'red');
+                    })
+                    .blur(function () {
+                        $(this).css('background', '');
+                    });
+
+            //INFO: 3. mouseover/mouseout/hover
+
+            //通过mouseover、mouseout绑定的事件，会有以下问题：
+            //1.当鼠标进入outer时，触发outer的mouseover
+            //2.当鼠标进入inner时，会触发outer的mouseout和inner的mouseover
+            //但是，通常情况下，在进入inner时，是不希望触发outer的mouseout的。
+            //于是，我们可以用mouseenter和mouseleave来代替。
+            //INFO: 3.1
+            $('#outer1')
+                    .on('mouseover', report)
+                    .on('mouseout', report);
+
+            //INFO: 3.2
+            $('#outer2')
+                    .on('mouseenter', report)
+                    .on('mouseleave', report);
+
+            //jQuery中的hover函数，利用mouseenter和mouseleave，简化了上面3.2的处理。
+            //其第一个参数为鼠标进入时的处理函数，第二个参数为鼠标移出时的处理函数。
+            //INFO: 3.3
+            //            $('#outer2').hover(report, report);
+
+
+            function report(event) {
+                $('#console').append('<div>' + event.type + '</div>');
+            }
+
+            //INFO: 4. form events: .focusin()/.focusout()/.change()/.select()/.submit()
+            $('#txt-container')
+                    .focus(function (evt) { //不支持事件冒泡，子元素获得焦点后，父元素不会得到这个事件
+                        $('p', this)
+                                .html(evt.type)
+                                .css("display", "inline")
+                                .fadeOut(1000);
+
+                    })
+                    .blur(function (evt) {
+                        $('p', this)
+                                .html(evt.type)
+                                .css("display", "inline")
+                                .fadeOut(1000);
+                    })
+                    .focusin(function (evt) {
+                        $('p', this)
+                                .html(evt.type)
+                                .css("display", "inline")
+                                .fadeOut(1000);
+                    })
+                    .focusout(function (evt) {
+                        $('p', this)
+                                .html(evt.type)
+                                .css("display", "inline")
+                                .fadeOut(1000);
+                    });
+            // change():This event is limited to <input> elements, <textarea> boxes and <select> elements.
+            // For select boxes, checkboxes, and radio buttons,
+            // the event is fired immediately when the user makes a selection with the mouse,
+            // but for the other element types the event is deferred until the element loses focus.
+
+            $( ".target" ).change(function() {
+                alert( "Handler for .change() called." );
+            });
+
+            // select():This event is limited to <input type="text"> fields and <textarea> boxes
+            $('#txt').select(function () {
+                alert( "Handler for .select() called." );
+            });
+
+            // submit():It can only be attached to <form> elements
+            $('#submit-test').submit(function (event) {
+                alert( "Handler for .submit() called." );
+                event.preventDefault();
+            });
+
+        </script>
+    </body>
+</html>

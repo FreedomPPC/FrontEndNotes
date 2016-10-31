@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.list{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				width: 300px;
+			}
+			.list li{
+				height: 30px;
+				border: 1px solid red;
+				line-height: 30px;
+				*vertical-align: top;
+			}
+			.list li a{
+				float: left;
+			}
+			.list li span{
+				float: right;
+			}
+		</style>
+		<!--
+			解决方案：
+				针对ie6，7添加vertical-align: top;
+		-->
+	</head>
+	<body>
+		<ul class="list">
+			<li>
+				<a href="">左边</a>
+				<span>右边</span>
+			</li>
+			<li>
+				<a href="">左边</a>
+				<span>右边</span>
+			</li>
+			<li>
+				<a href="">左边</a>
+				<span>右边</span>
+			</li>
+			<li>
+				<a href="">左边</a>
+				<span>右边</span>
+			</li>
+		</ul>
+	</body>
+</html>

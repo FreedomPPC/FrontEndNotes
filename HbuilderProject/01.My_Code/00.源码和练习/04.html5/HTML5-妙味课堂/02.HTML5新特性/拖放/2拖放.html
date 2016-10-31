@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+li{ list-style:none; width:100px; height:30px; background:yellow; margin:10px;}
+#div1{ width:100px; height:100px; background:red; margin:200px;}
+</style>
+<script>
+window.onload = function(){
+	var oUl = document.getElementsByTagName('ul')[0];
+	var aLi = oUl.getElementsByTagName('li');
+	var oDiv = document.getElementById('div1');
+	var i = 0;
+	
+	for(var i=0;i<aLi.length;i++){
+		
+		aLi[i].index = i;
+		
+		aLi[i].ondragstart = function(ev){
+			
+			var ev = ev || window.event;
+			
+			//ev.dataTransfer.setData('name','hello');
+			
+			ev.dataTransfer.setData('name',this.index);
+			
+			this.style.background = 'green';
+		};
+		
+		/*aLi[i].ondrag = function(){  //开始与结束连续触发
+			document.title = i++;
+		};*/
+		
+		aLi[i].ondragend = function(){
+			this.style.background = 'yellow';
+		};
+	}
+	
+	oDiv.ondragenter = function(){
+		this.style.background = 'blue';
+	};
+	
+	oDiv.ondragover = function(ev){
+		//enter和leave之间连续触发
+		//要想触发drop事件，就 必须在dragover当中阻止默认事件
+		//document.title = i++;
+		
+		ev.preventDefault();
+		
+	};
+	
+	oDiv.ondragleave = function(){
+		this.style.background = 'red';
+	};
+	
+	oDiv.ondrop = function(ev){
+		//alert(123);
+		
+		//alert( ev.dataTransfer.getData('name') );
+		
+		oUl.removeChild( aLi[ev.dataTransfer.getData('name')] );
+		
+		for(var i=0;i<aLi.length;i++){
+		
+			aLi[i].index = i;
+			
+		}
+		
+	};
+	
+};
+</script>
+</head>
+
+<body>
+<ul>
+	<li draggable="true">a</li>
+    <li draggable="true">b</li>
+    <li draggable="true">c</li>
+</ul>
+<div id="div1"></div>
+</body>
+</html>

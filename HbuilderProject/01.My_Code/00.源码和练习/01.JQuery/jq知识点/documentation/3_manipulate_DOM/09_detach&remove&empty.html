@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Attribute & Property</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            div {
+                border: 2px blue solid;
+                margin: 2px;
+                padding: 2px;
+            }
+
+            p {
+                background: yellow;
+                margin: 2px;
+                padding: 2px;
+            }
+
+            strong {
+                color: red;
+            }
+
+            .red {
+                background: black;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="outer">
+            <div class="inner">1</div>
+            <!--<span><div class="inner">2</div></span>-->
+        </div>
+
+        <!--<span>I am out of there</span>-->
+        <div>
+            <span>Span Text</span>
+            <span>Another One</span>
+            <strong>What about me?</strong>
+        </div>
+
+        <input type="button" id="wrap" value="穿衣服"/>
+        <input type="button" id="unwrap" value="脱脱脱"/>
+        <input type="button" id="wrapInner" value="给孩子穿衣服"/>
+        <input type="button" id="wrapAll" value="wrapAll"/>
+        <script src="../vendor/jquery-1.12.1.js"></script>
+        <script>
+            //ready - 1
+            //            $(document).ready(function () {
+            //
+            //            });
+
+            //ready - 2
+            //            $().ready(function () {
+            //
+            //            });
+
+            //ready - 3
+            $(function () {
+                $('#wrap').click(function () {
+                    $('.inner').wrap('<div><div><p><em><b></b></em></p></div></div>');
+                });
+
+                $('#unwrap').click(function () {
+                    $('.inner').unwrap();
+                });
+
+                $('#wrapInner').click(function () {
+                    $('.inner').wrapInner('<div><div><p><em><b></b></em></p></div></div>')
+                });
+
+                //wrapAll ===>将匹配集中的第一个元素外面，套了一层包装，
+                //然后，将匹配集中的其他元素，都append到这个外层包装上面了。
+                $('#wrapAll').click(function () {
+                    $('span').wrapAll('<div class="red"></div>')
+                });
+            });
+
+
+        </script>
+    </body>
+</html>

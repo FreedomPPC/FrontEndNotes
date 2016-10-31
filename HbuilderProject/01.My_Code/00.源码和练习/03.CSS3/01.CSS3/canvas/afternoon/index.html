@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+
+</style>
+</head>
+<body>
+	<canvas id="cvs" width="500" height="500" style="background:#eee"></canvas>
+	<script>
+;(function(){
+  var cvs = document.querySelector("#cvs");
+
+  var ctx = cvs.getContext("2d");
+  ctx.clearRect(0,0,500,500);
+
+  //绘制线
+  //path  路径
+  ctx.moveTo(50,50);
+  ctx.lineTo(50,100);
+  ctx.lineTo(100,100);
+  //绘制路径
+  ctx.stroke();
+  //绘制面
+  
+  //填充样式
+  ctx.fillStyle = "#f00";
+  //填充矩形
+  //x,y,width,height
+  ctx.fillRect(100,100,50,50);
+  
+  
+})();
+	</script>
+</body>
+</html>

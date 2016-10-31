@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ajax应用举例</title>
+</head>
+<body>
+	<script>
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function () {
+			if(xhr.readyState === 4) {
+				if(xhr.status === 200){
+					alert(xhr.responseText);
+				}else{
+					alert('request was unsuccessful:'+xhr.status);
+				}
+			}
+		}
+		xhr.open('get','info.json',true);
+		xhr.send(null);
+	</script>
+</body>
+</html>

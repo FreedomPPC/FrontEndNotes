@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>多个div淡入淡出</title>
+	<style>
+		li{
+			list-style:none;
+			width:150px;
+			height:30px;
+			background:red;
+			margin-top:8px;
+			border:1px solid yellow;
+			border-radius:3px;
+			filter:alpha(opacity:30);opacity: 0.3;
+			
+
+		}
+		
+			
+
+	</style>
+
+	<script type="text/javascript">
+		window.onload = function(){
+			var aDiv = document.getElementsByTagName('li');
+			
+			var len = aDiv.length;
+			for(var i=0;i<len;i++){
+				// 类似 aDiv[i].index = i;每一个div都有一个定时器
+				aDiv[i].timer = null;
+
+				//同理,要设置元素的淡入淡出,那么每个div都要有一个alpha;
+				aDiv[i].alpha = 30;
+
+					aDiv[i].onmouseover = function()
+					{
+						startMove(this,100);
+						 
+					}
+
+					aDiv[i].onmouseout = function () 
+					{
+						startMove(this,30);
+					}
+				}
+
+
+			}
+	
+		//创建运动函数
+		//多个物体同时运动,要传对象参数,每个对象都有一个定时器.obj[i].timer;
+		
+		function startMove(obj,iTarget){
+			
+			clearInterval(obj.timer);
+			obj.timer = setInterval(function(){
+
+				var iSpeed = (iTarget - obj.alpha)/15;
+				iSpeed = iSpeed>0?Math.ceil(iSpeed):Math.floor(iSpeed);
+
+				if(obj.alpha == iTarget)
+				{
+					clearInterval(obj.timer);
+
+				}
+				else
+				{	
+					obj.alpha += iSpeed;
+					obj.style.filter='alpha(opacity:'+obj.alpha+')';
+					obj.style.opacity=obj.alpha/100;
+				}
+			},30);
+
+		}
+			
+			
+			
+	</script>
+</head>
+<body>
+	<ul>
+		
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+	
+</body>
+</html>

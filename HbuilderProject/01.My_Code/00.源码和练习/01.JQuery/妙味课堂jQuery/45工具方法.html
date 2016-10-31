@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script src="jquery-1.10.1.min.js"></script>
+<script>
+
+
+//$().css()  $().html()  $().val()  : 只能给JQ对象用
+
+//$.xxx()  $.yyy()  $.zzz()  : 不仅可以给JQ用，也可以给原生JS用 : 叫做工具方法
+
+
+//inArray() : 类似于 indexOf
+
+$(function(){
+	
+	//var arr = ['a','b','c','d'];
+	
+	//alert(  $.inArray('b',arr)  );
+	
+	
+	//proxy()  : 改变this指向的
+	
+	function show(n1,n2){
+		alert(n1);
+		alert(n2);
+		alert(this);
+	}
+
+	//show();
+	
+	//$.proxy(show , document,3)(4);
+	
+	
+	$(document).click( $.proxy(show,window,3,4)  );
+	
+});
+
+</script>
+</head>
+
+<body>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="jquery-1.12.3.js"></script>
+<script>
+//	jQurey方法
+	$(document).ready(function(){
+	  $("#btn1").click(function(){
+	    alert("Text: " + $("#test").text());
+	  });
+	  $("#btn2").click(function(){
+	    alert("HTML: " + $("#test").html());
+	  });
+	});
+	//JS方法;
+//	window.onload = function () {
+//		var btn1 = document.getElementById('btn1');
+//		var btn2 = document.getElementById('btn2');
+//		var oP = document.getElementById('test');
+//		btn1.onclick = function () {
+//			alert(oP.textContent);
+//		};
+//		btn2.onclick = function () {
+//			alert(oP.innerHTML);
+//		}
+//	}
+</script>
+</head>
+
+<body>
+<p id="test">这是段落中的<b>粗体</b>文本。</p>
+<button id="btn1">显示文本</button>
+<button id="btn2">显示 HTML</button>
+</body>
+
+</html>

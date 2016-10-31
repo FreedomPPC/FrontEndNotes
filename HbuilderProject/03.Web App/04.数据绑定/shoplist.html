@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>商品列表显示</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+		<style>
+			*{padding: 0;margin: 0;}
+			.cxt{
+				width:100%;
+				height:30rem;
+				background-color: #fafafa;
+				overflow: hidden;
+			}
+			.shop{
+				width:10%;
+				height:12rem;
+				border-radius: 4px;
+				border:1px solid #8a8a8a;
+				margin:20px 20px 20px 20px;
+				float: left;
+			}
+			.shop>img{
+				display: block;
+				width: 100%;
+				height: 60%;
+			}
+			.price{
+				font-size: 16px;
+				color: red;
+				font-weight: 600;
+				text-align: center;
+			}
+			.count{
+				font-size: 14px;
+				color: #000000;
+				font-weight: 600;
+				text-align: center;
+			}
+			.discount{
+				font-size: 12px;
+				color: blue;
+				font-weight: 600;
+				text-align: center;
+			}
+		</style>
+		<script type="text/javascript" src="lib/zepto.min.js" ></script>
+		<script>
+			//pc端的图文混合数据绑定
+			
+			//1.json格式
+			//2.显示数据模板
+			
+			//思路:
+			//1.确定什么渲染模板 <div class="shop"></div>
+			//2.数据得到 并打印格式(dom结构,json,debug)
+			//3.解析数据 ，如果json数据是数组，长度10(for循环动态生成不同的渲染模板)
+			//4.生成好的结构安插到页面中
+			
+			$(function(){
+				var http='http://datainfo.duapp.com/shopdata/getGoods.php';//获取商品列表 webservice 回传数据jsonp
+				$.ajax({
+					type:"get",
+					url:http,
+					async:true,
+					dataType:"jsonp",
+					success:function(data){
+						console.log(data);
+						var str='';
+						//var template='';
+						for(var i=0;i<data.length;i++){
+							//通过变量接受目的是为了操作变量信息更便捷
+							var img=data[i].goodsListImg;
+							var price=data[i].price+"$";
+							var discount=data[i].discount;
+							//长度限定
+							var name=data[i].goodsName;
+							name=name.substring(0,5);
+							//str+ 的意义是为了将渲染模板的循环的到的结果进行累加
+							$(".cxt").html('');
+							str+='<div class="shop">'+
+									'<img src="'+img+'" />'+
+									'<span class="price">价格:<span>'+price+'</span> </span><br/>'+
+									'<span class="count">名称:<span>'+name+'</span></span><br/>'+
+									'<span class="discount">折扣: <span>'+discount+'</span></span><br/>'+
+								'</div>';	
+						}
+						    $(".cxt").append(str);
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div class="cxt">
+			<div class="shop">
+				<img />
+				<span class="price">价格:<span></span> </span><br/>
+				<span class="count">月销售量:<span></span></span><br/>
+				<span class="discount">折扣: <span></span></span><br/>
+			</div>
+			
+			
+			
+			
+			
+		</div>
+	</body>
+</html>

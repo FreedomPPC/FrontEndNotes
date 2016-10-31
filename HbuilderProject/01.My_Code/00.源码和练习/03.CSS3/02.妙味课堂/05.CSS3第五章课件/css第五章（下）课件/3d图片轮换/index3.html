@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+@-webkit-keyframes show
+{
+	0%
+	{
+		-webkit-transform:rotateX(180deg);
+		opacity:0;
+	}
+	50%
+	{
+		-webkit-transform:rotateX(-25deg);
+		opacity:1;
+	}
+	60%
+	{
+		-webkit-transform:rotateX(18deg);
+		opacity:1;
+	}
+	70%
+	{
+		-webkit-transform:rotateX(-12deg);
+		opacity:1;
+	}
+	80%
+	{
+		-webkit-transform:rotateX(8deg);
+		opacity:1;
+	}
+	90%
+	{
+		-webkit-transform:rotateX(-6deg);
+		opacity:1;
+	}
+	100%
+	{
+		-webkit-transform:rotateX(0deg);
+		opacity:1;
+	}
+}
+@-webkit-keyframes hide
+{
+	0%
+	{
+		-webkit-transform:rotateX(0deg);
+		opacity:1;
+	}
+	100%
+	{
+		-webkit-transform:rotateX(180deg);
+		opacity:0;
+	}
+}
+#wrap{ width:400px;height:300px; position:relative; margin:40px auto; -webkit-perspective:800px; -webkit-transform-style:preserve-3d;}
+img{ width:400px;height:300px; position:absolute;left:0;top:0; -webkit-transform-origin:bottom; -webkit-transform:rotateX(-180deg); opacity:0;}
+#wrap input{ width:60px;height:60px;margin:0;padding:0;background:#ccc;top:100px; position:absolute; border-radius:50%; outline:none;}
+#wrap input:nth-of-type(1){ left:-100px;}
+#wrap input:nth-of-type(2){ right:-100px;}
+.show{-webkit-transform:rotateX(0deg);
+opacity:1;-webkit-animation:1s show;}
+.hide{-webkit-transform:rotateX(180deg);
+opacity:0;-webkit-animation:0.6s hide;}
+</style>
+<script>
+window.onload=function()
+{
+	var oWrap=document.getElementById("wrap");
+	var aBtn=oWrap.getElementsByTagName("input");
+	var aImg=oWrap.getElementsByTagName("img");
+	var iNow=0;
+	aBtn[0].onclick=function()
+	{
+		aImg[iNow].className="hide";
+		iNow--;
+		if(iNow<0)
+		{
+			iNow=aImg.length-1;
+		}
+		aImg[iNow].className="show";
+	};
+	aBtn[1].onclick=function()
+	{
+		aImg[iNow].className="hide";
+		iNow++;
+		if(iNow>=aImg.length)
+		{
+			iNow=0;
+		}
+		aImg[iNow].className="show";
+	};
+};
+</script>
+</head>
+<body>
+<div id="wrap">
+	<input type="button" value="上一张" />
+    <img src="img/img1.jpg" class="show"/>
+    <img src="img/img2.jpg" />
+    <img src="img/img3.jpg" />
+    <img src="img/img4.jpg" />
+    <img src="img/img5.jpg" />
+    <input type="button" value="下一张" />
+</div>
+</body>
+</html>

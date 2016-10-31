@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>轮播演示</title>
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding:0px;
+			}
+			.container{
+				width: 500px;
+				height: 690px;
+				overflow: hidden;
+				position: relative;
+			}
+			ul{
+				list-style: none;
+				width: 2000px;
+				height: 690px;
+				position: absolute;
+				left: 0px;
+				top:0px;
+			}
+			ul>li{
+				float: left;
+				width: 500px;
+				height: 690px; 
+			}
+			img{
+				width: 500px;
+				height: 690px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<ul>
+				<li><img src="images/1.jpg"></li>
+					
+				<li><img src="images/2.jpg"></li>
+					
+				<li><img src="images/3.jpg"></li>
+					
+				<li><img src="images/1.jpg"></li>
+			</ul>
+		</div>
+		<script type="text/javascript" src="jquery-1.8.2.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				var $ul = $("ul");
+				var offSetLeft = -500;
+				var count = 0;//表示已经移动过的图片数量
+
+				setInterval(function(){
+					$ul.animate({
+						"left":offSetLeft
+					},function(){
+						count++;
+						offSetLeft -= 500;
+
+						if(count == 3){
+							$ul.css({
+								"left":"0px"
+							});
+
+							count = 0;
+							offSetLeft = -500;
+						}
+					});
+				},1000);
+			});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			// $(function () {
+			// 	var $ul = $("ul");
+				
+			// 	var count = 0;
+			// 	var offSetLeft = -500;
+
+			// 	setInterval(function(){
+			// 		// console.log($ul.offset().left);
+			// 		$ul.animate({
+			// 			"left": offSetLeft
+			// 		},function(){
+			// 			count++;
+			// 			offSetLeft -= 500;
+
+			// 			if(count == 3 ){
+			// 				$ul.css({"left":"0px"});
+
+			// 				count = 0;
+			// 				offSetLeft = -500;
+			// 			}
+			// 		});
+			// 	},1000);
+			// });
+		</script>
+    </body>
+</html>

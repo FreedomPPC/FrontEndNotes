@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			var React=(function(){
+			
+				//闭包内部函数
+				function createElement(obj){
+					console.log(obj);
+					var ele=obj.render();
+					document.getElementById("app").innerHTML=ele;
+				}
+				//闭包内部函数
+				function unmountAtNode(nodes){
+					nodes.innerHTML="";
+				}
+				
+				//闭包对外return的函数
+				return{
+					createClass:function(obj){
+						   createElement(obj);
+					},
+					unmountComponentAtNode:function(nodes){
+						  unmountAtNode(nodes);
+					}
+				}
+			})();
+			window.onload=function(){
+				React.createClass({
+					render:function(){
+						return '<div>HelloWolrd</div>';
+					}
+			    });
+			    
+			    //加一个定时器 3s以后把之前进去的组件卸载了
+			    setTimeout(function(){
+			    	React.unmountComponentAtNode(document.getElementById("app"));
+			    },3000);
+			}
+		</script>
+	</head>
+	<body>
+		<div id="app"></div>
+	</body>
+</html>

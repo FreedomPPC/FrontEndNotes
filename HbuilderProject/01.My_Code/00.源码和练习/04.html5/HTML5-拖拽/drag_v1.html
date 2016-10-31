@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+html,body{height:100%}
+body{
+margin:0;
+background:#eee;
+}
+section{
+    display:flex;
+    width:100%;
+    background:pink;
+    height:100%;
+}
+section div{
+    flex-grow:1;
+}
+.left{background:#ccf;}
+.right{background:#cfc;}
+.left img{
+	width:300px;
+}
+	</style>
+</head>
+<body>
+	<section>
+		<div class="left" data-acceptable="true">
+			<img id="imgId1" src="test.png" data-draggable="true" draggable=true/>
+			<img id="imgId2" src="test.png" draggable=true/>
+			<img id="imgId3" src="test.png" data-draggable="true" draggable=true/>
+		</div>
+		<div class="right" data-acceptable="true">
+			
+		</div>
+	</section>
+	<script>
+
+		// document.querySelector(".left img").ondragstart = function(e){
+		// 	// debugger
+		// 	e.dataTransfer.setData("id",this.id);
+		// }
+		document.ondragstart = function(e){
+			var target = e.target;
+			var draggable = target.getAttribute("data-draggable");
+			if(draggable){
+				e.dataTransfer.setData("id",target.id);
+			}
+		}
+		// var left  = document.querySelector(".left");
+		// var right = document.querySelector(".right");
+
+		// left.ondragover=right.ondragover = function(e){
+		// 	e.preventDefault();
+		// }
+		// left.ondrop=right.ondrop = function(e){
+		// 	e.preventDefault();
+		// 	var imgId = e.dataTransfer.getData("id");
+		// 	this.appendChild(document.getElementById(imgId));
+		// }
+		
+		document.ondragover = function(e){
+			e.preventDefault();
+		}
+		document.ondrop=function(e){
+			var target = e.target;
+			var acceptable = target.getAttribute("data-acceptable");
+			if(acceptable){
+				e.preventDefault();
+				var imgId = e.dataTransfer.getData("id");
+				target.appendChild(document.getElementById(imgId));
+			}
+		}	
+	</script>
+</body>
+</html>

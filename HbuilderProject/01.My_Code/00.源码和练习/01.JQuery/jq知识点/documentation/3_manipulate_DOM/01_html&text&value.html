@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>html & text & value</title>
+    </head>
+    <body>
+        <div id="grandpa">
+            I am grandpa.
+            <div id="dad">
+                I am dad.
+                <div id="me">
+                    I am joey.
+                </div>
+            </div>
+        </div>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <input type="text" placeholder="please input user name" id="user"/><br>
+        <input placeholder="please enter your password" type="password"/><br>
+        <button>取出密码</button>
+        <script src="../vendor/jquery-1.12.1.js"></script>
+        <script>
+
+            $(document).ready(function () {
+                /***********************************************/
+                /*******************html************************/
+                /***********************************************/
+                //1. 取值(取的包装集中第一个元素的innerHTLM)
+//                alert($('div').html());
+
+                //2. 设置(包装集中，所有匹配元素的innerHTML)
+                //2.1 String参数
+//                $('div').html('<h1>我是爷爷</h1>');
+
+                //2.2 function参数
+                //1. 会为包装集中的每一个元素，都调用这个回调
+                //2. 这个回调中的this指针，指向当前遍历的这个元素(元素节点)
+                //3. 函数有两个参数：
+                // (1) index当前遍历的元素在包装集中的位置
+                // (2) oldHTML,当前遍历元素旧的html内容。
+                //4. 返回的是将要设置进去的新的html内容。
+
+                //在所有的div里面，追加一句话：欢迎来到深圳
+                //TODO: 内部DIV，调用html，没有写入新追加的内容。
+
+                var wrapped = $('div');
+                console.log(wrapped);
+                wrapped.html(function (index, oldHTML) {
+                    var str = oldHTML + '欢迎来到深圳';
+                    return str;
+                });
+
+                /***********************************************/
+                /*******************text************************/
+                /***********************************************/
+                //1. innerText
+//                alert($('#grandpa')[0].innerText);
+//                $('#grandpa')[0].innerHTML = '我不是<em>只读</em>的';
+                //在设置innerText的时候，会将我们设置的字符串包含的特殊字符串进行转换（【>】=> 【&gt;】），然后放到对应元素的innerText中
+                //text的其他用法，与html()一样。
+
+                /***********************************************/
+                /*******************value***********************/
+                /***********************************************/
+//                alert($('input').val());
+
+//                $('button').click(function () {
+//                    alert($('input[type="password"]').val());
+//                });
+
+                //val()的其他用法，与html()一样。
+
+
+            });
+        </script>
+    </body>
+</html>

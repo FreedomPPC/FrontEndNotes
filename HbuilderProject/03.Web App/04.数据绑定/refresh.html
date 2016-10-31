@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="lib/zepto.min.js" ></script>
+		<script>
+			//什么是递归---一个函数调用自身的行为
+			$(function(){
+				 getName();
+			});
+			function getName(){
+				var http='http://127.0.0.1:8020/rest-api/web/service/weather.json';
+					$.get(http,function(data){
+						$(".day>span").html(data.day);
+						$(".pm>span").html(data.pm);
+						var rain=data.rain;
+						if(rain==0){
+							rain="无";
+						}else{
+							rain="晴天";
+						}
+						$(".rain>span").html(rain);
+					});
+			    
+				console.log("hello I am get Name");
+				setTimeout(function(){
+					getName();
+				},3000);
+				
+			}
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

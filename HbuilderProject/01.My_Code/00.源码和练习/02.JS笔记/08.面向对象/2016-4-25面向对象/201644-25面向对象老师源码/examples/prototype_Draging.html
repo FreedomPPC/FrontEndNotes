@@ -1,0 +1,80 @@
+﻿<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title></title>
+        <style>
+            .dragable {
+                width: 100px;
+                height: 100px;
+                position: absolute;
+            }
+            #red {
+                background-color: red;
+            }
+            #green {
+                background: darkgreen;
+            }
+            #pink {
+                background: hotpink;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="red" class="dragable"></div>
+        <div id="green" class="dragable"></div>
+        <div id="pink" class="dragable"></div>
+        <script type="text/javascript">
+
+            function DragableDiv () {}
+
+            DragableDiv.prototype.el = document.getElementById('red');
+            DragableDiv.prototype.startMove = function () {
+                var self = this;
+                this.el.onmousedown = function (e) {
+                    console.log(this);
+                    var evt = e || window.event;
+                    self.downX = evt.clientX;
+                    self.downY = evt.clientY;
+                    self.downTop = self.el.offsetTop;
+                    self.downLeft = self.el.offsetLeft;
+
+                    document.onmousemove = function (e) {
+                        var evt = e || window.event;
+                        self.moving(evt.clientX, evt.clientY);
+                    }
+
+                    document.onmouseup = function (e) {
+                        self.stopMove();
+                    }
+                }
+            }
+
+            DragableDiv.prototype.moving = function (x, y) {
+                var diffX = x - this.downX;
+                var diffY = y - this.downY;
+
+                this.el.style.top = this.downTop + diffY + 'px';
+                this.el.style.left = this.downLeft + diffX + 'px';
+            }
+
+            DragableDiv.prototype.stopMove = function () {
+                document.onmousemove = null;
+            }
+
+
+
+            var redDragable = new DragableDiv();
+            redDragable.startMove();
+
+            var pinkDragable = new DragableDiv();
+            pinkDragable.el = document.getElementById('pink');
+            pinkDragable.startMove();
+
+            var greenDragable = new DragableDiv();
+            greenDragable.el = document.getElementById('green');
+            greenDragable.startMove();
+
+        </script>
+    </body>
+</html>

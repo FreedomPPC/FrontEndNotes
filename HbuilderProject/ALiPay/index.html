@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title></title>
+    <script type="text/javascript">
+    	
+   		
+   		//1.web中使用支付宝;
+   		/*
+   		 * 1.选择支付宝支付以后,跳转到支付宝登录的官方首页,进行登录和付款,(在用户和支付宝之间做一次中转,让用户去支付宝官网去付款);
+   		 * 2.选择支付宝付款以后,打开一个新页面,新页面中输入用户名,密码,手机验证码,金额,该网站自动生成;
+   		 * 用户名,密码,手机号,验证码,支付现金,
+   		 * 后端已经写好了这样的付款api接口,实现付款的是当前网站和支付宝在后端进行对接和协议;
+   		 * 
+   		 * 3.选择支付宝以后,生成二维码,打开支付宝扫一扫进行支付;
+   		 * 1.字符串;
+   		 * 2.id;
+   		 * 3.下载地址;
+   		 * 4.官网地址;
+   		 * 5.付款地址;
+   		 * 
+   		 * 
+   		 * 2.混合开发使用支付宝;
+   		 * **1.我们要去在sdk配置支付宝付款权限模块;
+   		 * **2.得到一个能付款的webservice api;基于api去付款;
+   		 * 
+   		 * http://demo.dcloud.net.cn/helloh5/payment/alipay.php?total=0.01   //total后面是金额;
+   		 * 
+   		 * 
+   		 */
+    </script>
+    <script type="text/javascript">
+    	document.addEventListener('plusready', function(){
+   			//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
+   			
+   		});
+   		
+    	function payMoney(){
+    		var payHttp =  "http://demo.dcloud.net.cn/helloh5/payment/alipay.php?total=0.01";
+    		
+    		var _payment = plus.payment;
+    		_payment.getChannels(function(channels){
+    			alert(JSON.stringify(channels));//[{id:"alipay"},{id:"wxpay"}];
+    			
+    			for(var i=0;i<channels.length;i++){
+    				if(channels[i].id == "wxpay"){
+    					
+    				}else{
+    					//支付宝支付;
+    					var _channels = channels[i];
+    					alert("执行支付宝进行支付");
+    					var xhr = new XMLHttpRequest();
+    					xhr.open("GET",payHttp);
+    					xhr.onreadystatechange = function(){
+    						if(xhr.readyState == 4){
+    							if(xhr.status == 200){
+    								plus.payment.request(_channels,xhr.responseText,function(){
+    									alert("您支付成功,谢谢土豪哥!");
+    								});
+    							}
+    						}
+    					};
+    					xhr.send("");
+    				}
+    			}
+    		},function(error){
+    			alert("您的手机没有任何一款支付软件:"+error.message);
+    		})
+    	}
+    	/*
+    	 * 总结:1.提供付款后端提供的付款接口---回传参数:传出订单信息,支付信息,签证信息;
+    	 * //自定义的手机app里面打开支付宝并付款;
+    	 * var _pay = plus.payMent;//获取支付管理对象;
+    	 * _pay.getChannels(function(channels){//获取支付渠道,wxpay,alipay
+              if(channels[0].id == 'alipay'){
+              	发送ajax请求;//微信pay也是一样的;
+              	
+              }
+    	 * })
+    	 */
+    </script>
+</head>
+<body>
+	<button onclick="payMoney()">支付0.01元</button>
+</body>
+</html>

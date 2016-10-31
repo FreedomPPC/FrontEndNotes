@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>jQueryDOM操作</title>
+        <link href="../vendor/bootstrap.css" rel="stylesheet"/>
+        <link href="../vendor/bootstrap-theme.css" rel="stylesheet"/>
+        <style>
+            #container {
+                padding-left: 30px;
+            }
+
+            h3 {
+                font-weight: normal;
+                width: 70%;
+            }
+
+            h3 .pra {
+                padding-top: 40px;
+                padding-left: 10px;
+                margin: 5px;
+                border: 2px solid #cc0033;
+                border-radius: 3px;
+            }
+
+            .pra span {
+                display: block;
+                margin-top: 15px;
+                background-color: #cccccc;
+                border-radius: 5px;
+                padding: 10px;
+            }
+
+            .pra .text-indent {
+                text-indent: 40px;
+            }
+
+            .pra pre {
+                text-indent: 0;
+            }
+
+            em {
+                color: red;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <h1>
+                操作DOM
+            </h1>
+            <h3>
+                <div class="pra">
+                    ● html()
+                    <span>
+                        <pre>
+.html()
+说明：获得匹配集中第一个元素的html内容(innerHTML)
+参数：无
+返回值：(字符串) html内容
+例如：$('#specialID').html()
+                        </pre>
+                        <pre>
+.html(content)
+说明：将所有匹配的元素的html内容设置content
+参数：(String|Function) 被设定的HTML片段。如果参数是一个函数，会为包装集的每一个元素调用这个函数，函数内的this，指向当前遍历的元素。函数接收两个参数，第一个参数为当前元素的index，第二个参数为当前元素内已经存在的html内容。这个函数的返回值，将作为这个元素新的html内容被设置到页面上。
+返回值：匹配元素的包装集
+例如：$('.active').html('&lt;div class="inner"&gt;&lt;/div&gt;')
+                        </pre>
+                    </span>
+                </div>
+
+                <div class="pra">
+                    ● text()
+                    <span>
+                        <pre>
+text()
+说明：获得匹配集中第一个元素的text的内容(innerText)
+参数：无
+返回值：(字符串) text内容
+例如：$('#specialID').text()
+                        </pre>
+                        <pre>
+.text(content)
+说明：将所有匹配的元素的html内容设置content
+参数：(String|Function) 被设定的text内容。如果参数是一个函数，会为包装集的每一个元素调用这个函数，函数内的this，指向当前遍历的元素。函数接收两个参数，第一个参数为当前元素的index，第二个参数为当前元素内已经存在的text内容。这个函数的返回值，将作为这个元素新的text内容被设置到页面上。
+返回值：匹配元素的包装集
+例如：$('.active').text('&lt;div class=”inner”&gt;&lt;/div&gt;');
+PS: 如果参数中包含特殊字符串，会将字符串进行转换（【>】=> 【& gt;】），然后放到对应元素的innerText中。
+                        </pre>
+                    </span>
+                </div>
+
+                <div class="pra">
+                    ● .val()
+                    <span>
+                        <pre>
+.val()
+说明：获得匹配集中第一个元素的value属性值
+参数：无
+返回值：(字符串) value内容
+例如：$('#specialID').val()
+                        </pre>
+                        <pre>
+.val(content)
+说明：将所有匹配的元素的html内容设置content
+参数：(String|Function) 被设定的value值。如果参数是一个函数，会为包装集的每一个元素调用这个函数，函数内的this，指向当前遍历的元素。函数接收两个参数，第一个参数为当前元素的index，第二个参数为当前元素内已经存在的value值。这个函数的返回值，将作为这个元素新的value值被设置到页面上。
+返回值：匹配元素的包装集
+例如：$('.active').val(4)
+                        </pre>
+                    </span>
+                </div>
+
+                <div class="pra">
+                    ● class
+                    <span>
+                        <pre>
+.addClass(className)
+说明：为每个匹配的元素增加一个或多个类（多个类名以空格间隔）
+参数：(String|Function)想要追加的类名。如果参数是一个函数，会为包装集的每一个元素调用这个函数，函数内的this，指向当前遍历的元素。函数接收两个参数，第一个参数为当前元素的index，第二个参数为当前元素已经有的class。这个函数的返回值，将作为这个元素新追加的类名。
+返回值：元素的包装集
+例如：$('#specialID').addClass('focus');
+                        </pre>
+                        <pre>
+.removeClass(className)
+说明：为每个匹配的元素移除一个或多个类（多个类名以空格间隔）
+参数：(String|Function)想要移除的类名。如果参数是一个函数，会为包装集的每一个元素调用这个函数，函数内的this，指向当前遍历的元素。函数接收两个参数，第一个参数为当前元素的index，第二个参数为当前元素已经有的class。这个函数的返回值，将作为这个元素将要被移除的类名。
+返回值：元素的包装集
+例如：$('#specialID').removeClass('focus');
+                        </pre>
+                        <pre>
+.hasClass(className)
+说明：确定匹配的包装集中的每个元素，是否含有参数指定的类名()
+参数：(String)想要查看的类名。
+返回值：(Boolean)只要匹配集中的其中一个含有这个类名，则返回true，否则返回false。
+例如：$('#specialID').hasClass('focus');
+                        </pre>
+                        <pre>
+.toggleClass(className)
+说明：添加或者删除指定的类名。添加或者删除操作，取决于当前的元素是否含有指定的类。如果包含有指定的类，则删除这个类；如果没有，则添加这个类。
+参数：(String)想要添加/删除的类名。
+返回值：返回原包装集
+例如：$('#specialID').toggleClass('focus');
+                        </pre>
+                    </span>
+                </div>
+
+                <div class="pra">
+                    ● attr
+                    <span>
+                        <pre>
+.attr(attrName)
+说明：获取匹配集中第一个元素的指定的attribute值。
+参数：(String)想要取得的attribute名称。
+返回值：返回attribute值
+例如：$('#specialID').attr('name');
+                        </pre>
+                        <pre>
+.attr(attrName, attrValue)
+说明：设置指定的attribute。
+参数：
+attrName: (String)想要设置的attribute名
+attrValue: (String|Number)想要设定的attribute值
+返回值：返回原包装集
+例如：$('#specialID').attr('name', 'xiaoMing');
+                        </pre>
+                        <pre>
+.attr(attributes)
+说明：设置指定的一个或者多个attribute。
+参数：(Object) 参数为一个包含0个或者多个键值对的对象，用于指定想要设置的attribute及对应的值
+返回值：返回原包装集
+例如：
+$('#specialID').attr({
+    name: 'hello',
+    title: 'My title',
+    id: 'world'
+});
+
+                        </pre>
+                        <pre>
+.attr(attrName, callback)
+说明：设置指定的一个attribute。
+参数：
+attrName: (String) 将要设置的attribute名
+callback: (function) 会为包装集的每一个元素调用这个函数，函数内的this，指向当前遍历的元素。函数接收两个参数，第一个参数为当前元素的index，第二个参数为当前元素已经有的属性值。这个函数的返回值，将作为这个元素这个attribute将要被设置的值。
+返回值：返回原包装集
+例如：
+$('.specialClass').attr('id', function (index, oldAttr) {
+    if (oldAttr !== '') {
+        return oldAttr + 'appended-id';
+    } else {
+        return 'new-id';
+    }
+});
+                        </pre>
+                        <pre>
+.removeAttr(attrName)
+说明：移除指定的attribute。
+参数：(String)想要移除的attribute名称。
+返回值：返回原包装集
+例如：$('#specialID').removeAttr('title');
+                        </pre>
+                    </span>
+                </div>
+
+                <div class="pra">
+                    ● prop
+                    <span>
+                        <pre>
+.prop(propName)
+说明：获取指定的property值。
+参数：(String)想要取得的property名称。
+返回值：返回property值
+例如：$('#specialID').prop('checked');
+                        </pre>
+                        <pre>
+.prop(propName, propValue)
+说明：设置指定的property。
+参数：
+propName: (String)想要设置的property名
+propValue: (anything)想要设定的property值
+返回值：返回原包装集
+例如：$('#specialID').prop('checked', true);
+                        </pre>
+                        <pre>
+.prop(propperties)
+说明：设置指定的一个或者多个property。
+参数：(Object) 参数为一个包含0个或者多个键值对的对象，用于指定想要设置的property及对应的值
+返回值：返回原包装集
+例如：
+$('#specialID').prop({
+    disabled: false,
+    checked: true
+});
+                        </pre>
+                        <pre>
+.prop(propName, callback)
+说明：设置指定的一个属性。
+参数：
+propName: (String) 将要设置的属性名
+callback: (function) 会为包装集的每一个元素调用这个函数，函数内的this，指向当前遍历的元素。函数接收两个参数，第一个参数为当前元素的index，第二个参数为当前元素已经有的property值。这个函数的返回值，将作为这个元素这个property将要被设置的值。
+返回值：返回原包装集
+例如：
+$('.specialClass').prop('checked', function (index, oldProp) {
+    if (oldProp === true) {
+        return false;
+    } else {
+        return true;
+    }
+});
+                        </pre>
+                        <pre>
+.removeProp(propName)
+说明：移除指定的特性。
+参数：(String)想要移除的特性名称。
+返回值：返回原包装集
+例如：$('#specialID').removeProp('checked');
+                        </pre>
+                    </span>
+                </div>
+
+                <div class="pra">
+                    ● Attribute 和 Property
+                    <span>
+                        <pre>
+1.	Attribute指的是HTML标签上面所包含的属性
+2.	Property指的是浏览器解析完HTML，并将其转换为DOM之后，对应的JavaScript对象上所对应的属性。通常情况下，Attribute和property是1:1对应的。但是也有特例，比如checked属性，disabled属性。
+                        </pre>
+                    </span>
+                </div>
+
+                <div class="pra">
+                    ● css
+                    <span>
+                        <pre>
+.css(propName)
+说明：获取匹配集合中第一个元素的计算之后的css属性
+参数：(String)想要取得的css属性的名称。
+返回值：css属性值
+例如：$('#specialID').css('top');
+                        </pre>
+                        <pre>
+.css(propNames)
+说明：获取匹配集合中第一个元素的计算之后的多个css属性
+参数：(Array)想要获得的多个属性名称组成的数组
+返回值：(Object)有一个或者多个键值对组成的对象
+例如：
+var props = $('#specialID').css(['top', 'background-color']);
+                        </pre>
+                        <pre>
+.css(propName, propValue)
+说明：设置指定的css属性。
+参数：
+propName: (String)想要设置的css名
+propValue: (anything)想要设定的css值
+返回值：返回原包装集
+例如：
+$('#specialID').css('top', 10);
+$('#specialID').css('top', '10px');
+                        </pre>
+                        <pre>
+.css(propperties)
+说明：设置指定的一个或者多个css属性。
+参数：(Object) 参数为一个包含0个或者多个键值对的对象，用于指定想要设置的css及对应的值
+返回值：返回原包装集
+例如：
+$('#specialID').css({
+    top:  10,
+    position: 'absolute'
+});
+
+                        </pre>
+                        <pre>
+.css(propName, callback)
+说明：设置指定的一个css属性。
+参数：
+propName: (String) 将要设置的css属性名
+callback: (function) 会为包装集的每一个元素调用这个函数，函数内的this，指向当前遍历的元素。函数接收两个参数，第一个参数为当前元素的index，第二个参数为当前元素已经有的css属性值。这个函数的返回值，将作为这个元素的css属性被设置到元素上。
+返回值：返回原包装集
+例如：
+$('.specialClass').css('left', function (index, oldProp) {
+    var width = parseInt($(this).css('width'));
+    var margin = 50;
+    return index * ( width + margin);
+});
+
+                        </pre>
+                    </span>
+                </div>
+
+                <div class="pra" id="width-info">
+                    ● width(以width为例，height、innerWidth、innerHeight与之相同)
+                    <span>
+                        <pre>
+.width ()
+说明：获取匹配集合中第一个元素的的宽度
+参数：无。
+返回值：(Number)宽度值
+<em>PS:width()这个值，等于style.width</em>
+<em>PS:innerWidth()这个值，等于style.width + padding(左+右)</em>
+<em>PS:outerWidth(false)这个值，等于style.width + padding(左+右) + border(左+右) === offsetWidth</em>
+<em>PS:outerWidth(true)这个值，等于style.width + padding(左+右) + border(左+右) + margin(左+右)</em>
+例如：$('#specialID').width();
+                        </pre>
+                        <pre>
+.width(value)
+说明：设置匹配集中元素的宽度。
+参数：(Number|String)设置的宽度
+返回值：返回原包装集
+例如：
+$('#specialID').width( 100);
+$('#specialID').width('100px');
+$('#specialID').width('200');
+
+                        </pre>
+                        <pre>
+.width(callback)
+说明：设置匹配集中元素的宽度。
+参数：
+会为包装集的每一个元素调用这个函数，函数内的this，指向当前遍历的元素。函数接收两个参数，第一个参数为当前元素的index，第二个参数为当前元素的宽度。这个函数的返回值，将作为这个元素的宽度被设置到元素上。
+返回值：返回原包装集
+例如：
+$('.specialClass').width(function (index, oldValue) {
+    return index * 30;
+});
+                        </pre>
+                    </span>
+                </div>
+
+                <div class="pra">
+                    ● outerWidth(以outerWidth为例，outerHeight相同)
+                    <span>
+                        <pre>
+.outerWidth(includeMargin)
+说明：获取匹配集合中第一个元素的的包括外框在内的宽度
+参数：(Boolean) 默认值为false。如果为true，则返回宽度包含左右的margin，否则不包含margin
+返回值：(Number)返回包含padding、border在内的宽度。是否包含margin需要视参数而定。
+例如：$('#specialID').outerWidth(true);
+                        </pre>
+                        <pre>
+.outerWidth(value)
+说明：设置匹配集中元素的宽度。
+参数：(Number|String)设置的宽度
+返回值：返回原包装集
+例如：
+$('#specialID').outerWidth(100);
+                        </pre>
+                        <pre>
+.outerWidth(callback)
+说明：设置匹配集中元素的宽度。
+参数：
+会为包装集的每一个元素调用这个函数，函数内的this，指向当前遍历的元素。函数接收两个参数，第一个参数为当前元素的index，第二个参数为当前元素的宽度。这个函数的返回值，将作为这个元素的宽度被设置到元素上。
+返回值：返回原包装集
+例如：
+$('.specialClass').outerWidth(function (index, oldValue) {
+    return index * 30;
+});
+                        </pre>
+                    </span>
+                </div>
+
+                <div class="pra">
+                    ● offset
+                    <span>
+                        <pre>
+.offset()
+说明：获取匹配集合中第一个元素的坐标。以document的左上角为原点进行定位
+参数：无
+返回值：返回一个包含对象。包含两个键值对(top,left)
+<em>PS:这个坐标，是元素外边框左上角的坐标到document左上角的坐标的距离</em>
+例如：$('#specialID').offset();
+                        </pre>
+                        <pre>
+.offset(coordinates)
+说明：设置匹配集中元素的坐标。
+参数：(Object)包含top或者left的坐标。
+返回值：返回原包装集
+例如：
+$('#specialID'). offset ({
+    top: 10,
+    left: 10
+});
+                        </pre>
+                        <pre>
+.offset(callback)
+说明：设置匹配集中元素的位置。
+参数：
+会为包装集的每一个元素调用这个函数，函数内的this，指向当前遍历的元素。函数接收两个参数，第一个参数为当前元素的index，第二个参数为当前元素的位置。这个函数的返回值，将作为这个元素的位置被设置到元素上。
+返回值：返回原包装集
+例如：
+$('.specialClass').offset(function (index, oldCoor) {
+    return {
+        top: 10,
+        left: 10
+    };
+});
+                        </pre>
+                    </span>
+                </div>
+
+                <div class="pra">
+                    ● position
+                    <span>
+                        <pre>
+.position()
+说明：获取匹配集合中第一个元素的坐标。
+参数：无
+返回值：返回一个包含对象。包含两个键值对(top,left)
+<em>PS:以offset parent的左上角进行定位（top、left以margin的顶部和左边为准）</em>
+例如：$('#specialID').position ();
+                        </pre>
+                    </span>
+                </div>
+
+                <div class="pra">
+                    ● after(before、append、prepend类似)
+                    <span>
+                        <pre>
+.after(content)
+说明：在每个匹配的元素之后插入内容。
+参数：插入到每个目标后的内容
+例如：$(".inner").after("&lt;p&gt;Test&lt;/p&gt;");
+<em>
+PS:.insertAfter()这个函数，与after操作刚好相反
+例如：$("&lt;p&gt;Test&lt;/p&gt;").insertAfter(".inner");
+    这段代码与上面的after的代码，实现相同的功能
+</em>
+                        </pre>
+                        <pre>
+.after(callback)
+说明：在每个匹配的元素之后插入内容。
+参数：会为包装集的每一个元素调用这个函数，函数内的this，指向当前遍历的元素。这个函数的返回值，将作为一个元素被插入到目标后。
+例如：
+$( "p" ).after(function() {
+    return "&lt;div&gt;" + this.className + "&lt;/div&gt;";
+});
+                        </pre>
+                    </span>
+                </div>
+
+                <div class="pra">
+                    ● clone
+                        <pre>
+.clone( [withDataAndEvents ] [, deepWithDataAndEvents ] )
+说明：克隆匹配的DOM元素
+参数：
+1:一个布尔值（true 或者 false）指示事件处理函数是否会被复制。
+2:一个布尔值，指示是否对匹配元素的所有子节点的<em>事件</em>，也进行复制。
+<em>PS:第一个参数的默认值，为false，第二个参数的默认值，是第一个参数的值</em>
+                        </pre>
+                    </span>
+                </div>
+
+                <div class="pra">
+                    ● detach
+                        <pre>
+detach(expression)
+说明: 从DOM中删除所有匹配的元素。从DOM树上删除元素后，这个元素被保存到了变量中。同时，元素上的事件和Data也会保留下来
+参数: 用于筛选元素的jQuery表达式。
+                        </pre>
+                    </span>
+                </div>
+
+                <div class="pra">
+                    ● remove
+                        <pre>
+remove(expression)
+说明: 从DOM中删除所有匹配的元素。从DOM树上删除元素后，这个元素被保存到了变量中。但是，元素上的事件和Data会被删除
+参数: 用于筛选元素的jQuery表达式。
+                        </pre>
+                    </span>
+                </div>
+
+                <div class="pra">
+                    ● empty
+                        <pre>
+empty()
+说明：删除匹配的元素集合中所有的子节点。
+参数：无。
+                        </pre>
+                    </span>
+                </div>
+                <div class="pra">
+                    ● wrap() & unwrap()
+                    <span>
+                        <pre>
+wrap()
+说明：包装集中的每个元素，都会在外层包裹一层HTML结构
+参数：HtmlString | Selector | Function | Element
+例如:
+==================================================
+&lt;div class="container"&gt;
+    &lt;div class="inner"&gt;Hello&lt;/div&gt;
+    &lt;div class="inner"&gt;Goodbye&lt;/div&gt;
+&lt;/div&gt;
+==================================================
+
+执行js代码后：
+<em>$(".inner").wrap("&lt;div class='new'&gt;&lt;/div&gt;");</em>
+
+==================================================
+&lt;div class="container"&gt;
+    &lt;div class="new"&gt;
+        &lt;div class="inner"&gt;Hello&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="new"&gt;
+        &lt;div class="inner"&gt;Goodbye&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+==================================================
+                        </pre>
+                        <pre>
+unwrap()
+说明：删除包装集中的每个元素的外层HTML结构。
+参数：无
+例如:
+==================================================
+&lt;div class="container"&gt;
+    &lt;div class="new"&gt;
+        &lt;div class="inner"&gt;Hello&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="new"&gt;
+        &lt;div class="inner"&gt;Goodbye&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+==================================================
+
+执行js代码后：
+<em>$(".inner").unwrap();</em>
+
+==================================================
+&lt;div class="container"&gt;
+    &lt;div class="inner"&gt;Hello&lt;/div&gt;
+    &lt;div class="inner"&gt;Goodbye&lt;/div&gt;
+&lt;/div&gt;
+==================================================
+                        </pre>
+                        <pre>
+wrapAll()
+说明：在所有包装集的外层，包裹一层HTML结构。
+参数：HtmlString | Selector | Function | Element
+例如:
+==================================================
+&lt;div class="container"&gt;
+    &lt;div class="inner"&gt;Hello&lt;/div&gt;
+    &lt;div class="inner"&gt;Goodbye&lt;/div&gt;
+&lt;/div&gt;
+==================================================
+
+执行js代码后：
+<em>$(".inner").wrapAll("&lt;div class='new' /&gt;");</em>
+
+==================================================
+&lt;div class="container"&gt;
+    <em>&lt;div class="new"&gt;</em>
+        &lt;div class="inner"&gt;Hello&lt;/div&gt;
+        &lt;div class="inner"&gt;Goodbye&lt;/div&gt;
+    <em>&lt;/div&gt;</em>
+&lt;/div&gt;
+==================================================
+                        </pre>
+                        <pre>
+wrapInner()
+说明：在每个匹配元素<em>内容</em>的外层，包裹一层HTML结构。
+参数：HtmlString | Selector | Function | Element
+例如:
+==================================================
+&lt;div class="container"&gt;
+    &lt;div class="inner"&gt;Hello&lt;/div&gt;
+    &lt;div class="inner"&gt;Goodbye&lt;/div&gt;
+&lt;/div&gt;
+==================================================
+
+执行js代码后：
+<em>$(".inner").wrapInner("&lt;div class='new'&gt;&lt;/div&gt;");</em>
+
+==================================================
+&lt;div class="container"&gt;
+    &lt;div class="inner"&gt;
+        <em>&lt;div class="new"&gt;</em>Hello<em>&lt;/div&gt;</em>
+    &lt;/div&gt;
+    &lt;div class="inner"&gt;
+        <em>&lt;div class="new"&gt;</em>Goodbye<em>&lt;/div&gt;</em>
+    &lt;/div&gt;
+&lt;/div&gt;
+==================================================
+                        </pre>
+                    </span>
+                </div>
+            </h3>
+        </div>
+
+    </body>
+</html>

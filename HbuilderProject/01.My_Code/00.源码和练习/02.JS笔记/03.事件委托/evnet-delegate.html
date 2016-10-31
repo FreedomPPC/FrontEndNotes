@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title></title>
+		<style type="text/css">
+			td {
+				width: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="reg-input" style="margin-bottom:10px;">
+			ID:   <input type="text" />
+			姓名: <input type="text" />
+			电话: <input type="text" />
+			<input type="button" id="save" value="保存"/>
+		</div>
+		<table border="1" id="info-tbl">
+			<tbody>
+				<tr>
+					<th>ID</th>
+					<th>姓名</th>
+					<th>电话</th>
+					<th>操作</th>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>张三丰</td>
+					<td>13312345678</td>
+					<td><a href="#" class="del">删除</a></td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>李四疯</td>
+					<td>13388888888</td>
+					<td><a href="#" class="del">删除</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<script type="text/javascript">
+			window.onload = function () {
+				addRow();
+				delRow();
+			}
+			var idInput = document.getElementsByTagName('input')[0];
+			var nameInput = document.getElementsByTagName('input')[1];
+			var telInput = document.getElementsByTagName('input')[2];
+
+			function addRow () {
+				var saveBtn = document.getElementById('save');
+				saveBtn.onclick = function () {
+					var id = idInput.value;
+					var name = nameInput.value;
+					var tel = telInput.value;
+					var tr = document.createElement('tr');
+
+
+					var idTd = document.createElement('td');
+					idTd.innerHTML = id;
+					var nameTd = document.createElement('td');
+					nameTd.innerHTML = name;
+					var telTd = document.createElement('td');
+					telTd.innerHTML = tel;
+					var delTd = document.createElement('td');
+					delTd.innerHTML = '<a href="#" class="del">删除</a>';
+
+					tr.appendChild(idTd);
+					tr.appendChild(nameTd);
+					tr.appendChild(telTd);
+					tr.appendChild(delTd);
+
+					document.getElementsByTagName('tbody')[0].appendChild(tr);
+
+				}
+			}
+
+			function delRow () {
+				// var links = document.getElementsByTagName('a');
+
+				// for (var i=0; i<links.length; i++) {
+				// 	links[i].onclick = function () {
+				// 		var tr = this.parentNode.parentNode;
+
+				// 		tr.outerHTML = '';
+				// 	}
+				// }
+
+				var tbody = document.getElementsByTagName('tbody')[0];
+
+				tbody.onclick = function (evt) {
+
+					var e = evt || window.event;
+
+					if (e.target.tagName === 'A') {
+						var tr = e.target.parentNode.parentNode;
+						tr.outerHTML = ''
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

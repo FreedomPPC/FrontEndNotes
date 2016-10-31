@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script src="jquery-1.10.1.min.js"></script>
+<script>
+
+
+$(function(){
+	
+	//$('div').appendTo( $('span') );
+	
+	//$('span').get(0).appendChild( $('div').get(0) );
+	
+	//clone() : 可以接收一个参数 ，作用可以复制之前的操作行为
+	
+	$('div').click(function(){
+		alert(123);
+	});
+	
+	$('div').clone(true).appendTo( $('span') );
+	
+});
+
+</script>
+</head>
+
+<body>
+<div>div</div>
+<span>span</span>
+
+</body>
+</html>

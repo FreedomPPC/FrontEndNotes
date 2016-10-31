@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>设置拖拽的阴影</title>
+	<style>
+		li{
+			width:200px;
+			height: 20px;
+			margin-top:20px;
+			background: blue;
+		}
+		#div1{
+			width:220px;
+			height:200px;
+			border:1px solid red;
+			border-radius: 5px;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var oUl = document.getElementsByTagName('ul')[0];
+			var aLi = document.getElementsByTagName('li');
+			var oDiv = document.getElementById('div1');
+			var ul_1 = document.getElementById('ul_1');
+			var i = 0;
+
+			for(var i=0;i<aLi.length;i++){
+
+				aLi[i].index = i;
+				//1.拖拽前触发事件;
+				aLi[i].ondragstart = function(ev){
+					this.style.background = 'red';
+
+					//火狐下必须在dragstart设置dataTransfer对象才可以拖拽除了图片外的的其他标签;
+					ev.dataTransfer.setData('name',this.index);
+
+					//设置光标样式;
+					ev.dataTransfer.effectAllowed = 'copy';
+
+					//******设置拖拽的阴影,也是在ondragstart里面设置;默认的是自己的阴影
+					//括号里面三个参数;(元素,X,Y);后面的x y参数就是光标在元素中的位置;
+					ev.dataTransfer.setDragImage(oDiv,0,0);
+				};
+
+				//2.拖动过程中连续触发;
+				// aLi[i].ondrag = function(){
+					
+				// 	document.title = i++;
+				// }
+				//3.拖拽后触发;div作为一个容器被称作目标元素;我们要把拖拽的东西放到里面;
+				aLi[i].ondragend = function(){
+					this.style.background = 'blue';
+				}
+			};
+
+			//拖拽元素进入目标元素触发事件;
+			oDiv.ondragenter = function(){
+				this.style.borderColor = "blue";
+			};
+			//进入(enter)和离开(leave)目标元素之间连续触发;和拖拽的ondrag事件差不多
+			oDiv.ondragover = function(ev){
+				// document.title = i++;
+				
+				ev.preventDefault();
+
+
+			}
+			//拖拽元素离开目标元素触发事件;
+			oDiv.ondragleave = function(){
+				this.style.borderColor = 'red';
+			}
+			//释放拖拽元素到目标元素;
+			oDiv.ondrop = function(ev){
+				//要想拖拽元素释放到目标元素当中;就必须在目标元素的ondragover事件当中阻止默认事件;这是语法规定的;
+				// alert(123);
+
+				// alert(ev.dataTransfer.getData('name'));
+				// oUl.removeChild(aLi[ev.dataTransfer.getData('name')]);
+
+				// ul_1.appendChild(aLi[ev.dataTransfer.getData('name')]);
+				if(ul_1.children.length == 0){
+					ul_1.appendChild(aLi[ev.dataTransfer.getData('name')]);
+				}else{
+
+					ul_1.insertBefore(aLi[ev.dataTransfer.getData('name')],ul_1.firstChild);
+				}
+
+				//一定要在ondrop里面加一个循环,不然会转移不了最后一次;因为我们在删除一个以后呢.上面的li的index发生了变化;所以我们在删完一个以后,再重新循环;这样ali的index就会重新刷新了;
+				for(var i=0;i<aLi.length;i++){
+					aLi[i].index = i;
+				}
+				
+			}
+		}
+	</script>
+</head>
+<body>
+	<ul>
+		<li draggable="true">aaa</li>
+		<li draggable="true">bbb</li>
+		<li draggable="true">ccc</li>
+	</ul>
+
+	<div id="div1">
+		<ul id="ul_1">
+			
+		</ul>
+	</div>
+</body>
+</html>

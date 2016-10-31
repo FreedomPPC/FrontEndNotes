@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ajax读取本地文档</title>
+	<script>
+		window.onload = function(){
+			var btn = document.getElementById('btn1');
+			btn.onclick = function (){
+				//1.创建ajax对象
+				var xhr = new XMLHttpRequest();
+
+				xhr.open('get','abc.txt',true);
+				
+				xhr.send();
+				
+				//4.接受响应结果
+				xhr.onreadystatechange = function () {
+					if(xhr.readyState === 4){
+						if(xhr.status ===200){
+							var str=xhr.responseText;
+							document.body.innerHTML = str;
+						}else{
+							alert(xhr.status);
+						}
+					}
+				}
+
+				
+			}
+
+		}
+	</script>
+</head>
+<body>
+	点我读取本地文档
+	<input type="button" value="读取" id="btn1" />
+</body>
+</html>

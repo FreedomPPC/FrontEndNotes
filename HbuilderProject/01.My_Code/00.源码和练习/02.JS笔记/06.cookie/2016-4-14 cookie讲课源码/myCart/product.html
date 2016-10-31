@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title>商品列表</title>
+		<style type="text/css"></style>
+	</head>
+	<body>
+		<ul>
+			<li>
+				<span>商品1</span>
+				<span>RMB41</span>
+				<span><a href="javascript:;">加入购物车</a></span>
+			</li>	
+			<li>
+				<span>商品2</span>
+				<span>RMB42</span>
+				<span><a href="javascript:;">加入购物车</a></span>
+			</li>	
+			<li>
+				<span>商品3</span>
+				<span>RMB43</span>
+				<span><a href="javascript:;">加入购物车</a></span>
+			</li>	
+			<li>
+				<span>商品4</span>
+				<span>RMB44</span>
+				<span><a href="javascript:;">加入购物车</a></span>
+			</li>	
+			<li>
+				<span>商品5</span>
+				<span>RMB45</span>
+				<span><a href="javascript:;">加入购物车</a></span>
+			</li>	
+			<li>
+				<span>商品6</span>
+				<span>RMB46</span>
+				<span><a href="javascript:;">加入购物车</a></span>
+			</li>	
+		</ul>
+		<a href="cart.html" target="_blank">查看购物车</a>
+		<script type="text/javascript">
+			function setCookie(name, value, days) {
+				var nameStr = encodeURIComponent(name);
+				var valueStr = encodeURIComponent(value);
+
+				var cookieStr = nameStr + '=' + valueStr;
+
+				if (days) {
+					var msOfDays = 1000 * 60 * 60 * 24;
+					var today = new Date();
+					var after = new Date(today.getTime() + msOfDays*days);
+					cookieStr += ';expires=' + after;
+				}
+
+				document.cookie = cookieStr;
+			}
+
+			function getCooike(name) { 
+				var array = decodeURIComponent(document.cookie).split('; ');
+				var key_value;
+				for (var i=0; i<array.length; i++) {
+					key_value = array[i].split('=');
+					if (key_value[0] === name) {
+						return key_value[1];
+					}
+				}
+
+				return '';
+			}
+
+			function removeCookie(name) {
+
+				setCookie(name, '', -1);
+			}
+
+			window.onload = function () {
+				var list = document.getElementsByTagName('ul')[0];
+				var links = list.getElementsByTagName('a');
+
+				for (var i=0; i<links.length; i++) {
+					links[i].onclick = function () {
+						var name = this.parentNode.parentNode.children[0].innerHTML;
+						var value = this.parentNode.parentNode.children[1].innerHTML;
+
+						setCookie('goods-' + name, value, 7);
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

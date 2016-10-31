@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+    .container{
+    	width:500px;
+    	height:500px;
+    	background: #eee;
+
+    }
+	</style>
+</head>
+<body>
+	<div class="container"></div>
+	<script>
+        var box = document.querySelector(".container");
+        box.ondragenter = function(e){
+        	e.preventDefault();
+        }
+        box.ondragover = function(e){
+        	e.preventDefault();
+        }
+
+        box.ondrop = function(e){
+        	e.preventDefault();
+        	var files = e.dataTransfer.files;
+        	// for(var i)
+        	[].forEach.apply(files,[function(file){
+   
+	        	var reader = new FileReader();
+	        	reader.readAsDataURL(file);
+	        	reader.onload = function(){
+	        		document.body.innerHTML = reader.result;
+	        		// var img = new Image();
+	        		// img.src = obj;///reader.result;
+	        		// box.appendChild(img) ;
+	        	}
+        	}])
+        }
+	</script>
+</body>
+</html>

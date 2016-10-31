@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script src="jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>	
+		<!--在控制台中写$.extend({sayhi:function(){alert('fffffff')}});-->
+		<!--<script type="text/javascript">
+			$.extend({
+				leftTrim:function(str){
+					return str.replace(/^\s+/g,"");//配合正则表达式,去掉左空格;记住,函数里面括号一定要传参数;
+				}
+			})
+		</script>-->
+		<script src="01.$.extend().js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+		$(function(){
+			var str ="    hello ";
+			alert("去掉左空格("+$.leftTrim(str)+")");
+			alert("去掉右空格("+$().rightTrim(str)+")");//两者插件的写法都差不多.只是调用的方法不一样;
+		})
+		
+		</script>
+	</body>
+</html>

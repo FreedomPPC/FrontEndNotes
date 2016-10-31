@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+
+//好处：
+//1.希望一个变量长期驻扎在内存当中
+//2.避免全局变量的污染
+//3.私有成员的存在
+
+//用法：
+//1.模块化代码
+//2.在循环中直接找到对应元素的索引
+
+/*var a = 1;
+function aaa(){
+	a++;
+	alert(a);
+}
+
+//aaa();  //2
+//aaa();  //3
+//alert(a);*/
+
+
+/*function aaa(){
+	var a = 1;
+	a++;
+	alert(a);
+}
+aaa();  //2
+aaa();  //2*/
+
+
+/*function aaa(){
+	var a = 1;
+	return function(){
+		a++;
+		alert(a);
+	}
+}
+
+var b = aaa();
+
+b();  //2
+b();  //3
+//alert(a);*/
+
+
+/*var aaa = (function(){
+
+	var a = 1;
+	return function(){
+		a++;
+		alert(a);
+	}
+
+})();
+
+aaa();  //2
+aaa();  //3*/
+
+var aaa = (function(){
+
+	var a = 1;
+	
+	function bbb(){
+		a++;
+		alert(a);
+	}
+	
+	function ccc(){
+		a++;
+		alert(a);
+	}
+	
+	return {
+		
+		b : bbb,
+		c : ccc
+		
+	}
+
+})();
+
+
+//aaa.b();  //2
+//aaa.c();  //3
+
+//alert(a);
+//alert(bbb);
+alert(ccc);
+
+</script>
+</head>
+
+<body>
+</body>
+</html>

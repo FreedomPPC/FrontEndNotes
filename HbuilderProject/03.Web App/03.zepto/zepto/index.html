@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Zepto入门</title>
+		<script type="text/javascript" src="lib/zepto.min.js" ></script>
+		<script>
+			$(function(){
+				var _div=$("#div");//id选择器
+				console.log(_div[0]);//代理对象 在原生对象的基础上进行再次封装  [原生dom节点对象,选择器]
+				
+				var _ul=$(".ul");//class选择器
+				console.log(_ul);
+				
+				var _span=$("span");//标签选择器
+				console.log(_span);
+				
+				var _input=$("input[name='username']");
+				console.log(_input);
+				
+				//层级选择器 子选择器 $("ul>span")表示选择ul下面子集的span, 包含选择器会一直往下查找 不管多少深层次
+				var _s=$(".ul span");
+				console.log(_s.length);
+				
+				//兄弟选择器  
+				var _in=$("ul>span").siblings("input");
+				console.log(_in.val());
+				
+				var _li=$("ul>span").prev();
+				console.log(_li.html());
+				
+				//伪类选择器
+				$(".ul>li").eq(2).css("font-size","28px");//eq(获取某个元素子元素下标 从0开始)
+				//常用 not 也是一种过滤选择器 filter filter用法和not相反的
+				$("ul>li").not(".abc").css("color","red");
+				
+				//操作dom api有哪些 操作dom指的就是对页面里面的dom结构进行增删改操作 都是在进行dom操作
+				$("#delete").click(function(){
+					//$(".c").html('hello I am new');//.html();无参数情况表示的获取里面的值,有参数表示设置值
+					var $li=$('<div>Hello I am new DIV</div>');//插件新节点
+					//append 追加 $(选择器).append(dom);表示是把dom往选择器里面放，后置添加
+					//$("ul").append($li);
+					
+					//appendTo 本身功能没有区别,前面是内容 后面是选择器
+					//$li.appendTo($("ul"));
+					
+					//prepend
+					//$("ul").prepend($li);//将内容插入到选择器中 前置摆放
+					//prependTo
+					
+					//$li.prependTo($("ul")); //本身功能没有区别,前面是内容 后面是选择器
+					
+					//after 往某个元素div 的后面追加内容
+					$("#ds").after($li);
+					
+					var _span=$('<span>this is new span</span>')
+					//before
+					$('#ds').before(_span);
+					
+					//empty     
+					//removeAll 测试
+					//remove    表示的是将一个元素里面的所有内容清空
+				});
+				
+			});
+		</script>
+	</head>
+	<body>
+		<div id="div">
+			this is div
+			<ul class="ul">
+				<li >li one</li>
+				<li class="abc">li two</li>
+				<li class="abc">li  three</li>
+				<li class="c">li  four</li>
+				<span>this is ul's span
+				   <span>this is the span child
+				      <span>this is grandson child</span>
+				   </span>
+				</span>
+				<input type="text" value="20"/>
+			</ul>
+			<span>this is span</span>
+			<input type="text"  name="username"/>
+			<button id="delete">点击修改一个li的内容</button>
+			
+			<div id="ds">
+				this is test ds
+			</div>
+			
+		</div>
+	</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>选择器</title>
+        <link href="../../vendor/bootstrap.css" rel="stylesheet"/>
+        <link href="../../vendor/bootstrap-theme.css" rel="stylesheet"/>
+        <style>
+            #container {
+                padding-left: 30px;
+                /*font-family: simhei;*/
+            }
+
+            h3 {
+                font-weight: normal;
+            }
+
+            h3 p {
+                padding-top: 20px;
+            }
+
+            h3 p .text-indent {
+                display: block;
+                text-indent: 40px;
+                padding-top: 10px;
+            }
+
+            em {
+                color: red;
+                font-weight: bold;
+            }
+
+            #submit.focus {
+
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <h1>
+                jQuery选择器
+            </h1>
+            <h3>
+
+                <p>
+                    ● CSS选择器(CSS1 - CSS3)
+                    <pre>
+    1) a
+    2) #specialID
+    3) .specialClass
+    4) a#specialID.specialClass
+    5) p a.specialClass
+    6) p > a                       /*子选择器: 选取P的直接子节点*/
+                    </pre>
+                </p>
+
+                <p>
+                    ● jQuery自定义选择器
+                    <pre>
+    :eq(n)	/*在匹配的元素中，选取第n个。n从0开始*/
+                在所有的li中，选取第3个元素
+                $('li:eq(2)');
+    :even	/*在匹配的元素中，选取奇数元素*/
+    :first	/*在匹配的元素中，选取第一个元素*/
+    :gt(n)	/*在匹配的元素中，选取n以后的元素*/
+    :has()	/*在匹配的元素中，选取内部含有…的元素*/
+    :last	/*在匹配的元素中，选取最后一个元素*/
+    :lt(n)	/*在匹配的元素中，选取n之前的元素*/
+    :odd	/*在匹配的元素中，选取偶数元素*/
+    :parent	/*在匹配的元素中，选取有子节点的元素*/
+                    </pre>
+                </p>
+            </h3>
+        </div>
+
+    </body>
+</html>

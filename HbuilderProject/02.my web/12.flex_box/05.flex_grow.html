@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<head>
+	<script type="text/javascript">
+//		flex-grow 设置子项放大比例*/
+
+	</script>
+
+<style> 
+
+#main {
+  width: 350px;
+  height: 100px;
+  border: 1px solid #c3c3c3;
+  display: flex;
+}
+
+#main div:nth-of-type(1) {flex-grow: 1;}
+#main div:nth-of-type(2) {flex-grow: 1;}
+#main div:nth-of-type(3) {flex-grow: 1;}
+
+#myBlueDiv
+{
+animation:mymove 5s infinite;
+/*Safari 和 Chrome:*/
+-webkit-animation:mymove 5s infinite;
+}
+
+@keyframes mymove
+{
+50% {flex-grow:8;}
+}
+
+/*Safari 和 Chrome:*/
+@-webkit-keyframes mymove
+{
+50% {flex-grow:8;}
+}
+</style>
+
+</head>
+<body>
+
+<p>"blue DIV" 的 flex-grow 属性逐渐地从 1 变化到 8，然后再变回 1：<p>
+
+<div id="main">
+  <div style="background-color:coral;"></div>
+  <div style="background-color:lightblue;" id="myBlueDiv"></div>
+  <div style="background-color:khaki;"></div>
+</div>
+
+<p>在 CSS 中，flex-grow 属性是 <em>可动画化（animatable）</em> 的。</p>
+
+<p>Internet Explorer 10、Firefox 和 Opera 支持 CSS 动画。</p>
+<p>Safari 和 Chrome 通过带有前缀 -webkit-，支持 CSS 动画。</p>
+
+</body>
+</html>

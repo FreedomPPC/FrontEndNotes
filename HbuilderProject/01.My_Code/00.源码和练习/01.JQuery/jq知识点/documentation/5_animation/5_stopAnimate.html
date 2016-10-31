@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Stop Animate</title>
+        <style>
+            button {
+                height: 50px;
+            }
+            div {
+                position: absolute;
+                width: 100px;
+                height: 100px;
+                top: 100px;
+                left: 100px;
+                background: deeppink;
+                margin: 20px;
+            }
+            #flag {
+                position: absolute;
+                top: 300px;
+                width: 1000px;
+                height: 1px;
+                background: black;
+            }
+        </style>
+    </head>
+
+    <body>
+        <button id="start">开始</button>
+        <button id="simple_stop">就地停止</button>
+        <button id="clear_stop">停止-清除队列</button>
+        <button id="end_stop">停止-直接到目标</button>
+        <div id="move"></div>
+        <div id="flag"></div>
+        <script src="../vendor/jquery-1.12.1.js"></script>
+        <script>
+            $('#start').click(function () {
+                $('#move').animate({
+                    top: 300
+                }, 3000).animate({
+                    left: 500
+                }, 3000).animate({
+                    width: 500
+                }, 3000).animate({
+                    height: 500
+                }, 3000).animate({
+                    opacity: 0.3
+                }, 3000)
+            });
+
+            $('#simple_stop').click(function(){
+                $('#move ').stop();
+            })
+
+            $('#clear_stop').click(function(){
+                $('#move ').stop(true);
+            })
+
+            $('#end_stop').click(function(){
+                $('#move ').stop(false, true);
+            })
+        </script>
+    </body>
+
+</html>

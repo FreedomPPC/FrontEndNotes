@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			margin:0;
+			padding:0;
+			}
+		#div1 {
+			position:relative;
+			border:1px solid black;
+			width:680px;
+			height:132px;
+			margin:10px auto;
+			overflow:hidden;
+			}
+		#div1 ul {
+			position:absolute;
+			left:0;
+			}
+		#div1 ul li {
+			list-style:none;
+			 float:left;
+			 width:150px;
+			 height:112px;
+			 padding:10px;}
+		#div1 ul li img {
+			width:150px;
+			}
+		#btn1{
+			margin-left:380px;
+		}
+		input{
+			margin-top:40px;
+			margin-left:10px;
+			font-size: 20px;
+			color:gold;
+		}
+	</style>
+	<script type="text/javascript">
+	window.onload=function ()
+	{
+		var oDiv=document.getElementById('div1');
+		var oUl=oDiv.getElementsByTagName('ul')[0];
+		var aLi=oUl.getElementsByTagName('li');
+		var timer=null;
+		var iSpeed = 0;
+		var btn1 = document.getElementById('btn1');
+		var btn2 = document.getElementById('btn2');
+
+		oUl.innerHTML+=oUl.innerHTML;
+		oUl.style.width=aLi.length*aLi[0].offsetWidth+'px';
+
+		function fnMove(){
+			if(oUl.offsetLeft<-oUl.offsetWidth/2)
+			{
+				oUl.style.left=0;
+			}
+			else if(oUl.offsetLeft>0){
+				oUl.style.left = -oUl.offsetWidth/2+'px';
+			}
+			oUl.style.left=oUl.offsetLeft+iSpeed+'px';
+		}
+
+		timer=setInterval(fnMove, 30);
+
+			btn1.onclick = function () {
+				iSpeed = -5;
+			}
+			btn2.onclick = function () {
+				iSpeed = 5;
+			}
+
+			oDiv.onmouseover = function(){
+				clearInterval(timer);
+			}
+			oDiv.onmouseout = function(){
+				timer=setInterval(fnMove, 30);
+			}
+	};
+	</script>
+</head>
+<body>
+	<input type="button" id="btn1" value="&lt;"/>
+	<input type="button" id="btn2" value="&gt;"/>
+
+	<div id="div1">
+		<ul>
+			<li><img src="../img/1.jpg"/></li>
+			<li><img src="../img/2.jpg"/></li>
+			<li><img src="../img/3.jpg"/></li>
+			<li><img src="../img/4.jpg"/></li>
+		</ul>
+
+	</div>
+</body>
+</html>

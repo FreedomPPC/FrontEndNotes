@@ -1,0 +1,75 @@
+﻿<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title></title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            //原型方式创建类
+            //原型：当创建一个函数时，JS引擎就会为这个函数追加一个属性prototype
+            //这个属性，指向一个对象，用这个函数实例化的对象，可以共享prototype
+            //上的属性和方法。
+            function Person() {}
+            Person.prototype.name = 'XiaoMing';
+            Person.prototype.age = 23;
+            Person.prototype.exGFs = ['cuiHua', 'erYa'];
+            Person.prototype.sayHi = function () {
+                alert('I am ' + this.name);
+            }
+
+//            var xiaoMing = new Person();
+//            xiaoMing.sayHi();
+            //当new一个对象的时候，JS引擎会为这个对象，添加一个属性__proto__,
+            //这个属性，他就指向了这个对象的构造函数的prototype
+
+            //JS代码中，如果想访问一个对象的属性，按照下面的方式进行查找
+            //1. 首先，查看对象本身，是否有这个属性，如果有，则返回这个属性
+            //2. 如果对象本身，没有这个属性，就会到这个对象的原型上进行查找，如果有，则返回这个属性，否则，返回空
+
+            //例如：要想访问xiaoMing.name,首先看xiaoMing这个对象本身，是否包含这个属性
+            //因为在构造函数中，没有在this指针上添加name属性，也没有在创建完这个对象后，手动的添加name属性，
+            //所以，xiaoMing这个对象本身没有name属性，于是在xiaoMing的__proto__上查找是否有name属性。
+            //因为__proto__指向Person构造函数的prototype，所以__proto__就有name属性，于是返回了这个name：xiaoMing
+
+            /*===========================================*/
+            //prototype的属性的读写
+            //1. 读：所有对象，都可以访问他自己原型上的属性
+//            var xiaoMing = new Person();
+//            xiaoMing.name //===>xiaoMing
+
+            //2. 写：当prototype的属性，是基本类型，如果要修改这个属性的话，
+            //      就不能直接通过对象来写。
+            //原因是，后修改的这个name属性，实际上，是追加到了对象本身上。
+            //例如:
+//            xiaoMing.name = '晓明';
+//            alert(xiaoMing.name);
+//            alert(Person.prototype.name);
+
+            //通过对象，修改原型上的属性
+//            xiaoMing.__proto__.name = 'DaMing';
+//
+//            var cuiHua = new Person();
+//            alert(cuiHua.name);
+
+            // 如果原型上面有引用类型，那么，可以直接通过对象，修改这个引用类型内的某个属性，
+            // 从而达到修改原型的目的。
+            var xiaoMing = new Person();
+            xiaoMing.exGFs.push('A.B.');
+            alert(xiaoMing.exGFs);
+
+            var cuiHua = new Person();
+            alert(cuiHua.exGFs);
+
+            //原型方式创建类缺点：
+            //1. 不能传参数
+            //2. 如果原型中，有引用类型，有可能，这个引用类型被无意间修改，于是
+            //   所有的这个类的对象的这个引用类型的属性，就全都被改变了。危险！！！！！
+
+            //===> 混合式的类的创建
+
+
+
+        </script>
+    </body>
+</html>

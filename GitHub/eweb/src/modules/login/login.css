@@ -1,0 +1,68 @@
+.loginBox {
+    width: 100%;
+    display: table;
+}
+.loginIn {
+    display: table-cell;
+    vertical-align: middle;
+}
+.centerIn {
+    background-image: url(asset/img/loginbk.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    width: 1280px;
+    margin: 0 auto;
+    height: 768px;
+}
+.loginBox .logo {
+    position: absolute;
+    top: 0;
+    left: 8%;
+}
+.loginBox .loginForm {
+    /*height: 310px;*/
+    width: 317px;
+    background-color: rgba(0, 0, 0, 0.09);
+    position: absolute;
+    right: 104px;
+    bottom: 227px;
+    border-radius: 4px;
+    padding: 10px;
+}
+.loginBox .loginForm .loginFormIn {
+    background-color: white;
+    padding: 35px;
+}
+.loginFormRow {
+    margin-bottom: 16px;
+}
+.loginFormRow input {
+    width: 100%;
+    height: 24px;
+    text-indent: 35px;
+}
+.loginFormRow .loginTitle {
+    font-size: 26px;
+}
+.loginFormRow .iconinfo {
+    position: absolute;
+    z-index: 111;
+    top: 12px;
+    left: 11px;
+}
+.loginFormRow .iconinfo span {
+    color: #d3d3d3;
+    font-size: 16px;
+}
+.loginFormRow button {
+    width: 100%;
+}
+@media screen and (max-width: 1280px) {
+    .centerIn {
+        width: 100%;
+    }
+    .loginBox .logo {
+        top: 10%;
+    }
+}

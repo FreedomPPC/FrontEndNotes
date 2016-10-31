@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title></title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            li {
+                list-style: none;
+            }
+
+            #brand {
+                width: 330px;
+                height: 400px;
+                border: 1px solid #dddddd;
+                box-shadow: 0px 0px 5px #dddddd;
+                margin: 30px auto;
+            }
+
+            #brand .title {
+                width: 100%;
+                height: 35px;
+                line-height: 35px;
+                font-size: 16px;
+                margin-top: 4px;
+                border-bottom: 2px solid #33261c;
+                text-align: center;
+                color: #33261c;
+            }
+
+            #brand .bd-box {
+                width: 284px;
+                height: 358px;
+                overflow: hidden;
+                padding: 0px 24px;
+            }
+
+            #brand .bd-box li {
+                float: left;
+                width: 122px;
+                height: 77px;
+                overflow: hidden;
+                position: relative;
+                margin: 10px 10px 0px 10px;
+            }
+
+            #brand .bd-box li img {
+                width: 120px;
+                height: 75px;
+                border: 1px solid #e9e8e8;
+                position: absolute;
+                left: 0px;
+                top: 0px;
+                z-index: 2;
+                overflow: hidden;
+            }
+
+            #brand .bd-box li span {
+                width: 120px;
+                height: 0px;
+                border: 1px solid #e9e8e8;
+                position: absolute;
+                left: 0px;
+                top: 38px;
+                z-index: 1;
+                text-align: center;
+                line-height: 75px;
+                font-size: 14px;
+                color: #FFF;
+                background: #ffa340;
+                font-weight: bold;
+                overflow: hidden;
+                display: none;
+            }
+        </style>
+        <script type="text/javascript" src="../../../vendor/jquery-1.12.1.js"></script>
+
+    </head>
+    <body>
+        <div id="brand">
+            <div class='title'>
+                热门品牌推荐
+            </div>
+            <ul class='bd-box'>
+                <li>
+                    <img src="img/1.jpg"/>
+                    <span>肌龄</span>
+                </li>
+                <li>
+                    <img src="img/2.jpg"/>
+                    <span>肌龄</span>
+                </li>
+                <li>
+                    <img src="img/3.jpg"/>
+                    <span>肌龄</span>
+                </li>
+                <li>
+                    <img src="img/4.jpg"/>
+                    <span>肌龄</span>
+                </li>
+                <li>
+                    <img src="img/5.jpg"/>
+                    <span>肌龄</span>
+                </li>
+                <li>
+                    <img src="img/6.jpg"/>
+                    <span>肌龄</span>
+                </li>
+                <li>
+                    <img src="img/7.jpg"/>
+                    <span>肌龄</span>
+                </li>
+                <li>
+                    <img src="img/8.jpg"/>
+                    <span>肌龄</span>
+                </li>
+            </ul>
+        </div>
+        <script>
+            //             $(function () {
+            //                 var $aLi = $('#brand .bd-box li');
+            //
+            //                 $aLi.each(function () {
+            //                     $(this).hover(
+            //                             function () {
+            //                                 var $img = $(this).children("img");
+            //                                 $img.animate({top:37,height: 0}, 500, function () {
+            //                                     $img.hide();
+            //                                     $img.next().show().animate({top: 0, height: 75}, 500);
+            //                                 });
+            //                             },
+            //                             function () {
+            //
+            //                             }
+            //                     );
+            //                 });
+            //             });
+            $(document).ready(function () {
+                $('ul').on('mouseover', 'li', function () {
+
+                    $(this).children('img').animate({
+                        height: 0,
+                        top: 38
+                    }, function () {
+                        //this point to img（动画刚刚结束的那个元素）
+                        $(this).hide().next().animate({
+                            top: 0,
+                            height: 75
+                        })
+                    });
+
+                });
+
+                $('ul').on('mouseout', 'li', function () {
+
+//                    $(this).children('span').animate({
+//                        height: 0,
+//                        top: 38
+//                    }, function () {
+//                        //this point to img（动画刚刚结束的那个元素）
+//                        $(this).hide().prev().animate({
+//                            top: 0,
+//                            height: 75
+//                        })
+//                    });
+
+
+                });
+            })
+        </script>
+    </body>
+</html>
+
+

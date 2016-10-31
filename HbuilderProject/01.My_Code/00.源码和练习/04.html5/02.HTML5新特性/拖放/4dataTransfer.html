@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+
+#div1{ width:200px; height:200px; background:red; margin:100px;}
+</style>
+<script>
+window.onload = function(){
+	
+	var oDiv = document.getElementById('div1');
+	
+	
+	oDiv.ondragenter = function(){
+		
+		this.innerHTML = '可以释放啦';
+		
+	};
+	
+	oDiv.ondragover = function(ev){
+		
+		ev.preventDefault();
+		
+	};
+	
+	oDiv.ondragleave = function(){
+		
+		this.innerHTML = '将文件拖拽到此区域';
+		
+	};
+	
+	oDiv.ondrop = function(ev){
+		
+		ev.preventDefault();
+		
+		var fs = ev.dataTransfer.files;
+		
+		//alert(fs.length);
+		
+		//alert( fs[0].type );
+		
+		var fd = new FileReader();
+		
+		fd.readAsDataURL( fs[0] );
+		
+		fd.onload = function(){
+			alert( this.result );
+		};
+		
+	};
+	
+};
+</script>
+</head>
+
+<body>
+
+<div id="div1">将文件拖拽到此区域</div>
+
+</body>
+</html>

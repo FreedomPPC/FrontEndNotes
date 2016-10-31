@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{margin:0;padding: 0;}
+			#ul1{
+				width: 300px;
+				height:500px;
+				border:1px solid black;
+				margin:10px auto;
+				
+			}
+			#ul1 div{
+				border-bottom: 1px dashed #CCCCCC;
+				padding:2px;
+				filter: alpha(opacity:20);
+				opacity: 0.2;
+				
+			}
+			
+		</style>
+		<script src="../完美运动/perfectMove.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function () {
+				var oTxt = document.getElementById('txt1');
+				var oUl = document.getElementById('ul1');
+				var oBtn = document.getElementById('btn1');
+				oBtn.onclick = function () {
+					var oDiv = document.createElement('div');
+					var aDiv = oUl.getElementsByTagName('div');
+					oDiv.innerHTML = oTxt.value;
+					if(aDiv.length){
+						oUl.insertBefore(oDiv,aDiv[0]);
+					}else{
+						oUl.appendChild(oDiv);
+					}
+					
+					var iHeight = oDiv.offsetHeight;
+					oDiv.style.height = 0;
+					startMove(oDiv,{height:iHeight},function(){
+						startMove(oDiv,{opacity:100});
+					})
+					for(var i=0;i<aDiv.length;i++){
+						//console.log(aDiv[aDiv.length-1].offsetTop);
+						var iTop = aDiv[aDiv.length-1].offsetTop;
+						if(iTop>=500){
+							oUl.style.overflow = 'scroll';
+							oUl.style.overflowX = 'inherit';
+						}
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<textarea id="txt1" rows="10" cols="40"></textarea>
+		<input type="button" id="btn1" value="发布" />
+		<ul id="ul1">
+			
+		</ul>
+	</body>
+</html>

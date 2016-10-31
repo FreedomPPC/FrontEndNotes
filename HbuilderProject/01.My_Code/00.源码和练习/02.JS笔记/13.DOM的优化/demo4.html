@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+
+window.onload = function(){
+	var oUl = document.getElementById('ul1');
+	
+	var aLi = oUl.getElementsByTagName('li');
+	
+	for(var i=0;i<5000;i++){
+		var oLi = document.createElement('li');
+		oUl.appendChild(oLi);
+	}
+	
+	/*console.time('hello');
+	for(var i=0;i<aLi.length;i++){
+		aLi[i].innerHTML = 'li';
+	}
+	console.timeEnd('hello');*/
+	
+	console.time('hello');
+	var len = aLi.length;
+	for(var i=0;i<len;i++){
+		aLi[i].innerHTML = 'li';
+	}
+	console.timeEnd('hello');
+	
+	
+	var oDiv = document.getElementById();
+	var oInput = document.getElementById();
+	var oUl = document.getElementById();
+	
+	var doc = document;
+	var oDiv = doc.getElementById();
+	var oInput = doc.getElementById();
+	var oUl = doc.getElementById();
+	
+	
+	childNodes -> 元素节点、文本节点
+	children -> 元素节点
+	
+	firstChild
+	firstElementChild
+	
+	
+	var oUl = document.getElementById('ul1');
+	var aLi = oUl.getElementsByTagName('li');
+	
+	var aLi = document.querySelectorAll('#ul1 li');
+	
+};
+
+</script>
+</head>
+
+<body>
+<ul id="ul1">
+</ul>
+</body>
+</html>

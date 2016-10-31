@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>属性</title>
+		<script type="text/javascript" src="lib/react.min.js" ></script>
+		<script type="text/javascript" src="lib/react-dom.min.js" ></script>
+		<script type="text/javascript" src="lib/browser.min.js" ></script>
+	</head>
+	<body>
+		<script type="text/babel">
+			var ReactComp=React.createClass({
+				
+				render:function(){
+					console.log("this is pros value>>>>>");
+					console.log(this.props.url.http);
+				    return(
+					 <div>
+					 	<span></span>
+					 	<span></span>
+					 	<span></span>
+					 </div>
+					);
+				}
+			});
+			//属性 一般是在组件被声明的时候，就被赋予,传入
+			//总结: 把属性定义成一个变量 ,在渲染的时候传入到组件中,让组件自我解析
+			
+			//属性传值可以支持的数据类型
+			
+			var _span="Hello I am props";//1.定义变量
+			
+			var _json={username:"dong.xie",sex:"nan"};//第二种传值方式
+			
+			var _url={http:"www.baidu.com/restapi/getweather"};
+			var _array=[{user:"hello",name:"kitty"},{user:"hellos",name:"kittys"}];//第三种:传递数组
+			
+			//目前都是通过组件里面的一个属性传递数据到组件中，组件中通过this.props.属性名称方式进行获取
+			//第四种:不依赖组件的默认属性 可以传递一个json进去 ，传递进去的时候{...json}
+			//打印--- 可以将一个对象 传入到组件里面 传递进去是一种完全展开的模式
+			//在组件里面直接 通过this.prop.对象里面属性直接取值
+			//每次在组件中通过this.props取值 就不需要this.props.属性名称
+			//this.props.json属性
+			
+			ReactDOM.render(<ReactComp url={_url} {..._json}/>,document.body);//2.在渲染的时候传入
+			
+			//3.不提倡组件修改自己的属性
+			
+			//2.React的状态  ---react的状态不同于props(外部去声明和传入),state在组件的内部去声明的
+			
+			//用途主要是检测 当前组件内部数据是否发生变化的,一旦组件数据发生变化,state也发生变化
+			
+			//问题: 1.state如何去声明 state如何被定义的
+			
+			//     2.如何去监听组件内部的数据变化情况  实际上就是不断在给state赋值的过程
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<canvas id="cvs" width="400" height="400"></canvas>
+	<script>
+     var cvs = document.querySelector("#cvs");
+     var ctx = cvs.getContext("2d");
+     ctx.fillStyle = "#f00";
+     ctx.fillRect(100,100,150,150)
+
+     var res = ctx.canvas.toDataURL();
+		var img = new Image();
+		img.src = res;
+		document.body.appendChild(img)
+	</script>
+</body>
+</html>

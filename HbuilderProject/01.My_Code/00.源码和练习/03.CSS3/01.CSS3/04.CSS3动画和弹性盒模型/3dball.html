@@ -1,0 +1,86 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+<style type="text/css">
+	
+	@keyframes go{
+  0% {transform: rotateX(0deg) rotateY(0deg);}
+  100% {transform: rotateX(360deg) rotateY(360deg);}
+}
+html,body {
+    height:100%;
+}
+body{
+    margin:auto;
+    position:relative;
+}
+
+.wrap {
+ width: 300px;
+ position:relative;
+ margin: 30px auto;
+ transform-style: preserve-3d;
+}
+
+.item{
+  border:1px solid red;
+  width:300px;
+  position: absolute;
+  border-radius: 50%;
+  height:300px;
+  animation : go 4s linear infinite;
+}
+
+.d1{
+animation-delay:0.1s;
+}
+.d2{
+animation-delay:0.2s;
+}
+.d3{
+animation-delay:0.3s;
+}
+.d4{
+animation-delay:0.4s;
+}
+.d5{
+animation-delay:0.5s;
+}
+.d6{
+animation-delay:0.6s;
+}
+.d7{
+animation-delay:0.7s;
+}
+.d8{
+animation-delay:0.8s;
+}
+.d9{
+animation-delay:0.9s;
+}
+.d10{
+animation-delay:1.0s;
+}
+.d11{
+animation-delay:1.1s;
+}
+.d12{
+animation-delay:1.2s;
+}
+</style></head>
+<body>
+  <div class="wrap">
+    <div class="item d1"></div>
+<div class="item d2"></div>
+<div class="item d3"></div>
+<div class="item d4"></div>
+<div class="item d5"></div>
+<div class="item d6"></div>
+<div class="item d7"></div>
+<div class="item d8"></div>
+<div class="item d9"></div>
+<div class="item d10"></div>
+<div class="item d11"></div>
+<div class="item d12"></div>
+  </div>
+</body></html>

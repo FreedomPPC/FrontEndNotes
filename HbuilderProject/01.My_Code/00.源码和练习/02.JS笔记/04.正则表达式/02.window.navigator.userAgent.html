@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			html{
+				font-size: 40px;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			
+		</div>
+	</body>
+	<script type="text/javascript">
+		var _div = document.querySelector("div");
+		var str = window.navigator.userAgent;
+		_div.innerHTML = window.navigator.userAgent;
+		var re = /utudev/;//微信浏览器;mobile测试环境下用的MicroMessager,utudev;
+		var re1 = /chrome/i//
+		alert(re.test(str));
+		console.log(re1.test(str));
+	</script>
+</html>

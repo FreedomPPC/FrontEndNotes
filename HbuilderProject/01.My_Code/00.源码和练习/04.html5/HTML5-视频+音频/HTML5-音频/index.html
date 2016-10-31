@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<audio controls src="test.mp3" autoplay=true></audio>
+	<input type="range" id="timeLline"/>
+	<div class="info"></div>
+	<script>
+		var audio = document.querySelector("audio");
+		var timeLline = document.querySelector("#timeLline");
+		audio.oncanplay=function(e){
+			// document.querySelector(".info").innerHTML = 
+			// audio.duration +"  volume: "+audio.volume;
+			
+			timeLline.value = 0 ;
+			timeLline.min = 0 ;
+			timeLline.max = audio.duration;
+		}
+		audio.ontimeupdate = function(){
+			timeLline.value = audio.currentTime;
+		}
+
+		timeLline.onchange = function(){
+			audio.currentTime = this.value;
+		}	
+</script>
+</body>
+</html>

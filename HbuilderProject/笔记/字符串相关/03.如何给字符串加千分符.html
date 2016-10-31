@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>如何给字符串加千分符</title>
+	<style>
+		html{
+			font-size: 50px;
+		}
+	</style>
+</head>
+<body>
+	<script>
+		var str = '89890803562123761';
+		function test(str){
+			var iNum = str.length%3;
+			var pre = '';
+			var arr = [];
+			var iNow = 0;
+			var temp = '';
+
+			if(iNum !=0){
+				pre = str.substring(0,iNum);
+				arr.push(pre);
+			}
+			str = str.substring(iNum);
+			for(var i=0;i<str.length;i++){
+				iNow++;
+				temp += str[i];
+
+				if(iNow == 3 && temp){
+					arr.push(temp);
+					iNow=0;
+					temp='';
+				}
+			}
+
+			return arr.join(',');
+			
+		}
+		document.write(test(str));
+
+
+		
+	</script>
+</body>
+</html>

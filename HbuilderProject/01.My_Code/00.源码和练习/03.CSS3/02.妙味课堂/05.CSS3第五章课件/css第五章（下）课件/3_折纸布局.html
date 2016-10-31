@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+@-webkit-keyframes open
+{
+	0%
+	{
+		-webkit-transform:rotateX(-120deg);
+	}
+	25%
+	{
+		-webkit-transform:rotateX(30deg);
+	}
+	50%
+	{
+		-webkit-transform:rotateX(-15deg);
+	}
+	75%
+	{
+		-webkit-transform:rotateX(8deg);
+	}
+	100%
+	{
+		-webkit-transform:rotateX(0deg);
+	}
+}
+body{margin:0;}
+#wrap{ width:160px;margin:30px auto; position:relative; -webkit-perspective:800px;}
+#wrap h2{ height:40px;background:#F60; color:#fff; font: bold 16px/40px "微软雅黑"; text-align:center;margin:0; position:relative;z-index:10;}
+#wrap div{ position:absolute;top:32px; width:100%;left:0; -webkit-transform-style:preserve-3d; -webkit-transform-origin:top;-webkit-transform:rotateX(-120deg);}
+#wrap span{ display:block;height:30px;background:#9F0; font:12px/30px "宋体"; color:#fff; text-indent:20px;}
+#wrap>div{top:40px;}
+#wrap .show{-webkit-animation:1.2s open;-webkit-transform:rotateX(0deg);}
+#btn{ position:absolute;}
+</style>
+</head>
+<body>
+<input type="button" value="按钮" id="btn" />
+<div id="wrap">
+	<h2>我是标题奥</h2>
+    <div>
+    	<span>选项1</span>
+        <div>
+        	<span>选项2</span>
+            <div>
+            	<span>选项3</span>
+                <div>
+                	<span>选项4</span>
+                    <div>
+                    	<span>选项5</span>
+                        <div>
+                        	<span>选项6</span>
+                            <div style="">
+                            	<span>选项7</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+var oBtn=document.getElementById("btn");
+var oWrap=document.getElementById("wrap");
+var aDiv=oWrap.getElementsByTagName("div");
+oBtn.onclick=function()
+{
+	for(var i=0;i<aDiv.length;i++)
+	{
+		aDiv[i].className="show";
+	}
+};
+</script>
+</body>
+</html>

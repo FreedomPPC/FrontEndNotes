@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			/*
+				style.width:样式宽
+				clientWidth:可视区宽
+				offsetWidth:占位宽
+			*/
+			var oDiv1 = document.getElementById('div1');
+			//样式宽  100px;
+			alert('style.width: '+oDiv1.style.width);
+			//clientWidth是没有单位的,clientWidth = 样式宽+padding(左右) 120;
+			alert('clientWidth: '+oDiv1.clientWidth);
+			//offsetWidth也没有单位等于样式宽 + padding(左右) +边框(左右);122
+			alert('offsetWidth:' +oDiv1.offsetWidth);
+
+		}
+		
+	</script>
+</head>
+
+<body>
+		<div id="div1" style="width:100px;height:100px;border:1px solid red;padding:10px;margin:10px;"></div>
+</body>
+</html>

@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title>购物车</title>
+		<style type="text/css"></style>
+	</head>
+	<body>
+		<table id="datalist" border=1>
+			<tr>
+				<th>商品名称</th>
+				<th>商品价格</th>
+				<th>从购物车中删除</th>
+			</tr>
+			<tbody></tbody>
+		</table>
+		<script type="text/javascript">
+			function setCookie(name, value, days) {
+				var nameStr = encodeURIComponent(name);
+				var valueStr = encodeURIComponent(value);
+
+				var cookieStr = nameStr + '=' + valueStr;
+
+				if (days) {
+					var msOfDays = 1000 * 60 * 60 * 24;
+					var today = new Date();
+					var after = new Date(today.getTime() + msOfDays*days);
+					cookieStr += ';expires=' + after;
+				}
+
+				document.cookie = cookieStr;
+			}
+
+			function getCooike (name) { 
+				var array = decodeURIComponent(document.cookie).split('; ');
+				var key_value;
+				for (var i=0; i<array.length; i++) {
+					key_value = array[i].split('=');
+					if (key_value[0] === name) {
+						return key_value[1];
+					}
+				}
+
+				return '';
+			}
+			// function getAllRelative (keyword) {
+			// 	var allCookies = decodeURIComponent(document.cookie);
+			// 	var ret = [];
+			// 	var cookieArray = allCookies.split('; ');
+			// 	var key_value;
+			// 	for (var i=0; i<cookieArray.length; i++) {
+			// 		key_value = cookieArray[i].split('=');
+			// 		if (key_value[0].indexOf(keyword)!==-1) {
+			// 			ret.push({
+			// 				name: key_value[0],
+			// 				value:key_value[1]
+			// 			})
+			// 		}
+			// 	}
+
+			// 	return ret;
+			// }
+
+			function getCookieByKeyword () {
+
+			}
+
+			function removeCookie (name) {
+
+				setCookie(name, '', -1);
+			}
+
+			window.onload = function () {
+				//取得瀏覽器的cookie，并解碼后存到變量中
+				var allCookies = decodeURIComponent(document.cookie);
+				//將所有cookie切分為數組
+				var array = allCookies.split('; ');
+				var key_value;
+
+				//變量cookie數組
+				for (var i=0; i<array.length; i++) {
+					//將name=value形式的cookie數據，拆分為數組形式[name, value]
+					key_value = array[i].split('=');
+					if (key_value[0].indexOf('goods-') !== -1) {
+						//如果這個name中，包含我們要查找的關鍵字，
+						//就用這個name和value，創建一個tr，顯示該商品
+						createTR(key_value);
+					}
+				}
+
+				//事件代理/事件委託 處理添加的貨品項的刪除操作
+				var tbody = document.getElementsByTagName('tbody')[0];
+				tbody.onclick = function (evt) {
+					var e = evt || window.event;
+					if (e.target.tagName === 'A') {
+						var tr = e.target.parentNode.parentNode;
+						var name = tr.children[0].innerHTML;
+						name = 'goods-' + name;
+						removeCookie(name);
+						tr.outerHTML = '';
+					}
+				}
+			}
+
+			function createTR(key_value) {
+				var tr = document.createElement('tr');
+
+				var nameTd = document.createElement('td');
+				nameTd.innerHTML = key_value[0].replace('goods-', '');
+
+				var valueTd = document.createElement('td');
+				valueTd.innerHTML = key_value[1];
+
+				var delTd = document.createElement('td');
+				delTd.innerHTML = '<a href="javascript:;">刪除貨品</a>';
+
+				tr.appendChild(nameTd);
+				tr.appendChild(valueTd);
+				tr.appendChild(delTd);
+
+				document.getElementsByTagName('tbody')[0].appendChild(tr);
+			}
+		</script>
+	</body>
+</html>

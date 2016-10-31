@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var arr1 = new Array();
+			console.log(arr1 instanceof Array);//arr1前面不可以加字符串拼接;
+			console.log(new Array() instanceof Array)//返回的也是ture;
+			//谁是....的实例;
+			function f(){return f;}
+			console.log(new f() instanceof f);//返回的是false;
+			//因为函数中返回的是f;如果函数返回的是函数或者变量,会覆盖new f();所以为false;
+		</script>
+	</body>
+</html>

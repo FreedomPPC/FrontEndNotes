@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>0</title>
+	<style>
+	/*-webkit-background-clip:text;是webkit的一个新特性,只在文本位置显示背景*/
+	body{
+		background:#000;
+		font:40px/100px "微软雅黑";
+	}
+
+	h1{
+		display: inline-block;
+		
+		margin-left:100px;
+		color:rgba(255,255,255,0.5);
+		background: -webkit-linear-gradient(-30deg,rgba(255,255,255,0) 100px,rgba(255,255,255,1) 120px,rgba(255,255,255,1) 180px,rgba(255,255,255,0) 240px) no-repeat -300px;
+		-webkit-background-clip:text;
+		/*transition:3s linear;*/
+	}
+	/*h1:hover{
+		background-position: 900px;
+	}*/
+
+	</style>
+</head>
+<body>
+	<h1>小彬彬就是一个大傻屌</h1>
+	<script>
+		var oH1 = document.querySelector("h1");
+		var timer = null;
+		var iLeft = -300;
+		function startMove(){
+			timer = setInterval(function(){
+				iLeft += 5;
+				if(iLeft == 1000){
+					iLeft = -300;
+				}
+				oH1.style.backgroundPosition = iLeft + "px 0px";
+			},20)
+
+		}
+		startMove();
+	</script>
+</body>
+</html>

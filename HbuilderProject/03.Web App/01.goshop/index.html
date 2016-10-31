@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>走秀网</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+		<link rel="stylesheet" href="lib/swiper-3.3.1.min.css" />
+		<script type="text/javascript" src="js/jquery-2.1.0.js" ></script>
+		<script type="text/javascript" src="lib/swiper-3.3.1.min.js" ></script>
+		<script>
+			//1.先将设计图在PS里面打开
+			//2.640px 先做一个640大小的页面,以640/6.4=100作为rem标尺来计算
+			//3.换算设计图中具体元素的rem单位
+			
+			//效果:实现页面头部 无论尺寸变化都可以进行适配
+			
+			//可以通过js动态改变rem值得大小
+			//确定的是 640/6.4=100px=1rem
+			//当屏幕非640/6.4不等于100px
+			//但是页面还是根据我们刚才测量好的比例进行缩放
+			
+			//总结:基于设计图和rem+原生js实现响应式布局
+			//思路:
+			//1.测量设计图里面的元素在PS中的大小
+			//2.假定640px/6.4=100px作为rem值
+			//3.在通过js动态改变rem值
+			
+			var classfiy='<div>this is classfiy</div>';//变量
+			var shopcar='<div>this is shop car</div>'
+			window.onload=function(){
+				     //先获取html的元素
+					document.documentElement.style.fontSize=document.documentElement.clientWidth/6.4+'px';
+					//resize 事件 当用户企图改变浏览器窗口大小的时候 被触发
+					window.addEventListener("resize",function(){
+						document.documentElement.style.fontSize=document.documentElement.clientWidth/6.4+'px';
+					},false);
+					
+					//读取本地存储中的内容
+					var current=window.localStorage.getItem("currentNode");
+					if(current==null||current==""||typeof(current)=="undefined"){
+						
+					}else{
+						var _line=document.getElementsByClassName("line")[0];
+						switch(current){
+									case "index":
+									_line.style.left="0%";
+									$.get('http://datainfo.duapp.com/shopdata/getBanner.php',function(data){
+										var point=data.indexOf("(");//(出现的首次位置
+										data=data.substring(point+1,data.length-1);//还是string
+										data=JSON.parse(data);
+										template(data,document.getElementsByClassName("banner")[0]);
+									});
+									
+									break;//结束
+									
+									case "classfiy":
+									_line.style.left="20%";
+									//先卸载banner里面的内容
+								    document.getElementsByClassName("banner")[0].innerHTML="";
+								    //将一个字符串转换成对应变量    eval('classfiy')----classfiy变量
+								    document.getElementsByClassName("banner")[0].innerHTML=eval(current);
+									break;
+									case "shopcar":
+									  document.getElementsByClassName("banner")[0].innerHTML="";
+								    //将一个字符串转换成对应变量    eval('classfiy')----classfiy变量
+								    document.getElementsByClassName("banner")[0].innerHTML=eval(current);
+									_line.style.left="40%";
+									break;
+									case "myshow":
+									_line.style.left="60%";
+									break;
+									case "more":
+									_line.style.left="80%";
+									break;
+								}
+					}
+					
+					    //1.基于jquery来做
+					
+					    //2.接入数据转换类型 string-object
+					getajax();
+					//实现自定义的路由
+					var _footer=document.getElementsByTagName("footer")[0].children;
+					console.log(_footer);
+					for(var i=0;i<_footer.length;i++){
+						_footer[i].onclick=function(){
+							if(this.nodeName=="DIV"){//判断当前元素是否是div
+								console.log(this.getAttribute("data-route"));
+								//1.获取到路由跳转名称以后
+								var _route=this.getAttribute("data-route");
+								
+								var _line=document.getElementsByClassName("line")[0];
+								
+								var line=$(".line");//jquery对象 是一个代理对象 和 原生区别dom模型
+								console.log(line[0]);//jquery对象[0]获取原生对象
+								
+								//2.判断并实现状态条滑动----可以使用css3的过渡来实现----if else(范围判断) ,switch(值判断)
+								switch(_route){
+									case "index":
+									_line.style.left="0%";
+									$.get('http://datainfo.duapp.com/shopdata/getBanner.php',function(data){
+										var point=data.indexOf("(");//(出现的首次位置
+										data=data.substring(point+1,data.length-1);//还是string
+										data=JSON.parse(data);
+										template(data,document.getElementsByClassName("banner")[0]);
+									});
+									
+									break;//结束
+									
+									case "classfiy":
+									_line.style.left="20%";
+									//先卸载banner里面的内容
+								    document.getElementsByClassName("banner")[0].innerHTML="";
+								    //将一个字符串转换成对应变量    eval('classfiy')----classfiy变量
+								    document.getElementsByClassName("banner")[0].innerHTML=eval(_route);
+									break;
+									case "shopcar":
+									  document.getElementsByClassName("banner")[0].innerHTML="";
+								    //将一个字符串转换成对应变量    eval('classfiy')----classfiy变量
+								    document.getElementsByClassName("banner")[0].innerHTML=eval(_route);
+									_line.style.left="40%";
+									break;
+									case "myshow":
+									_line.style.left="60%";
+									break;
+									case "more":
+									_line.style.left="80%";
+									break;
+								}
+								saveCurrentNode(_route);
+								//问题:
+								//1.定义模板的时候 如果模板很长---拼很久
+								
+								//2.通过变量化去定义模板
+								
+								//3.模板每次定义好以后 还需要在此请求数据替换模板里面的内容
+								
+								//就是在声明模板以后 让模板带有自主解析数据的功能 让模板具有独立性
+								//思路:通过js去封装模板
+								
+								//解决刷新回到初始页面位置的问题
+								
+								//1.在用户点击不同按钮的时候，就可以在路由中 记录当前用户点击的页面的标记
+								//2.存储到本地  localStorage里面去  {currentNode:"classfiy"}
+								//3.在这个页面加载的时候，去读取存储的信息，遍历得到存储的信息，在判断加载那个模块形成新界面
+								
+							}
+							 
+						}
+					}
+					
+					
+			}
+			function saveCurrentNode(_nodeName){
+				var _ls=window.localStorage;
+				_ls.setItem("currentNode",_nodeName);
+				console.log(_ls.getItem("currentNode"));//读取测试
+			}
+			function template(data,renderNode){//自定义模板 data外部传入的ajax数据, renderNode模板渲染的位置
+				var defaultTemplate='<div class="swiper-container">'+
+					  '<div class="swiper-wrapper">'+
+					   '<div class="swiper-slide">'+
+					    	'<img class="swiper-img" src="img/1.png"/>'+
+					   '</div>'+
+					   '<div class="swiper-slide">'+
+					    	'<img class="swiper-img" src="img/2.png"/>'+
+					    '</div>'+
+					    '<div class="swiper-slide">'+
+					    	'<img class="swiper-img" src="img/1.png"/>'+
+					    '</div>'+
+					   '</div>'+
+					   '<div class="swiper-pagination"></div>'+
+					'</div>';
+			    console.log(data);
+			    if(data==null||data==""||typeof(data)=="undefined"){
+			    	console.log("enter parameter is null!");
+			    }else{
+			    	console.log("there is has data!");
+			    	renderNode.innerHTML=defaultTemplate;
+			    	var renderTemplate='';
+			    	document.getElementsByClassName("swiper-wrapper")[0].innerHTML='';
+			    	for(var i=0;i<data.length;i++){
+			    		var img=JSON.parse(data[i].goodsBenUrl)[0];
+			    		renderTemplate+='<div class="swiper-slide">'+
+					    	'<img class="swiper-img" src="'+img+'"/>'+
+					    '</div>';
+			    	}
+			    	document.getElementsByClassName("swiper-wrapper")[0].innerHTML=renderTemplate;
+			    	var swiper=new Swiper('.swiper-container',{
+			    		autoplay:1000,
+			    		pagination : '.swiper-pagination'
+			    		});
+			    }
+			    
+			
+				
+			}
+			function getajax(){
+				var httpurl='http://datainfo.duapp.com/shopdata/getBanner.php';
+					$.get(httpurl,function(data){
+						//console.log(data);//得到数据 string类型 callback(json array)
+						var point=data.indexOf("(");//(出现的首次位置
+						data=data.substring(point+1,data.length-1);//还是string
+						data=JSON.parse(data);
+						var swiperElement='';
+						$(".swiper-wrapper").html('');//将默认内容清空
+						//3.通过for循环 生成页面中的元素  目的是为了把这些元素插入到dom里面再实现轮播
+					    for(var i=0;i<data.length;i++){
+					    	var img=data[i].goodsBenUrl;//数组字符串 '[]'
+					    	img=JSON.parse(img);
+					    	img=img[0];
+					    	swiperElement+='<div class="swiper-slide">'+
+			    	          '<img class="swiper-img" src="'+img+'"/>'+
+			                  '</div>';
+					    }
+					    $(".swiper-wrapper").append(swiperElement);
+					    //4.将初始化swiper放在生成dom元素以后
+					    var mySwiper = new Swiper('.swiper-container', {
+						autoplay: 1000,//可选选项，自动滑动
+						pagination : '.swiper-pagination',
+					    });
+						
+					});
+			}
+		</script>
+		<link rel="stylesheet" href="css/common.css" />
+	</head>
+	<body>
+		<header>
+			<img class="header-img" src="img/goshow-header-img.png"/>
+		</header>
+		<section class="search">
+			<div class="searchbox">
+			   <img class="search-img" src="img/goshow-search-img.png"/>
+			   <input class="search-input" type="text" placeholder="请输入搜索内容"/>
+			</div>
+		</section>
+		<section class="banner">
+			<div class="swiper-container">
+			  <div class="swiper-wrapper">
+			    <div class="swiper-slide">
+			    	<img class="swiper-img" src="img/1.png"/>
+			    </div>
+			    <div class="swiper-slide">
+			    	<img class="swiper-img" src="img/2.png"/>
+			    </div>
+			    <div class="swiper-slide">
+			    	<img class="swiper-img" src="img/1.png"/>
+			    </div>
+			  </div>
+			   <div class="swiper-pagination"></div>
+			</div>
+		</section>
+		
+		
+		<footer>
+			<div data-route="index">首页</div>
+			<div data-route="classfiy">分类</div>
+			<div data-route="shopcar">购物车</div>
+			<div data-route="myshow">我的秀</div>
+			<div data-route="more">更多</div>
+			<span class="line"></span>
+		</footer>
+		
+		
+	</body>
+</html>

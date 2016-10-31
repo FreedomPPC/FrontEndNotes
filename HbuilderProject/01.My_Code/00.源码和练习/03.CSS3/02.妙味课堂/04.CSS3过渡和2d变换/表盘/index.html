@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+#box{width:206px;height:206px; margin:80px auto; position:relative;}
+#dial{height:200px;border:3px solid #000; border-radius:103px; position:relative;}
+#box span{ width:2px;height:6px;background:#666; position:absolute;left:99px;top:0;-webkit-transform-origin:0 100px;}
+#hand{ width:12px;height:12px; position:absolute;left:97px;top:97px;}
+#hour{ width:4px; height:45px;background:#000; position:absolute;left:4px;bottom:6px; -webkit-transform-origin:bottom;}
+#min{width:2px;height:60px;background:#666; position:absolute;left:5px;bottom:6px;-webkit-transform-origin:bottom;}
+#sec{width:2px;height:75px;background:red; position:absolute;left:5px;bottom:6px;-webkit-transform-origin:bottom;}
+#centre{height:12px;border-radius:9px;background:#000; position:relative;}
+#dial span:nth-of-type(5n+1){height:10px;background:#000;}
+</style>
+<script>
+window.onload=function()
+{
+	var oDial=document.getElementById("dial");
+	var oHour=document.getElementById("hour");
+	var oMin=document.getElementById("min");
+	var oSec=document.getElementById("sec");
+	toDial(oDial);
+	toTime(oHour,oMin,oSec);
+	setInterval(function(){
+		toTime(oHour,oMin,oSec);
+	},1000)
+	
+};
+function toTime(oHour,oMin,oSec)
+{
+	var oDate=new Date();
+	var iSec=oDate.getSeconds();
+	var iMin=oDate.getMinutes()+iSec/60;
+	var iHour=(oDate.getHours()%12)+iMin/60;
+	oSec.style.WebkitTransform="rotate("+(iSec*360/60)+"deg)";
+	oMin.style.WebkitTransform="rotate("+(iMin*360/60)+"deg)";
+	oHour.style.WebkitTransform="rotate("+(iHour*360/12)+"deg)";
+}
+function toDial(obj)
+{
+	var sHtml="";
+	var iDeg=6;
+	for(var i=0;i<60;i++)
+	{
+		sHtml+="<span style='-webkit-transform:rotate("+iDeg*i+"deg)'></span>"
+	}
+	obj.innerHTML=sHtml;
+}
+</script>
+</head>
+<body>
+<div id="box">
+    <div id="dial">
+    </div>
+    <div id="hand">
+        <div id="hour"></div>
+        <div id="min"></div>
+        <div id="sec"></div>
+        <div id="centre"></div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style type="text/css">
+			#div1{
+				width:100px;
+				height: 100px;
+				background: yellow;
+				border-radius: 50%;
+				position: absolute;
+				cursor: pointer;
+			}
+			
+			div{
+				width: 7px;
+				height:7px;
+				background:black;
+				position: absolute;
+			}
+		</style>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			var lastX = 0;
+			var lastY = 0;
+			window.onload = function ()
+			{	
+				
+				var oDiv = document.getElementById('div1');
+				oDiv.onmousedown = function (evt)
+				{
+					var e = evt || window.event;
+					var disX = e.clientX - oDiv.offsetLeft;
+					var disY = e.clientY - oDiv.offsetTop;
+					//document是在顶层的隐藏的父节点,html也是包含在document里面.不管点在页面哪里,都有会反映.
+					document.onmousemove = function (evt)
+					{
+						var e = evt || window.event;
+						var l = e.clientX -disX; 
+						var t = e.clientY -disY; 
+						oDiv.style.left = l+'px';
+						oDiv.style.top = t+'px';
+						//在onmousemove时候,给元素一个初速度,
+						iSpeedX = l-lastX ;
+						iSpeedY = t - lastY;
+						lastX = l;
+						lastY = t;
+						
+//						每移动一次 创建一个div
+						var oBox = document.createElement('div');
+						oBox.style.left = l+'px';
+						oBox.style.top = t+'px';
+						document.body.appendChild(oBox);
+					}
+				document.onmouseup = function (evt)
+				{
+					var e = evt || window.event;
+					document.onmousemove = null;
+					document.onmouseup = null;
+					
+					startMove();
+				}
+				}
+			};
+			
+			var timer = null;
+			var iSpeedY = 0;
+			var iSpeedX = 0;
+			function startMove(){
+				clearInterval(timer);
+				timer = setInterval(function()
+				{
+					iSpeedY += 3;
+					var oDiv = document.getElementById('div1');
+					
+					var l = oDiv.offsetLeft + iSpeedX;
+					var t = oDiv.offsetTop + iSpeedY;
+					
+					if(t >= document.documentElement.clientHeight - oDiv.offsetHeight)
+					{
+						iSpeedY *= -0.8;
+						iSpeedX *= 0.8;
+						t = document.documentElement.clientHeight - oDiv.offsetHeight;
+					}
+					else if(t <= 0)
+					{
+						iSpeedY *= -1;
+						iSpeedX *= 0.8;
+						t = 0;
+					};
+					
+					if(l >= document.documentElement.clientWidth - oDiv.offsetWidth)
+					{
+						iSpeedX *= -0.8;
+						l = document.documentElement.clientWidth - oDiv.offsetWidth;
+					}
+					else if(l <= 0)
+					{
+						iSpeedX *= -0.8;
+						l = 0;
+					};
+					
+					if(Math.abs(iSpeedX)<1)
+					{
+						iSpeedX = 0;
+					};
+					if(Math.abs(iSpeedY)<1)
+					{
+						iSpeedY = 0;
+					};
+					
+					if(iSpeedX == 0 && iSpeedY == 0 && t == document.documentElement.clientHeight - oDiv.offsetHeight)
+					{
+						clearInterval(timer);
+						console.log('定时器已关');
+					}
+					else
+					{
+						
+					}
+					oDiv.style.left = l + 'px';
+					oDiv.style.top = t + 'px';
+					document.title = 'ispeedY:'+iSpeedY;
+				},30);
+			}
+		</script>
+	</head>
+	<body>
+		<input type="button" value="开始运动" onclick = "startMove()" />
+		<div id="div1">
+			
+		</div>
+	</body>
+</html>

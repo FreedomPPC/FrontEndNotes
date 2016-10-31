@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>商品列表显示</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+		<style>
+			*{padding: 0;margin: 0;}
+			.cxt{
+				width:100%;
+				height:30rem;
+				background-color: #fafafa;
+				overflow: hidden;
+			}
+			.shop{
+				width:10%;
+				height:12rem;
+				border-radius: 4px;
+				border:1px solid #8a8a8a;
+				margin:20px 20px 20px 20px;
+				float: left;
+			}
+			.shop>img{
+				display: block;
+				width: 100%;
+				height: 60%;
+			}
+			.price{
+				font-size: 16px;
+				color: red;
+				font-weight: 600;
+				text-align: center;
+			}
+			.count{
+				font-size: 14px;
+				color: #000000;
+				font-weight: 600;
+				text-align: center;
+			}
+			.discount{
+				font-size: 12px;
+				color: blue;
+				font-weight: 600;
+				text-align: center;
+			}
+		</style>
+		<script type="text/javascript" src="js/zepto.min.js" ></script>
+		<script>
+			//pc端的图文混合数据绑定
+			
+			//1.json格式
+			//2.显示数据模板
+			$(function(){
+				var _httpurl = 'http://datainfo.duapp.com/shopdata/getGoods.php';
+				$.ajax({
+					type:"get",
+					url:_httpurl,
+					async:true,
+					dataType:"jsonp",
+					success:function(data){
+						console.log(data);
+						var str = "";
+						for(var i=0;i<data.length;i++){
+							var img = data[i].goodsListImg;
+							var price = data[i].price;
+							var discount = data[i].discount;
+							var name = data[i].goodsName;
+							name = name.substring(0,5);
+							$('.cxt').html('');
+							str += '<div class="shop">'+
+									'<img src="'+img+'"/>'+
+									'<span class="price">价格:<span>'+price+'</span> </span><br/>'+
+									'<span class="count">名称:<span>'+name+'</span></span><br/>'+
+									'<span class="discount">折扣: <span>'+discount+'</span></span><br/>'+
+								'</div>';
+						}
+						    $('.cxt').append(str);
+
+					}
+				});
+			});
+			
+		</script>
+	</head>
+	<body>
+		<div class="cxt">
+			<div class="shop">
+				<img />
+				<span class="price">价格:<span></span> </span><br/>
+				<span class="count">月销售量:<span></span></span><br/>
+				<span class="discount">折扣: <span></span></span><br/>
+			</div>
+			
+		</div>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+
+</style>
+</head>
+<body>
+	<canvas id="cvs" width="500" height="500" style="background:#eee"></canvas>
+	<script>
+;(function(){
+  var cvs = document.querySelector("#cvs");
+
+  var ctx = cvs.getContext("2d");
+  ctx.clearRect(0,0,500,500);
+  //开始路径
+  ctx.beginPath();
+  ctx.strokeStyle = "#f00";
+  ctx.lineWidth = 5;
+  //绘制圆形
+  //参数：rx,ry,r,arc-start-point,arc-end-point,anticlockwise
+  ctx.arc(250,250,100,0,75*Math.PI/180,false);
+  //结束路径，以便开始新的路径绘制
+  ctx.closePath();
+  ctx.stroke();
+  
+  //绘制圆形
+  //参数：rx,ry,r,arc-start-point,arc-end-point,anticlockwise
+  ctx.arc(150,150,100,0,2*Math.PI,false);
+  ctx.strokeStyle = "#ff0";
+  ctx.fillStyle = "#f0f";
+  ctx.stroke();
+  ctx.fill();
+ 
+})();
+	</script>
+</body>
+</html>

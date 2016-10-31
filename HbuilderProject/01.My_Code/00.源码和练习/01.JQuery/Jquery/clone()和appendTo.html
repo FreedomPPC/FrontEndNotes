@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script src="jquery-1.12.3.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(function(){
+			$("button").click (function () {
+				//appendTo是剪切效果;
+//				$("div").appendTo($("span"));
+				
+				//clone();是复制效果,clone出来的元素丢失了事件效果,clone(true),就可以保留原来事件效果
+				$("div").clone().appendTo($("span"));
+			});
+			
+			
+		});
+	</script>
+	<body>
+		<button>点我</button><br /><br />
+		<div id="div1">我是div</div>
+		<span>我是span</span>
+	</body>
+</html>

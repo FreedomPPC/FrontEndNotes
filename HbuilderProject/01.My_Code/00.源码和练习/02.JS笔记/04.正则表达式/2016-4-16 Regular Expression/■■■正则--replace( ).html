@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>正则--replace</title>
+</head>
+<body>
+	<script>
+		var str = 'abcdagAbcah';
+		console.log('只替换一个/a/:'+str.replace(/a/,'T'));
+		console.log('全局替换/a/g:'+str.replace(/a/g,'T'));
+		console.log('全局替换,大小写也算/a/gi:'+str.replace(/a/gi,'T'));
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title></title>
+		<style type="text/css">
+			#info-board{
+				background: pink;
+				position: fixed;
+				top: 100px;
+				left: 100px;
+				width: 100px;
+				height: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function setCookie(name, value, days) {
+				var nameStr = encodeURIComponent(name);
+				var valueStr = encodeURIComponent(value);
+
+				var cookieStr = nameStr + '=' + valueStr;
+
+				if (days) {
+					var msOfDays = 1000 * 60 * 60 * 24;
+					var today = new Date();
+					var after = new Date(today.getTime() + msOfDays*days);
+					cookieStr += ';expires=' + after;
+				}
+
+				document.cookie = cookieStr;
+			}
+
+			function getCooike(name) { 
+				var array = decodeURIComponent(document.cookie).split('; ');
+				var key_value;
+				for (var i=0; i<array.length; i++) {
+					key_value = array[i].split('=');
+					if (key_value[0] === name) {
+						return key_value[1];
+					}
+				}
+
+				return '';
+			}
+
+			function removeCookie(name) {
+				setCookie(name, '', -1);
+			}
+
+			setCookie('user', 'cuijingnan', 2);
+			alert(getCooike('user'));
+		</script>
+	</body>
+</html>

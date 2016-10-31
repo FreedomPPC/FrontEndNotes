@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		li{
+			width:200px;
+			height: 20px;
+			margin-top:20px;
+			background: blue;
+		}
+		#div1{
+			width:220px;
+			height:200px;
+			border:1px solid red;
+			border-radius: 5px;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var aLi = document.getElementsByTagName('li');
+			var oDiv = document.getElementById('div1');
+			var i = 0
+
+			for(var i=0;i<aLi.length;i++){
+				//1.拖拽前触发事件;
+				aLi[i].ondragstart = function(ev){
+					this.style.background = 'red';
+
+					//火狐下必须在dragstart设置dataTransfer对象才可以拖拽除了图片外的的其他标签;
+					ev.dataTransfer.setData('name','hello')
+				};
+
+				//2.拖动过程中连续触发;
+				// aLi[i].ondrag = function(){
+					
+				// 	document.title = i++;
+				// }
+				//3.拖拽后触发;div作为一个容器被称作目标元素;我们要把拖拽的东西放到里面;
+				aLi[i].ondragend = function(){
+					this.style.background = 'blue';
+				}
+			};
+
+			//拖拽元素进入目标元素触发事件;
+			oDiv.ondragenter = function(){
+				this.style.borderColor = "blue";
+			};
+			//进入(enter)和离开(leave)目标元素之间连续触发;和拖拽的ondrag事件差不多
+			oDiv.ondragover = function(ev){
+				// document.title = i++;
+				
+				ev.preventDefault();
+
+
+			}
+			//拖拽元素离开目标元素触发事件;
+			oDiv.ondragleave = function(){
+				this.style.borderColor = 'red';
+			}
+			//释放拖拽元素到目标元素;
+			oDiv.ondrop = function(ev){
+				//要想拖拽元素释放到目标元素当中;就必须在目标元素的ondragover事件当中阻止默认事件;这是语法规定的;
+				// alert(123);
+
+				alert(ev.dataTransfer.getData('name'));
+				
+			}
+		}
+	</script>
+</head>
+<body>
+	<ul>
+		<li draggable="true">aaa</li>
+		<li draggable="true">bbb</li>
+		<li draggable="true">ccc</li>
+	</ul>
+
+	<div id="div1"></div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+label{ display:inline-block;height:30px;margin:0 10px;}
+input{ position:absolute;top:-50px;}
+span{ display:inline-block;height:30px;background:red;}
+input:checked ~span:nth-of-type(1){background:blue;}
+</style>
+</head>
+<body>
+妙味课堂刘伟的体重是?
+<label>
+	<input type="radio" name="tab" checked />
+    <span>200斤</span>
+</label>
+<label>
+	<input type="radio" name="tab" />
+    <span>100公斤</span>
+</label>
+<label>
+	<input type="radio" name="tab" />
+    <span>0.1吨</span>
+</label>
+</body>
+</html>

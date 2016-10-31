@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>正则--字符类</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//方括号的第一种用法就是或者,但凡出现在反括号中的字符都算或者,包括空格;
+		/*[0-9],包括所有数字,之前学的\d就是[0-9]的简写,还有[a-z];[0-9a-z];
+		[^a],代表除了a以外所有的字母*/
+		var str = '1a2,abc,1b4,1b2,ccc,niv,';
+		var re = /1[abc]2/g;
+		//var re = /1a2 || 1b2 ||1c2/g;//[]代表或者的意思;
+		console.log(''+str.match(re));
+	</script>
+</body>
+</html>

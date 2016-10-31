@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+@-webkit-keyframes open
+{
+	0%{
+		-webkit-transform:rotateX(180deg);
+		opacity:0;
+	}
+	57%
+	{
+		-webkit-transform:rotateX(-16deg);
+		opacity:1;
+	}
+	66%
+	{
+		-webkit-transform:rotateX(14deg);
+	}
+	74%
+	{
+		-webkit-transform:rotateX(-12deg);
+	}
+	81%
+	{
+		-webkit-transform:rotateX(10deg);
+	}
+	87%
+	{
+		-webkit-transform:rotateX(-8deg);
+	}
+	92%
+	{
+		-webkit-transform:rotateX(6deg);
+	}
+	96%
+	{
+		-webkit-transform:rotateX(-4deg);
+	}
+	100%
+	{
+		-webkit-transform:rotateX(0deg);
+	}
+}
+@-webkit-keyframes clos
+{
+	0%{
+		-webkit-transform:rotateX(0deg);
+		opacity:1;
+	}
+	100%
+	{
+		-webkit-transform:rotateX(-180deg);
+		opacity:0;
+	}
+}
+
+body{background:#eee;}
+.box{width:600px;height:400px; position:relative;margin:30px auto;}
+#prev,#next{width:50px;height:50px;background:#efefef; border-radius:25px;position:absolute;top:100px; box-shadow:2px 2px 10px #666; text-align:center;font-size:40px;line-height:50px; font-family:Verdana, Geneva, sans-serif; text-decoration:none;color:#fff;-webkit-text-stroke:2px #ccc;}
+#prev{left:-100px;}
+#next{right:-100px;}
+#imgs{width:600px;height:400px; position:relative; -webkit-transform-style:preserve-3d; -webkit-perspective:1000px;}
+#imgs img{width:600px;height:400px; position:absolute;left:0;top:0; -webkit-transform-origin:bottom; -webkit-transform:rotateX(-180deg); opacity:0;}
+#imgs .show{ -webkit-animation:open 1.2s ease-in;-webkit-transform:rotateX(0deg);opacity:1;}
+#imgs .hide{ -webkit-animation:clos 1s ease;-webkit-transform:rotateX(-180deg);opacity:0;}
+</style>
+<script>
+window.onload=function()
+{
+	var oPrev=document.getElementById("prev");
+	var oNext=document.getElementById("next");
+	var aImg=document.getElementsByTagName("img");
+	var iNow=0;
+	oPrev.onclick=function()
+	{
+		aImg[iNow].className="hide";
+		iNow--;
+		if(iNow<0)
+		{
+			iNow=aImg.length-1;
+		}
+		aImg[iNow].className="show";
+	};
+	oNext.onclick=function()
+	{
+		aImg[iNow].className="hide";
+		iNow++;
+		if(iNow==aImg.length)
+		{
+			iNow=0;
+		}
+		aImg[iNow].className="show";
+	};
+}
+</script>
+</head>
+<body>
+<div class="box">
+	<a href="#" id="prev">&lt;</a>
+    <div id="imgs">
+    	<img src="img/img1.jpg" alt="" class="show"/>
+        <img src="img/img2.jpg" alt=""/>
+        <img src="img/img3.jpg" alt=""/>
+        <img src="img/img4.jpg" alt=""/>
+        <img src="img/img5.jpg" alt=""/>
+    </div>
+    <a href="#" id="next">&gt;</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form>
+     <input type="text" name="name" placeholder="姓名"><br>
+    <input type="text" name="type" placeholder="行业"><br>
+    <input type="text" name="movie" placeholder="电影"><br>
+    <input type="button" value="保存"><br>
+  </form>
+
+  <table class="table">
+    <tbody>
+    <tr class="index">
+      <td class="index">
+      <input type="checkbox">
+    </td>
+	<td class="index">姓名</td>
+	<td class="index">行业</td>
+	<td class="index">电影</td>
+	<td class="index">操作</td>
+    </tr>
+
+  </tbody>
+</table>
+<script src="pubsub.js"></script>
+  <script>
+document.querySelector("form input[type=button]").onclick = function(){
+   save();
+}
+
+function save(){
+   var obj = {};
+   var uuid = (function(){
+       var id = [];
+       for(var i=0;i<12;i++){
+           id.push(Number(parseInt(Math.random()*16)).toString(16));
+       }
+       return id.join("");
+   })();
+
+   obj.id = uuid;
+   obj.name = document.querySelector("form input[name=name]").value;
+   obj.type = document.querySelector("form input[name=type]").value;
+   obj.movie = document.querySelector("form input[name=movie]").value;
+
+   localStorage.setItem(uuid,JSON.stringify(obj));
+   PubSub.trigger("save",obj);
+
+}
+
+PubSub.on("save",function(data){
+	renderSingle(data);
+});
+
+document.onclick =function(e){
+	var target = e.target;
+	if(target.className == "del"){
+		localStorage.removeItem(target.parentNode.id);
+		updateRow(target.parentNode);
+	}
+}
+
+var tr = [
+	'<tr class="index" id="{id}">',
+     ' <td class="index">',
+     ' <input type="checkbox">',
+    '</td>',
+	'<td class="index">{name}</td>',
+	'<td class="index">{type}</td>',
+	'<td class="index">{movie}</td>',
+	'<td  class="del">del</td>',
+    '</tr>'
+].join("");
+
+/**
+渲染单行tr的方法
+obj : {
+	name: 
+	type:
+	moviw
+}
+**/
+function renderSingle(obj){
+	var result = tr.replace(/{(\w+)}/g,function(a,b){return obj[b]});
+
+	var div = document.createElement("tbody");
+
+	div.innerHTML = result;
+
+	document.querySelector("tbody").appendChild(div.firstElementChild);
+}
+
+/**
+渲染多行
+data : [
+{
+	name: 
+	type:
+	movie
+},{
+	name: 
+	type:
+	movie
+}
+]
+**/
+function renderMultiple(data){
+	data.forEach(function(obj){
+         renderSingle(obj) ;
+	})
+}
+
+
+/**
+移除一行tr标签
+**/
+function updateRow(tr){
+   tr.parentNode.removeChild(tr);
+}
+
+/**
+从localStorage中获取所有的数据
+**/
+function loadData(){
+	var data = [];
+	var l = localStorage.length;
+	while(l--){
+		var key = localStorage.key(l);
+		var value = localStorage.getItem(key);
+		var obj = JSON.parse(value);
+       data.push(obj);
+	}
+	PubSub.trigger("load",data);
+
+}
+
+PubSub.on("load",function(data){
+	renderMultiple(data);
+})
+
+// renderMultiple(loadData());
+
+
+//程序入口
+loadData();
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+var obj=new Object();
+
+obj.name='blue';
+obj.sex='男';
+
+obj.showName=function ()
+{
+	alert('我的名字叫：'+this.name);
+};
+obj.showSex=function ()
+{
+	alert('我是'+this.sex+'的');
+};
+
+var obj2=new Object();
+
+obj2.name='leo';
+obj2.sex='女';
+
+obj2.showName=function ()
+{
+	alert('我的名字叫：'+this.name);
+};
+obj2.showSex=function ()
+{
+	alert('我是'+this.sex+'的');
+};
+
+obj.showName();
+obj.showSex();
+obj2.showName();
+obj2.showSex();
+</script>
+</head>
+
+<body>
+</body>
+</html>

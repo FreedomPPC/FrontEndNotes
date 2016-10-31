@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#container{
+				position: absolute;
+				left:200px;
+				top:100px;
+				width:550px;
+				height:200px;
+				border: solid 1px black;
+				
+			}
+			#box{
+				margin-left:0;
+				width:550px;
+				height:120px;
+				border: 0;
+				margin-top:30px;
+			}
+			ul{
+				margin-top:10px;
+			}
+			li{
+				list-style: none;
+				height:20px;
+				width:100px;
+				border: 1px solid mediumvioletred;
+				float: left;
+				margin-left: 30px;
+				background: #CCCCCC;
+				cursor: pointer;
+				text-align: center;
+				font-weight: bold;
+			}
+			div{
+				width: 100px;
+				height: 100px;
+				border:solid 1px black;
+				float:left;
+				margin-left:30px;
+				cursor: pointer;
+			}
+		</style>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-1.12.3.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				var redArr = ['red','yellow','green','blue'];
+				//不断的用alert测试,是否可行
+//				alert(redArr[0]);
+				$("ul li").click(function(){
+					var i = $(this).index();
+//					alert(i);
+					$(this).css("background",redArr[i]);
+					
+					$('.bbks').click(function(){
+						$(this).css("background",redArr[i]);
+					});
+				});
+				
+			});
+		</script>
+	</head>
+	<body>
+		<div id="container">
+			
+			<ul>
+				<li id="red">red</li>
+				<li id="yellow">yellow</li>
+				<li id="green">green</li>
+				<li id="blue">blue</li>
+			</ul>
+			<div id="box">
+				<div class="bbks">点我,设置被选择的颜色</div>
+				<div class="bbks">点我,设置被选择的颜色</div>
+				<div class="bbks">点我,设置被选择的颜色</div>
+				<div class="bbks">点我,设置被选择的颜色</div>	
+			</div>
+		</div>
+	</body>
+</html>

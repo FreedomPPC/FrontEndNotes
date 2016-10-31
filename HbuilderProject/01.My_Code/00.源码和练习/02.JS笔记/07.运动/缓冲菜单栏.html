@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#div1{
+			width:100px;
+			height:100px;
+			background: yellow;
+			position: absolute;
+			right:-100px;
+			
+		}
+		span{
+			width:20px;
+			height:60px;
+			background:red;
+			position: absolute;
+			right:100px;
+			top:20px;
+
+		}
+		input{
+			width:200px;
+			height:20px;
+			margin-top:30px;
+			position: fixed;
+		}
+	</style>
+		
+	<script>
+	window.onload = function (){
+		var oDiv = document.getElementById('div1');
+		oDiv.onmouseover = function () {
+			oDiv.style.right = 0+'px';
+			
+		}
+		oDiv.onmouseout = function () {
+			oDiv.style.right = -100+'px';
+			
+		}
+	}
+		window.onscroll = function () {
+			var oDiv = document.getElementById('div1');
+			
+			
+			var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+			
+			var target = (document.documentElement.clientHeight - oDiv.offsetHeight)/2 + scrollTop + 'px';
+			// txt.value = oDiv.style.top;
+			startMove(parseInt(target));
+		}
+		
+		var timer = null;
+
+		function startMove (iTarget) {
+
+			var oDiv = document.getElementById('div1');
+			var txt = document.getElementsByTagName('input')[0];
+
+			clearInterval(timer);
+			timer = setInterval(function(){
+				var iSpeed = (iTarget - oDiv.offsetTop)/8;
+				iSpeed = iSpeed>0?Math.ceil(iSpeed):Math.floor(iSpeed);
+				if(oDiv.offsetTop == iTarget)
+				{
+					clearInterval(timer);
+				}
+				else
+				{
+					oDiv.style.top = oDiv.offsetTop + iSpeed +'px';
+				}
+				txt.value = 'oDiv.style.top:'+oDiv.style.top +' iSpeed:'+iSpeed;
+			},30);
+			
+
+		}
+
+		
+	</script>
+</head>
+<body style="height:2000px;">
+	<div id="div1">
+		<span>分享到</span>
+	</div>
+	<input type="text" value="" />
+</body>
+</html>

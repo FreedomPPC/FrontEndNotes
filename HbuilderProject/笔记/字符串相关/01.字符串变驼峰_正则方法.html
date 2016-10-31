@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>字符串变驼峰_正则表达式法</title>
+</head>
+<body>
+	<script>
+		var str = 'border-bottom-color';
+		function test(str){
+			var re = /-(\w)/g;//正则中用小括号括起来就变成正则整体的子项;
+			return str.replace(re,function(a,b){//回调函数的参数a是正则整体,b是子项;
+				return b.toUpperCase();
+			});
+		}
+		alert(test(str));
+	</script>
+</body>
+</html>

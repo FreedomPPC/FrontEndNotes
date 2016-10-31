@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			button{
+				width:40px;
+				height:40px;
+				background: deeppink;
+			}
+			
+		</style>
+		<script type="text/javascript">
+			window.onload = function (){
+				var oBtn = document.getElementById("btn_1");
+				
+				oBtn.onclick = function(){
+					var xhr = null;
+					if(window.XMLHttpRequest){
+						xhr = new XMLHttpRequest();
+					}else{
+						xhr = new ActiveXObject("Microsoft.XMLHTTP");
+					}
+					//1.这样的get方法,只能读取并没有传数据.想要传数据,就在url后面加?;然后用&符号进行串联.
+//					xhr.open('get','2.get.php',true);
+//					xhr.open('get','2.get.php?username=leo&age=18',true)
+					//2.如果需要传中文,就需要更改编码格式,否则会出现乱码;
+					//3.避免缓存加时间戳,new Date().getTime();
+					xhr.open('get','2.get.php?username='+encodeURI('彬彬')+'&age=18'+new Date().getTime(),true);
+					xhr.send(null);
+					
+					xhr.onreadystatechange = function(){
+						if(xhr.readyState == 4){
+							if(xhr.status == 200 || xhr.status == 0){
+								alert(xhr.responseText)
+							}else{
+								alert("Error:"+xhr.status);
+							}
+						}
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<button id="btn_1">Ajax</button>
+		
+	</body>
+</html>

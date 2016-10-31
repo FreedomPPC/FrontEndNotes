@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+//			callee 属性是 arguments 对象的一个成员，该属性仅当相关函数正在执行时才可用。
+//			callee 属性的初始值是正被执行的 Function 对象。这将允许匿名函数成为递归的。
+
+			function factorial(n) {
+			   if (n <= 0)
+			      return 1;
+			   else
+			      return n * arguments.callee(n - 1)
+			}
+			print(factorial(3));
+		</script>
+	</body>
+</html>

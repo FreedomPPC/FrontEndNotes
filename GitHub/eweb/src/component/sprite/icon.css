@@ -1,0 +1,56 @@
+.iconBox {
+
+}
+
+.iconlabel {
+  vertical-align: top;
+}
+
+
+@font-face {font-family: "iconfont";
+  src: url('./iconfont.eot?t=1471931080'); /* IE9*/
+  src: url('./iconfont.eot?t=1471931080#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('./iconfont.woff?t=1471931080') format('woff'), /* chrome, firefox */
+  url('./iconfont.ttf?t=1471931080') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('./iconfont.svg?t=1471931080#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+  color: #646464;
+}
+.icon-home:before { content: "\e600"; }
+.icon-tip:before { content: "\e601"; }
+.icon-back:before { content: "\e602"; }
+.icon-date:before { content: "\e603"; }
+.icon-check:before { content: "\e604"; }
+.icon-close1:before { content: "\e606"; }
+.icon-share:before { content: "\e607"; }
+.icon-right3:before { content: "\e608"; }
+.icon-close:before { content: "\e60a"; }
+.icon-search:before { content: "\e60b"; }
+.icon-file:before { content: "\e60c"; }
+.icon-left2:before { content: "\e60d"; }
+.icon-right2:before { content: "\e60e"; }
+.icon-left1:before { content: "\e60f"; }
+.icon-right1:before { content: "\e610"; }
+.icon-right:before { content: "\e611"; }
+.icon-key:before { content: "\e612"; }
+.icon-downaction:before { content: "\e613"; }
+.icon-validate:before { content: "\e614"; }
+.icon-checked:before { content: "\e616"; }
+.icon-elip:before { content: "\e618"; }
+.icon-left3:before { content: "\e619"; }
+.icon-down:before { content: "\e61a"; }
+.icon-edit:before { content: "\e61b"; }
+.icon-delete:before { content: "\e61c"; }
+.icon-add:before { content: "\e61d"; }
+.icon-forbidden:before { content: "\e605"; }
+.icon-user:before { content: "\e609"; }
+.icon-uncheck:before { content: "\e615"; }
+.icon-radio1:before { content: "\e617"; }
+.icon-radio:before { content: "\e61e"; }

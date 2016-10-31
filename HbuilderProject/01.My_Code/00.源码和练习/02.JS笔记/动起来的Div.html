@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>动起来的div</title>
+	<style>
+		div{
+			width:100px;
+			height: 100px;
+			background:yellow;
+			position:absolute;
+			top:50px;
+			border-radius:5px;
+			border:solid 1px black;
+
+		}
+		#div2{
+			width:200px;
+			height:100px;
+			position:absolute;
+			top:170px;
+			left:200px;
+			background:red;
+			border-radius:5px;
+			border:solid 1px black;
+		}
+	</style>
+
+	<script>
+		window.onload = function ( ) {
+			var oBtn = document.getElementsByTagName('input')[0];
+			var firDiv = document.getElementById('div1');
+			var secDiv = document.getElementById('div2');
+			var id = null;
+			var innt = null;
+
+			oBtn.onclick = function () {
+
+				clearInterval(id);
+				clearInterval(innt);
+
+				var currentStyle
+				id = setInterval(function () {
+					var iSpeed = 7;
+					if(firDiv.offsetLeft >= 500 ){
+						clearInterval(id);
+						return;
+					}else{
+
+					firDiv.style.left = firDiv.offsetLeft+ iSpeed + 'px';
+					firDiv.style.width = parseInt(getStyle(firDiv,'width'))+ 1 + 'px';
+					}
+					
+					
+					
+				},30);
+
+				innt = setInterval(function () {
+					if(parseInt(secDiv.style.width) <= 10){
+						clearInterval(innt);
+						return;
+					}else{
+
+						secDiv.style.width = parseInt(getStyle(secDiv,'width'))-2+'px';
+					}
+				} ,30)
+				
+				// alert(getStyle(oDiv,'width'));
+			}
+
+			//兼容性处理并封装,获取元素属性的函数,不然只可以取到内联样式的属性.
+			function getStyle(element,property){
+				if(element.currentStyle){
+					return element.currrntStyle[property];
+				}else{
+					return window.getComputedStyle(element)[property];
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="button" value="走你"/>
+	<div id="div1">
+		
+	</div>
+
+	<div id="div2"></div>
+</body>
+</html>

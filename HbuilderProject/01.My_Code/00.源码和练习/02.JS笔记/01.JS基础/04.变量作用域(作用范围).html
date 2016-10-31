@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+	<script>
+		//1.全局变量:不定义在任何一个函数里;可以在任何地方使用;一个程序里
+		// 竟可能不要使用全局变量,全局变量是魔鬼;而局部变量只能函数
+		// 里才能使用,还有一种作用域叫闭包.
+		var a;
+		function aaa(){
+			a = 12;
+		};
+		function bbb(){
+			alert(a);
+		}
+		aaa();
+		bbb();
+		//2.局部变量;
+		function aaa(){
+			var a = 12;
+		}
+		function bbb(){
+			alert(a);//会报错,显示a是undefined;因为这里a是局部变量;
+		}
+		bbb();
+
+	</script>
+<body>
+	
+</body>
+</html>

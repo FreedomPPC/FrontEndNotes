@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'/>
+        <title></title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            #container {
+                position: relative;
+                border-left: 5px solid deeppink;
+                border-right: 5px solid deeppink;
+                width: 700px;
+                height: 300px;
+                z-index: 1000;
+                overflow: hidden;
+            }
+
+            #container ul {
+                top: 0;
+                position: absolute;
+                list-style: none;
+                font-size: 0;
+
+            }
+
+            #container img {
+                /*display: block;*/
+                width: 700px;
+                height: 300px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <ul id="img-list">
+                <li><img src="imgs/1.jpg"></li>
+                <li><img src="imgs/2.jpg"></li>
+                <li><img src="imgs/3.jpg"></li>
+                <li><img src="imgs/1.jpg"></li>
+            </ul>
+        </div>
+        <script src="../utility.js"></script>
+        <script type="text/javascript">
+
+            //取得li的高度
+            var lis = document.getElementById('container').getElementsByTagName('li');
+            var scrollHeight = lis[0].offsetHeight;
+
+            var currentIndex = 0;
+
+            var imgList = document.getElementById('img-list');
+
+            function  moveNext() {
+                currentIndex++;
+
+                //计算需要图片列表滚动到的位置
+                var position = -(currentIndex * scrollHeight);
+
+//                imgList.style.top = position + 'px';
+                utilities.movement.move(imgList, 'top', position, function () {
+                    if (currentIndex === lis.length-1) {
+                        imgList.style.top = 0;
+                        currentIndex = 0;
+                    }
+                    setTimeout(moveNext, 2000);
+                });
+
+            }
+
+
+            setTimeout(moveNext,2000);
+        </script>
+    </body>
+</html>

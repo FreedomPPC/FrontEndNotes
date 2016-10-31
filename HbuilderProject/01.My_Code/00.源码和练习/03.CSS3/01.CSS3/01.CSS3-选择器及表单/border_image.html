@@ -1,0 +1,50 @@
+<html lang="en"><head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	
+<style type="text/css">
+	
+	.box3 {
+    width:100px;
+    height: 10px;
+    background:#ff0;
+    border: 4px solid;
+    border-radius: 50%;
+    border-image: url(bg1.png) 39 25 round;
+}
+
+.item {
+    position:relative;
+}
+.item:before{
+    content:"";
+    position:absolute;
+    top: 33px;
+    height: 40px;
+    width:100%;
+    border: 1px solid #f00;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    background:transparent;
+}
+.item:after{
+    content:"";
+    position:absolute;
+    height: 100%;
+    width:60px;
+    left: 40px;
+    top:0;
+    border: 1px solid #f00;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    background:transparent;
+}
+</style></head>
+<body>
+<div class="box3" style="
+    /* display: none; */
+"></div>
+  <div class="item"><img src="bg1.png"></div>
+	
+
+</body></html>

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>空心圆</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#div1{
+			width: 200px;
+			height:200px;
+			background: red;
+			position: relative;
+			border-radius: 50%;
+
+		}
+		#div2{
+			width:100px;
+			height: 100px;
+			background: white;
+			position: absolute;
+			left:50px;
+			top:50px;
+			border-radius: 50%;
+		}
+
+	</style>
+	<script src="jquery-1.12.3.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$("document").ready(function () {
+			
+			$("#div1").click(function (){ 
+				$("#div1").animate({
+					left:400,
+					top:400,
+					width:300,
+					height:300,
+				},3000,function(){
+					$("#div1").css("background","green")
+				});
+				
+				$("#div2").animate({
+					left:100,
+					top:100,
+				},3000,function(){
+					$("#div2").css("background","red");
+				});
+			});
+			
+			
+			
+			
+			
+		   
+		});
+		
+		
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<div id="div2"></div>
+	</div>
+
+	
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>字符串简单加密</title>
+	
+
+
+</head>
+<body>
+	<input type="text">
+	<input type="button" value="加密">
+	<div id="div1">
+		加密...
+	</div>
+
+	<script>
+		window.onload = function ( ) {
+			var aBtn = document.getElementsByTagName('input');
+			var oDiv = document.getElementById('div1');
+			aBtn[1].onclick = function ( ) {
+				var content = aBtn[0].value;
+				var len = content.length;
+				var str = '';
+				for(var i=0;i<len;i++){
+					str += String.fromCharCode(content.charCodeAt(i)-50);
+				}
+				oDiv.innerHTML = str;
+
+			} 
+
+		}
+	</script>
+</body>
+</html>

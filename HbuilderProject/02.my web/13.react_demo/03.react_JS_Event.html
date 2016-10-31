@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>React组件中绑定事件和JS</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+		<script type="text/javascript">
+			/*
+			 * 1.reactJS如何去绑定事件;
+			 * 2.reactJS有哪些事件;
+			 * 3.reactJS中我们怎么去写多个js函数;
+			 */
+		</script>
+		<script src="lib/react.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/react-dom.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/browser.min.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			/*
+			 * 1.react本身定义了一套事件机制;遵守W3C标准;
+			 * onclick,reactjs onClick 规范是事件名称前面小,后面关键字首字母大写;
+			 * 需要去使用react事件去触发函数,直接在jsx中 onclick = {this.声明函数名称};
+			 * 
+			 * 2.如何实现多个js的调用,可以往组件的原型链上面设定属性;
+			 * 组件名.prototype.属性名字(全部大写)={
+			 * 	//写多个函数,函数都是js对象形式存在,
+			 * 	a:function(){},
+			 * 	b:function(){}
+			 * }
+			 * 字组件中,想调用 取原型链对象var _js = this.设定属性名称;
+			 * 在jsx语法中通过事件方式调用onClick = {_js.a};
+			 */
+		</script>
+	</head>
+	<body>
+		<script type="text/babel">
+			var MyComponent = React.createClass({
+				render:function(){
+					var _js=this.JS
+					return(
+						<div>
+							<input onChange={_js.change} type="text"/>
+							<button onClick={_js.click}>点击触发函数</button>
+						</div>
+					);
+				}
+			});
+			MyComponent.prototype.JS={
+				click:function(){
+					console.log('event happened');
+				},
+				change:function(){
+					console.log('change is happening');
+				}
+			};
+			ReactDOM.render(<MyComponent/>,document.body);
+			console.log(<MyComponent/>);
+		</script>
+	</body>
+</html>

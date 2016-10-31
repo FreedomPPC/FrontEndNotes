@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//全局this一般指向全局对象，浏览器中的全局对象就是 window。例如：
+//			console.log(this.document === document);
+//			console.log(this === window);
+//			
+//			this.a = 91
+//			console.log(window.a);	
+//			
+//			//一般函数的this
+//			function f1() {
+//				return this
+//			};
+//			console.log(f1() === window);
+//			
+//			//严格模式中，函数的this为underfined
+//			function f2() {
+//				"use strict";//严格模式
+//				return this
+//			}
+//			console.log(f2());
+//			
+//			//作为对象方法的函数
+//			var o = {
+//			    prop: 37
+//			};
+//			
+//			function independent() {
+//			    return this.prop;
+//			}
+//			o.f = independent;
+//			console.log(o.f()); 
+//
+//			//作为函数调用
+//			function m*MakeNoSense(x) { 
+//			    this.x = x; 
+//			} 
+//			makeNoSense(5);
+//			console.log(x);
+////			
+//			var point = { 
+//			    x : 0, 
+//			    y : 0, 
+//			    moveTo : function(x, y) { 
+//			        // 内部函数
+//			        var moveX = function(x) { 
+//			            this.x = x;
+//			            console.log(this)
+//			        }; 
+//			        // 内部函数
+//			        var moveY = function(y) { 
+//			            this.y = y;
+//			            console.log(this)
+//			        }; 
+//			
+//			        moveX(x); 
+//			        moveY(y); 
+//			    } 
+//			}; 
+//			point.moveTo(1, 1); 
+//			console.log(point.x) //0
+//			console.log(point.y) //0
+//			console.log(x)       //1
+//			console.log(y)       //1
+//			
+//			//对象原型链上的this
+//			var o = {
+//				fn:function(){
+//					return this.a + this.b;
+//				}
+//			}
+//			var p = Object.create(o);
+//			p.a = 1;
+//			p.b = 2;
+//			console.log(p.fn());
+//			
+//			//构造器中的this
+//			function MyClass() {
+//				this.a = 25
+//			}
+//			var o = new MyClass();
+//			console.log(o.a);
+//			//new MyClass() 的时候，MyClass()中的 this 会指向一个空对象，
+//			//这个对象的原型会指向 MyClass.prototype。MyClass()没有返回值
+//			//或者返回为基本类型时，默认将 this 返回。
+//			
+//			function C2() {
+//			    this.a = 26;
+//			    return {
+//			        a: 24
+//			    };
+//			}
+//			
+//			var o = new C2();
+//			console.log(o.a);
+//			
+//			//this丢失
+//			var obj ={
+//			    myName: 'jeff',
+//			    getName: function(){
+//			        return this.myName;
+//			    }
+//			};
+//			console.log(obj.getName()); 
+//			
+//			var getName2 = obj.getName;
+//			console.log( getName2() ); 
+//			//调用getName2时是普通函数方式，this指向全局window，故而结果是undefined；
+		</script>
+		
+		
+		
+		
+		<!--JavaScript伪协议和内联事件对于this的指向不同-->
+	    <a href="#" onclick="alert(this.tagName);">click me</a> 
+	    <a href="javascript:alert(this.tagName);">click me</a>  
+	    <a href="javascript:alert(this==window);">click me</a>  
+	
+	    <input id="btn" type="button" value="this demo" name="button"/>
+	    
+	    
+	    
+	    
+	    
+	    
+	    <script type="text/javascript">
+	    	var name = 'somebody';
+			var angela = {
+			    name: 'angela',
+			    say: function () {
+			        alert("I'm " + this.name);
+			    }
+			};
+			var btn = document.getElementById('btn');
+			
+//			angela.say();
+			
+//			setTimeout(angela.say, 1000);  
+//			setInterval(angela.say, 1000); 
+//			btn.onclick = angela.say; 
+			//匿名函数调整this指针
+//			setTimeout(function () { angela.say(); }, 1000); 
+//			setInterval(function () { angela.say(); }, 1000);
+//			btn.onclick = function () { angela.say(); };     
+//			setTimeout(function () { alert(this == window); }, 1000);
+			btn.onclick = function () { alert(this == btn); }
+			//这是因为setTimeout等函数内this默认的指向是Window。
+			
+			//匿名函数赋值给了click属性(好吧，现在成了函数)，此时这个匿名函数指向的即是Html属性。
+			//因此所调用的函数(比如angela.say())this上下文没有被更改，所以其打印出来的结果就是’I’m angela’。
+			//事实上，也用这样的方法来消解this在回调函数中不堪使用的’特色’(毕竟一旦出了问题难以调试)。
+			
+			//将this指向的对象保存到变量(一般用that)
+			var mydemo = {
+			    name: 'angela',
+			    say: function () { alert("I'm " + this.name); },
+			    init: function () {
+			        var that = this;
+			        document.getElementById('btn').onclick = function () {
+			            that.say();  
+			            this.say();  
+			        }
+			    }
+			};
+			mydemo.init();
+	    </script>
+	</body>
+</html>

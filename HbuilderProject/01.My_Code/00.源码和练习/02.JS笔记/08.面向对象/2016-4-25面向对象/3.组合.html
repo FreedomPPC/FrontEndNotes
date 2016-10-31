@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title></title>
+		<style type="text/css"></style>
+	</head>
+	<body>
+		<!--script type="text/javascript" src="../utility.js"></script>
+		<script type="text/javascript" src="js/script.js"></script-->
+		<script type="text/javascript">
+			//组合继承：借助原型链和构造函数的技术组合到一块
+			//思路：	1.原型链实现对原型属性和方法的继承
+			//			2.构造函数实现对实例属性的继承，且调用基类的构造函数
+			function Person (name) {
+				this.name = name;
+				this.exGF = ['cuihua', 'erya']
+			}
+			Person.prototype.sayName = function () {
+				alert(this.name);
+			}
+
+			function Student (name, No) {
+				Person.call(this,name);
+				this.No = No;
+			}
+			Student.prototype = new Person();
+			Student.prototype.sayNo = function () {
+				alert(this.No);
+			}
+			//===>借助两种技术，融合了他们的有点，成为了javaScirpt中最长远的继承模式
+
+			var xiaoMing = new Student('xiaoming', 12);
+			xiaoMing.sayName();
+			xiaoMing.sayNo();
+
+
+			
+		</script>
+	</body>
+</html>

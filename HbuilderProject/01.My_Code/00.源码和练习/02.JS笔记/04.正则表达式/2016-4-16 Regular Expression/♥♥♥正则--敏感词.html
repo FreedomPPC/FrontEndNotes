@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>敏感词替换</title>
+	<script> window.onload = function ()
+	{
+		var txt1 = document.getElementById('text1');
+		var txt2 = document.getElementById('text2');
+		var btn = document.getElementById('btn');
+		btn.onclick = function (evt)
+		{
+			var e = evt || window.event; var re = /我们|你们|他们/g; txt2.value = txt1.value.replace(re,'*****');
+		}
+	}
+	</script>
+</head>
+<body>
+转换前:<textarea name="" id="text1" cols="30" rows="10"></textarea><br/>
+	<input type="button" value="过滤" id="btn"><br/>
+	转换后:<textarea name="" id="text2" cols="30" rows="10"></textarea><br/>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style type="text/css">
+			#div1{
+				width:100px;
+				height: 100px;
+				background: yellow;
+				border-radius: 50%;
+				position: absolute;
+				top:100px;
+				left:200px;
+				cursor: pointer;
+			}
+			
+			div{
+				width: 7px;
+				height:7px;
+				background:black;
+				position: absolute;
+			}
+		</style>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			window.onload = function ()
+			{	
+				
+				var oDiv = document.getElementById('div1');
+				oDiv.onmousedown = function (evt)
+				{
+					var e = evt || window.event;
+					var disX = e.clientX - oDiv.offsetLeft;
+					var disY = e.clientY - oDiv.offsetTop;
+					
+					window.onmousemove = function (evt)
+					{
+						var e = evt || window.event;
+						var l = e.clientX -disX; 
+						var t = e.clientY -disY; 
+						oDiv.style.left = l+'px';
+						oDiv.style.top = t+'px';
+						//每移动一次 创建一个div
+//						var oBox = document.createElement('div');
+//						oBox.style.left = l+'px';
+//						oBox.style.top = t+'px';
+//						document.body.appendChild(oBox);
+					}
+				window.onmouseup = function (evt)
+				{
+					var e = evt || window.event;
+					window.onmousemove = null;
+					window.onmouseup = null;
+				}
+				}
+			}
+			
+		</script>
+	</head>
+	<body>
+		<div id="div1">
+			
+		</div>
+	</body>
+</html>

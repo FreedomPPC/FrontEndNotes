@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+
+<script type="text/javascript" src="jquery-1.10.1.min.js"></script>
+<script>
+
+$(function(){
+
+	/*$('div').click(function(){
+		alert(123);
+	});*/
+	
+	/*$('div').on('click',function(){
+		alert(123);
+	});*/
+	
+	/*$('div').on('click mouseover',function(){
+		alert(123);
+	});*/
+	
+	/*$('div').on({
+		'click' : function(){
+			alert(123);
+		},
+		'mouseover' : function(){
+			alert(456);
+		}
+	});*/
+	
+	$('div').on('click mouseover',function(){
+		alert(123);
+		$('div').off('mouseover');
+	});
+	
+});
+
+
+
+</script>
+</head>
+
+<body>
+<div>div</div>
+<span>span</span>
+</body>
+</html>

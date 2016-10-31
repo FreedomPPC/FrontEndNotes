@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>arguments</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// arguments可以理解为参数的数组,参数的个数可变,当我们要传的参数有多个时,就要用到arguments;
+
+
+		//1.arguments的概念;当传的参数有多个时,可以用到arguments[0],arguments[1],arguments[2]这种写法;
+		// function show(){
+		// 	console.log(arguments[0]);//参数数组的第0个参数;
+		// 	console.log("参数数组的长度:"+arguments.length);
+		// }
+		// show(1,2,3);
+
+		//2.arguments的简单使用;
+//		function sum(){
+//			var i=0;
+//			var result = 0;
+//			for(i;i<arguments.length;i++){
+//				result += arguments[i];
+//			}
+//			console.log('sum:'+result);
+//		}
+//		sum(1,2,3,4,5);//应用了arguments之后,不管传几个参数,都没问题了.
+		
+		//3.函数的递归;
+		function f(num){ 
+			if(num<1){ 
+				return 1; 
+			}else{ 
+//				return f(num-1)*num; 
+				return num*arguments.callee(num-1);
+			} 
+		} 
+
+		alert(f(10));
+	</script>
+</body>
+</html>

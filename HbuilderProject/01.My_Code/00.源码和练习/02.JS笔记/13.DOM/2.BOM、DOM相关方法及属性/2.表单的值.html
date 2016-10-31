@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script>
+window.onload = function() {
+	
+	var oForm = document.getElementById('form1');
+	var oBtn = document.getElementById('btn');
+	
+	oBtn.onclick = function() {
+		
+		//alert( oForm.sex[0].checked );
+		
+		//getElementsByName();
+		
+		//alert( oForm.getElemensByName('sex') );
+		
+		/*for (var i=0; i<oForm.aihao.length; i++) {
+			
+			if (oForm.aihao[i].checked) {
+				alert(oForm.aihao[i].value + ' 选中了');
+			} else {
+				alert(oForm.aihao[i].value + ' 没选中');
+			}
+			
+		}*/
+		
+		/*for (var attr in oForm.sex) {
+			console.log(attr + ' = ' + oForm.sex);
+		}*/
+		
+		alert(oForm.city.value);
+		
+	}
+	
+}
+</script>
+</head>
+
+<body>
+	<form id="form1">
+    	<input type="radio" name="sex" value="男" />男
+        <input type="radio" name="sex" value="女" checked />女
+        
+        <input type="checkbox" name="aihao" value="电影" />电影
+        <input type="checkbox" name="aihao" value="音乐" />音乐
+        <input type="checkbox" name="aihao" value="体育" />体育
+        
+        <select name="city" value="">
+        	<option>请选择一个城市</option>
+            <option value="北京">北京</option>
+            <option value="上海" selected>上海</option>
+            <option value="广州">广州</option>
+            <option value="深圳">深圳</option>
+        </select>
+        
+        <input type="button" value="按钮" id="btn" />
+        <input type="submit" value="提交" />
+    </form>
+</body>
+</html>

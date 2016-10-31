@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title></title>
+		<style type="text/css">
+			span {
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript" src="../utility.js"></script>
+		<script type="text/javascript">
+			/*================================================================================*/
+			//Ajax的使用方法：
+			//1. 创建XMLHttpRequest
+			// var xhr = new XMLHttpRequest();
+
+			// //4. 绑定响应函数，接收响应数据
+			// //这个函数，在每次readyState变化的时候，都会调用。(一共调用4次，具体的readyState值代表的意义，参见PPT)
+			// xhr.onreadystatechange = function () {
+			// 	//readyState===4说明已经接收全部的服务器响应
+			// 	if (xhr.readyState === 4) {
+
+			// 		//判断服务器返回的数据的状态，200 代表请求成功，404代表资源没有找到，304是从缓存中取得数据
+			// 		//0 当前的页面，是以本地文件的形式运行的，数据取得成功。
+			// 		if (xhr.status === 200 || xhr.status === 0) {
+			// 			alert(xhr.responseText);
+			// 		}
+			// 	}
+			// }
+
+			// //2. 配置/打开这个对象
+			// //open的三个参数：1. type ['get'/'post'], 2. url, 3. async [true/fales]
+			// xhr.open('get', 'ajax-test.txt', true);
+
+			// //发送Ajax请求
+			// xhr.send(null);
+
+			/*================================================================================*/
+			//使用工具函数发送ajax
+
+			utilities.Ajax.send('get', 'ajax-test.txt', true, function (resp) {
+				alert(resp);
+			});
+
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script src="jquery-1.10.1.min.js"></script>
+<script>
+
+
+
+$(function(){
+	
+	/*$('#div1').on('click',function(){
+		alert(123);
+	});
+	
+	$('#div1').trigger('click');  //主动触发*/
+	
+	$('#div1').on('show',function(){
+		alert(123);
+	});
+	
+	$('#div1').on('show',function(){
+		alert(456);
+	});
+	
+	$('#div1').trigger('show');
+	
+});
+
+</script>
+</head>
+
+<body>
+<div id="div1">aaaa</div>
+</body>
+</html>

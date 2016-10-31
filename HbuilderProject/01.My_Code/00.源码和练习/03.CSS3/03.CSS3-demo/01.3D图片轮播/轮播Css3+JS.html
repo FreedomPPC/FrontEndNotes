@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			@-webkit-keyframes show{
+				0%{
+					-webkit-transform: rotateX(180deg);
+					opacity: 0;
+				}
+				50%{
+					-webkit-transform: rotateX(-25deg);
+					opacity: 1;
+				}
+				60%{
+					-webkit-transform: rotateX(18deg);
+					opacity: 1;
+				}
+				70%{
+					-webkit-transform: rotateX(-12deg);
+					opacity: 1;
+				}
+				80%{
+					-webkit-transform: rotateX(8deg);
+					opacity: 1;
+				}
+				90%{
+					-webkit-transform: rotateX(-6deg);
+					opacity: 1;
+				}
+				100%{
+					-webkit-transform: rotateX(0deg);
+					opacity: 1;
+				}
+			}
+			@-webkit-keyframes hide{
+				from{
+					-webkit-transform: rotateX(0deg);
+					opacity: 1;
+				}
+				to{
+					-webkit-transform: rotateX(-180deg);
+					opacity: 0;
+				}
+			}
+			body{
+				width: 100%;
+				height:100%;
+				background: black;
+			}
+			.wrap{
+				width:400px;
+				height:300px;
+				border:1px solid yellow;
+				margin: 0 auto;
+				position: relative;
+				-webkit-transform-style: preserve-3d;
+				-webkit-perspective: 600px;
+				/*-webkit-perspective-origin:left;*/
+			}
+			img{
+				width:400px;
+				height:300px;
+				position:absolute;
+				-webkit-transform: rotateX(-180deg);
+				-webkit-transform-origin: bottom;
+				opacity: 0;
+			}
+			input{
+				position: absolute;
+				top:100px;
+				
+				width:60px;
+				height:60px;
+				border-radius: 50%;
+				outline: none;
+				
+			}
+			input:nth-of-type(1){
+				left:-120px;
+			}
+			input:nth-of-type(2){
+				right:-120px;
+				
+			}
+			.show{
+				-webkit-transform: rotateX(0deg);
+				opacity: 1;
+				animation: show 1s;
+			}
+			.hide{
+				-webkit-transform: rotateX(-180deg);
+				opacity: 0;
+				animation: hide 0.6s;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				var aInput = document.getElementsByTagName("input");
+				var aImg = document.getElementsByTagName("img");
+				var iCount = 0;
+				aInput[0].onclick = function(){
+					aImg[iCount].className = "hide";
+					iCount--;
+//					alert("a");
+					if(iCount <= 0){
+						iCount = aImg.length-1;
+					}
+					aImg[iCount].className = "show";
+				}
+				aInput[1].onclick = function(){
+					aImg[iCount].className = "hide";
+					iCount++;
+//					alert("a");
+					if(iCount >= aImg.length){
+						iCount = 0;
+					}
+					aImg[iCount].className = "show";
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div class="wrap">
+			<input type="button" value="上一张"/>
+			<input type="button" value="下一张" />
+				<img src="img/img1.jpg" class="show"/>
+				<img src="img/img2.jpg" />
+				<img src="img/img3.jpg"/>
+				<img src="img/img4.jpg"/>
+				<img src="img/img5.jpg"/>
+		</div>
+	</body>
+</html>

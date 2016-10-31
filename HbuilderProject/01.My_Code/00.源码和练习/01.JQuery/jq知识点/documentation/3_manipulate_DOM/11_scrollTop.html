@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>scrollTop demo</title>
+        <style>
+            p {
+                margin: 10px;
+                padding: 5px;
+                border: 2px solid #666;
+            }
+        </style>
+        <script src="../vendor/jquery-1.12.1.js"></script>
+    </head>
+    <body>
+
+        <p style="height: 50px;overflow: scroll;">Hello<span style="height: 10000px; display: block;"></span></p>
+        <p style="position:fixed;top:50px;"></p>
+
+        <script>
+            var p = $( "p:first" );
+            p.scroll(function () {
+                $( "p:last" ).text( "scrollTop:" + p.scrollTop() );
+            });
+
+            p.scrollTop(300);
+        </script>
+
+    </body>
+</html>

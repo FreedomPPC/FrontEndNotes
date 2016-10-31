@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+
+//chrome : dom方法要比innerHTML 性能要好
+
+window.onload = function(){	
+	var oUl = document.getElementById('ul1');
+	
+	var str = '';
+	
+	console.time('hello');
+	for(var i=0;i<5000;i++){
+		var oLi = document.createElement('li');
+		oLi.innerHTML = 'li';
+		oUl.appendChild(oLi);
+	}
+	console.timeEnd('hello');
+	
+	console.time('hello');
+	var oLi = document.createElement('li');
+	oLi.innerHTML = 'li';
+	for(var i=0;i<5000;i++){
+		var newLi = oLi.cloneNode(true);
+		oUl.appendChild(newLi);
+	}
+	console.timeEnd('hello');
+	
+};
+</script>
+</head>
+
+<body>
+<ul id="ul1">
+</ul>
+</body>
+</html>

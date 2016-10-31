@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="lib/react.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/react-dom.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/browser.min.js" type="text/javascript" charset="utf-8"></script>
+			
+	</head>
+	<body>
+		<script type="text/javascript">
+			//react的状态;--react的状态不同于props(外部去声明和传入),stata在组件的内部去声明的,
+			//用途主要是检测当前组件内部数据是否发生变化,一旦组件数据发生变化,state也发生变化;
+			/*
+			 * 问题:1.state如何去声明;
+			 * 		2.如何去监听,组件内部的数据变化情况;实际上就是不断给state赋值的过程;
+			 * 
+				* 	state是如何被声明的
+					怎么去监听数据的变化?;
+			
+					状态state只能在组件内部去声明;
+					1.getInitialState 组件内部设置属性;
+					2.回顾(this.props得到对象),设置state可以在api return{}对象作为默认状态;
+				
+			 * 		
+			 
+			 * */
+		</script>
+		<script type="text/babel">
+			//第二个阶段的生命周期的函数:update阶段---是不是组件内部的内容发生改变了(props,state进行改变);
+			//1.组件修改了自身state状态;
+			//componentWillReceiveProps:(nextProps) 组件接受到的最新的属性值;
+			//shouldComponentUpdate:(nextProps,nextState)  组件接受到的最新的属性值和状态值;
+			//componentWillUpdate:(nextProps,nextState)  组件接受到的最新的属性值和状态值;
+			//componentDidUpdate:()   完成更新渲染;
+			
+			var ReactState = React.createClass({
+				//状态state只能在组件内部去声明;
+				//1.getInitialState 组件内部设置属性;
+				//2.回顾(this.props得到对象),设置state可以在api return{}对象作为默认状态;
+				
+				getInitialState:function(){
+					//1.第一种写法
+					//var obj={_value:'hello'};
+					//return obj;
+					
+					//2.第二种写法;
+					return{
+						_value:"hello"
+					}
+				},
+				//监听组件中数据变化的时候,需要不断改变state值,
+				handleChange:function(event){
+					var _text = event.target.value;
+					//this.state获取state值,重新赋值this.setState({key:value});
+					//this.setState({修改那个属性:被修改后的新值});
+					this.setState({_value:_text});
+				},
+				render:function(){
+					console.log(this.state);
+					return(
+						<div>
+							<span>value:{this.state._value}</span>	<br />
+							<input onChange={this.handleChange} type="text" />
+						</div>
+						
+					);
+				}
+			});
+			ReactDOM.render(<ReactState/>,document.body);
+			//state,主要监听组件的数据变化,可以在使用中,将变化的数据,都先放到state中,
+			//this.setState{key:value};
+			//在jsx中,直接this.state.属性  就可以绑定数据;
+			//实现了,只要组件内部发生变化,组件页面上面,数据自动更新;
+			//彻底和拼接字符串,dom告别了;
+			
+			//开发中 props和state进行混搭使用
+			//做数据对接----显示走秀网商品列表
+			//1.分成两个组件 最大是父组件 这个商品列表容器 
+			//2.商品列表中每个循环子项(渲染模板) 子组件
+			//可以在父组件中  改变,存储变化的数据 放在state中
+			//把state数据作为props传递到子组件中，让子组件自己进行解析
+		</script>
+	</body>
+</html>

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<canvas id="cvs" width="400" height="400"></canvas>
+	<br/>
+	<canvas id="cvs1" width="400" height="400"></canvas>
+	<br/>
+	<canvas id="cvs3" width="400" height="400"></canvas>
+	<br/>
+	<canvas id="cvs4" width="400" height="400"></canvas>
+	<br>
+	<canvas id="cvs5" width="400" height="400"></canvas>
+	<script>
+
+
+     function draw1(){
+	   var cvs= document.querySelector("#cvs"), 
+	　　　　ctx = cvs.getContext("2d");
+	   ctx.clearRect(0,0,ctx.canvas.width,cvs.height);
+	   var lg = ctx.createLinearGradient(0,0,400,400);
+	   lg.addColorStop(0,"red");
+	   lg.addColorStop(0.3,"blue");
+	   lg.addColorStop(0.6,"yellow");
+	   lg.addColorStop(0.8,"pink");
+	   lg.addColorStop(1,"green");
+	   ctx.fillStyle = lg;
+	   ctx.fillRect(0,0,400,400);
+	}
+	draw1();
+
+	function draw2(){
+	   var cvs= document.querySelector("#cvs1"), 
+	　　　　ctx = cvs.getContext("2d");
+	   ctx.clearRect(0,0,ctx.canvas.width,cvs.height);
+	   var lg = ctx.createLinearGradient(0,0,400,400);
+	   lg.addColorStop(0,"red");
+	   lg.addColorStop(0.3,"blue");
+	   lg.addColorStop(0.6,"yellow");
+	   lg.addColorStop(0.8,"pink");
+	   lg.addColorStop(1,"green");
+	   ctx.lineWidth = 10;
+	   ctx.strokeStyle = lg;
+	   ctx.strokeRect(0,0,400,400);
+	}
+
+	draw2();
+
+	function draw3(){
+	   var cvs= document.querySelector("#cvs3"), 
+	　　　　ctx = cvs.getContext("2d");
+	   ctx.clearRect(0,0,ctx.canvas.width,cvs.height);
+	   var lg = ctx.createLinearGradient(0,0,400,400);
+	   lg.addColorStop(0,"red");
+	   lg.addColorStop(0.3,"blue");
+	   lg.addColorStop(0.6,"yellow");
+	   lg.addColorStop(0.8,"pink");
+	   lg.addColorStop(1,"green");
+	   ctx.font = "50px fantasy";
+	   ctx.fillStyle = "transparent";
+	   ctx.fillText("PHOEON !!!",150,200);
+	   
+	   ctx.lineWidth = 5;
+	   ctx.strokeStyle = lg;
+	   ctx.strokeText("PHOEON!!!",150,200);
+	}
+	draw3();
+
+	function draw4(){
+	   var cvs= document.querySelector("#cvs4"), 
+	　　　　ctx = cvs.getContext("2d");
+	   ctx.clearRect(0,0,ctx.canvas.width,cvs.height);
+	   var lg = ctx.createLinearGradient(0,0,400,400);
+	   lg.addColorStop(0,"red");
+	   lg.addColorStop(0.3,"blue");
+	   lg.addColorStop(0.6,"yellow");
+	   lg.addColorStop(0.8,"pink");
+	   lg.addColorStop(1,"green");
+	   ctx.font = "50px fantasy";
+	   ctx.fillStyle = lg;
+	   ctx.fillText("PHOEON !!!",150,200);
+	   
+	}
+
+	draw4();
+
+	function draw5(){
+	   var cvs= document.querySelector("#cvs5"), 
+	　　　　ctx = cvs.getContext("2d");
+	   ctx.clearRect(0,0,ctx.canvas.width,cvs.height);
+	   /**
+	     x,y,r,x1,y1,r1
+	     前三径向渐变起点圆坐标
+	     后三径向渐变终点圆坐标
+	   **/
+	   var lg = ctx.createLinearGradient(0,0,0,400);
+	   lg.addColorStop(0,"red");
+	   lg.addColorStop(0.5,"red");
+	   lg.addColorStop(0.5,"blue");
+	   ctx.font = "50px fantasy";
+	   ctx.fillStyle = lg;
+	   ctx.fillRect(0,0,400,400);
+	   
+	}
+
+	draw5();
+	</script>
+</body>
+</html>

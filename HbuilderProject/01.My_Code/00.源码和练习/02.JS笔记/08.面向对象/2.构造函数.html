@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title></title>
+		<style type="text/css"></style>
+	</head>
+	<body>
+		<!--script type="text/javascript" src="../utility.js"></script>
+		<script type="text/javascript" src="js/script.js"></script-->
+		<script type="text/javascript">
+			//与工厂模式区别：
+			//1. 没有显示的创建对象
+			//2. 直接将属性和方法赋值给了this对象
+			//3. 没有return语句
+			function Person(name, age, job) {
+				this.name = name;
+				this.age = age;
+				this.job = job;
+				this.sayName = function () {
+					alert(this.name);
+				}
+			}
+			//通过构造函数创建对象，必须是new关键字
+			var xiaoming = new Person('xiaoming', 33, 'actor');
+			var cuihua = new Person('cuihua', 18, 'waitress');
+
+			//这种方式创建对象经历下面四步：
+			//1. 创建一个对象
+			//2. 将构造函数的作用域赋值给新对象
+			//3. 执行构造函数中的代码
+			//4. 返回新对象
+
+			//===>与工厂模式相比，优点为：
+			//可以通过instanceof来判断对象的类型
+			//例如： 	xiaoming instanceof Person //true
+			//			xiaoming instanceof Object //true
+
+			//问题：每个类的方法，都需要在每个对象上，重新创造一个实例
+			//解决：
+			function Person (name, age, job) {
+				this.name = name;
+				this.age = age;
+				this.job = job;
+				this.sayName = sayName;
+			}
+			function sayName () {
+				alert(this.name);
+			}
+
+			//解决之后的问题：
+			//1. 全局作用域的函数，只能被某个对象调用
+			//2. 如果某个类有很多个函数，全局作用域下会多出很多函数，让人崩溃
+			//===>原型模式
+		</script>	
+	</body>
+</html>

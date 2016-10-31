@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="./index.css" type="text/css">
+</head>
+<body>
+	<div class="p-bar">
+		<div class="bar-wrap bar">
+			<div class="bar-dym bar"></div>
+		</div>
+		<div class="pro">0%</div>
+	</div>
+</body>
+<script>
+	var bar = document.querySelector(".bar-dym"),
+		pro = document.querySelector(".pro"),
+		initPro = 0,
+		tick = 300;
+
+	(function(){
+		bar.style.left = (initPro++ - 100) + "%";
+		pro.innerHTML = initPro<100?initPro + "%":"done";
+		initPro<=100&&setTimeout(arguments.callee,tick*Math.random());
+	}());
+</script>
+</html>

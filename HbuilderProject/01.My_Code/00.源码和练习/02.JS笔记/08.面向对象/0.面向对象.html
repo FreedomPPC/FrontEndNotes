@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title></title>
+		<style type="text/css"></style>
+	</head>
+	<body>
+		<!--script type="text/javascript" src="../utility.js"></script>
+		<script type="text/javascript" src="js/script.js"></script-->
+		<script type="text/javascript" >
+			//1. 面向对象和面向过程
+			//例子：小狗吃食（闻一闻、舔一舔、咬一咬）
+			// 面向过程：
+			function smell (dog, food) {
+
+			}
+
+			function lick (dog, food) {
+
+			}
+
+			function bite (dog, food) {
+
+			}
+			//面向对象
+			var dog = {}
+			dog.smell = function (food) {
+
+			}
+
+			dog.lick = function (food) {
+
+			}
+
+			dog.bite = function (food) {
+
+			}
+
+
+			//2. 面向对象的特点
+			//  2.0 类
+			//	2.1 封装
+			//	2.2 继承
+			//	2.3 多态
+			var cat = new Cat();
+			cat.eat()	//什么都吃
+			cat = new eatGrassCat();
+			cat.eat()	//吃草
+			cat = new eatMeatCat();
+			cat.eat()	//吃肉
+			//在其他语言里（比如c++）,一个变量被定义为某个类型，
+			//那么这个变量的赋值，只能是这个类型以及这个类型的子类。
+			//比如一个变量类型的Cat，那个变量，他只能被赋值为Cat,PersianCat,GarfieldCat
+			//如果这个变量，被赋值Snoopy，就会报错。
+			//多态的概念：当一个变量被赋值为某个类型，或者是某个类型的子类，那么通过这个变量
+			//执行的操作（调用的函数），会根据变量执行的对象类型的不同，而执行不同的内容。
+			//比如上面的cat
+
+			//3. JS中的对象
+			//	3.1 创建一个对象
+			//var obj = new Object();
+			//var obj = {}
+			//	3.2 取得对象的属性和方法
+			//通过.操作符，或者是["propertyName"]
+			//	3.3 判断一个对象属于哪个类
+			//例子：	1. 创建一个person对象
+			//			2. 创建一个dog
+			//			3. 创建10个person、100个person
+		</script>	
+	</body>
+</html>

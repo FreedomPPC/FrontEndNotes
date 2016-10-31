@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+body{height:300px;border:1px solid #000;}
+.box{width:100px;height:100px;background:red; transition:1s;}
+/*
+	matrix(1,0,0,1,0,0)
+	matrix(a,b,c,d,e,f);
+	progid:DXImageTransform.Microsoft.Matrix( M11= 1, M12= 0, M21= 0 , M22=1,SizingMethod='auto expand');
+	Matrix( M11= a, M12= c, M21= b , M22=d,SizingMethod='auto expand');
+	位移:
+	x:e+disX
+	y:f+disY
+	
+	缩放:
+	x轴缩放 a=x*a   c=x*c;
+    y轴缩放 b=y*b   d=y*d;
+	
+	x轴斜切: c=Math.tan(xDeg/180*Math.PI)
+	y轴斜切: b=Math.tan(yDeg/180*Math.PI)
+
+	
+	a=Math.cos(deg/180*Math.PI); 
+	b=Math.sin(deg/180*Math.PI);
+	c=-Math.sin(deg/180*Math.PI);
+	d=Math.cos(deg/180*Math.PI);
+
+
+*/
+</style>
+</head>
+<body>
+<div class="box" id="box"></div>
+<script>
+var oBox=document.getElementById("box");
+oBox.onclick=function()
+{
+	oBox.style.WebkitTransform="matrix(0.87,0.5,-0.5,0.87,0,0)";
+	oBox.style.MozTransform="matrix(0.87,0.5,-0.5,0.87,0,0)";
+	oBox.style.transform="matrix(0.87,0.5,-0.5,0.87,0,0)";
+	oBox.style.filter="progid:DXImageTransform.Microsoft.Matrix( M11= 0.87, M12= -0.5, M21= 0.5 , M22=0.87,SizingMethod='auto expand')";
+	
+	alert(this.offsetWidth);
+}
+</script>
+</body>
+</html>

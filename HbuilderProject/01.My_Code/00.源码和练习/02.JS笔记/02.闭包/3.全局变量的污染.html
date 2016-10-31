@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//全局变量,没调用一次,就会累加一次;
+//			var a = 1;
+//			function aaa(){
+//				a++;
+//				alert(a);
+//			}
+//			aaa();
+//			aaa();
+			
+			
+			//局部变量;两次结果都是2;跟垃圾回收机制有关,用完变量a;就会回收.调用一次生成一次;
+//			function aaa(){
+//				var a=1;
+//				a++;
+//				alert(a);
+//			}
+//			aaa();//2
+//			aaa();//2
+
+
+
+			//怎么样做到a既是一个局部变量,又可以让a不会垃圾回收机制收回呢?
+//			function aaa(){
+//				var  a = 1;
+//				function bbb(){
+//					a++
+//					alert(a);
+//				}
+//				return bbb;
+//			}
+//			var b = aaa();
+//			b();//2;
+//			b();//3;
+
+			
+			//函数表达式写法;这种叫代码模块化,来减少全局变量的污染;这样还能私有方法;
+			var aaa = (function(){
+				var a=1;
+				return function(){
+					a++;
+					alert(a);
+				}
+			})()
+			aaa();
+			aaa();
+		</script>
+	</body>
+</html>

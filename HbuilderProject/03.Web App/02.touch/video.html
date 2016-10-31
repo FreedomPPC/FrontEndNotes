@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>视频播放控制</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+		<script type="text/javascript" src="js/touch.js" ></script>
+		<style>
+			*{padding: 0; margin: 0;}
+		</style>
+		<script>
+			//控制视频播放
+			//定义向右+2s
+			//定义向左-2s
+			window.onload=function(){
+				jQuery.$touch(document.getElementById("video"),function(s){
+					
+				//回传的状态
+				//1.获取视频所在的dom里面
+				var _video=document.getElementById("video");
+				var currentTime=_video.currentTime;//获取当前时间
+				console.log(currentTime);
+				if(s=="slideright"){
+					console.log("视频前进");
+					currentTime=currentTime+2;
+					
+				}else{
+					console.log("视频后退");
+					currentTime=currentTime-2;
+				}
+				_video.currentTime=currentTime;
+			   });
+			}
+			
+			
+		</script>
+	</head>
+	<body>
+		<video id="video" height="400" width="100%" src="video/videoviewdemo.mp4" controls="controls"></video>
+	</body>
+</html>

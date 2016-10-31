@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+body{ background:#f9f9f9;}
+#menu{width:50px;height:50px; position:fixed;right:20px; bottom:20px; }
+#menu_list{height:42px;width:42px; position:relative;margin:4px;}
+#menu_list img{ border-radius:21px; position:absolute;left:0;top:0; -webkit-transition:0.5s all ease;}
+#home{width:50px;height:50px;background:url(home.png) no-repeat; border-radius:25px; position:absolute; left:0;top:0; transition:1s;}
+</style>
+<script>
+window.onload=function()
+{
+	var oHome=document.getElementById("home");
+	var aImg=document.getElementById("menu_list").getElementsByTagName("img");
+	var bOff=true;
+	var iR=-150;
+	for(var i=0;i<aImg.length;i++)
+	{
+		aImg[i].onclick=function()
+		{
+			this.style.transition="0.3s";
+			this.style.WebkitTransform="scale(2) rotate(-720deg)";
+			this.style.opacity=0.1;
+			addEnd(this,end);
+		};
+	}
+	function end()
+	{
+		this.style.transition="0.1s";
+		this.style.WebkitTransform="scale(1) rotate(-720deg)";
+		this.style.opacity=1;
+		removeEnd(this,end);
+	}
+	oHome.onclick=function()
+	{
+		if(bOff)
+		{
+			this.style.WebkitTransform="rotate(-360deg)";
+			for(var i=0;i<aImg.length;i++)
+			{
+				var oLt=toLT(iR,90/4*i);
+				aImg[i].style.transition="0.5s "+i*100+"ms";
+				aImg[i].style.left=oLt.l+"px";
+				aImg[i].style.top=oLt.t+"px";
+				aImg[i].style.WebkitTransform="scale(1) rotate(-720deg)";
+			}
+		}
+		else
+		{
+			this.style.WebkitTransform="rotate(0deg)";
+			for(var i=0;i<aImg.length;i++)
+			{
+				aImg[i].style.transition="0.5s "+(aImg.length-i-1)*100+"ms";
+				aImg[i].style.left=0+"px";
+				aImg[i].style.top=0+"px";
+				aImg[i].style.WebkitTransform="scale(1) rotate(0deg)";
+			}
+		}
+		bOff=!bOff;
+	};
+};
+function toLT(iR,iDeg)
+{
+	return {l:Math.round(Math.sin(iDeg/180*Math.PI)*iR),t:Math.round(Math.cos(iDeg/180*Math.PI)*iR)}
+}
+function addEnd(obj,fn)
+{
+	obj.addEventListener('WebkitTransitionEnd',fn,false);
+	obj.addEventListener('transitionend',fn,false);
+}
+function removeEnd(obj,fn)
+{
+	obj.removeEventListener('WebkitTransitionEnd',fn,false);
+	obj.removeEventListener('transitionend',fn,false);
+}
+/*
+	已知直角三角形的斜边长度和夹角 求对边(sin)和临边的长度
+*/
+</script>
+</head>
+<body>
+<div id="menu">
+	<div id="menu_list">
+    	<img src="prev.png" alt=""/>
+        <img src="open.png" alt="" />
+        <img src="clos.png" alt="" />
+        <img src="full.png" alt="" />
+        <img src="refresh.png" alt="" />
+    </div>
+	<div id="home"></div>
+</div>
+</body>
+</html>

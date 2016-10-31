@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+
+/*var obj = {
+	a : 10
+};
+
+var obj2 = obj;
+
+obj2.a = 20;
+
+alert(obj.a);  //20*/
+
+var obj = {
+	a : 10
+};
+
+function copy(obj){  //浅拷贝
+	
+	var newObj = {};
+	
+	for(var attr in obj){
+		newObj[attr] = obj[attr];
+	}
+	
+	return newObj;
+	
+}
+
+var obj2 = copy(obj);
+
+obj2.a = 20;
+
+alert(obj.a);  //10
+</script>
+</head>
+
+<body>
+</body>
+</html>

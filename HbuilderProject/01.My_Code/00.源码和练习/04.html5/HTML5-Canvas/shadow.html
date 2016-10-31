@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<script>
+function draw(){
+   var cvs= document.createElement("canvas"),
+　　　　ctx = cvs.getContext("2d");
+		cvs.width=400;
+		cvs.height=400;
+        document.body.appendChild(cvs);
+   ctx.clearRect(0,0,ctx.canvas.width,cvs.height);
+   ctx.beginPath();
+   ctx.shadowBlur = arguments[0];
+   ctx.shadowColor = "#000";
+   ctx.shadowOffsetX = arguments[1];
+   ctx.shadowOffsetY = arguments[2];
+   ctx.fillStyle="#f00";
+   ctx.arc(200,200,100,0,2*Math.PI,true);
+   ctx.fill();
+   
+}
+
+draw(30,0,0);
+draw(30,30,0);
+draw(30,30,20);
+draw(30,0,20);
+	</script>
+</body>
+</html>

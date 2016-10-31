@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Table</title>
+		<style>
+		    *{margin: 0px;padding: 0px;}
+			.searchBox{width:100%;height: 100px;background-color:#00bcd4;}
+			.searchBox>div{float:right;margin-top:40px;margin-right:5%}
+			input{width:180px;height: 24px;font-size: 22px;float: left;}
+			button{width: 100px;height: 27px;float: left;}
+			.tableBox{width: 100%;min-height: 600px;background-color: #fafafa;
+			 border-bottom-left-radius:3px;/*左下角border-radius*/
+			 border-bottom-right-radius: 3px;/*右下角border-radius*/
+			 }
+			 table{border-spacing:0;width: 100%;
+			 border: 1px solid #ACACAC;border-radius: 3px;}
+			table>thead>tr>th{word-break: break-all; 
+			word-wrap:break-word;border-bottom:2px solid #ddd;
+			height: 30px;vertical-align: bottom;}
+            table>tbody>tr>td{word-break: break-all;
+            word-wrap:break-word;border-bottom:1px solid #ddd;
+            height: 30px;vertical-align:middle;text-align: center;}
+		    table>thead>tr{display: table-row;
+			    vertical-align: inherit;
+			    border-color: inherit;}
+			 table>tbody>tr{display: table-row;
+			    vertical-align: inherit;
+			    border-color: inherit;}
+		</style>
+		<script src="js/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				var _httpurl = 'http://127.0.0.1:8020/My_Code/98.rest-api/service/list.json';
+				$.get(_httpurl,function(data){
+					console.log(data);
+					//2.解析数据;
+					var total = data.total;
+					var current = data.currentPage;
+					
+					_data = data.result;//获取data里面的数组;
+					var str = '';
+					$("tbody").html('');
+					for(var i=0;i<_data.length;i++){
+						var sex = _data[i].sex;
+						if(sex == "0"){
+							sex = "男";
+						}else{
+							sex = "女";
+						};
+						
+						str += '<tr><td>'+_data[i].username+'</td><td>'+_data[i].email+'</td><td>'+sex+'</td>'
+					}
+					$("tbody").append(str);
+				});
+			});
+		</script>
+		
+	</head>
+	<body>
+		<div class="tableBox">
+			<table>
+				<thead>
+					<tr>
+						<th>用户名</th>
+						<th>邮箱</th>
+						<th>性别</th>
+						<th>地址</th>
+						<th>手机号</th>
+						<th>备注</th>
+					</tr>
+				</thead>
+				<tbody>
+					
+				</tbody>
+			</table>
+		</div>
+		<p id="cs"></p>
+	</body>
+</html>

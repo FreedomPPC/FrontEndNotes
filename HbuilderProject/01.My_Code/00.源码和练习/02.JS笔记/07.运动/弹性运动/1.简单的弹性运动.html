@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style type="text/css">
+			#div1{
+				width:100px;
+				height: 100px;
+				border:solid 1px black;
+				border-radius: 100%;
+				background: yellow;
+				position:absolute;
+				top:50px;
+				left: 0;
+			}
+			#div2{
+				height:300px;
+				border:1px solid black;
+				position: absolute;
+				left:300px;
+			}
+		</style>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+		window.onload = function () {
+			var oBtn = document.getElementById('btn1');
+			var oDiv = document.getElementById('div1');
+			oBtn.onclick = function () 
+			{
+				startMove(oDiv,300);
+			}
+		}
+			var iSpeed = 0;
+			function startMove(obj,iTarget){
+				clearInterval(obj.timer);
+				obj.timer = setInterval(function(){
+					
+					iSpeed += (iTarget - obj.offsetLeft)/5;
+					//给一个摩擦力
+					iSpeed *= 0.7;
+					obj.style.left = obj.offsetLeft + iSpeed +'px';
+					if(Math.abs(iSpeed)<1){
+						iSpeed = 0;
+						obj.style.left = iTarget +'px';
+					}
+					console.log('obj.offsetLeft:'+obj.offsetLeft+'ispeed:'+iSpeed);
+				},30);
+			}
+			
+		</script>
+	</head>
+	<body>
+		<input type="button" id="btn1" value="开始运动" />
+		<div id="div1"></div>
+		<div id="div2"></div>
+	</body>
+</html>

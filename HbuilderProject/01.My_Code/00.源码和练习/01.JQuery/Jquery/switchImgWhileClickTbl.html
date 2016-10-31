@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<style>
+        td {
+            width:50px;
+            height: 50px;
+        }
+        .focus {
+        	background-color: blue;
+        }
+    </style>
+	</head>
+	<body>
+		<table id="tab" border="1">
+			<tbody>
+				<tr>
+					<!--一个标签可以有多个class属性，中间用空格间隔，有多个class属性的标签，
+						可以同时适用于多个类选择器的css样式
+					-->
+	                <td class="focus"></td>
+	                <td></td>
+	                <td></td>
+	            </tr>
+			</tbody>
+        </table>
+        <img id="showImg" src="" style="width:700px"/>
+
+		<script type="text/javascript" src="jquery-1.12.3.js"></script>
+		<script type="text/javascript">
+			$('td').click = 
+		</script>
+	</body>
+</html>

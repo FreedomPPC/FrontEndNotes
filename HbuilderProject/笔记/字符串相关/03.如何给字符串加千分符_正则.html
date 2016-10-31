@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>如何给字符串加千分符_正则</title>
+</head>
+<body>
+	<script>
+		var str = '890803562123761';
+
+		function test(str){
+			// var re=/(?=(\d{3})+$)/g//这种写法有个小bug;当数字恰好是3的倍数的时候前面多出来有个逗号;
+			var re=/(?=(?!\b)(\d{3})+$)/g;//(?!\b)代表的是后面不接字符边界;
+			return str.replace(re,',');//在匹配到的位置上加个逗号;
+		}
+		alert(test(str));
+	</script>
+</body>
+</html>

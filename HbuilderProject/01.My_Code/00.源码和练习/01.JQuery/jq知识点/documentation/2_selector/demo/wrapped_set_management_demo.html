@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Switch Img On click td</title>
+        <style>
+            td {
+                width: 50px;
+                height: 50px;
+            }
+
+            .focus {
+                background-color: blue;
+            }
+
+            .pink {
+                background: deeppink;
+            }
+        </style>
+    </head>
+    <body id="tab">
+        <table  border="1">
+            <tbody>
+                <tr>
+                    <td class="focus"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <div></div>
+        <img id="showImg" style="width:700px"/>
+        <div></div>
+        <div></div>
+        <script src="../../vendor/jquery-1.12.1.js"></script>
+        <script>
+            //            $('td').addClass('pink').css('width', 100).css('height', 100);
+            //            $('div').addClass('pink').css('width', 100).css('height', 100);
+            //包装集添加
+            //1. add之后，没有改变原来的包装集，而是生成了一个新的包装集
+            //2. add之后，包装集内的元素顺序，是由元素在HTML上的顺序决定的。
+            //            var wrapped = $('td').add('div');
+            //            wrapped
+            //                    .addClass('pink')
+            //                    .css('width', 100)
+            //                    .css('height', 100)
+
+            //在包装集上追加一个字符串
+            //            wrapped = wrapped.add('<span></span>');
+            //
+            //            //在包装集中，删除一组元素
+            //
+            //            wrapped = wrapped.not('span');      //span 就被从包装集中删除
+            //
+            //            wrapped = wrapped.filter('td');     // 新的包装集中，就只有td
+
+            //把包装集中，有focus类的元素，从包装集里面删除
+            //            wrapped = wrapped.filter(function (index, el) {
+            //                if ($(el).hasClass('focus') === true) {
+            //                    return false;
+            //                }
+            //
+            //                return true;
+            //            });
+
+            //取到tr下的td
+//            var tdW = $('tr').children('.focus').next();
+//            alert(tdW.length);
+
+            alert($('td').parents('#tab')[0].tagName);
+        </script>
+    </body>
+</html>

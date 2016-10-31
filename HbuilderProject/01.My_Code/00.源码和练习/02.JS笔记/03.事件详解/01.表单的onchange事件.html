@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			window.onload = function (){
+				var oForm = document.getElementsByTagName('form')[0];
+				var oInput = oForm.getElementsByTagName('input')[0];
+				oInput.onchange = function(){//onchange事件是表单内容发生改变时触发;
+					alert("表单触发onchange事件");
+				}
+			}
+		</script>
+	</head>
+	<body>
+		1.表单里面的name值,在ajax中很重要,可以通过name值直接获取到元素.
+		<form action="">
+			<input type="text" name="text_1" value="内容" />
+		</form>
+	</body>
+</html>

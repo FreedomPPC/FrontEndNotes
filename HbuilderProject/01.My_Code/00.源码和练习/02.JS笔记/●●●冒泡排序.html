@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>冒泡排序</title>
+</head>
+<body>
+	<script type="text/javascript">
+	//冒泡排序
+	var numbers = [88,33,5,111,3];
+	var temp;
+	// for (var i=0; i<numbers.length-1; i++) {
+	// 	for (var j=numbers.length-1; j>i; j--) {
+	// 		if (numbers[j-1] > numbers[j]) {
+	// 			temp = numbers[j-1];
+	// 			numbers[j-1] = numbers[j];
+	// 			numbers[j] = temp;
+	// 		}
+	// 	}
+	// }
+
+	// alert(numbers);
+	for(var i=0;i<numbers.length-1;i++){
+		for(var j=numbers.length-1;j>i;j--){
+			if(numbers[j-1]>numbers[j]){
+				temp = numbers[j-1];
+				numbers[j-1] = numbers[j];
+				numbers[j] = temp;
+			}
+		}
+	}
+	alert(numbers);
+
+	</script>
+</body>
+</html>

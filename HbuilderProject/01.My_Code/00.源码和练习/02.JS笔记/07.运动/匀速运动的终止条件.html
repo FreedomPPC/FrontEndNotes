@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#div1{
+			width: 100px;
+			height:100px;
+			background: yellow;
+			position: absolute;
+			top:50px;
+			left:0px;
+		}
+		#div2{
+			width:1px;
+			height:400px;
+			background:black;
+			position: absolute;
+			left:500px;
+			
+		}
+	</style>
+
+	<script>
+		window.onload = function () {
+			var oBtn = document.getElementsByTagName('input')[0];
+			oBtn.onclick = function () {
+				startMove(500);
+			}
+		}
+
+
+			function startMove(iTarget){
+
+				var oDiv = document.getElementById('div1');
+
+				var timer = null;
+				clearInterval(timer);
+				timer = setInterval(function(){
+					var iSpeed = 0;
+					//匀速运动,速度一样;
+					if(oDiv.offsetLeft < iTarget)
+					{
+						iSpeed = 7;
+					}
+					else
+					{
+						iSpeed = -7
+					}
+					if(Math.abs(oDiv.offsetLeft - iTarget) < 7)
+					{
+						clearInterval(timer);
+						//匀速运动的终点就是iTarget值;
+						oDiv.style.left = iTarget+'px';
+					}
+					else
+					{
+						oDiv.style.left = oDiv.offsetLeft + iSpeed + 'px';
+					}
+
+
+				},30);
+			}
+			
+		
+	</script>
+</head>
+<body>
+	<input type="button" value="走你" />
+	<div id="div1"></div>
+	<div id="div2"></div>
+</body>
+</html>

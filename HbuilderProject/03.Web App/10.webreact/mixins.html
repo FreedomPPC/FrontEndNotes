@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Mixins混入函数的使用</title>
+		<script>
+			//1.什么是mixins
+			//mixins是react组件中 提供出来的一个属性  render:function(){}
+			
+			//2.能解决什么问题? 在开发中 很多功能(js函数构成的模块),存在共性,我们如何提高不同组件中相同功能函数的复用性
+			//做公共函数抽取,将公共函数,通过mixins来使用
+			
+			//3.如何去使用? //创建三个组件 1.布局 2.form表单 3.登录表单
+			//4.
+		</script>
+		
+		<script type="text/javascript" src="lib/react.min.js" ></script>
+		<script type="text/javascript" src="lib/react-dom.min.js" ></script>
+		<script type="text/javascript" src="lib/browser.min.js" ></script>
+		<script type="text/javascript" src="js/common.js" ></script>
+	</head>
+	<body>
+		
+	</body>
+	<script type="text/babel">
+	    //layout组件
+	    //mixins属性使用规则
+	    //1.首先考虑将一些公共的函数提取出来，放在一个object中,这些方法被提取出来以后的类型也是object方法类型
+	    
+	    //2.使用:那个组件中需要使用这些公共方法,就可以在该组件中通过mixins:[commonApis]
+	    //3.在组件的什么地方使用 onChange={this.checkInputValue}
+	    
+	    
+		var Layout=React.createClass({
+			render:function(){
+				return(
+					<div>
+					   this is layout
+					   <Form/>
+					   <hr/>
+					   <Login/>
+					</div>
+				);
+			}
+		});
+		//form表单
+		var Form=React.createClass({
+			mixins:[common],
+			render:function(){
+				return(
+					<div>
+					   this is form
+					   <input onChange={this.checkInputValue} type="text"/>
+					</div>
+				);
+			}
+		});
+		//登录
+		var Login=React.createClass({
+			mixins:[common],
+			render:function(){
+				return(
+					<div>
+					   this is login
+							   用户名:<input onChange={this.checkInputValue} type="text"/><br/>
+							 密码:<input type="password"/><br/>
+					</div>
+				);
+			}
+		});
+		ReactDOM.render(<Layout/>,document.body);
+	</script>
+</html>

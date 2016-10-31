@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+
+#div1{ width:200px; height:200px; background:red; margin:100px;}
+</style>
+<script>
+window.onload = function(){
+	
+	var oDiv = document.getElementById('div1');
+	var oUl = document.getElementById('ul1');
+	
+	
+	oDiv.ondragenter = function(){
+		
+		this.innerHTML = '可以释放啦';
+		
+	};
+	
+	oDiv.ondragover = function(ev){
+		
+		ev.preventDefault();
+		
+	};
+	
+	oDiv.ondragleave = function(){
+		
+		this.innerHTML = '将文件拖拽到此区域';
+		
+	};
+	
+	oDiv.ondrop = function(ev){
+		
+		ev.preventDefault();
+		
+		var fs = ev.dataTransfer.files;
+		
+		//alert(fs.length);
+		
+		//alert( fs[0].type );
+		
+		/*if(fs[0].type.indexOf('image')!=-1){
+			var fd = new FileReader();
+		
+			fd.readAsDataURL( fs[0] );
+			
+			fd.onload = function(){
+				
+				var oLi = document.createElement('li');
+				var oImg = document.createElement('img');
+				oImg.src = this.result;
+				oLi.appendChild(oImg);
+				oUl.appendChild(oLi);
+				
+			};
+		}
+		else{
+			alert('亲，请上传图片类型');
+		}*/
+		
+		for(var i=0;i<fs.length;i++){
+			if(fs[i].type.indexOf('image')!=-1){
+				var fd = new FileReader();
+			
+				fd.readAsDataURL( fs[i] );
+				
+				fd.onload = function(){
+					
+					var oLi = document.createElement('li');
+					var oImg = document.createElement('img');
+					oImg.src = this.result;
+					oLi.appendChild(oImg);
+					oUl.appendChild(oLi);
+					
+				};
+			}
+			else{
+				alert('亲，请上传图片类型');
+			}
+		}
+		
+		
+	};
+	
+};
+</script>
+</head>
+
+<body>
+
+<div id="div1">将文件拖拽到此区域</div>
+<ul id="ul1">
+</ul>
+</body>
+</html>

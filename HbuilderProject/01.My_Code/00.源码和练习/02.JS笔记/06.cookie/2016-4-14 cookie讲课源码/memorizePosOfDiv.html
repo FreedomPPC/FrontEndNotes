@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title></title>
+		<style type="text/css">
+			#info-board{
+				background: pink;
+				position: fixed;
+				top: 100px;
+				left: 100px;
+				width: 100px;
+				height: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<div style="width:100px; height: 100px; background: pink; position: absolute;"></div>
+		<script type="text/javascript">
+			function setCookie(name, value, days) {
+				var nameStr = encodeURIComponent(name);
+				var valueStr = encodeURIComponent(value);
+
+				var cookieStr = nameStr + '=' + valueStr;
+
+				if (days) {
+					var msOfDays = 1000 * 60 * 60 * 24;
+					var today = new Date();
+					var after = new Date(today.getTime() + msOfDays*days);
+					cookieStr += ';expires=' + after;
+				}
+
+				document.cookie = cookieStr;
+			}
+
+			function getCooike(name) { 
+				var array = decodeURIComponent(document.cookie).split('; ');
+				var key_value;
+				for (var i=0; i<array.length; i++) {
+					key_value = array[i].split('=');
+					if (key_value[0] === name) {
+						return key_value[1];
+					}
+				}
+
+				return '';
+			}
+
+			function removeCookie(name) {
+				setCookie(name, '', -1);
+			}
+
+			// setCookie('user', 'cuijingnan', 2);
+			// alert(getCooike('user'));
+			window.onload = function () {
+
+				var div = document.getElementsByTagName('div')[0];
+				// alert(document.cookie);
+
+				div.style.left = getCooike('left');
+				div.style.top = getCooike('top');
+
+				div.onmousedown = function (evt) {
+					var e = evt || window.event;
+					var downX = e.clientX;
+					var downY = e.clientY;
+					var downL = div.offsetLeft;
+					var downT = div.offsetTop;
+
+					window.onmousemove = function (evt) {
+						var e = evt || window.event;
+						var diffX = e.clientX - downX;
+						var diffY = e.clientY - downY;
+
+						div.style.left = downL + diffX + 'px';
+						div.style.top = downT + diffY + 'px';
+
+						e.preventDefault();
+					}
+
+					window.onmouseup = function () {
+						window.onmousemove = null;
+
+						setCookie('left', div.style.left);
+						setCookie('top', div.style.top);
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

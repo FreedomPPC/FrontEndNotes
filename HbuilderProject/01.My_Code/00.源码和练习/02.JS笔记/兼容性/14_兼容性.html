@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.box{
+				width: 200px;
+				height: 200px;
+				border: 1px solid black;
+				position: relative;
+			}
+			.item{
+				width: 150px;
+				height: 150px;
+				background-color: red;
+				float: left;
+				margin-left: 50px;
+				*display: inline;
+			}
+			.box span{
+				width: 50px;
+				height: 50px;
+				background-color: yellow;
+				position: absolute;
+				right: -10px;
+				top: -10px;
+			}
+		</style>
+		<!--
+			解决方案：
+				浮动元素和绝对定位元素是同级的话定位元素就会消失。所以咱们只要让他们俩不处于同级就可以避免这个bug。
+		-->
+	</head>
+	<body>
+		<div class="box">
+			<div class="item"></div>
+			<p>
+				<span></span>
+			</p>
+		</div>
+	</body>
+</html>

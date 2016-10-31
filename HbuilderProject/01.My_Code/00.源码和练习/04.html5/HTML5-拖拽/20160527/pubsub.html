@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+      var PubSub = {
+      	events : {},
+      	on : function(etype,efn){
+      		this.events[etype]||(this.events[etype]=[]);
+      		this.events[etype].push(efn);
+      	},
+      	off : function(etype){
+
+      	},
+      	trigger : function(etype,data){
+      		if(this.events[etype]){
+      			this.events[etype].forEach(function(efn){
+      				efn(data);
+      			})
+      		}
+      	}
+      }
+	</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin:0;
+				padding: 0;
+			}
+			html{
+				height:2000px;
+			}
+			button{
+				width:90px;
+				height:30px;
+				background: deepskyblue;
+				position:fixed;
+				right:0;
+				bottom:200px;
+			}
+		</style>
+	</head>
+	<body>
+		<div><h1>回到顶部</h1></div>
+		<button id="btn">回到顶部</button>
+		<script type="text/javascript">
+			window.onload = function(){
+					var btn = document.getElementById("btn");
+
+
+//				window.onscroll = function(){
+//					
+//					
+//					}
+					btn.onclick = function(event){
+//						document.documentElement.scrollTop = document.body.scrollTop = 0;
+					var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+					var clientHeight = document.documentElement.clientHeight;
+					var scrollHeight = document.body.scrollHeight;
+					var h = event.pageY;
+					console.log("scrollHeight:>>"+scrollHeight);
+					console.log("pageY:>>>"+h);
+					console.log("clientHeight:"+clientHeight);
+					console.log("滚动条距离底部的高度"+(scrollHeight-h))
+						
+				}
+				
+			}
+		</script>
+	</body>
+</html>

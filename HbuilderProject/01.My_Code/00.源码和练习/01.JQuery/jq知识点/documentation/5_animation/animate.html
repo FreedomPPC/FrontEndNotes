@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>show Demo</title>
+        <style>
+            div {
+                margin: 10px;
+                width: 100px;
+                height: 100px;
+                background: deeppink;
+                position: absolute;
+                top: 50px;
+                left: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <button id="display">动次</button>
+        <button id="hide">打次</button>
+        <div></div>
+        <script src="../vendor/jquery-1.12.1.js"></script>
+        <script>
+            $('#display').click(function () {
+                $('div').animate({
+                    top: 500,
+                    left: 300
+                }, 4000).animate({
+                    width: 500,
+                    height: 300
+                });
+            });
+
+            $('#hide').click(function () {
+                $('div').animate({
+                    width: 500,
+                    height: 300
+                }, 10000, 'swing', function complete() {
+
+                });
+            });
+        </script>
+    </body>
+</html>

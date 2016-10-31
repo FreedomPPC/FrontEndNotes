@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+.box{width:100px;height:100px;margin:30px auto; position:relative;border:1px solid #000;}
+#box{width:100px;height:100px;background:red; position:absolute;left:0;top:0;}
+</style>
+</head>
+<body>
+<div class="box">
+	<div id="box"></div>
+</div>
+<script>
+var oBox=document.getElementById("box");
+var iDeg=0;
+setInterval(function(){
+	iDeg++;
+	toRotate(oBox,iDeg);
+},30);
+function toRotate(obj,iDeg)
+{
+	var a=Math.round(Math.cos(iDeg/180*Math.PI)*100)/100;
+	var b=Math.round(Math.sin(iDeg/180*Math.PI)*100)/100;
+	var c=-b;
+	var d=a;
+	obj.style.WebkitTransform="matrix("+a+","+b+","+c+","+d+",0,0)";
+	obj.style.MozTransform="matrix("+a+","+b+","+c+","+d+",0,0)";
+	obj.style.transform="matrix("+a+","+b+","+c+","+d+",0,0)";
+	obj.style.filter="progid:DXImageTransform.Microsoft.Matrix( M11="+a+", M12= "+c+", M21= "+b+" , M22="+d+",SizingMethod='auto expand')";
+	obj.style.left=(obj.parentNode.offsetWidth-obj.offsetWidth)/2+"px";
+	obj.style.top=(obj.parentNode.offsetHeight-obj.offsetHeight)/2+"px";
+}
+</script>
+</body>
+</html>

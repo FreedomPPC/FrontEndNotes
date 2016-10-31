@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Show and hide</title>
+        <style>
+            * {
+                margin: 0;
+            }
+
+            div {
+                /*left: 100px;*/
+                top: 50px;
+                position: absolute;
+                width: 100px;
+                height: 100px;
+                background: red;
+            }
+        </style>
+    </head>
+    <body>
+        <button style="margin: 10px;">走你</button>
+        <div></div>
+
+
+        <script src="../vendor/jquery-1.12.1.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('button').click(function () {
+//                    $('div').animate({
+//                        left: '+=300',
+//                        top: '+=300'
+//                    }, 'slow', function () {
+//                        $('div').animate({
+//                            width: '+=300',
+//                            height: '+=300'
+//                        }, 'slow', function () {
+//                            $('div').animate({
+//                                opacity: 0.3
+//                            });
+//                        });
+//                    });
+                    
+                    $('div').animate({
+                        left: '+=300',
+                        top: '+=300'
+                    }).animate({
+                        width: '+=300',
+                        height: '+=300'
+                    }).animate({
+                        opacity: 0.3
+                    });
+                });
+            })
+        </script>
+    </body>
+</html>

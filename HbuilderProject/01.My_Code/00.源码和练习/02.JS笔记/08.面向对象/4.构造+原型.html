@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title></title>
+		<style type="text/css"></style>
+	</head>
+	<body>
+		<!--script type="text/javascript" src="../utility.js"></script>
+		<script type="text/javascript" src="js/script.js"></script-->
+		<script type="text/javascript">
+			//1. 最常见的方式
+			//2. 构造函数模式用于定义实例属性、原型模式用于定义方法和共享属性
+			//3. 优点：
+			//   1.实例的都有一份属性的副本，
+			//   2.同时共享了对方法的引用，
+			//   3.最大限度的节省了内存
+			//   4.支持向构造函数传递参数
+			function Person(name, age, job) {
+				this.name = name;
+				this.age = age;
+				this.job = job;
+				this.exGF = ['cuihua', 'erya'];
+			}
+			
+			Person.prototype.sayName = function () {
+				alert(this.name);
+			}
+
+			var person1 = new Person('xiaoMing', 33, 'actor');
+			var person2 = new Person('chenHe', 30, 'bitch');
+
+			person1.exGF.push('A.B.');
+			alert(person1.exGF);
+			alert(person2.exGF);
+			alert(person1.exGF === person2.exGF);
+			alert(person1.sayName === person2.sayName);
+		</script>	
+	</body>
+</html>

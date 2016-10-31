@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.container{
+				width:200px;
+				height:200px;
+				padding:50px;
+				border:10px solid black;
+				box-sizing: border-box;
+			}
+			.box{
+				height:50px;
+				background:red;
+			}
+		</style>
+	</head>
+	<body>
+		<p>box-sizing 盒模型解析模式</p>
+		<p>Content-box  标准盒模型 width/height=border+padding+content</p>
+		<p>Border-box 怪异盒模型 width/height=content</p>
+		<div class="container">
+			<div class="box"></div>
+			<!--不给子元素设置宽度,那么父元素box-sizing是content-box是正常盒模型;
+				所以子元素宽度就是content的宽度为200px;父元素的宽度320px;
+				如果给父元素加上border-box;父元素的宽度为contend的宽度200px;
+				子元素的宽度为contend-padding-border = 80px;
+			-->
+		</div>
+	</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title></title>
+		<style type="text/css"></style>
+	</head>
+	<body>
+		<!--script type="text/javascript" src="../utility.js"></script>
+		<script type="text/javascript" src="js/script.js"></script-->
+		<script type="text/javascript">
+			//1. 我們創建的每個函數，都有一個屬性：prototype
+			//   這個屬性是一個指針，指向了一個對象，這個對象，
+			//   可以被所有用這個函數創建的對象所共享
+			function Person() {
+			}
+			Person.prototype.name = 'xiaoMing';
+			Person.prototype.age = 33;
+			Person.prototype.job = 'actor';
+			Person.prototype.exGF = ['cuihua', 'erya', ]
+			Person.prototype.sayName = function () {
+				alert(this.name);
+			}
+			//只要创建一个函数，就会为该函数创建一个prototype，
+			//在prototype内，有一个默认属性constructor,它指向了prototype所属的函数
+			//比如上面例子中的Person.prototype.constructor，它指向了构造函数Person
+			//创建一个实例后，该实例的内部将包含一个指针，指向这个原型对象(Chrome中为__proto__)
+
+
+			var person1 = new Person();
+			var person2 = new Person();
+
+			//虽然两个实例都不包含属性和方法，但是却可以调用
+			// sayName,这是通过查找对象属性的过程实现的。
+
+			// ===> 每当代码读取某个对象的某个属性时，都会进行一次搜索。
+			//目标是具有给定名字的属性。步骤为：
+			// 1. 搜索对象实例本身，如果找到，返回这个值, 否则到2
+			// 2. 搜索指针指向的原型对象，如果找到，然后这个值。
+			// alert(person1.name)
+			// alert(person1.__proto__.name === person1.name);
+			// alert(person2.name);
+			//虽然可以通过对象实例访问保存在原型中的值，但是却不能通过对象实例重写原型对象的值。
+			//否则会将原型中的值屏蔽。
+			person1.name = '大白菜';
+			alert(person1.name);
+			alert(person1.__proto__.name);
+
+			person1.__proto__.name = 'cuihua';
+			alert(person1.__proto__.name);
+
+			// alert(person1.sayName === person2.sayName);
+			//缺點：
+			//1. 沒有為構造函數傳遞參數
+			//2. 因為所有實例共享相同的對象prototype,所以有一個對象修改了prototype的值，
+			//   其他對象也受到了影響
+			// person1.exGF.push('A.B');
+			// alert(person2.exGF);
+			// ===> 組合使用構造函數模式和原型模式
+		</script>	
+	</body>
+</html>

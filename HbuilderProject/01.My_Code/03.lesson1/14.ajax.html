@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script src="ajax.js"></script>
+<script>
+window.onload = function() {
+	
+	var oBtn = document.getElementById('btn');
+	
+	
+	oBtn.onclick = function() {
+		
+		/*ajax({
+			url	:	'getNews.php',
+			success : function(data) {
+				//...
+			}
+		});*/
+		
+		ajax('get','getNews.php','',function(data) {
+			var data = JSON.parse( data );
+				
+			var oUl = document.getElementById('ul1');
+			var html = '';
+			for (var i=0; i<data.length; i++) {
+				html += '<li><a href="">'+data[i].title+'</a> [<span>'+data[i].date+'</span>]</li>';
+			}
+			oUl.innerHTML = html;
+		});
+		
+		setInterval(function() {
+			ajax('get','getNews.php','',function(data) {
+				var data = JSON.parse( data );
+					
+				var oUl = document.getElementById('ul1');
+				var html = '';
+				for (var i=0; i<data.length; i++){
+					html += '<li><a href="">'+data[i].title+'</a> [<span>'+data[i].date+'</span>]</li>';
+				}
+				oUl.innerHTML = html;
+			});
+		}, 1000);
+		
+	}
+}
+</script>
+</head>
+
+<body>
+	<input type="button" value="按钮" id="btn" />
+    <ul id="ul1"></ul>
+</body>
+</html>

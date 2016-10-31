@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<!--<script src="jquery.js"></script>-->
+<script>
+//$(function(){})	//阻塞 -> 同步
+
+//非阻塞 - 异步
+/*setTimeout(function() {
+	alert(1);
+}, 2000);
+
+alert(2);*/
+
+window.onload = function() {
+	
+	var oBtn = document.getElementById('btn');
+	
+	
+	oBtn.onclick = function() {
+		
+		//打开浏览器
+		/*
+			1.创建一个ajax对象
+				ie6以下new ActiveXObject('Microsoft.XMLHTTP')
+		*/
+		var xhr = null;
+		/*if (window.XMLHttpRequest) {
+			xhr = new XMLHttpRequest();
+		} else {
+			xhr = new ActiveXObject('Microsoft.XMLHTTP');
+		}*/
+		try {
+			xhr = new XMLHttpRequest();
+		} catch (e) {
+			xhr = new ActiveXObject('Microsoft.XMLHTTP');
+		}
+		//在地址栏输入地址
+		/*
+			open方法
+			参数
+				1.打开方式
+				2.地址
+				3.是否异步
+					异步:非阻塞 前面的代码不会影响后面代码的执行
+					同步:阻塞 前面的代码会影响后面代码的执行
+		*/
+		xhr.open('get','1.txt',true);
+		//提交 发送请求
+		//alert(1);
+		xhr.send();
+		
+		//alert(1)
+		
+		//alert( xhr.responseText );
+		
+		//等待服务器返回内容
+		xhr.onreadystatechange = function() {
+			
+			if ( xhr.readyState == 4 ) {
+				alert( xhr.responseText );
+			}
+			
+		}
+		
+	}
+}
+</script>
+</head>
+
+<body>
+	<input type="button" value="按钮" id="btn" />
+</body>
+</html>

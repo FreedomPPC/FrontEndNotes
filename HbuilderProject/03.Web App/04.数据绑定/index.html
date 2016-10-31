@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>数据绑定类型</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+		<style>
+			*{padding: 0;margin: 0;}
+			.cxt{
+				width:100%;
+				height:12rem;
+				background-color: #acacac;
+			}
+		</style>
+		<script type="text/javascript" src="lib/zepto.min.js" ></script>
+		<script>
+			$(function(){
+				//1.确定ajax事件在哪个元素里面发生的
+				$("#search").tap(function(){
+					//2.是不是要获取请求携带的参数
+					var _text=$("input[name='username']").val();
+				    //3.发送ajax请求,得到数据
+				    var _httpurl='http://127.0.0.1:8020/rest-api/web/service/student.json';
+				    $.get(_httpurl,function(data){
+				    	//等于做了一个前端数据筛选
+				    	for(var i=0;i<data.length;i++){
+				    		if(data[i].username==_text){//如果发现后端得到的数据中又符合我们对比条件的 ，就把这串数据解析
+				    			var _address=data[i].address;
+				    			var _option='<option>请选择<option/><option>'+_address+'<option/>';
+				    			$(".form>div").eq(0).find("span").html(data[i].username);
+				    			$(".form>div").eq(1).find("span").html(data[i].email);
+				    			$(".form>div").eq(2).find("span").html(data[i].phone);
+				    			
+				    			$(".form>div").eq(3).find("select").html('');
+				    			$(".form>div").eq(3).find("select").append(_option);
+				    		}
+				    	}
+				    	
+				    });
+					
+				});//tap是移动端点击事件
+				
+				//自己看
+				$(".content-bottom>.content-bottom-message>li>a>span>i").html();//如果li只有一个 ，只有直接选中
+				$(".content-bottom>.content-bottom-message>li:eq(0)>a>span>i").html();//如果有多个 ，可以在li后面加eq(下标)选中,例如选择第一个
+				$(".content-bottom>.content-bottom-message>li:eq(1)>a>span>i").html();//如果有多个 ，可以在li后面加eq(下标)选中,例如选择第二个
+			});
+		</script>
+	</head>
+	<body>
+		<div class="cxt">
+			<input type="text" name="username"/><button id="search" type="button">搜索</button>
+			<div class="form">
+				<div>用户名:<span></span></div>
+				<div>邮箱:<span></span></div>
+				<div>手机号:<span></span></div>
+				<div>所在地:<select><option>请选择:</option></select> </div>
+			</div>
+		</div>
+	</body>
+</html>

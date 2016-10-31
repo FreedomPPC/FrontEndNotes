@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var $ = (function(){
+				var a = 1;
+				
+				function bbb(){//闭包将两个函数变成私有的方法,return出俩方法;私有方法;
+					a++;
+					alert(a);
+				};
+				
+				function ccc(){
+					a--;
+					alert(a);
+				};
+				
+				return {
+					b:bbb,
+					c:ccc
+				}
+			})();
+			$.c();
+			$.b();
+		</script>
+	</body>
+</html>

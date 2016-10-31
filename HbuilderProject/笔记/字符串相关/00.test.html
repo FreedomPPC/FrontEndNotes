@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			input{
+				-webkit-appearance: none;
+			}
+			div{
+				appearance: none;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="radio" value = "aaaa"/>
+		<div>1111</div>
+		<script type="text/javascript">
+			window.onload = function(){
+				var oInput = document.querySelector('input');
+				oInput.onchange = function(){
+					oInput.value = "bbbbb" 
+				}
+			}
+		</script>
+	</body>
+</html>

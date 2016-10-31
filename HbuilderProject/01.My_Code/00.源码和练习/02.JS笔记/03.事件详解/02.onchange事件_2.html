@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script type="text/javascript">
+		function upperCase(x)
+		{
+		var y=document.getElementById(x).value
+		document.getElementById(x).value=y.toUpperCase()
+		}
+		</script>
+		</head>
+	
+	<body>
+	
+		Enter your name: <input type="text" id="fname" onchange="upperCase(this.id)">
+	
+	</body>
+	
+</html>

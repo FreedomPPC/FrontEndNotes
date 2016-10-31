@@ -1,0 +1,26 @@
+@charset "UTF-8";
+.formOne {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.formtarget {
+    display: inline-block;
+}
+
+.errorMsg {
+    position: absolute;
+    left: 0;
+    color: red;
+}
+
+.verticalitem {
+  display: block;
+width: 90%;
+}
+
+.verticalitem .labelDesc {
+  display: inline-block;
+min-width: 65px;
+text-align: right;
+}

@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title></title>
+		<style type="text/css"></style>
+	</head>
+	<body>
+		<!--script type="text/javascript" src="../utility.js"></script>
+		<script type="text/javascript" src="js/script.js"></script-->
+		<script type="text/javascript">
+			//借用构造函数（apply、call）
+			//	apply和call的用途，都是在特定的作用域中调用函数，说白了，就是设置了函数中的this对象，指向了谁
+			//	apply接收两个参数：1.this将要指向的对象 2.参数数组
+			//	call接收N多个参数，1.this将要指向的对象 其他：每一个，都是将要传递的参数
+			//代码：
+			function Person (name) {
+				this.name = name;
+				this.exGF = ['cuihua', 'erya', 'green'];
+			}
+
+			function Student (name, No) {
+				Person.call(this, name);
+				this.No = No;
+			}
+
+			var stu = new Student('xiaoming', 1);
+			// alert(stu.name);
+			// alert(stu.No);
+			// alert(stu.exGF)
+			//优势：可以调用父类的构造函数，并传递参数
+			//问题：在基类的原型中定义的方法，对子类而言不可见
+
+			//===> 组合继承
+
+			///*********************************************///
+			//课堂代码 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+			///*********************************************///
+			// var name = 'global';
+			// var arg1 = 1, arg2 = 2;
+			// function fun1 (arg1, arg2) {
+			// 	alert(this.name)
+			// }
+
+			// // fun1(arg1, arg2, arg3, arg4);
+
+			// var person = {
+			// 	name: 'xiaoMing'
+			// }
+			// person.say = fun1;
+
+			// person.say();
+
+			// fun1.apply(person,[arg1, arg2]);
+			// fun1.call(window, arg1, arg2);
+			// var numbers = [143,5,66,7,8,8,78,324,324,32,44]
+			// alert(Math.max.apply(Math,numbers));
+			// alert(Math.max(3,5,10,78));
+
+			function Person (name) {
+				this.name = name;
+				this.exGF = ['cuihua', 'erya', 'sanpao'];
+			}
+
+			Person.prototype.say = function () {
+				alert('I have ' + this.exGF.length +' ex-girlfriends')
+			}
+
+			function Student (name, No) {
+				this.No = No;
+				Person.call(this, name);
+			}
+
+			Student.prototype = new Person();
+			Student.prototype.constructor = Student;
+
+			var chenJun = new Student('chenJun', 43);
+			var shiren = new Student('wanglun', 38);
+
+			chenJun.say();
+
+
+		</script>
+	</body>
+</html>

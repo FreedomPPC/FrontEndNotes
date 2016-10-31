@@ -1,0 +1,44 @@
+﻿<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title></title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            //构造函数的继承
+            //1. 创建类
+            function Person(name, age) {
+                this.name = name;
+                this.age = age;
+                this.sayHi = function () {
+                    alert('hello, 我是 ' + this.name);
+                }
+            }
+
+            //继承
+            function Student(name, age, id) {
+                this.id = id;
+                Person.apply(this, [name, age]);
+                this.talk = function () {
+                    alert('天天被黑，是有原因的!!!');
+                }
+            }
+
+            var wuQiang = new Student('xiaoMing', 28, 0);
+            alert(wuQiang.name);
+            wuQiang.sayHi();
+            //1. 创建了一个对象
+            //2. this指针，指向这个对象
+            //3. 执行构造函数 ===>
+            // 3.1 追加一个id属性，并赋值
+            // 调用了基类的构造函数，并指定执行环境为student对象，
+            // 于是，在基类构造函数内部，把属性和方法，都追加到了student对象上。
+            //4. 返回这个student对象
+            //5. 创建了__proto__,并指向Student函数
+
+            //缺点： 无法继承基类prototype上的属性和方法。
+            // ===> 原型的方式继承。
+        </script>
+    </body>
+</html>

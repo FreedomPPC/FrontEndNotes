@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+<title>Document</title>
+	<style>
+html,body{
+    width:100%;
+    height:100%;
+    margin:0;
+}
+body{
+    background:#000;
+    overflow:hidden;
+	position: relative;
+}
+.tank{
+    position:absolute;
+    width:90px;
+    height:90px;
+}
+.tank.self{
+	background:-webkit-linear-gradient(top,transparent 0px,transparent 30px,#0f0 30px,#0f0 60px,transparent 60px);
+	bottom : 0px;
+	left:calc(50% - 45px);
+	transition:all 0.3s;
+}
+.tank.emy{
+	background: -webkit-linear-gradient(top,transparent 0px,transparent 30px,#f00 30px,#f00 60px,transparent 60px);
+}
+.tank.up{
+    transform : rotate(0deg);
+}
+.tank.down{
+    transform : rotate(180deg);
+}
+.tank.right{
+    transform : rotate(90deg);
+}
+.tank.left{
+    transform : rotate(270deg);
+}
+
+.tank:before{
+    position:absolute;
+    content:"";
+    width:90px;
+    height:30px;
+    background:-webkit-linear-gradient(left,transparent 0px, transparent 30px,#0f0 30px,#0f0 60px,transparent 60px);
+}
+.tank.emy:before{
+	background:-webkit-linear-gradient(left,transparent 0px, transparent 30px,#f00 30px,#f00 60px,transparent 60px);
+
+}
+.tank:after{
+    position:absolute;
+    content:"";
+    bottom:0;
+    width:90px;
+    height:30px;
+    background:-webkit-linear-gradient(left,#0f0 0px,#0f0 30px,transparent 30px,transparent 60px,#0f0 60px);
+}
+.tank.emy:after{
+    background:-webkit-linear-gradient(left,#f00 0px,#f00 30px,transparent 30px,transparent 60px,#f00 60px);
+}
+
+.bullet{
+	position:absolute; 
+	width:30px;
+	height:30px;
+	border-radius:50%;
+	background-color:#fff;   
+	opacity: 0;
+}
+.bullet.vc{
+	transform:scale(0.5,1);
+	
+}
+.bullet.hr{
+	transform:scale(1,0.5);
+	
+}
+.bullet.shooting{
+	opacity: 1;
+}
+	</style>
+</head>
+<body>
+</body>
+<script>
+	(function() {
+
+
+		var body = document.body,
+			tanks = [],
+			classNames = ["up","down","left","right"]
+			count = 10;
+
+		!function createTanks(){
+			var w = body.offsetWidth-90,
+				h = body.offsetHeight -90;
+
+			for(var i=0;i<count;i++){
+				var tank = document.createElement("div"),
+					dir = classNames[Math.floor(Math.random()*4)] ;
+				tanks.push(tank);
+				tank.className = "tank "+dir;
+				tank.cfg={
+					 dir : dir,
+					 up : "offsetTop",
+					 down : "offsetTop",
+					 left : "offsetLeft",
+					 right : "offsetLeft",
+					 sup : "top",
+					 sdown : "top",
+					 sleft : "left",
+					 sright : "left",
+					 step  : i||90
+					}
+
+				if(i){
+					tank.style.left = w*Math.random() + "px";
+					tank.style.top =  h*Math.random() + "px";
+					tank.className += " emy";
+				}else {
+					tank.className = "tank up self";
+					tank.cfg.dir = "up";
+				}
+
+				var bullet = tank.bullet = document.createElement("div");
+				bullet.className = "bullet";
+				bullet.cfg = {
+		    		step : 20,
+		    		tick : 20
+		    	}
+
+		    	body.appendChild(tank);
+		    	body.appendChild(bullet);
+			}
+		}();
+
+		var tank = tanks[0];
+
+		!function runEmys(){
+			for(var i=1;i<tanks.length;i++){
+				// 随机发射子弹
+				(function(tank){
+					Math.random()*10<3&&shoot(tank);
+					setTimeout(arguments.callee,100,tank);
+				})(tanks[i]);
+				// 随机走动坦克
+				(function(tank,id){
+					   var dir = Math.random()*10<1?classNames[Math.floor(Math.random()*4)].toLowerCase():id;
+					  keyup(tank,dir,false);
+					setTimeout(arguments.callee,100,tank,dir);
+				})(tanks[i],classNames[Math.floor(Math.random()*4)]);
+			}
+		}();
+		// 移动坦克
+		function keyup(tank,keyIdentifier,self){
+		   var dir = keyIdentifier.toLowerCase(),
+		      cfg = tank.cfg,
+		      flag = /up|left/.test(dir)?-1:1,
+		      edge = /up|down/.test(dir)?"offsetHeight":"offsetWidth";
+		      if(!/left|right|up|down/.test(dir))return;
+
+		  if(cfg.dir===dir){
+		    var pos = tank[cfg[dir]];
+		    if(flag===-1&&pos<90){
+		    	pos = 0 ;
+		    	flag = 0 ;
+		    }
+		    if(flag===1&&pos>=document.body[edge]-180){
+		    	pos = document.body[edge]-90 ;
+		    	flag = 0 ;
+		    }
+		    tank.style[cfg["s"+dir]] = pos+cfg.step*flag+"px";
+		  }else {
+		    tank.className="tank "+(self?"self":"emy")+" "+dir;
+		    cfg.dir=dir;
+		  }
+		}
+
+ 		// 移动子弹
+		function shoot(tank){
+
+			var bullet = tank.bullet,
+				cfg = tank.cfg,
+				dir = cfg.dir,
+				minus = /up|left/.test(dir),
+				flag = /up|down/.test(dir),
+				shooting = /\s*shooting/.test(bullet.className),
+				isSelf = /\s*self/.test(tank.className),
+				timer;
+
+				// 限制子弹数量
+			if(shooting)return false;
+			bullet.className += " shooting"+(flag?" vc":" hr");
+			bullet.style.top = tank.offsetTop + 30 +"px";
+			bullet.style.left = tank.offsetLeft + 30 + "px";
+
+			(function(){
+				var edge = /up|down/.test(dir)?"offsetHeight":"offsetWidth";
+
+				var x = bullet.offsetLeft,
+					y = bullet.offsetTop,
+					bingo = false;
+				if(isSelf)
+				for(var i=1;i<tanks.length;i++){
+					var xsp = (x-tanks[i].offsetLeft),
+					    ysp = (y-tanks[i].offsetTop);
+					bingo = Math.pow(xsp*xsp+ysp*ysp,0.5) < 50;
+					if(bingo){
+						tanks[i].parentNode.removeChild(tanks[i]);
+						tanks[i].bullet.parentNode.removeChild(tanks[i].bullet);
+						tanks.splice(i,1);
+						break;
+					}
+				}
+
+				if(bullet[cfg[dir]]<=0||bullet[cfg[dir]]>=document.body[edge]-30||bingo){
+					clearTimeout(timer);
+					bullet.className = "bullet";
+				}else {
+
+					bullet.style[cfg["s"+dir]] = bullet[cfg[dir]] + bullet.cfg.step*(minus?-1:1) +"px" ;
+					timer = setTimeout(arguments.callee,bullet.cfg.tick);
+				}
+			})();
+		}
+
+
+		// 事件注册
+		document.addEventListener("keyup",function(e){
+			e.keyCode===13?shoot(tanks[0]):keyup(tanks[0],e.keyIdentifier,true);
+		},false)
+		
+
+	})();
+</script>
+</html>

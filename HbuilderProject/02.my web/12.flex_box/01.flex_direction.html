@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<script type="text/javascript">
+			/*
+			 flex-direction 表示通过父元素设置子元素在盒子中显示的位置
+				属性值和意义:
+				row  横向从左到右进行排布(也是默认的对其方式)
+				row-reverse 横向从右到左进行排布
+				column  纵向从上到下进行排布
+				column-reverse 纵向从下到上进行排布
+			 * */
+		</script>
+		<style type="text/css">
+		   *{
+		   	padding: 0;
+		   	margin: 0;
+		   }
+			footer{
+				display: flex;
+				width:100%;
+				height:3rem;
+				position: fixed;
+				/*flex-direction: row-reverse;*/
+				flex-direction: column-reverse;
+				margin-top:400px;
+			}
+			footer>div{
+				width:25%;
+				height:100%;
+				text-align: center;
+				background: pink;
+				line-height: 3rem;
+				border: 1px solid #acacac;
+				
+			}
+		</style>
+
+	</head>
+	<body>
+		
+	
+		<footer>
+			<div>1</div>
+			<div>2</div>
+			<div>3</div>
+			<div>4</div>
+		</footer>
+	</body>
+</html>

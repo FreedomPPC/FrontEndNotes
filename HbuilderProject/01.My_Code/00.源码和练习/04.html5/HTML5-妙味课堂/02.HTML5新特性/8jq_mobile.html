@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+
+</head>
+
+<body>
+<div data-role="page" id="div1">
+	<div data-theme="c" data-role="header">
+    	<h3>妙味课堂</h3>
+    </div>
+    <div data-role="context">
+    	<a href="#div2" data-transition="slide">点击</a>
+    </div>
+</div>
+
+<div data-role="page" id="div2">
+	<div data-theme="b" data-role="header">
+    	<h3>妙味课堂-移动开发教程</h3>
+    </div>
+    <div data-role="context">
+    	<a href="#div1" data-transition="slide" data-direction="reverse">点击</a>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style type="text/css">
+		#div1{
+			width:100px;
+			height:100px;
+			border:1px solid yellow;
+			background: gold;
+			position: absolute;
+			left:0;
+			top:50px;
+
+		}
+	</style>
+
+	<script type="text/javascript">
+		window.onload = function () {
+			var oBtn = document.getElementsByTagName('input')[0];
+			var oDiv = document.getElementById('div1');
+			 oBtn.onclick = function () {
+			 	startMove(600);
+			 }
+		}
+
+		var timer = null;
+		function startMove(iTarget){
+			var oDiv = document.getElementById('div1');
+			var txt = document.getElementsByTagName('textarea')[0]
+			clearInterval(timer);
+			timer= setInterval(function(){
+
+				var iSpeed = (iTarget - oDiv.offsetLeft)/11;
+				iSpeed = iSpeed>0?Math.ceil(iSpeed):Math.floor(iSpeed);
+				
+				if(oDiv.offsetLeft == iTarget){
+					clearInterval(timer);
+				}else{
+					oDiv.style.left = oDiv.offsetLeft+iSpeed+'px';
+					
+
+
+				}
+				document.title = 'oDiv.offsetLeft:'+oDiv.offsetLeft
+				txt.value += 'iSpeed的大小:'+iSpeed+'\n';
+
+			},30);
+
+			
+
+		}
+	</script>
+</head>
+<body>
+	<textarea cols="40" rows="30"></textarea>
+	<input type="button" value="开始动起来">
+	<div id="div1"></div>
+
+
+</body>
+</html>

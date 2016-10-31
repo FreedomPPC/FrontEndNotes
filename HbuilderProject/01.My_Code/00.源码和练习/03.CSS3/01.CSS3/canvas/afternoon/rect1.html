@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+
+</style>
+</head>
+<body>
+	<canvas id="cvs" width="500" height="500" style="background:#eee"></canvas>
+	<script>
+
+
+var i=0;
+;(function go(){
+  var cvs = document.getElementById("cvs");
+
+  var ctx = cvs.getContext("2d");
+  ctx.clearRect(0,0,500,500);
+  ctx.strokeStyle = "#f00";
+  
+//  ctx.setLineDash([10,5,2]);
+//  ctx.setLineDash([20,5]);
+  //用来设置虚线延伸的规则
+  ctx.setLineDash([20,5,23,5,]);
+//  延伸起点的偏移量
+  ctx.lineDashOffset = (i++)%20 ;
+  ctx.strokeRect(50,50,200,200);
+  ctx.stroke();
+  setTimeout(arguments.callee,10);
+})();
+	</script>
+</body>
+</html>

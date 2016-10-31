@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>jQuery包装集管理</title>
+        <link href="../../vendor/bootstrap.css" rel="stylesheet"/>
+        <link href="../../vendor/bootstrap-theme.css" rel="stylesheet"/>
+        <style>
+            #container {
+                padding-left: 30px;
+            }
+
+            h3 {
+                font-weight: normal;
+                width: 70%;
+            }
+
+            h3 .pra {
+                padding-top: 40px;
+                padding-left: 10px;
+                margin: 5px;
+                border: 2px solid #cc0033;
+                border-radius: 3px;
+            }
+
+            .pra span {
+                display: block;
+                margin-top: 15px;
+                background-color: #cccccc;
+                border-radius: 5px;
+                padding: 10px;
+            }
+
+            .pra .text-indent {
+                text-indent: 40px;
+            }
+
+            .pra pre {
+                text-indent: 0;
+            }
+
+            em {
+                color: red;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <h1>
+                管理包装集
+            </h1>
+            <h3>
+                <div class="pra">
+                    ● 确定包装集大小
+                    <span>
+                        <pre>
+length
+size()
+                        </pre>
+                    </span>
+                </div>
+                <div class="pra">
+                    ● 从包装集获取DOM节点
+                    <span>
+                        <pre>
+数组下标
+get(index)
+                        </pre>
+                    </span>
+                </div>
+                <div class="pra">
+                    ● 筛选包装集
+                    <span class="text-indent">
+                        1. 添加
+                        <pre>
+add(expression)
+说明：把表达式参数所指定的元素添加到包装集。
+参数：expression (字符串|元素|数组)指定添加到包装集的元素。参数如果是jQuery选择器，则全部匹配元素被添加到集合；如果是HTML片段，则创建适当的元素并添加到集合；如果是DOM元素数组，则直接添加到集合。
+返回：新的包装集
+注意：
+1. add之后，没有改变原来的包装集，而是生成了一个新的包装集
+2. add之后，包装集内的元素顺序，是由元素在HTML上的顺序决定的。
+                        </pre>
+                    </span>
+                    <span class="text-indent">
+                        2. 删除
+                        <pre>
+not(expression)
+说明：根据表达式参数的值，从包装集里删除元素。
+参数：expression (字符串|元素|数组|函数)
+返回：新的包装集
+
+filter(expression)
+说明：利用传入的选择器表达式或筛选函数，从包装集里筛选元素
+参数：expression (字符串 | 函数)如果参数是字符串，则指定jQuery选择器，留下匹配expression的元素。如果参数是函数，filter方法会为每个包装集元素反复调用那个函数，如果哪个原色的函数调用返回了false，则删除哪个元素。
+返回：新的包装集
+                        </pre>
+                    </span>
+
+                    <span class="text-indent">
+                        3. 常用的获取子包装集的方法
+                        <pre>
+children()          //包装集中的所有子元素
+next()              //下一个兄弟
+nextAll()           //所有后续兄弟元素
+parent()            //返回所有元素的直接父元素所组成的包装集
+parents()           //返回所有元素的祖先元素组成的集合
+prev()              //前一个兄弟
+prevAll()             //所有前面兄弟元素的包装集
+                        </pre>
+                    </span>
+
+                </div>
+            </h3>
+        </div>
+
+    </body>
+</html>

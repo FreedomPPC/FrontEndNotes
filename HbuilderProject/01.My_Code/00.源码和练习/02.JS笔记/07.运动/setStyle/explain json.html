@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>解释json</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		//1.数组
+			var arr =[1,2,3,4,5];
+			//for 循环
+			for(var i=0;i<arr.length;i++){
+//				alert('第'+i+'个数是:'+arr[i]);
+			}
+			//for in 循环
+			var i = 0;
+			for(i in arr){
+//				alert('第'+i+'个数是:'+arr[i]);
+			}
+			
+		//2.json
+		//遍历json只能用for...in循环,json的index是字符串,
+		var person = {width:'500px',height:'500px',background:'green'};
+		var attr = '';
+		for(attr in person){
+			alert(attr+'='+person[attr]);
+		}
+		//alert(person.width);
+		
+		</script>
+	</body>
+</html>

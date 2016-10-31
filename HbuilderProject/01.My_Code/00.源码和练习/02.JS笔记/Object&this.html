@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title></title>
+		<style type="text/css"></style>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//再谈对象
+			var obj = new Object();
+			var obj = {};
+			obj.name = 'XiaoMing';
+			obj.age = 37;
+
+			var person = {
+				name: 'Wu',
+				age: 18,
+				sayHi: function (callback) {
+					alert('你好，我叫' + this.name);
+					callback();
+				}
+			}
+
+			// for (var key in person) {
+			// 	alert(person[key]);
+			// }
+			// person.sayHi();
+
+			//在函数创建的时候，系统会添加两个默认的参数，
+			//第一参数是arguments，第二参数是this.
+			//在js中，this指针的指向，它不是在函数定义的时候决定的，而是在函数调用的时候决定的。
+			//如果这个函数，是通过某个对象来进行调用的，那么this指针，就是指向这个对象，
+			//如果这个函数，是通过全局进行的调用，那么this，指向全局的window对象。
+			var name = 'erya';
+			function cuiSays () {
+				alert(this.name + '说：酸菜没有了，换个锅包肉!!!');
+			}
+
+			// window.cuiSays();
+
+			// person.sayHi = cuiSays;
+			// person.age = 20;
+
+			person.sayHi();
+
+		</script>
+	</body>
+</html>

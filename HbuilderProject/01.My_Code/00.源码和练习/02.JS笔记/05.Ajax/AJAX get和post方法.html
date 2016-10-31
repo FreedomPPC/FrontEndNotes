@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>get和post方法</title>
+</head>
+<body>
+	get方法会显示用户名和密码,安全性很低,常用来读取数据,如浏览帖子
+	
+	<form action="http://www.baidu.com/" method="get">
+		用户名:<input type="text" name="user"/>
+		密码: <input type="text" name="pass"/>
+		<input type="submit" value="提交表单"/>
+	</form><br/><br/>
+	
+	post方法是吧数据放在http content里面,用于上传数据,
+
+	<form action="http://www.baidu.com/" method="post">
+		用户名:<input type="text" name="user"/>
+		密码: <input type="text" name="pass"/>
+		<input type="submit" value="提交表单"/>
+	</form>
+</body>
+</html>

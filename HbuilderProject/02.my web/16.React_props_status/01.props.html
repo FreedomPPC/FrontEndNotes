@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="lib/react.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/react-dom.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/browser.min.js" type="text/javascript" charset="utf-8"></script>
+			
+	</head>
+	<body>
+		<script type="text/babel">
+			var ReactCom = React.createClass({
+				render:function(){
+					console.log(this.props);
+					var _title = this.props.title;
+					return(
+						<div>
+							<p>{this.props.gender}</p>
+							<p>{this.props.name[1]}</p>
+							<span>{_title}</span><br/>
+							<p>{this.props.json.gender}</p>
+							<span>{this.props.data[1].user}</span><br />
+							<span>{this.props.data[0].name}</span><br />
+							<span>{this.props.json.username}</span>
+						</div>
+						
+					);
+				}
+			});
+			var child = [1,2,3,4]
+			var _span = "hello I am span";//1.定义变量;
+			
+			var _json = {username:"dong.xie",gender:"male"};//2.第二种传值方式;
+			
+			var _arr = [{user:"hellos",name:"kittys"},{user:"dong.xie",name:"kitty"}];//第三种,数组
+			
+			var _obj = {'name':'cloud','gender':'male'}
+			//目前都是通过组件里面的一个属性传递到组件中,组件中通过this.props.属性名称方式进行获取,
+			//第四种:不依赖组件的默认属性,可以传递一个json进去,传递进去的时候{...json};
+			//打印--- 可以将一个对象 传入到组件里面 传递进去是一种完全展开的模式
+			//在组件里面直接 通过this.prop.对象里面属性直接取值
+			//每次在组件中通过this.props取值 就不需要this.props.属性名称
+			//this.props.json属性
+			
+			ReactDOM.render(<ReactCom {..._obj} data={_arr} title={_span} json={_json} name={child} />,document.body);
+			//不提倡组件修改自己的属性;
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+body{ background:black; color:white; font-size:30px;}
+#c1{ background:white;}
+</style>
+<script>
+window.onload = function(){
+	var oC = document.getElementById('c1');
+	var oGC = oC.getContext('2d');
+	
+	var aLi = document.getElementsByTagName('li');
+	
+	for(var i=0;i<aLi.length;i++){
+		aLi[i].onclick = function(){
+			var str = this.innerHTML;
+			
+			var h = 180;
+			var timer = null;
+			clearInterval(timer);
+			var iNow = 0;
+			
+			oGC.clearRect(0,0,oC.width,oC.height);
+			
+			oGC.font = h + 'px impact';
+	
+			oGC.textBaseline = 'top';
+			
+			oGC.fillStyle = 'red';
+	
+			var w = oGC.measureText(str).width;
+	
+			oGC.fillText(str,(oC.width - w)/2,(oC.height - h)/2);
+			
+			var oImg = oGC.getImageData((oC.width - w)/2,(oC.height - h)/2,w,h);
+			oGC.clearRect(0,0,oC.width,oC.height);
+			
+			var arr = randomArr(w*h,w*h/10);
+			
+			var newImg = oGC.createImageData(w,h);
+			
+			timer = setInterval(function(){
+				
+				for(var i=0;i<arr[iNow].length;i++){
+					newImg.data[4*arr[iNow][i]] = oImg.data[4*arr[iNow][i]];
+					newImg.data[4*arr[iNow][i]+1] = oImg.data[4*arr[iNow][i]+1];
+					newImg.data[4*arr[iNow][i]+2] = oImg.data[4*arr[iNow][i]+2];
+					newImg.data[4*arr[iNow][i]+3] = oImg.data[4*arr[iNow][i]+3];
+				}
+			
+				oGC.putImageData(newImg,(oC.width - w)/2,(oC.height - h)/2);
+				if(iNow == 9){
+					iNow = 0;
+					clearInterval(timer);
+				}
+				else{
+					iNow++;
+				}
+				
+			},200);
+			
+			
+			
+		};
+	}
+	
+	function randomArr(iAll,iNow){
+		var arr = [];
+		var allArr = [];
+		for(var i=0;i<iAll;i++){
+			arr.push(i);
+		}
+		
+		for(var j=0;j<iAll/iNow;j++){
+			
+			var newArr = [];
+			
+			for(var i=0;i<iNow;i++){
+				newArr.push( arr.splice( Math.floor(Math.random()*arr.length) ,1) );
+			}
+			
+			allArr.push(newArr);
+			
+		}
+		
+		
+		return allArr;
+	}
+	
+	
+};
+</script>
+</head>
+
+<body>
+<canvas id="c1" width="400" height="400"></canvas>
+<ul style="float:left;">
+	<li>妙</li>
+    <li>味</li>
+    <li>课</li>
+    <li>堂</li>
+</ul>
+</body>
+</html>

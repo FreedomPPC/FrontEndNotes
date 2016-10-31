@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<br/>
+	<canvas id="cvs" width="400" height="400" style="background:#eee;"></canvas>
+	<br/>
+	<canvas id="cvs" width="400" height="400" style="background:#eee;"></canvas>
+	<script>
+function draw(){
+   var cvs= document.querySelector("#cvs"), 
+　　　　ctx = cvs.getContext("2d");
+   ctx.clearRect(0,0,ctx.canvas.width,cvs.height);
+   /**
+     x,y,r,x1,y1,r1
+     前三径向渐变起点圆坐标
+     后三径向渐变终点圆坐标
+   **/
+   var lg = ctx.createRadialGradient(200,200,50,200,200,100);
+   lg.addColorStop(0,"red");
+   lg.addColorStop(0.3,"blue");
+   lg.addColorStop(0.6,"yellow");
+   lg.addColorStop(0.8,"pink");
+   lg.addColorStop(1,"green");
+   ctx.font = "50px fantasy";
+   ctx.fillStyle = lg;
+   ctx.fillRect(0,0,400,400);
+   
+}
+
+draw();
+function draw2(){
+   var cvs= document.querySelector("#cvs"), 
+　　　　ctx = cvs.getContext("2d");
+   ctx.clearRect(0,0,ctx.canvas.width,cvs.height);
+   /**
+     x,y,r,x1,y1,r1
+     前三径向渐变起点圆坐标
+     后三径向渐变终点圆坐标
+   **/
+   var lg = ctx.createRadialGradient(200,200,50,200,200,100);
+   lg.addColorStop(0,"red");
+   lg.addColorStop(0.2,"red");
+      lg.addColorStop(0.2,"green");
+   lg.addColorStop(0.5,"green");
+      lg.addColorStop(0.5,"blue");
+      lg.addColorStop(0.7,"blue");
+      lg.addColorStop(0.7,"yellow");
+   ctx.font = "50px fantasy";
+   ctx.fillStyle = lg;
+   ctx.fillRect(0,0,400,400);
+   
+}
+
+draw2();
+	</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		//获取列表中的某个元素
+		/*
+			tHead:表格头;
+			tBodies:表格正文
+			tFoot:表格尾;
+			rows:行;
+			cells:列;
+		*/
+		window.onload = function () {
+			var oTabl = document.getElementById('tbl1');
+			alert(oTabl.tBodies[1].rows[1].cells[3].innerHTML);
+
+		}
+	</script>
+</head>
+<body>
+	<table id="tbl1" width="400" border="1";>
+		<thead>
+			<th>编号</th>
+			<th>姓名</th>
+			<th>性别</th>
+			<th>年龄</th>
+		</thead>
+
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>斐欧娜</td>
+				<td>女</td>
+				<td>18</td>
+			</tr>
+
+			<tr>
+				<td>2</td>
+				<td>盖伦</td>
+				<td>男</td>
+				<td>22</td>
+			</tr>
+
+		</tbody>
+
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>斐欧娜</td>
+				<td>女</td>
+				<td>18</td>
+			</tr>
+
+			<tr>
+				<td>2</td>
+				<td>盖伦</td>
+				<td>男</td>
+				<td>22</td>
+			</tr>
+
+		</tbody>
+
+	</table>
+</body>
+</html>

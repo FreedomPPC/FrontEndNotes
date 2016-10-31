@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- <audio controls src="test.mp3"></audio> -->
+	<video src="test.mkv"></video>
+	<br>
+	<br/><br/>
+	time-line:<input type="range" id="timeLline"/>
+	<br/><br/>
+	volume : <input type="range" id="volume-line">
+	<div class="info"></div>
+	<br><br>
+	<button id="play-controller">GO</button>
+	<script>
+		var audio = document.querySelector("video");
+		var timeLline = document.querySelector("#timeLline");
+		var volumeLline = document.querySelector("#volume-line"); 
+		var playCtrl = document.querySelector("#play-controller");
+		var lock = false;
+		audio.oncanplay=function(e){
+			// document.querySelector(".info").innerHTML = 
+			// audio.duration +"  volume: "+audio.volume;
+			
+			//时间线初始化
+			timeLline.value = 0 ;
+			timeLline.min = 0 ;
+			timeLline.max = audio.duration;
+
+			//音量线初始化
+			volumeLline.value = audio.volume*10;
+			volumeLline.min = 0;
+			volumeLline.max = 10;
+		}
+		audio.ontimeupdate = function(){
+			if(!lock)
+			timeLline.value = audio.currentTime;
+		}
+		timeLline.onmousedown = function(){
+			lock=true;
+		}
+		timeLline.onchange = function(){
+			audio.currentTime = this.value;
+			lock = false;
+		}	
+
+		volumeLline.onchange = function(){
+			audio.volume = this.value/10;
+		}	
+		var playing = false;
+		playCtrl.onclick = function(){
+			if(!playing){
+				audio.play();
+				playing=true;
+			}else {
+				audio.pause();
+				playing
+			}
+		}
+		</script>
+	</body>
+	</html>

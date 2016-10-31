@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		window.onload = function(){
+			var oForm = document.getElementsByTagName("form")[0];
+			var name = document.getElementsByName("username")[0];
+			var pass = document.getElementsByName("password")[0];
+			oForm.onsubmit = function(){
+				if(name.value == "" || pass.value == ""){
+					return false;
+				}
+			}
+			oForm.onreset = function(){
+				return confirm("是否确认清空?");
+			}
+		}
+	</script>
+</head>
+<body>
+	<form action="http://www.baidu.com" method="get">
+		<input type="text" name="username" placeholder="请输入用户名"/><br/>
+		<input type="passord" name="password" placeholder="请输入密码" pattern="\w{6,12}" title="6-12位的数字、字母、下划线;" /><br/>
+		
+		<input type="submit" value="提交"><br/>
+		<input type="reset" value="重置"/>
+	</form>
+</body>
+</html>

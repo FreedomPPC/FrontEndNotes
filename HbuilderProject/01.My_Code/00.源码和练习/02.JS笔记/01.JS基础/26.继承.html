@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function Person(name,gender){
+				this.name = name;
+				this.gender = gender;
+			}
+			
+			Person.prototype.showName = function(){
+				alert(this.name);
+			}
+			Person.prototype.showGender = function(){
+				alert(this.gender);
+			}
+			
+			function Worker(name,gender,job){
+				//this-->指向了new出来的worker对象;
+				//构造函数伪装,调用父级的构造函数(call方法调用父级的构造函数)--为了继承属性;
+				Person.call(this,name,gender);
+				this.job=job;
+			}
+			
+			//通过原型来继承父级的方法;
+//			Worker.prototype = new Person();//Worker.prototype是原型对象;
+			Worker.prototype = Person.prototype;
+			
+			Worker.prototype.showJob = function(){//这个函数必须放在继承下面,不然继承不到
+				alert(this.job);
+			}
+			var worker = new Worker('blue','女','打杂的');//这一步必不可少,worker才是实例对象
+			
+//			worker.showName();
+//			worker.showGender();
+//			worker.showJob();
+			
+			alert(Person.prototype.showJob);//涉及到对象的引用;
+			
+			console.log(worker instanceof Person);
+			
+		</script>
+	</body>
+</html>

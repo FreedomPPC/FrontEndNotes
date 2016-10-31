@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Hash值改变生成历史管理</title>
+	<style>
+		html{
+			font-size: 40px;
+		}
+	</style>
+</head>
+<script>
+	window.onload = function(){
+		var oInput = document.getElementById('input1');
+		var oDiv = document.getElementById('div1');
+		var json = {};
+		oInput.onclick = function(){
+			var num = Math.floor(Math.random()*100);
+			var arr = randomNum(99,7);
+			json[num] = arr;
+			oDiv.innerHTML = arr;
+
+			window.location.hash = num;
+		}
+
+		window.onhashchange = function(){
+			oDiv.innerHTML = json[window.location.hash.substring(1)];
+		}
+
+		function randomNum(total,sel){
+			var arr = [];
+			var newArr = [];
+
+			for(var i=0;i<total;i++){
+				arr.push(i);
+			};
+
+			for(var i=0;i<sel;i++){
+				newArr.push(arr.splice(Math.floor(Math.random()*arr.length) ,1))
+			};
+			return newArr;
+		}
+	}
+
+
+</script>
+<body>
+	
+</body>
+	<input type="button" value="随机生成彩票" id="input1"/>
+	<div id="div1"></div>
+</html>

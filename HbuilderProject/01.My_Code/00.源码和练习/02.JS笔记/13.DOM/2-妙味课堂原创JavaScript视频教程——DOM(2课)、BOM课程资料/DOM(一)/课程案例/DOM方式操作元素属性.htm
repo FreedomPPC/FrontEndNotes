@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<style>
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script type="text/javascript">
+window.onload=function ()
+{
+	var oTxt=document.getElementById('txt1');
+	
+	//1
+	//oTxt.value='123';
+	
+	//2
+	//oTxt['value']='abc';
+	
+	//3
+	//oTxt.setAttribute('value', 'rtertw');
+	
+	alert(oTxt.getAttribute('id'));
+}
+</script>
+</head>
+
+<body>
+<input type="text" id="txt1"/>
+</body>
+</html>

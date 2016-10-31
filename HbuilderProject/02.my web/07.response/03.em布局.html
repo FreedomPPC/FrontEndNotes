@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>EM布局</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+	</head>
+	
+	<script>
+		/*
+		 *EM布局具体使用步骤:
+		 * 1.在body中去声明em大小font-size
+		 * 2.响应式布局的时候,媒体查询在不同区间中设定不同body里面的font-size大小;
+		 * 3.调试(微调);
+		 * 
+		 * 实现效果:
+		 * 让头部在不同尺寸都可以使用@media
+		 * */
+	</script>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		@media only screen and (min-width: 0px) and (max-width: 375px) {
+				font-size:12px;
+			}
+		@media only screen and (min-width: 376px) and (max-width: 500px) {
+				font-size:14px;
+			}
+		.container{
+			/*font-size:20px;*/
+			width:20em;
+			height:10em;
+			background: red;
+		}
+		.box{
+			width:15em;
+			height:8em;
+			background: blue;
+			
+		}
+		.min{
+			width:10em;
+			height:5em;
+			background: yellow;
+		}
+	</style>
+	<body>
+		<div class="container">
+			<div class="box">
+				<div class="min"></div>
+			</div>
+		</div>
+	</body>
+</html>

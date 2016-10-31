@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<style type="text/css">
+			#video{
+				width: 100%;
+				height: 100%;
+			}
+		</style>
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<script src="01.touch.js" type="text/javascript" charset="utf-8"></script>
+		<script src="zepto.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function(){
+
+				$._touch(document.getElementById('video'),function(s){
+
+					var _video = document.getElementById('video');
+					var _currentTime = _video.currentTime;
+					var _volume = _video.volume;
+					if(s == "slideRight"){
+						console.log("视频前进");
+						_currentTime = _currentTime + 2;
+					}else if(s == 'slideLeft'){
+						console.log("视频后退");
+						_currentTime = _currentTime - 2;
+					}
+					_video.currentTime = _currentTime;
+					
+					//音量
+					if(_volume>=0 && _volume<100){
+						
+						if(s == 'slideUp'){
+							console.log('音量增加');
+							_volume++;
+						}else if(s == 'slideDown'){
+							console.log('音量减小');
+							_volume--;
+						}
+						_video.volume = _volume;
+					}
+					
+				});
+
+			}
+		</script>
+	</head>
+	<body>
+		<video id="video" controls>
+			<source src="videoviewdemo.mp4" type="video/mp4"></source>
+			当前浏览器不支持 video直接播放，点击这里下载视频： <a href="myvideo.webm">下载视频</a>
+		</video>
+	</body>
+</html>

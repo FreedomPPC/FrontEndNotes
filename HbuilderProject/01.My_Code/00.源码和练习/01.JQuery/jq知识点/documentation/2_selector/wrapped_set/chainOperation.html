@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Chain</title>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script src="../../vendor/jquery-1.12.1.js"></script>
+        <script>
+//            var wrapped = $('#container');
+            //改变高度
+            $('#container')
+                .css('height', '100px')
+                .css('width', '100px')
+                .css('background', 'pink')
+                .css('position', 'absolute')
+                .css('top', '100px')
+                .css('left', '100px')
+                .html('jQuery 链式操作');
+
+
+            //改变宽度
+            //            wrapped.css('width', '100px');
+            //改变背景色
+            //            wrapped.css('background', 'pink');
+
+            //改变position
+            //            wrapped.css('position', 'absolute');
+
+            //改变top
+            //            wrapped.css('top', '100px');
+
+            //改变left
+            //            wrapped.css('left', '100px');
+
+            //            wrapped.html('jQuery 链式操作');
+
+
+        </script>
+    </body>
+</html>

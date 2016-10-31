@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+#div1 div{ width:200px; height:200px; border:1px red solid; display:none;}
+.active{ background:red;}
+</style>
+<script type="text/javascript" src="jquery-1.10.1.min.js"></script>
+<script>
+/*window.onload = function(){
+	var oDiv = document.getElementById('div1');
+	var aInput = oDiv.getElementsByTagName('input');
+	var aCon = oDiv.getElementsByTagName('div');
+	
+	for(var i=0;i<aInput.length;i++){
+		
+		aInput[i].index = i;
+		
+		aInput[i].onclick = function(){
+			
+			for(var i=0;i<aInput.length;i++){
+				aInput[i].className = '';
+				aCon[i].style.display = 'none';
+			}
+			
+			this.className = 'active';
+			aCon[this.index].style.display = 'block';
+			
+		};
+	}
+	
+};*/
+
+
+$(function(){
+	
+	$('#div1').find('input').click(function(){
+		
+		$('#div1').find('input').attr('class','');
+		$('#div1').find('div').css('display','none');
+		
+		$(this).attr('class','active');
+		
+		$('#div1').find('div').eq( $(this).index() ).css('display','block');
+		
+	});
+	
+});
+</script>
+</head>
+
+<body>
+<div id="div1">
+	<input class="active" type="button" value="1" />
+    <input type="button" value="2" />
+    <input type="button" value="3" />
+    <div style="display:block">111111</div>
+    <div>222222</div>
+    <div>333333</div>
+</div>
+</body>
+</html>

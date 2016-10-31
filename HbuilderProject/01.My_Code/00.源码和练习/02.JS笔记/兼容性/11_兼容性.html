@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.wrap{
+				width: 400px;
+			}
+			.left{
+				float: left;
+			}
+			.right{
+				width: 398px;
+				float: right;
+			}
+		</style>
+		<!--
+			两个浮动元素中间有注释或者内联元素并且和父级宽度相差不超过3px
+			解决方案：
+				1、两个浮动元素中间避免出现内联元素或者注释
+				2、与父级宽度相差3px或以上
+		-->
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="left"></div>
+			<span></span><!-- IE下文字溢出BUG -->
+			<div class="right">&darr;这是多出来的一只猪</div>
+		</div>
+	</body>
+</html>

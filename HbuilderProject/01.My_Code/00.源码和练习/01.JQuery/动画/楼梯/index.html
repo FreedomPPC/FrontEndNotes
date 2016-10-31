@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>楼梯演示</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			#LoutiNav {
+				width: 32px;
+				position: fixed;
+				top: 150px;
+				left: 50px;
+				border: 1px solid #ddd;
+				display: none;
+			}
+			#LoutiNav ul li {
+				width: 32px;
+				height: 32px;
+				border-bottom: 1px dotted #DDDDDD;
+				list-style: none;
+				font-size: 12px;
+				color: #666;
+				text-align: center;
+				line-height: 32px;
+				position: relative;
+				cursor: pointer;
+			}
+			#LoutiNav ul li span {
+				width: 32px;
+				height: 32px;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			#LoutiNav ul li span {
+				display: none;
+			}
+			#LoutiNav ul li.last {
+				background: #C00;
+				color: #fff;
+				border-bottom: 1px solid #ddd;
+			}
+			#LoutiNav ul li.hover span {
+				background: #c00;
+				color: #fff;
+				display: block;
+			}
+			#LoutiNav ul li.hover span.active {
+				background: #c00;
+				color: #fff;
+				display: block;
+			}
+			#LoutiNav ul li span.active {
+				background: #fff;
+				color: #c00;
+				display: block;
+			}
+			#header {
+				width: 1000px;
+				height: 200px;
+				background: #cc6633;
+				margin: 0 auto;
+				text-align: center; line-height: 200px; font-size: 80px; color: #fff;
+			}
+			#main {
+				width: 1000px;
+				background: #66ff66;
+				margin: 0 auto;
+			}
+			#main .Louti {
+				
+				height: 600px;
+				width: 1000px;
+				font-size: 50px;
+				color: #fff;
+				font-weight: bold;
+				text-align: center;
+				line-height: 600px;
+			}
+			#footer {
+				width: 1000px;
+				height: 400px;
+				background: red;
+				margin: 0 auto;
+			}
+			#go-top { 
+				width: 32px; cursor: pointer; background-color: #fff; color: red;
+				text-align:center; line-height:32px;height: 32px; position: fixed; right: 5px; 
+				bottom: 5px;
+			}
+			</style>
+	</head>
+	<body>
+		<div id="LoutiNav">
+			<ul>
+				<li class="">1F <span>服饰</span> </li>
+				<li>2F <span>美妆</span> </li>
+				<li>3F <span>手机</span> </li>
+				<li>4F <span>家电</span> </li>
+				<li>5F <span>数码</span> </li>
+				<li>6F <span>运动</span> </li>
+				<li>7F <span>居家</span> </li>
+				<li>8F <span>母婴</span> </li>
+				<li>9F <span>食品</span> </li>
+				<li>10F <span>图书</span> </li>
+				<li>11F <span>服务</span> </li>
+			</ul>
+		</div>
+		<div id="go-top">Top</div>
+		<!--楼层内容开始-->
+
+		<div id="header">
+			header
+		</div>
+		<div id="main">
+			<div class="Louti" style="background: #cc0033;">
+				服饰
+			</div>
+			<div class="Louti" style="background: #999933;">
+				美妆
+			</div>
+			<div class="Louti" style="background: #ccff33;">
+				手机
+			</div>
+			<div class="Louti" style="background: #006633;">
+				家电
+			</div>
+			<div class="Louti" style="background: #6666cc;">
+				数码
+			</div>
+			<div class="Louti" style="background: #ff6600;">
+				运动
+			</div>
+			<div class="Louti" style="background: #ffff00;">
+				居家
+			</div>
+			<div class="Louti" style="background: #3333ff;">
+				母婴
+			</div>
+			<div class="Louti" style="background: #ff00cc;">
+				食品
+			</div>
+			<div class="Louti" style="background: #669900;">
+				图书
+			</div>
+			<div class="Louti" style="background: #ff66cc;">
+				服务
+			</div>
+
+		</div>
+		<div id="footer">
+
+		</div>
+		<!--楼层内容结束-->
+		<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+
+		<script type="text/javascript">
+			$("#LoutiNav ul li").not(".last").hover(function() {
+				//鼠标滑上去
+				$(this).addClass("hover");
+			}, function() {
+				//鼠标移开
+				$(this).removeClass("hover");
+			});
+			 //鼠标点击
+			var mark = 1;
+			$("#LoutiNav ul li").click(function() {
+				mark = 2; //改变标记
+				$("#LoutiNav ul li").find("span").removeClass("active");
+				$(this).find("span").addClass("active");
+				//点击左边导航 然后跳到指定的楼层
+				var $index = $(this).index(); //找到了对应的序列号
+				//alert($index);
+				var $top = $("#main .Louti").eq($index).offset().top; //获取制定Louti与浏览器上面的距离
+				//alert($top);
+				$("body,html").animate({
+					scrollTop: $top
+				}, 500, function() {
+					mark = 1;
+				}); //浏览器滚动的高度
+			});
+			 //浏览器串口滚动事件
+			$(window).scroll(function() {
+				if (mark == 1) {
+					var $t = $(this).scrollTop(); //获取滚动条滚动的高度
+					//document.title = $t;
+					if ($t > $('#header').height()) { //通过滚动条来判断
+						$("#go-top").fadeIn();
+						$("#LoutiNav").fadeIn(); //淡入 导航慢慢显示出来
+					} else {
+						$("#go-top").fadeOut();
+						$("#LoutiNav").fadeOut(); //淡出 导航慢慢消失
+					}
+					var $obj = $("#main .Louti");
+					//循环每一个Louti 然后找到最先满足条件的那个 Louti
+					$obj.each(function() {
+						var $index = $(this).index();
+						//楼层与浏览器上面的高度
+						var $height = $obj.eq($index).offset().top + $(this).height() / 2;
+						//alert($height) 
+						document.title = $t + "--" + $height;
+						if ($t < $height) {
+							$("#LoutiNav ul li").find("span").removeClass("active")
+							$("#LoutiNav ul li").eq($index).find("span").addClass("active");
+							return false;
+						}
+					});
+				}
+			});
+			//点击 Top按钮 跳转到浏览器顶部
+			$("#go-top").click(function() {
+				$("body,html").animate({
+					scrollTop: 0
+				}, 500, function() {
+					mark = 1;
+				});
+			});
+		</script>
+	</body>
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</html>

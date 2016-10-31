@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>json</title>
+</head>
+<body>
+	<script>
+		// var b = [{a:12,b:14},{a:30,b:20}];
+		// for(var i=0;i<b.length;i++){
+		// 	console.log(i+"="+b[i]);//打印出json对象;
+		// }
+
+
+		//循环遍历json对象,只能用for in 循环;
+		var oJson = {a:"aaa",b:"bbb",c:"嘻嘻嘻"};//作为一个json文件时,必须双引号,不然会报错;
+		var attr ="";
+		for(attr in oJson){
+			console.log(attr +"="+oJson[attr]);
+		}
+	</script>
+</body>
+</html>

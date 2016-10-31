@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+
+//1.函数嵌套函数,
+//2.内部函数可以引用外部函数的参数和变量,
+//3.参数和变量不会被垃圾回收机制所收回
+
+function aaa(a){
+	
+var b = 5;
+
+function bbb(){
+alert(a);
+alert(b);
+ 	}
+
+}
+
+ aaa();
+
+
+
+//JS中的垃圾回收机制,函数调用之后var a=1;被回收;
+
+// function aaa(){
+	
+// 	var a = 1;
+	
+// }
+
+// aaa();
+
+//function aaa(){
+//	var a = 5;
+//	function bbb(){
+//		alert(a);
+//	}
+//	return bbb;
+//}
+//
+//var c = aaa();
+//
+//c();
+
+</script>
+</head>
+
+<body>
+</body>
+</html>

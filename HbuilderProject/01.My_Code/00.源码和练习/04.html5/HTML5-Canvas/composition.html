@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>div{display: inline-block;}</style>
+</head>
+<body>
+	
+</body>
+<script>
+	function draw(){
+	  var div = document.createElement("div");
+	  div.innerHTML = arguments[0]||"source-over";
+	  var cvs = document.createElement("canvas");
+	  ctx = cvs.getContext("2d");
+	  cvs.width = "200";
+	  cvs.height = 200;
+	  cvs.style="background:#eee";
+	  div.appendChild(cvs);
+	  document.body.appendChild(div);
+	  ctx.clearRect(0,0,200,200);
+	  //shape 1
+	  ctx.beginPath();
+	  ctx.fillStyle = "#f00";
+	  ctx.arc(80,80,50,0,2*Math.PI,true);
+	  ctx.fill();
+	  ctx.closePath();
+	  ctx.globalCompositeOperation = arguments[0];
+	  ctx.beginPath();
+	  ctx.fillStyle = "#0f0";
+	  ctx.arc(100,100,50,0,2*Math.PI,true);
+	  ctx.fill(); 
+	}
+	draw();
+
+	draw("source-in");
+
+	draw("source-out");
+
+	draw("source-atop");
+
+	draw("lighten");
+
+	draw("xor");
+
+	draw("destination-over");
+
+	draw("destination-in");
+
+	draw("destination-out");
+
+	draw("destination-atop");
+
+	draw("darken");
+
+	draw("copy");
+
+	</script>
+</html>

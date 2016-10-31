@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<style>
+		.touchPad{
+			width:100%;
+			height:400px;
+			background: #eee;
+		}
+
+		.ball{
+			width:25px;
+			height:25px;
+			background: red;
+			display: none;
+			position: absolute;
+			border-radius: 50%;
+		}
+	</style>
+</head>
+<body>
+	<div class="touchPad"></div>
+	<div class="ball"></div>
+	<div class="info"></div>
+	<h1>移动端的事件</h1>
+	<p>pc:mousedown    mobile:touchstart</p>
+	<p>pc:mousemove     mobile:touchmove </p>
+	<p>pc:mouseup        mobile:touchend</p>
+	<script>
+        var pad = document.querySelector(".touchPad");
+        var ball = document.querySelector(".ball");
+        var info = document.querySelector(".info");
+        // var config = {
+        // 	x:
+        // 	c:
+        // 	x
+        // }
+        var startPos,
+        	endPos ;
+        var SWIPE_DIS = 30,
+        	SWIPE_TIME = 500,
+        	angle ,
+        	START_TIME
+        	;
+        //endPos {x:,y}
+        var getDis = function(endPos,startPos){
+        	var ySpan = endPos.y - startPos.y,
+        		xSpan = endPos.x - startPos.x;
+        		return Math.sqrt(xSpan*xSpan+ySpan*ySpan);
+        }
+
+        var getAngle = function(endPos,startPos){
+        	var ySpan = endPos.y - startPos.y,
+        		xSpan = endPos.x - startPos.x;
+        		var rd = Math.atan2(-ySpan,xSpan);
+        		return rd*180/Math.PI  ;//具体的角度
+        }
+
+        var showResult = function(){
+        	var direction;
+			if(angle<45&&angle>-45){
+				direction = "right";
+			}else if(angle>=45&&angle<135){
+				direction = "top";
+			}else if(angle>=135||angle<-135){
+				direction = "left";
+			}else 
+				direction = "bottom";
+
+			info.innerHTML = direction ;
+        }
+
+        var eHandler = function(e){
+        	// console.log(e.type);
+        	// if(e.type!="touchend"){
+
+        	// }
+        	switch(e.type){
+        		case "touchstart":{
+        			START_TIME = Date.now();
+        			startPos = {
+        				x: e.touches[0].clientX,
+        				y: e.touches[0].clientY
+        			};
+        			// ball.style.display = "block";
+        			break;
+        		};
+        		case "touchmove" : {
+        			endPos = {
+        				x: e.touches[0].clientX,
+        				y: e.touches[0].clientY
+        			};
+        			ball.style.left = e.touches[0].clientX +"px";
+        			ball.style.top  = e.touches[0].clientY + "px";
+        			e.preventDefault();
+        			break;
+        		}
+        		case "touchend"  : {
+        			var dis = getDis(endPos,startPos);
+        			var timeSpan = Date.now()-START_TIME;
+        			if(dis>SWIPE_DIS&&timeSpan<SWIPE_TIME){
+        				//满足条件
+        				//怎么拿到角度
+        				var angle = getAngle(endPos,startPos);
+        				showResult(angle);
+        			}
+        			ball.style.display="none";
+
+        		}
+        	}
+        };
+        "start move end".split(" ").forEach(function(item){
+        	pad.addEventListener("touch"+item,eHandler)
+        });
+	</script>
+</body>
+</html>

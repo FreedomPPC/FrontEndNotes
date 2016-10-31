@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#text_1{
+				width:400px;
+				height:500px;
+				border:1px dashed #ccc;
+				
+			}
+			input{
+				width: 300px;
+				height:30px;
+				margin-top: 20px;
+				border:1px solid black;
+				margin-left:10px;
+				color:black;
+				border-radius: 5px;
+				box-shadow: 0px 0px 2px 3px pink inset;
+				text-indent: 10px;
+			}
+			span{
+				font-size:20px;
+				color:black;
+			}
+			.span_1{
+				margin-left:5px;
+				margin-right:5px;
+			}
+		</style>
+	</head>
+	<body>
+		<fieldset id="text_1">
+			<legend>信息录入</legend>
+			<form>
+			<span>用户名<span class="span_1">:</span></span><input type="text" placeholder="请输入用户名包含字母数字length(8++)" /><br />
+			<span style="margin-left:20px">邮箱<span class="span_1">:</span></span><input type="email" placeholder="邮箱163@fy.com" /><br />
+			<span style="margin-left:20px">年龄<span class="span_1">:</span></span><input type="text" placeholder="0-120的数字" /><br />
+			<span>身份证<span class="span_1">:</span></span><input type="text" placeholder="15-18位(末尾可为字母X)" /><br />
+			<span style="margin-left:20px">手机<span class="span_1">:</span></span><input type="tel" placeholder="11位数字" /><br />
+			<span style="margin-left:20px">价格<span class="span_1">:</span></span><input type="number" placeholder="123.45" /><br />
+			<span style="margin-left:20px">性别<span class="span_1">:</span></span><input type="text" placeholder="男|女" /><br />
+			<input type="submit" value="提交"  style="width:60px;height:20px"/>
+			</form>
+		</fieldset>
+		
+	</body>
+</html>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>document</title>
+	<link rel="stylesheet" type="text/css" href="">
+</head>
+<body>
+	
+	<script type="text/javascript">
+		var str = '李云浩';
+		console.log('str.length:'+str.length);
+		console.log('charAt(0):'+str.charAt(0));
+		console.log('charAt(1):'+str.charAt(1));
+		console.log('charAt(2):'+str.charAt(2));
+
+		//charCodeAt();
+		console.log('charCodeAt(李):'+str.charCodeAt(0));//26446
+		console.log('charCodeAt(云):'+str.charCodeAt(1));//20113
+		console.log('charCodeAt(浩):'+str.charCodeAt(2));//28009
+
+		//string.fromCharCode();
+		console.log('22446,20113,28009:'+String.fromCharCode(26446,20113,28009));
+
+		类似方法求出
+		0~9 编码:48~57;
+		a~z 编码:97~122;
+		A~Z 编码:65~90;
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+﻿<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title></title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            //原型方式的继承
+            //1. 创建一个类
+            function Dog(name, age) {
+                this.name = name;
+                this.age = age;
+                this.toyes = ['bone', 'plate', 'ball'];
+            }
+
+
+            Dog.prototype.bark = function () {
+                alert('旺旺，我要吃骨头');
+            }
+
+            function BigYellow(name, age, shape) {
+                Dog.apply(this, [name, age]);
+                this.shape = shape;
+            }
+
+            //通过将子类的prototype，赋值为基类的一个实例，实现了原型链的继承
+            BigYellow.prototype = new Dog();
+            BigYellow.prototype.constructor = BigYellow;
+
+            var huang = new BigYellow('xiaohua', 34, 'ball');
+            huang.toyes.push('iPad');
+            alert(huang.toyes);
+
+            var hua = new BigYellow('DaHuang', 34, 'fat');
+            alert(hua.toyes);
+
+//            huang.bark();
+//            alert('name=' + huang.name);
+//            alert('age=' + huang.age);
+//            alert('shape=' + huang.shape);
+
+
+
+        </script>
+    </body>
+</html>

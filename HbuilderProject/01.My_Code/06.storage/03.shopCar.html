@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>存储事件</title>
+	<script type="text/javascript">
+		window.onload = function (){
+			var aInput = document.getElementsByTagName('input');
+			for(var i=0;i<aInput.length;i++){
+				aInput[i].onclick = function(){
+//					alert("a");
+					if(this.checked){
+						window.localStorage.setItem('select',this.value);
+					}else{
+						window.localStorage.setItem('unselect',this.value);
+					}
+				}
+			}
+			
+			window.addEventListener('storage',function(ev){
+				if(ev.key == 'select'){
+					for(var i=0;i<aInput.length;i++){
+						if(ev.newValue == aInput[i].value){
+							aInput[i].checked = true;
+						}
+					}
+				}
+				else if(ev.key == 'unselect'){
+					for(var i=0;i<aInput.length;i++){
+						if(ev.newValue == aInput[i].value){
+							aInput[i].checked = false;
+						}
+					}
+				}
+			},false)
+			
+		}
+	</script>
+</head>
+<body>
+	<p>1.本地存储事件呢,window.addEventListener('storage',fn,false)表示
+	存储事件,false代表当前页面不会触发.</p>
+	<p><input type="checkbox" value="苹果"/>苹果</p>
+	<p><input type="checkbox" value="橘子"/>橘子</p>
+	<p><input type="checkbox" value="香蕉"/>香蕉</p>
+	<p><input type="checkbox" value="哈密瓜"/>哈密瓜</p>
+</body>
+</html>

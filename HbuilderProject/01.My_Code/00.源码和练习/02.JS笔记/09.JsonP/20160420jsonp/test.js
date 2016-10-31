@@ -1,0 +1,1 @@
+showMsg('hello xiaoMing');

@@ -1,0 +1,13 @@
+{
+	"name": "ChenHe",
+	"age": 18,
+	"gender": "male",
+	"exGF": [{
+			"name": "CuiHua",
+			"age": 60
+		}, {
+			"name": "ErYa",
+			"age": 20
+		}],
+	"isMarried": true
+}

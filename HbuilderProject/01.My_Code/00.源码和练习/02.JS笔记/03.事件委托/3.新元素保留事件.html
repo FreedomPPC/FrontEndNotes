@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 * 1.事件委托,添加的新元素,依然保留着事件;
+			 */
+			window.onload = function(){
+				var oInput = document.getElementById("input1");
+				var oUl = document.getElementById("ul1");
+				var aLi = document.getElementsByTagName('li');
+				var iNow = 4;
+
+				oInput.onclick = function(){
+					iNow++;
+					var lis = document.createElement("li");
+					lis.innerHTML = iNow*111;
+					oUl.appendChild(lis);
+				}
+				//2.事件委托方法;
+				oUl.onclick = function (evt){
+					var e = evt || window.event;
+					var target = e.srcElement || e.target;
+					var child = oUl.children;
+					for(var i=0;i<child.length;i++){
+						child[i].style.background = "";
+					}
+					if(target.nodeName.toLowerCase() =='li'){
+						target.style.background = "red";
+					}
+				}
+				// oUl.onmouseout = function (evt){
+				// 	var e = evt || window.event;
+				// 	var target = e.srcElement || e.target;
+				// 	if(target.nodeName.toLowerCase() =='li'){
+				// 		target.style.background = "";
+				// 	}
+				// }
+
+				//1.普通方法;普通方法添加的元素是没有li的事件的;
+//				for(var i=0;i<aLi.length;i++){
+//					aLi[i].onmouseover = function(evt){
+//						var e = evt || window.event;
+//						this.style.background="red";
+//					}
+//					aLi[i].onmouseout = function(evt){
+//						var e = evt || window.event;
+//						this.style.background="";
+//					}
+//
+//				}
+
+
+			}
+		</script>
+
+		<input type="button" value="添加" id="input1" />
+		<ul id="ul1">
+			<li>111</li>
+		    <li>222</li>
+		    <li>333</li>
+		    <li>444</li>
+		</ul>
+	</body>
+</html>

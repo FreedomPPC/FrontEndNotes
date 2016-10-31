@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>动态创建表格</title>
+	<style type="text/css">
+		span{
+			font-size:20px;
+			font-weight: bold;
+		}
+		#text1{
+			height: 40px;
+			font-size:20px;
+			font-weight:bold;
+
+		}
+		#text2{
+			font-weight:bold;
+			height: 40px;
+			font-size:20px;
+
+		}
+
+		#btn{
+			background:#34343c;
+			color:white;
+			border:0;
+			width:120px;
+			font-size:20px;
+			line-height: 40px;
+			border-radius :5px;
+		}
+		body{
+			height:100%;
+			width:100%;
+		}
+		td{
+			width:20px;
+			height:20px;
+			background:#cccccc;
+			color:white;
+			font-weight:bold;
+			text-align: center;
+		}
+			
+		
+	</style>
+
+	<script type="text/javascript">
+		window.onload = function () {
+			var btn = document.getElementById('btn');
+			var howManyTr = document.getElementById('text1');
+			var howManyTd = document.getElementById('text2');
+			var otable = document.getElementsByTagName('table')[0];
+			var otbody = document.getElementsByTagName('tbody')[0];
+			
+
+			btn.onmousedown = function (evt) {
+				var e = evt || window.event;
+				btn.style.background = 'gold';
+					if(howManyTr.value>=1 && howManyTr.value<=100 && howManyTd.value>=1 && howManyTd.value<=100){
+
+						otable.setAttribute('border','1');
+
+						for(var i=1;i<=howManyTr.value;i++){
+							var otr= document.createElement('tr');
+							otbody.appendChild(otr);
+						
+							for(var j=1;j<=howManyTd.value;j++){
+								var otd = document.createElement('td');
+								otr.appendChild(otd);
+								otd.innerHTML=Math.floor( Math.random()*10);
+							}
+					}
+				}else{
+					alert('请输入正确的数值：行列数范围【1-100】');
+											
+				}
+
+			}
+			btn.onmouseup = function (evt){
+				var e = evt || window.event;
+				btn.style.background = '#34343c';
+			}
+		}
+			
+
+	</script>
+</head>
+<body>
+	
+	<!-- <p>3. 根据文本框的数字，点击button，生成表格。<br/>
+	要求：<br/>
+	1. 输入框要求输入1-100以内的数字，如果非法，不生成表格且弹出下面alert提示：
+	<p>
+	请输入正确的数值：
+	行列数范围【1-100】
+	<p/>
+	2. 根据输入框的数字，生成n行n列的表格，td背景色为灰色
+	3. 表格内的内容，为0-9的随机数。</p><br/><br/><br/> -->
+
+	<span>行数:</span><input type="text" value="" id="text1"/>
+	<span>列数:</span><input type="text" value="" id="text2"/>
+	<input type="button" value="生成表格" id="btn"/>
+	<table>
+		<tbody>
+			
+		</tbody>
+	</table>
+
+				
+	
+				
+				
+				
+
+				
+
+				
+
+				
+				
+				
+				
+
+		
+
+	
+	
+
+
+
+
+</body>
+</html>

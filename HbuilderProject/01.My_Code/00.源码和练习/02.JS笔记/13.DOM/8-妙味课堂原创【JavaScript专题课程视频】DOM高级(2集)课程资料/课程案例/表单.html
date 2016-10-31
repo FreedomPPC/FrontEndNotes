@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+window.onload=function ()
+{
+	var oForm=document.getElementById('form1');
+	var oUser=document.getElementsByName('user')[0];
+	var oPass=document.getElementsByName('pass')[0];
+	
+	oForm.onsubmit=function ()
+	{
+		if(oUser.value=='' || oPass.value=='')
+		{
+			alert('您填错了');
+			return false;
+		}
+	};
+	
+	oForm.onreset=function ()
+	{
+		/*if(confirm('是否要清空？'))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}*/
+		
+		return confirm('是否要清空？');
+	};
+};
+</script>
+</head>
+
+<body>
+<form id="form1" action="http://www.miaov.com/" method="get">
+	用户名：<input type="text" name="user" />
+	密码：<input type="password" name="pass" />
+    <input type="submit" value="提交" />
+    <input type="reset" value="重置" />
+</form>
+</body>
+</html>

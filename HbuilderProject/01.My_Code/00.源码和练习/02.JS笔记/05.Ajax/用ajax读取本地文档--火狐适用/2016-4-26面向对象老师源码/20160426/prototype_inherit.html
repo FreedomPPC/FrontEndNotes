@@ -1,0 +1,44 @@
+﻿<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title></title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            //原型方式的继承
+            //1. 创建一个类
+            function Dog () {
+                this.name = 'dog';
+            };
+
+            Dog.prototype.name = "WangCai";
+            Dog.prototype.age = 3;
+            Dog.prototype.bark = function () {
+                alert('旺旺，我要吃骨头');
+            }
+
+            function BigYellow () {}
+            //通过将子类的prototype，赋值为基类的一个实例，实现了原型链的继承
+            BigYellow.prototype = new Dog();
+            BigYellow.prototype.constructor = BigYellow;
+
+            var huang = new BigYellow();
+//            huang.bark();
+//            alert(huang.age);
+            alert(huang.constructor);
+
+            //缺点：
+            // 1.不能传参
+            // 2.如果基类中，有一个引用类型的属性，在用原型继承之后，子类的prototype里，
+            //   就有了引用类型的属性，这样如果这个属性被一个对象无意中修改，
+            //   那么所有的这个子类的对象的属性，就都变了
+
+            // ===> 组合
+
+
+
+
+        </script>
+    </body>
+</html>

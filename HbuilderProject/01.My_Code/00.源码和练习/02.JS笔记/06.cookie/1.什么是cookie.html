@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 * 1.cookie是用来保存页面信息;
+			 * 比如:自动登录,记住用户名;
+			 * 2.cookie的特性;
+			 * 同一网站中所有页面共享一套cookie;
+			 * 数量,大小有限;(一般数量不会超过50个,有人测试不到20个,4k左右,如果满了的话,不同的浏览器处理不一样);
+			 * 过期时间;(可以通过js控制);
+			 * 3.cookie是存在客户端上的;以一个文件的形式;可以更改cookie;所以比较敏感的cookie不要存;
+			 * 4.cookie只有在服务器端才能运行;只有火狐在本地可以运行;
+			 * 5.cookie没有什么兼容性问题;
+			 * 6.cookie是document下面的一个属性;
+			 * 7.按照以往的js代码执行,赋值的代码,后面会覆盖前面的代码;cookie不会发生这样的事情;
+			 * 8.不关闭当前页面的的情况下,注释下面的代码,也会弹出之前存放的cookie;
+			 * 9.一般情况下,不设置过期时间,cookie就会消失;
+			 * 10.cookie是一个字符串;靠分号和空格将每个项目分开,可以用split分割;
+			 */
+		</script>
+		<script type="text/javascript">
+			document.cookie = "user=blue";
+			document.cookie = "pass=123";
+			alert(document.cookie);
+		</script>
+	</body>
+</html>

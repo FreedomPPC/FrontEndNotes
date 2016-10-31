@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+        .transition{
+            transition:width 1s ease,height 1s linear 0.5s;
+            width: 100px;
+            height: 100px;
+            background: red;
+
+        }
+        div:hover{
+            width: 300px;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <p>CSS3 过渡是元素从一种样式逐渐改变为另一种的效果。
+        <br> 要实现这一点，必须规定两项内容：
+        <ul>
+            <li>指定要添加效果的CSS属性</li>
+            <li>指定效果的持续时间。</li>
+        </ul>
+    </p>
+    <div class="transition"></div>
+</body>
+
+</html>

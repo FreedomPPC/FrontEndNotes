@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 * with 语句用于设置代码在特定对象中的作用域。
+			 * 语法:with (expression) statement;
+			 * var sMessage = "hello";
+				with(sMessage) {
+				  alert(toUpperCase());	//输出 "HELLO"
+				}
+				
+				with 语句是运行缓慢的代码块，尤其是在已设置了属性值时。大多数情况下，
+				如果可能，最好避免使用它。
+			 */
+			
+			 with (function(x, undefined){}) {
+			 	alert(length);
+			 };
+		</script>
+	</body>
+</html>

@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js动画</title>
+	<style>
+		html,body{width:100%;height:100%;font-size:1rem;}
+		*{padding:0;margin:0;color:black;text-decoration:none;}
+		.h{height:100%;}
+		.page{background:#eee;overflow:hidden;}
+		.page .left{position:relative;float:left;background:#fff;width:200px;transition:width 0.3s;}
+		.page .left.hidden{width:0;}
+		.page .left .toggleSide{position:absolute;height:5rem;line-height:5rem;width:.7rem;text-align:center;color:#fff;top:50%;right:-.5rem;background:-webkit-linear-gradient(left,transparent .1em,rgba(0,0,0,0.5) .1em);font-weight:bold;border-radius:2px;transform:translateY(-50%);z-index: 2;}
+		.page .left .toggleSide:hover{
+			cursor: pointer;
+			opacity: 0.5;
+		}
+		.page .left.hidden .toggleSide:before{content:">"}
+		.page .left .toggleSide:before{content:"<"}
+		.page .main{overflow:hidden;}
+		.main .frame-wrap.loading{position:relative;}
+		.main .frame-wrap.loading:after{content:"LOADING...";position:absolute;background:rgba(0,0,0,0.4);width:100%;height:100%;top:0px;z-index:1;color:#136;font-weight:bold;font-family:fantasy;letter-spacing:.2rem;text-align:center;line-height:20rem;font-size:3rem;}
+		.left .nav{margin-top:3px;}
+		.left .nav-bar{color:#36a;font-family:fantasy;font-size:1.5rem;line-height:4rem;text-indent:1rem;border-bottom:2px solid;overflow: hidden;white-space: nowrap;}
+		.left .nav-wrap{border-right:2px solid #eee;}
+		.left .nav .nav-item{position: relative;font-size: 0rem;}
+		.left .nav-item.active{background:#eee;}
+		.left .nav-item.active:after{position:absolute;content:"";width:.2rem;height:100%;top:0;right:0;background:#36a;}
+		.nav .nav-item a{line-height:2.5rem;font-size:1rem;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;border-bottom:1px dashed;margin:0 1rem;color:#36a;}
+		.nav .nav-item a:before{content:"js 动画";font-family:fantasy;}
+		.nav .nav-item:hover{background:-webkit-linear-gradient(left,transparent,#eee,#eee 80%,transparent);}
+		#iframe{height:100%;width:100%;border:none;overflow-y:auto;}
+	</style>
+</head>
+<body>
+    <div class="page h">
+        <div class="left h">
+        	<a href="javascript:void(0);" class="toggleSide"></a>
+            <div class="nav-wrap h">
+            	<h3 class="nav-bar">JS 动画讲解</h3>
+                <ul class="nav">
+                	
+                    <li class="nav-item">
+                    	<a href="javascript:void(0);" data-href="introduce.html" title="讲解的大概内容概括" target="iframe">&nbsp;&nbsp;内容概括</a>
+                    </li>
+                    <li class="nav-item">
+                    	<a href="javascript:void(0);" data-href="rules.html" title="一般动画实现的原理" target="iframe">&nbsp;&nbsp;实现原理</a>
+                    </li>
+                    <li class="nav-item">
+                    	<a href="javascript:void(0);" data-href="ways.html" title="js实现动画的方式" target="iframe">&nbsp;&nbsp;实现方式</a>
+                    </li>
+                    <li class="nav-item">
+                    	<a href="javascript:void(0);" data-href="function.html" title="js实现动画需考虑的性能因素" target="iframe">&nbsp;&nbsp;性能因素</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                    	<a href="http://image.baidu.com/search/detail?ct=503316480&z=0&ipn=d&word=led%E6%98%BE%E7%A4%BA%E5%B1%8F%E8%B4%B4%E5%9B%BE&pn=8&spn=0&di=86175946340&pi=&rn=1&tn=baiduimagedetail&ie=utf-8&oe=utf-8&cl=2&lm=-1&cs=3676210728%2C2898911294&os=794856462%2C424698069&simid=0%2C0&adpicid=0&ln=30&fr=ala&sme=&cg=&bdtype=0&objurl=http%3A%2F%2Fpic41.nipic.com%2F20140529%2F16574871_114910373126_2.jpg&fromurl=ippr_z2C%24qAzdH3FAzdH3Fooo_z%26e3Bgtrtv_z%26e3Bv54AzdH3Ffi5oAzdH3F8anb8naa_z%26e3Bip4s&gsm=0" data-href="" title="led图片" target="_blank">&nbsp;&nbsp;素材一</a>
+                    </li> -->
+					<li class="nav-item">
+                    	<a href="javascript:void(0);" data-href="web-time.html" title="网页LED时间" target="iframe">&nbsp;&nbsp;案例一</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                    	<a href="http://image.baidu.com/search/detail?ct=503316480&z=0&ipn=d&word=%E8%BF%9B%E5%BA%A6%E6%9D%A1%E5%9B%BE%E7%89%87&pn=1&spn=0&di=99965373420&pi=&rn=1&tn=baiduimagedetail&ie=utf-8&oe=utf-8&cl=2&lm=-1&cs=3240656073%2C2752227449&os=58934747%2C237602105&simid=19037617%2C832686408&adpicid=0&ln=30&fr=ala&sme=&cg=&bdtype=0&objurl=http%3A%2F%2Fpic30.nipic.com%2F20130617%2F6427739_090818019000_2.jpg&fromurl=ippr_z2C%24qAzdH3FAzdH3Fooo_z%26e3Bgtrtv_z%26e3Bv54AzdH3Ffi5oAzdH3Fbd0mmaa_z%26e3Bip4s&gsm=0" data-href="" title="进度条图片" target="_blank">&nbsp;&nbsp;素材二</a>
+                    </li> -->
+                    <li class="nav-item">
+                    	<a href="javascript:void(0);" data-href="progress-bar.html" title="进度条动画" target="iframe">&nbsp;&nbsp;案例二</a>
+                    </li>
+                    <li class="nav-item">
+                    	<a href="javascript:void(0);" data-href="collapse.html" title="没有缓动的碰撞效果" target="iframe">&nbsp;&nbsp;案例三</a>
+                    </li>
+                    <li class="nav-item">
+                    	<a href="javascript:void(0);" data-href="tank.html" title="坦克游戏" target="iframe">&nbsp;&nbsp;案例四</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="main h">
+            <div class="frame-wrap h">
+                <iframe id="iframe" name="iframe" class="iframe">
+                    &lt;/div&gt; &lt;/div&gt;
+                </iframe>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+	window.onload=function() {
+		var sidebar = document.querySelector(".left"),
+			frameWrap=document.querySelector(".frame-wrap") ,
+			iframe = document.querySelector("#iframe"),
+			currentItem = document.querySelector(".nav-item a"),
+			timer ;
+		document.addEventListener("click",function(e){
+			var target = e.target,
+				pNode = target.parentNode,
+				className = pNode.className;
+			if(/nav-item/.test(className)&&!/active/.test(className)){
+				e.stopPropagation();
+				loadDoc(target);
+			}
+			/toggleSide/.test(target.className)&&toggleSidebar();
+		},false);
+
+		currentItem.click();
+
+		function bindFrameLoad(){
+			if(iframe.attachEvent){
+				iframe.attachEvent("onload",toggleMask);
+			}else{
+				iframe.onload=function(){toggleMask(true);}
+			}
+		}
+		bindFrameLoad();
+
+		function toggleMask(showing){
+			var className = frameWrap.className;
+			if(showing){
+				frameWrap.className = className.replace(/\s+loading/g,"");
+			}else{
+				frameWrap.className+=" loading";
+			}
+		}
+		function toggleSidebar(){
+			var className = sidebar.className;
+			if(/hidden/.test(className)){
+				sidebar.className=className.replace(/\s+hidden/,"");
+			}else sidebar.className = className+" hidden";
+		}
+
+		function loadDoc(target){
+			timer&&clearTimeout(timer);
+			timer = setTimeout(function(){
+				toggleMask();
+				var pNode=target.parentNode,
+					className = pNode.className;
+				setTimeout(function(){iframe.src=target.getAttribute("data-href");},0);
+				currentItem&&(currentItem.parentNode.className=currentItem.parentNode.className.replace("active",""));
+				pNode.className = className+" active";
+				currentItem = target;
+			},200);
+		}
+		
+	}
+</script>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>setStyle</title>
+		<style type="text/css">
+			#div1{
+				width:100px;
+				height: 100px;
+				background: yellow;
+				position: absolute;
+				
+				
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function (){
+				var oDiv = document.getElementById('div1');
+				oDiv.onmousemove = function () {
+					//1.传三个参数,调用三次
+//					getStyle(oDiv,'width','300px');
+//					getStyle(oDiv,'height','300px');
+//					getStyle(oDiv,'background','green');
+					//2.传两个参数,调用一次
+					getStyle(oDiv,{width:'300px',height:'300px',background:'green'})
+					
+				}
+			}
+			//创建getStyle函数 
+			//1.getstyle函数放三个参数,那么在window.onload里面就是要调用三次,
+//			function getStyle(obj,attr,value){
+//				obj.style[attr] = value;
+//			}
+			
+			//2.getstyle函数放两参数,那么子啊window.onload里面只需要调用一次
+			function getStyle(obj,json){
+				var attr = '';
+				for (attr in json){
+//					alert(attr+'='+json[attr]);
+					obj.style[attr] = json[attr];
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="div1">
+			
+		</div>
+	</body>
+</html>

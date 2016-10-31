@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="lib/sea.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/react.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/react-dom.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/browser.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			seajs.config({
+			  base: "./js/src/",//base配置,让seajs找到我们模块js的目录;
+			 
+			});
+			
+			// 加载入口模块
+			seajs.use("App");//这里面加载的入口js,不需要后缀;
+			
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

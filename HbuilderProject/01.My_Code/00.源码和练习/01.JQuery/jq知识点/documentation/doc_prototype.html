@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>jQuery包装集</title>
+        <link href="../../vendor/bootstrap.css" rel="stylesheet"/>
+        <link href="../../vendor/bootstrap-theme.css" rel="stylesheet"/>
+        <style>
+            #container {
+                padding-left: 30px;
+            }
+
+            h3 {
+                font-weight: normal;
+                width: 70%;
+            }
+
+            h3 .pra {
+                padding-top: 40px;
+                margin: 5px;
+                border: 2px solid #cc0033;
+                border-radius: 3px;
+            }
+
+            h3 .pra .text-indent {
+                display: block;
+                text-indent: 40px;
+                margin-top: 15px;
+                background-color: #cccccc;
+                border-radius: 5px;
+            }
+            .pra pre {
+                text-indent: 0;
+            }
+            em {
+                color: red;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <h1>
+                jQuery包装集
+            </h1>
+            <h3>
+                <div class="pra">
+                    ● CSS选择器
+                    <span class="text-indent">
+                        为了使样式(css)和结构(html)分离，就要在外部样式表中能够引用到页面元素：<em>CSS选择器</em>
+                    </span>
+
+                </div>
+                <div class="pra">
+                    ● jQuery包装集
+                    <span class="text-indent">
+                        jQuery的其中一个目的，就是方便的访问&操作DOM元素，jQuery也需要一种方法，把jQuery代码和页面元素连接：<em>jQuery包装集</em>
+                    </span>
+                    <span class="text-indent">
+                        jQuery通过$(selector)的方式，可以轻松的获取到任何DOM元素。其中，selector为字符串，字符串内容为一个<em>css选择器</em>
+                        <br>举个栗子：<code>$('p a')</code>将返回页面中所有p 下面的a标签
+                    </span>
+                    <span class="text-indent">
+
+                    </span>
+
+                </div>
+                <div class="pra">
+                    ● jQuery包装集方法调用
+                    <span class="text-indent">
+                        $() 函数，返回一个特别的JavaScript对象，它包含着与选择器相匹配的DOM元素的<em>数组</em>(包装集)。这个对象(包装集)拥有大量的方法，可以方便的操作元素。
+                        <br>
+                        <pre>
+//举个栗子：
+//将所有p下面的a标签，追加一个red的class
+$('p a').addClass('red');
+                        </pre>
+
+                    </span>
+                </div>
+                <div class="pra">
+                    ● 包装集和元素之间的转换
+                    <span class="text-indent">
+                        包装集 => DOM元素：从包装集数组中取出的元素，即为DOM元素 。例如：<code>$('#submit')[0]</code>
+                    </span>
+                    <span class="text-indent">
+                        DOM元素 => 包装集：通过$, 可以把DOM元素转为包装集。例如:
+                        <pre>
+var btn = document.getElementById('submit');
+<em>$(btn)</em>.addClass('focus');
+                        </pre>
+                    </span>
+                </div>
+
+                <div class="pra">
+                    ● <em>链式操作：</em>
+                    <span class="text-indent">
+                        在jQuery的包装集上执行一个函数之后，可以在这个包装集上，连续的执行其他操作。
+                        <br>例如：
+                        <pre>
+$('.red')
+    .removeClass('red')
+    .addClass('green')
+    .css('border', 'pink solid 2px');
+                        </pre>
+                    </span>
+                </div>
+                <div class="pra">
+                    ● 包装集常用方法
+                    <span class="text-indent">
+                        addClass / removeClass / hasClass
+                        <pre>$('.red').removeClass('red');</pre>
+                    </span>
+                    <span class="text-indent">
+                        click
+                        <pre>
+$('.#btn').click(function() {
+    alert('hello jquery');
+});
+                        </pre>
+                    </span>
+                    <span class="text-indent">
+                        css
+                        <pre>$('.red').css(''background, 'red');</pre>
+                    </span>
+                    <span class="text-indent">
+                        html
+                        <pre>$('.red').html()</pre>
+                    </span>
+                    <span class="text-indent">
+                        show / hide
+                        <pre>$('.red').show()</pre>
+                    </span>
+                </div>
+            </h3>
+        </div>
+
+    </body>
+</html>

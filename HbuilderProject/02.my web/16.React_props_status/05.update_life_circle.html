@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="lib/react.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/react-dom.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="lib/browser.min.js" type="text/javascript" charset="utf-8"></script>
+			
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+		</script>
+		<script type="text/babel">
+			//第二个阶段的生命周期的函数:update阶段---是不是组件内部的内容发生改变了(props,state进行改变);
+			//1.组件修改了自身state状态;
+			//componentWillReceiveProps:(nextProps) 组件接受到的最新的属性值;
+			//shouldComponentUpdate:(nextProps,nextState)  组件接受到的最新的属性值和状态值;
+			//componentWillUpdate:(nextProps,nextState)  组件接受到的最新的属性值和状态值;
+			//componentDidUpdate:()   完成更新渲染;
+			
+			var ReactState = React.createClass({
+				//状态state只能在组件内部去声明;
+				//1.getInitialState 组件内部设置属性;
+				//2.回顾(this.props得到对象),设置state可以在api return{}对象作为默认状态;
+				
+				getInitialState:function(){
+					
+					return{
+						_value:"hello"
+					}
+				},
+				//监听组件中数据变化的时候,需要不断改变state值,
+				handleChange:function(event){
+					var _text = event.target.value;
+					//this.state获取state值,重新赋值this.setState({key:value});
+					//this.setState({修改那个属性:被修改后的新值});
+					this.setState({_value:_text});
+				},
+				
+				//1.没有props的时候不执行;
+				componentWillReceiveProps:function(nextProps){
+					console.log("1.nextProps");	
+				},
+				//2.给开发一个权限 设置组件在接到新props,state以后是否发生更新--->写入逻辑,控制数据更新,节省组件性能;update里面最重要的一个函数;
+				shouldComponentUpdate:function(nextProps,nextState){
+					console.log("&&&&&&"+nextState._value);
+					if(nextState._value == "wuqiang"){
+						return true;
+					}else{
+						return false;
+					}
+				},
+				
+				componentWillUpdate:function(nextProps,nextState){
+					console.log("2.will update 组件即将渲染");
+				},
+				
+				componentDidUpdate:function(){
+					console.log("4.更新结束")
+				},
+				render:function(){
+					console.log("****3.二次渲染更新***");
+					console.log(this.state);
+					return(
+						<div>
+							<span>value:{this.state._value}</span>	
+							<input onChange={this.handleChange} type="text" />
+						</div>
+						
+					);
+				}
+			});
+			ReactDOM.render(<ReactState/>,document.body);
+			
+		</script>
+	</body>
+</html>

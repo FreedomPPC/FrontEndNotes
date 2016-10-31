@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="./index.css" type="text/css">
+</head>
+<body>
+	<div class="ball-box">
+		<div class="black ball"></div>
+		<div class="white ball"></div>
+	</div>
+</body>
+<script>
+
+(function(){
+
+	var bball = document.querySelector(".black"),
+		wball = document.querySelector(".white");
+		wball.style.left="300px";
+		wball.style.top="300px";
+
+		bball.config = {
+			speed : 1.3,
+			xstep : 5,
+			ystep : 4
+		}
+		wball.config = {
+			speed : 1.5,
+			xstep : 3,
+			ystep : 7
+		}
+
+		!function(){
+
+			var bconfig = bball.config,
+				wconfig = wball.config,
+				
+				bt = parseInt(bball.style.top)||0,
+				bl = parseInt(bball.style.left)||0,
+
+				wt = parseInt(wball.style.top)||0,
+				wl = parseInt(wball.style.left)||0,
+
+				// 判断俩球之间的合法距离
+				xspan = Math.abs(bl-wl);
+				yspan = Math.abs(bt-wt);
+				span = Math.pow(xspan*xspan+yspan*yspan,.5)<50;
+
+				// 碰撞后更新加速度
+				// bconfig.speed+=(span?.2:0);
+				// wconfig.speed+=(span?.1:0);
+
+				// 碰撞后反向运行
+				bystep = bconfig.ystep *= (span||bt>450||bt<0?-1:1),
+				bxstep = bconfig.xstep *= (span||bl>450||bl<0?-1:1),
+
+				wystep = wconfig.ystep *= (span||wt>450||wt<0?-1:1),
+				wxstep = wconfig.xstep *= (span||wl>450||wl<0?-1:1);
+
+			// 操作dom
+			bball.style.top = bt+bystep*bconfig.speed+"px";
+			bball.style.left = bl+bxstep*bconfig.speed+"px";
+
+			wball.style.top = wt+wystep*wconfig.speed+"px";
+			wball.style.left = wl+wxstep*wconfig.speed+"px";
+
+			setTimeout(arguments.callee,30);
+		}();
+
+	}())
+
+
+
+</script>
+</html>

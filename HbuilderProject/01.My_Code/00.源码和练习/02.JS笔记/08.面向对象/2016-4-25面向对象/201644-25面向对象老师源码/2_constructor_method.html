@@ -1,0 +1,40 @@
+﻿<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title></title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            //构造函数
+            //步骤：
+            //1. 直接将属性、方法追加到this指针上
+            function Person (name, gender, job) {
+                this.name = name;
+                this.gender = gender;
+                this.job = job;
+                this.sayHi = function () {
+                    alert(this.name+' says:' + 'I am a ' + this.job);
+                }
+            }
+
+            //创建对象的方式：
+            //工厂模式，是直接调用函数来创建对象
+            //构造函数方式，是通过new 操作符，来创建对象的。
+            //new操作符，创建对象时，一个做了4件事
+
+            //1. 创建了一个对象
+            //2. 将this指针，指向了这个对象
+            //3. 将属性和方法，追加到新对象上
+            //4. 将这个新对象，返回。
+            var xiaoMing = new Person('xiaoMing', 'male', 'actor');
+            xiaoMing.sayHi();
+
+            var cuiHua = new Person('cuiHua', 'female', 'waitress');
+            cuiHua.sayHi();
+
+            //缺点：每次创建一个对象，都会重新创建这个对象的方法，因为函数是只创建一次，调用多次。
+            //所以这种方法，非常浪费资源。
+        </script>
+    </body>
+</html>

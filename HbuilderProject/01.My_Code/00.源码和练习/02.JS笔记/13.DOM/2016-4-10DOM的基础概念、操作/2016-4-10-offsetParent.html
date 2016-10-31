@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>offsetParent父节点</title>
+	<style type="text/css">
+
+		#div1{
+			padding:40px 50px;
+			background:red;
+		}
+		#div2{
+			padding:40px 50px;
+			background:green;
+			
+		}
+		#div3{
+			padding:40px 50px;
+			background:orange;
+			
+		}
+		#div4{
+			padding:40px 50px;
+			background:blue;
+			position: relative;
+		}
+
+	</style>
+	<script>
+		window.onload = function(){
+
+			//元素.offsetParent:只读属性,离当前元素最近的一个有定位属性的父节点.
+
+			// 如果没有定位父级,默认的offsetParent是body;
+			// Ie7以下,如果当前元素没有定位,默认是body,如果有定位默认的offsetParent是html
+
+			// Ie7以下,如果当前元素的某个父级触发了layout(css属性),那么offsetParent就会被指向到这二个触发了layout特性的父节点上.
+
+			var oDiv3 = document.getElementById('div3');
+			//parentNode
+			alert('div3的parentNode的id为:'+oDiv3.parentNode.id);
+
+			//offsetParent默认为body
+			alert('div3的offsetParent的元素名字为:'+oDiv3.offsetParent.tagName);
+
+			//如果给某个元素加上定位,position:relative;那么这个元素就成为了div3的offsetParent;
+			alert('div3的offsetParent的元素名字为:'+oDiv3.offsetParent.id);
+			//如果给自己或者子元素加定位,offsetParent仍然为body
+
+
+
+
+		}
+	</script>
+</head>
+<body id="body1">
+	
+	<div id="div1">
+		<div id="div2">
+			<div id="div3">
+				<div id="div4">
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

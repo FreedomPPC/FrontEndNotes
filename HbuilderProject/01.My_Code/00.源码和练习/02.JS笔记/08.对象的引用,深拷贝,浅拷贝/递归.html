@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+
+//递归：
+//1.函数调用函数自身，执行递的动作
+//2.最后一次判断一个终止条件，可以执行归的动作
+
+function test(n){
+
+	if(n==1){
+		console.trace();
+		return 1;
+	}
+
+	return n*test(n-1);
+
+}
+
+alert(test(4));
+
+</script>
+</head>
+
+<body>
+</body>
+</html>

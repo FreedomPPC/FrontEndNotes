@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function test(){
+				alert(this)
+			}
+			test();//弹出[object window];
+			new test();//[object object];
+			
+			
+			/*
+			 分析:不加new的时候,全局函数是window下的一个属性;
+			 加new之后,系统会自动给我们创建一个对象;让他指到this上面;
+			*/
+		</script>
+	</body>
+</html>

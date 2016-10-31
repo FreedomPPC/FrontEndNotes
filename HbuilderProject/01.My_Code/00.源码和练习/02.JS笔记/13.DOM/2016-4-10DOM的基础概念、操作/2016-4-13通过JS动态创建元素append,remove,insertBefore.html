@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>通过JS动态创建元素</title>
+	<script type="text/javascript">
+
+		window.onload = function () {
+
+			var text = document.getElementById('text1');
+			var btn = document.getElementById('btn');
+			var oul = document.getElementById('ul-1');
+
+			btn.onclick = function (evt) {
+				var e = evt || window.event;
+				var oLi = document.createElement('li');
+				oLi.innerHTML = text.value;
+
+				/*
+					动态删除元素
+					父级元素.removeChild(要删除的元素);
+				*/
+
+				var oA = document.createElement('a');
+				oLi.appendChild(oA);
+				oA.innerHTML = '删除';
+				oA.href = 'javascript:;';
+				oA.style.marginLeft = 10 +'px';
+
+				oA.onclick = function () {
+					oul.removeChild(this.parentNode);
+				}
+
+
+				//添加到页面中
+				/*appendChild()的用法:
+				  父级元素.appenChild(要添加的元素);追加子元素,从最后面添加.
+				*/
+				//第一种方法
+				//oul.appendChild(oLi);
+				
+				//第二种方法;
+				//父级元素.insertBefore(新的元素,被插入的元素)在指定元素前添加插入一个新元素;
+				// oul.insertBefore(oLi,oul.firstChild);//第一种
+				//oul.insertBefore(oLi,oul.children[0]);//第二种
+
+				//在ie下如果insertBefore的第二个参数的children[0]节点不存在会报错,在其他标准浏览器下如果第二个参数的节点不存在则会以appendChild的形式进行添加,完美方法如下,
+				if(oul.children[0]){
+					oul.insertBefore(oLi,oul.children[0]);
+				}else{
+					oul.appendChild(oLi);
+				}
+
+
+
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="text" value="" id= "text1">
+	<input type="button" value="留言" id="btn">
+	<ul id='ul-1'></ul>
+</body>
+</html>

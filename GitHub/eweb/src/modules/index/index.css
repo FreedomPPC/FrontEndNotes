@@ -1,0 +1,49 @@
+.indexBox {
+  width: 100%;
+  overflow: hidden;
+  padding-bottom: 20px;
+}
+.indexBox .levelBox {
+  /*float: left;
+  margin-left: 20px;
+  width: 47%;*/
+}
+
+.indexBox .panelhalf {
+    height: 400px;
+}
+
+.indexBox .panelall {
+    height: 822px;
+}
+
+.indexBox .operator {
+  position: absolute;
+  right: 0;
+  top: 0px;
+  letter-spacing: 5px;
+  color: gray;
+}
+
+.indexBox .operator span {
+  cursor: pointer;
+}
+.indexBox .operator span:hover {
+  color: #333;
+}
+
+.indexRight {
+  float: left;
+  width: 50%;
+}
+.indexLeft .levelBox {
+  width: 97%;
+}
+.indexLeft {
+  float: left;
+  width: 50%;
+}
+
+.indexIn {
+    padding: 0 20px;
+}

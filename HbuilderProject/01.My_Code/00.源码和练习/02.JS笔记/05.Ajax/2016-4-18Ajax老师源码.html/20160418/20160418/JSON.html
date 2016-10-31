@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<title></title>
+		<style type="text/css">
+			span {
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript" src="../utility.js"></script>
+		<script type="text/javascript">
+			/*================================================================================*/
+			ajax('get', 'json-test.json', true, function(resp) {
+				var json = JSON.parse(resp);
+				alert(json.name);
+			})
+
+		</script>
+	</body>
+</html>
