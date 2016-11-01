@@ -20,16 +20,16 @@
   // console.log(a);
   var A = {};
   var b = [];
-  console.log(b);
   for(let i=0;i<a.length;i++){
     A.cardID = a[i].card_id;
     A.cardExt = a[i].card_ext;
-    console.log(A);
+    b.push(A);
+    A={};//这一步一定不可以少,否则最后一步会覆盖前面的,最后的b数组只会是最后一个;
   }
   console.log(b);
 //========================================
 var key = 'abc';
-var obj = {key : '值'}; // 好奇一下，你为什么会用 oBj 这么奇葩的大小写方式？
+var obj = {key : '值'}; 
 
 // 复制原来的值
 obj[key] = obj['key'];
