@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		let a = ['dog','cat','hen']
+		a.forEach(function(currentValue,index,array){
+			// Do something with currentValue or array[index]
+			console.log(currentValue);
+			console.log(index);
+			console.log(array);
+			console.log(array[index]);
+
+			array[1] = 'pig'
+		});
+		console.log(a);
+	</script>
+</body>
+</html>

@@ -30,8 +30,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="person in people">
-                        <td>{{ person.name }}</td>
+                    <tr v-for="(index,person) in people">
+                        <td>{{index}}--{{ person.name }}</td>
                         <td>{{ person.age  }}</td>
                         <td>{{ person.sex  }}</td>
                     </tr>

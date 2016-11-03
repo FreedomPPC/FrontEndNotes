@@ -6,15 +6,16 @@
 </head>
 <body>
 	<script>
+		//下面代码中，计数器i只在for循环体内有效，在循环体外引用就会报错。
 		for(let i=0;i<10;i++){
 
 		}
-		// console.log(i);/*报错Uncaught ReferenceError(引用错误): i is not defined(…)*/
+		console.log(i);//报错Uncaught ReferenceError(引用错误): i is not defined(…)
 
 		for(var j=0;j<10;j++){
 
 		}
-		console.log(j);
+		console.log(j);//10
 	</script>
 </body>
 </html>

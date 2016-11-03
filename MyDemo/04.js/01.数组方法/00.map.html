@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+    /**
+    map()方法返回一个新数组,数组种的元素为原始数组调用函数处理之后的值;
+    map()方法依照原始数组顺序依次处理元素;
+    注意:map()不会空数组进行检测;
+    注意:map()不是改变原始数组
+    **/
+    var a = [36, 25, 16, 9, 4, 1]
+    var b = a.map(Math.sqrt);
+    console.log(b); //[6,5,4,3,2,1];
+
+
+    var c = [1, 2, 3];
+    var d = c.map(function(num,idx) {
+    	console.log(idx);
+        return num * 3;
+    })
+    console.log(d);
+
+    var kvArray = [{
+        key: 1,
+        value: 10
+    }, {
+        key: 2,
+        value: 20
+    }, {
+        key: 3,
+        value: 30
+    }];
+    var reformattedArray = kvArray.map(function(obj) {
+        var rObj = {};
+        rObj[obj.key] = obj.value;
+        return rObj;
+    });
+    console.log(reformattedArray);
+    </script>
+</body>
+
+</html>
