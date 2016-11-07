@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//ES5中只有全局作用域和函数作用域,没有块级作用域,这带来很多不合理的场景。
+		//第一种场景
+		var temp = new Date();
+		console.log(temp);
+		function f() {
+			console.log(temp);
+			if(false){
+				var temp = 'hello world'
+			}
+		};
+		f();//undefined
+		//上面代码中，函数f执行后，输出结果为undefined，
+		//原因在于变量提升，导致内层的tmp变量覆盖了外层的tmp变量。
+
+
+		//第二种场景
+		var s = 'hello';
+		for(var i=0;i<s.length;i++){
+			console.log(s[i]);
+		}
+		console.log(i);
+	</script>
+</body>
+</html>

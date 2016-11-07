@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var a = [];
+		for (var i = 0; i < 10; i++) {
+			a[i] = function() {
+				console.log(i);
+			}
+		};
+		a[6]();//10;
+
+
+		var b = [];
+		for(let i=0;i<10;i++){
+			b[i] = function(){
+				console.log(i);
+			}
+		}
+		b[6]();//6
+	</script>
+
+
+</body>
+</html>
