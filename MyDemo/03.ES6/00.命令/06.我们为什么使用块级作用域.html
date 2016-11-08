@@ -21,12 +21,13 @@
 		//原因在于变量提升，导致内层的tmp变量覆盖了外层的tmp变量。
 
 
-		//第二种场景
+		//第二种场景 用来计数的循环变量泄露为全局变量。
 		var s = 'hello';
 		for(var i=0;i<s.length;i++){
 			console.log(s[i]);
 		}
 		console.log(i);
+		//上面代码中，变量i只用来控制循环，但是循环结束后，它并没有消失，泄露成了全局变量。
 	</script>
 </body>
 </html>
