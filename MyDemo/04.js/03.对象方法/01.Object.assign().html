@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+    // Object.assign() 方法可以把任意多个的源对象自身的可枚举属性拷贝给目标对象， 然后返回目标对象。
+
+    // 语法
+    // Object.assign(target, ...sources)
+    // 参数
+
+    // target
+    // 目标对象。
+    // sources
+    // 任意多个源对象。
+    // 返回值
+
+    // 目标对象会被返回。
+    var obj = {
+        a: 1
+    };
+    var copy = Object.assign({}, obj);
+    console.log(copy);
+
+    //=================================================
+    var MemberGroup = {
+        main: {
+            priceTypeName: '555',
+            price: '666',
+            heheda:'heheda'
+        },
+        group: [],
+    };
+    console.log(MemberGroup);
+    var membercard = {
+        Enable:true,
+        Level: 1,
+        UserType: 3,
+        code: "HOUR",
+        originalPrice: 0,
+        price: 0,
+        priceTypeName: "普通卡",
+    };
+
+    Object.assign(MemberGroup.main,membercard);
+    console.log(MemberGroup);
+    </script>
+</body>
+
+</html>
