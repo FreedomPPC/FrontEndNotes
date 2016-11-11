@@ -6,9 +6,13 @@
 </head>
 <body>
 	<script>
-
-		const { houseTypeCode, package: tPackage } = a;
-		// console.log(a);
+		const a = [];
+		a.push('hello');
+		console.log(a.length);//可执行 1
+		a.length = 0;//可执行;
+		console.log(a.length);//可执行 0
+		console.log(a);//['hello']
+		a=['bbb']//报错
 	</script>
 </body>
 </html>
