@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script>
+    // jQuery.each() 函数用于遍历指定的对象和数组。
+    // 语法
+    // $.each( object, callback )
+
+    // 参数	描述
+    // object	Object类型 指定需要遍历的对象或数组。
+    // callback	Function类型 指定的用于循环执行的函数。
+    var cardList = [{
+        'card_id': 123,
+        'card_ext': "小明"
+    }, {
+        'card_id': 456,
+        'card_ext': "小红"
+    }, {
+        'card_id': 789,
+        'card_ext': "小王"
+    }];
+
+    $.each(cardList,function(idx,val){
+    	var is_succ = val.is_succ;
+    	if(!!is_succ){
+    		alert('mememme');
+    	}
+    	console.log(val.is_succ);
+    })
+    </script>
+</body>
+
+</html>

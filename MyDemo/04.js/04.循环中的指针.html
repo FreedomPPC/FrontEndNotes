@@ -39,6 +39,27 @@
     }
     console.log(b);
     //========================================
+    //使用数组的map方法更改对象的k值
+    var data = [{
+        'card_id': 123,
+        'card_ext': "小明"
+    }, {
+        'card_id': 456,
+        'card_ext': "小红"
+    }, {
+        'card_id': 789,
+        'card_ext': "小王"
+    }];
+
+    data = data.map(function(row){
+        row.cardID = row.card_id;
+        row.cardExt = row.card_ext;
+        delete row.card_id;
+        delete row.card_ext;
+        return row;
+    })
+    console.log(data);
+    //========================================
     var key = 'abc';
     var obj = {
         key: '值'

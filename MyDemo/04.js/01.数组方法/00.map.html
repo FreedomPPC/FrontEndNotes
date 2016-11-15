@@ -42,6 +42,17 @@
         return rObj;
     });
     console.log(reformattedArray);
+
+    //map时给数组的元素添加属性;
+    var log_id = '234';
+    var item_rows_json = [{code:'pooajbdkpq',CardLogID:'234'},{code:'public',CardLogID:'888'}];
+    item_rows_json = item_rows_json.map(function(row){
+    	if(row.CardLogID == log_id){
+    		row.isGet = true;
+    	}
+    	return row;
+    });
+    console.log(item_rows_json);
     </script>
 </body>
 
