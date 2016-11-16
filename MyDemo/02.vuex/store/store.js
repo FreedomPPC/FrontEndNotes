@@ -10,7 +10,8 @@ Vue.use(Vuex)
 // 创建一个对象来保存应用启动时的初始状态
 const state = {
   //放置初始状态
-  count:0
+  count:0,
+  doubleCount:0,
 }
 
 // 创建一个对象存储一系列我们接下来要写的 mutation 函数
@@ -26,7 +27,7 @@ const mutations = {
       state.count = state.count - amount;
   },
   DOUBLE(state,amount){
-  	state.count = state.count*amount;
+  	state.doubleCount = state.count*amount;
   }
 }
 

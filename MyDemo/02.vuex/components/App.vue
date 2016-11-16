@@ -24,8 +24,9 @@ export default {
   },
   store:store, //根组件加入store,让它的子组件和store连接
   ready(){
-    console.log($('body'));
-    $('body').css({'background':'deepskyblue'});
+    //测试导入jquery
+    // console.log($('body'));
+    // $('body').css({'background':'deepskyblue'});
   }
 }
 </script>

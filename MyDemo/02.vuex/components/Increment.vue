@@ -1,3 +1,14 @@
+<style lang="less">
+  button{
+    background: deepskyblue;
+    height: 30px;
+    border: none;
+    font-family: "微软雅黑";
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+</style>
 <template>
   <div>
     <button @click='increment'>Increment +1</button>

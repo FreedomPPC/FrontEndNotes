@@ -4,4 +4,6 @@
 
 export function getCount (state) {
   return state.count
-}
+};
+
+export const getDouble = state => state.doubleCount;
