@@ -28,12 +28,10 @@
     }];
 
     $.each(cardList,function(idx,val){
-    	var is_succ = val.is_succ;
-    	if(!!is_succ){
-    		alert('mememme');
-    	}
-    	console.log(val.is_succ);
+    	val.cardID = val.card_id;
+        delete val.card_id;
     })
+    console.log(cardList);
     </script>
 </body>
 

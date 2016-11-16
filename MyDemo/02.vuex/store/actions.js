@@ -14,7 +14,11 @@ export const incrementCounter = function ({ dispatch, state }) {
 }
 
 export const reduceCounter = function ({ dispatch, state }) {
-    dispatch('REDUCE', 1)
+    dispatch('REDUCE', 10)
+}
+
+export const doubleCounter = function({dispatch,state}) {
+	dispatch('DOUBLE',2);
 }
 //最简单的actions写法;
 //function increment(store){

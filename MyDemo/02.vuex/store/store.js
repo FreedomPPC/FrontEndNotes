@@ -24,6 +24,9 @@ const mutations = {
   },
   REDUCE(state,amount){
       state.count = state.count - amount;
+  },
+  DOUBLE(state,amount){
+  	state.count = state.count*amount;
   }
 }
 
