@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style media="screen">
+        /*E[attr~="val"]选择属性中带有val的元素*/
+        div[class~="a"]{
+            border:2px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="a">1</div>
+    <div class="c">2</div>
+    <div class="a b">3</div>
+</body>
+</html>
