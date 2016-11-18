@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input class='ipt1' type="text" value="我是可编辑的输入框!">
+	<button>点我</button>
+</body>
+	<script type="text/javascript">
+		var Ipt_1 = document.querySelectorAll(".ipt1")[0]
+		var isDisable  = false;
+		document.getElementsByTagName('button')[0].onclick = function(){
+			isDisable = !isDisable;
+			if(isDisable == true){
+				Ipt_1.setAttribute('disabled', true);
+				Ipt_1.value = "我是不可编辑的输入框!"
+			}else{
+				Ipt_1.removeAttribute('disabled');
+				Ipt_1.value = "我是可编辑的输入框!"
+			}
+		}
+	</script>
+</html>

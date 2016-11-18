@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+	p{
+		margin-top: 10px;
+	}
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>有时候，我们希望表单中的文本框是只读的，让用户不能修改其中的信息，如使</p>
+    <input type="text" name="input1" value="中国">
+    <p>的内容，"中国"两个字不可以修改。实现的方式归纳一下，有如下几种。</p>
+
+	<!-- ++++++++++++++++++++ -->
+
+    <p>方法1: onfocus=this.blur() 当鼠标放不上就离开焦点</p>
+    <input type="text" name="input1" value="中国" onfocus=this.blur()>
+
+    <p>方法2:readonly</p>
+    <input type="text" name="input1" value="中国" readonly>
+    <input type="text" name="input1" value="中国" readonly="true">
+
+    <p>方法3: disabled</p>
+    <input type="text" name="input1" value="中国" disabled="true">
+
+    <p>完整的例子:</p>
+    <input name="ly_qq" type="text" tabindex="2" onMouseOver="this.className='input_1'" onMouseOut="this.className='input_2'" value="123456789" disabled="true" 　readOnly="true" /> disabled="true" 此果文字会变成灰色，不可编辑。 readOnly="true" 文字不会变色，也是不可编辑的 css屏蔽输入：
+    <input style="ime-mode: disabled">
+    有两种方法第一：disabled="disabled"这样定义之后被禁用的 input 元素既不可用，也不可点击。
+    第二：readonly="readonly" 只读字段是不能修改的。不过，用户仍然可以使用 tab 键切换到该字段，还可以选中或拷贝其文本；
+</body>
+
+</html>
