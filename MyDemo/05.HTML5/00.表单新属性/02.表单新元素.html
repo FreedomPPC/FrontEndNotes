@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>HTML5 移动Web开发指南</title>
+<style type="text/css">
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-align: center;
+}
+
+input {
+    width: 450px;
+}
+
+input[type="range"] {
+    -webkit-appearance: none !important;
+    -webkit-box-shadow: 0 1px 0 0px #424242, 0 1px 0 #060607 inset, 0px 2px 10px 0px black inset, 1px 0px 2px rgba(0, 0, 0, 0.4) inset, 0 0px 1px rgba(0, 0, 0, 0.6) inset;
+    margin-top: 2px;
+    background-color: #272728;
+    border-radius: 15px;
+    width: 400px;
+}
+
+
+/*-webkit-slider-thumb:设置上面滑块的样式*/
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none !important;
+    cursor: default;
+    top: 1px;
+    height: 9px;
+    width: 20px;
+    background: none repeat scroll 0 0 #777;
+    border-radius: 15px;
+    -webkit-box-shadow: 0 -1px 1px black inset;
+}
+</style>
+<header>
+    <section>
+        <h1>
+HTML5 移动Web开发指南</h1>
+    </section>
+</header>
+<fieldset>
+    <legend>HTML5 新元素--表单元素</legend>
+    <section>
+        <pre> placeholder 属性：
+一般用在文本框上
+其主要作用是当文本框处于未输入状态并且内容为空时给文本框的提示内容
+效果：
+当文本框获取焦点时，提示信息自动清空，失去焦点且未输入内容时，提示信息又自动出现
+省去传统的文本框需要借助 onfocel 和 onblur 事件才能实现的效果
+(兼容大部分的PC浏览器和Mobile浏览器，只能说科技确实进步了)
+示例：<input type="text" placeholder="我是 placeholder,是用来起提示作用">
+</pre>
+    </section>
+    <section>
+        <pre> autofocus 属性：
+指定控件自动获取焦点，需要注意的是一个HTML页面上只能有一个控件具有改属性
+示例：<input type="text" autofocus="true" placeholder="我设置了 autofocus自动获取焦点属性">
+</pre>
+    </section>
+    <section>
+        <pre> list 和 datalist 元素：
+list 元素的主要作用是提示文本框输入，提示的数据源则由 datalist 提供
+目前 list 和 datalist 元素只有 Opera 浏览器支持，甚至没有任何一款移动浏览器支持该特性
+示例：<input type="text" placeholder="我添加了 list 属性 和 datalist 元素，可没多少人懂我" list="myDataList">
+<datalist id="myDataList">
+<option label="1">我是datalist1</option>
+<option label="2">我是datalist2</option>
+<option label="3">我是datalist3</option>
+<option label="4">我是datalist4</option>
+</datalist>
+</pre>
+    </section>
+    <section>
+        <pre> search 类型文本框：
+主要用来搜索关键词的文本框
+该文本框和普通文本框唯一区别，在 Safari 和 Chrome 浏览器下，文本框的外观为圆角
+示例：<input type="search" placeholder="我是search 类型文本框">
+</pre>
+    </section>
+    <section>
+        <pre> email 类型文本框：
+是一个可以指定电子邮件内容的文本框，通常用在输入E-mail地址的输入文本框上
+这种文本框和普通文本框在外观上几乎一样，但实际上在Safari移动版浏览器下是有区别的
+其键盘会根据文本框类型不同而显示相对应的键盘
+示例：<input type="email" placeholder="我是 email 类型文本框">
+</pre>
+    </section>
+    <section>
+        <pre> number 类型文本框：
+是一种用于输入数字的文本框类型
+它可以配合 min、max、及step属性使用
+示例：<input type="number" value="0" min="0" max="10" step="1">
+</pre>
+    </section>
+    <section>
+        <pre> range 类型文本框：
+是一种数值范围输入文本框类型，提供的是一种滑动输入方式
+需要配合 min、max、range等属性的使用
+示例：<input type="range" value="1" min="0" max="100" step="1">
+</pre>
+    </section>
+    <section>
+        <pre> tel 类型文本框：
+是一种供用户输入电话号码的文本框类型
+这种文本框在移动版浏览器下，其键盘会根据文本框类型不同而显示相对应的键盘
+示例：<input type="tel" placeholder="我是 tel 类型文本框">
+</pre>
+    </section>
+    <section>
+        <pre> url 类型文本框：
+是一种供用户输入Url地址的文本框类型
+这种文本框在移动版浏览器下，其键盘会根据文本框类型不同而显示相对应的键盘
+示例：<input type="url" placeholder="我是 url 类型文本框">
+</pre>
+    </section>
+    <section>
+        <pre> 在HTML5规范中，除了新增表单元素外，还有日期、时间类型的 input元素
+但这些类型都没有得到广泛的支持
+具体如下：
+日期和时间(含时区)：
+<input type="datetime">
+日期和时间(不含时区)：
+<input type="datetime-local">
+时间选择器文本框：
+<input type="time">
+日期选择器文本框：
+<input type="date">
+年的周号选择器文本框：
+<input type="week">
+月份选择器文本框：
+<input type="month">
+</pre>
+    </section>
+    </article>
+</fieldset>
+<footer>
+    <section>
+        <h5>
+HTML5 新元素--表单元素
+</h5>
+    </section>
+</footer>
+
+</html>
