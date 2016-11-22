@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div class="keyboard" v-show.sync="!boardStatue" >
+                    <ul class="borad-n" v-for="data in tableList" v-on:click="insertCh($event)">
+                        <li  v-text="data.numbers.number1"></li>
+                        <li  v-text="data.numbers.number2"></li>
+                        <li  v-text="data.numbers.number3"></li>
+                        <li  v-text="data.numbers.number4"></li>
+                        <li  v-text="data.numbers.number5"></li>
+                        <li  v-text="data.numbers.number6"></li>
+                        <li  v-text="data.numbers.number7"></li>
+                        <li  v-text="data.numbers.number8"></li>
+                        <li  v-text="data.numbers.number9"></li>
+                    </ul>
+                    <ul class="borad-b" v-for="data in tableList">
+                        <li class="reback" v-text="data.reback" v-on:click.stop="outCh"></li>
+                        <li class="clear" v-text="data.clear" v-on:click.stop="clearCh"></li>
+                    </ul>
+                    <ul class="borad-c" v-for="data in tableList" v-on:click="insertCh($event)">
+                        <li class="back" v-text="data.back" v-on:click="toggleKeyboard"></li>
+                        <li v-text="data.numbers.number0"></li>
+                        <li v-text="data.x"></li>
+                    </ul>
+                    <ul class="borad-s" v-for="data in tableList">
+                        <li class="sure" v-text="data.sure" v-on:click="sure"></li>
+                    </ul>
+                </div>
+
+        <div class="board-pos">
+            <div class="btn result-pos">
+                <div class="result" v-on:click.stop="toggleKeyboard" v-if="btnStatue">&nbsp;</div>
+            </div>
+        </div>
+<script type="text/javascript" src="../js/vue.min.js"></script>
+<script type="text/javascript">
+    var btn = new Vue({
+        el:".btn",
+        data:{
+            btnStatue:true
+        },
+        methods:{
+            toggleKeyboard:function(){
+                this.btnStatue       = !this.btnStatue;
+                datelist.boardStatue = !datelist.boardStatue;
+                if(this.btnStatue == false){
+                    document.getElementById("waybill_num").setAttribute("disabled",true);
+                }else{
+                    document.getElementById("waybill_num").removeAttribute("disabled");
+                }
+            }
+        }
+    });
+    var IDcard = {};
+    var aKeydel1 =document.querySelector(".aKeydel1");
+    var datelist = new Vue({
+        el:".demo",
+        data:{
+            tableList:[{
+                numbers:{
+                    number0:0,
+                    number1:1,
+                    number2:2,
+                    number3:3,
+                    number4:4,
+                    number5:5,
+                    number6:6,
+                    number7:7,
+                    number8:8,
+                    number9:9
+                },
+                x:"X",
+                back:"返回",
+                sure:"确定",
+                reback:"",
+                clear:"清空"
+            }],
+            boardStatue:true,
+            resutStr:''
+        },
+        methods:{
+            toggleActive:function(s){ // 按键激活状态
+                s.active = !s.active;
+            },
+            toggleKeyboard:function(){ // 隐藏、显示键盘
+
+                this.boardStatue = !this.boardStatue;
+                btn.btnStatue    = !btn.btnStatue;
+                this.resutStr    = '';
+
+                if(this.boardStatue==false){
+                    document.getElementById("waybill_num").setAttribute("disabled",true);
+                }else{
+                    document.getElementById("waybill_num").removeAttribute("disabled");
+                }
+            },
+            sure:function(){ //确定
+              // keyboard
+                this.boardStatue = !this.boardStatue;
+                btn.btnStatue    = !btn.btnStatue;
+
+              document.getElementById("waybill_num").removeAttribute("disabled");
+
+          },
+            insertCh:function(event){ // 插入字符
+                var newStr = '';
+                IDcard   = document.getElementById("IDcard");
+                var lastCh = IDcard.value;
+                if(event.target.getAttribute("class") =="back" || event.target.nodeName != "LI"){
+                    return;
+                }
+                if(this.resutStr.length>17){
+                    return;
+                }
+
+                console.log(this.resutStr);
+                newStr = (IDcard.value += event.target.innerHTML);
+                this.resutStr = newStr ;
+
+                if(this.resutStr.length!=''){
+                    aKeydel1.style.visibility="visible";
+
+                }
+                return newStr;
+            },
+            outCh:function(){ //删除字符
+                IDcard   = document.getElementById("IDcard");
+                var lastCh = IDcard.value;
+                console.log(lastCh);
+
+
+                if(lastCh && lastCh!=""){
+                    // this.resutStr = this.resutStr.substring(0,lastCh.length-1);
+                    this.resutStr = lastCh.substring(0,lastCh.length-1);
+                    if(this.resutStr.length>0){
+                        aKeydel1.style.visibility="visible";
+                    }else{
+                        aKeydel1.style.visibility="hidden";
+                    }
+                }
+            },
+            clearCh:function(){ //清空
+                var lastCh = IDcard.value;
+                if(lastCh && lastCh!=""){
+                    this.resutStr = '';
+                }else{
+
+                }
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

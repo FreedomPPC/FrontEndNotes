@@ -8,33 +8,37 @@ module.exports = {
     publicPath: '/dist/',
     filename: 'build.js'
   },
+  resolveLoader: {
+    root: path.join(__dirname, 'node_modules'),
+  },
   module: {
-    rules: [
+    loaders: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader',
-        options: {
-          // vue-loader options go here
-        }
+        loader: 'vue'
       },
       {
         test: /\.js$/,
-        loader: 'babel-loader',
+        loader: 'babel',
         exclude: /node_modules/
       },
       {
+        test: /\.json$/,
+        loader: 'json'
+      },
+      {
+        test: /\.html$/,
+        loader: 'vue-html'
+      },
+      {
         test: /\.(png|jpg|gif|svg)$/,
-        loader: 'file-loader',
-        options: {
+        loader: 'url',
+        query: {
+          limit: 10000,
           name: '[name].[ext]?[hash]'
         }
       }
     ]
-  },
-  resolve: {
-    alias: {
-      'vue$': 'vue/dist/vue'
-    }
   },
   devServer: {
     historyApiFallback: true,
@@ -53,13 +57,10 @@ if (process.env.NODE_ENV === 'production') {
       }
     }),
     new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
       compress: {
         warnings: false
       }
     }),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true
-    })
+    new webpack.optimize.OccurenceOrderPlugin()
   ])
 }
