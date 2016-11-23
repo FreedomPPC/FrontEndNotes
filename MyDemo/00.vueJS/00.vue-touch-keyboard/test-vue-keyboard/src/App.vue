@@ -1,29 +1,33 @@
 <template>
   <div>
     <input type="text" placeholder="Text input" @focus="show" data-layout="normal" />
-    <!-- <vue-touch-keyboard v-if="visible" :layout="layout" :cancel="hide" :accept="accept" :input="input" /> -->
+    <input type="text" placeholder="Text input" @focus="show" data-layout="normal" />
+    <vue-touch-keyboard v-if="visible" :layout="layout" :cancel="hide" :accept="accept" :input="input"></vue-touch-keyboard>
   </div>
 </template>
 
 <script>
+  import Vue from 'vue';
   import VueTouchKeyboard from "vue-touch-keyboard";
-  import style from "vue-touch-keyboard/dist/vue-touch-keyboard.css"; // load default style
+  // import style from "vue-touch-keyboard/dist/vue-touch-keyboard.css"; // load default style
 
   Vue.use(VueTouchKeyboard);
 
   export default {
-    data: {
-      visible: false,
-      layout: "normal",
-      input: null,
-      options: {
-        useKbEvents: false
+    data(){
+      return{
+        visible: true,
+        layout: "normal",
+        input: null,
+        options: {
+          useKbEvents: false
+        }
       }
     },
 
     methods: {
         accept(text) {
-          alert("Input text: " + text);
+          // alert("Input text: " + text);
           this.hide();
         },
 
