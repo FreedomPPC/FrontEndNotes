@@ -15,7 +15,7 @@
 
 		fieldset
 			legend Numeric layout
-			input.input(type="number", placeholder="Number input", number, @focus="show", data-layout="numeric")
+			input.input(type="number", placeholder="Number input", number, @focus="number", data-layout="numeric")
 
 		fieldset
 			legend Password with compact layout
@@ -29,7 +29,7 @@
 	import Vue from "vue";
 	import VueTouchKeyboard from "../src";
 
-	import {each, isFunction, cloneDeep, merge} from 'lodash';	
+	import {each, isFunction, cloneDeep, merge} from 'lodash';
 
 	Vue.use(VueTouchKeyboard);
 
@@ -44,14 +44,14 @@
 				input: null,
 				options: {
 					useKbEvents: true
-				}			
+				}
 			}
 		},
 
 		methods: {
 			hide() {
 				this.visible = false;
-			},	
+			},
 
 			accept(text) {
 				//alert("Input text: " + text);
@@ -84,10 +84,21 @@
 
 				this.$nextTick(() => {
 					this.input.scrollIntoView();
-				});				
-			}		 
+				});
+			},
+			number(e){
+				this.input = e.target;
+				this.layout = e.target.dataset.layout;
+
+				if (!this.visible)
+					this.visible = true
+
+				this.$nextTick(() => {
+					this.input.scrollIntoView();
+				});
+			}
 		},
-		
+
 		ready() {
 			window.app = this;
 			this.$nextTick(() => {
@@ -141,7 +152,7 @@
 		box-shadow: 0px -3px 10px rgba(black, 0.3);
 
 		border-radius: 10px;
-	}	
+	}
 
 	fieldset {
 		display: block;
@@ -152,7 +163,7 @@
 		background-color: #fff;
 		border-color: #ddd;
 		border-width: 1px;
-		border-radius: 4px;	
+		border-radius: 4px;
 	}
 
 	input.input, select#layoutSelector {
@@ -168,12 +179,12 @@
 		border: 1px solid #ccc;
 		border-radius: 4px;
 		box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-		transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;		
+		transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 
 		&:focus {
 			border-color: #66afe9;
 			outline: 0;
-			box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);			
+			box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
 		}
 	}
 

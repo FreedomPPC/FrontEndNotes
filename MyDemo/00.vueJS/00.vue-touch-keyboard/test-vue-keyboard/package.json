@@ -4,7 +4,7 @@
   "author": "keepfool <crmug@outlook.com>",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --inline --hot --open --port 3000",
+    "dev": "webpack-dev-server --inline --hot --open",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {

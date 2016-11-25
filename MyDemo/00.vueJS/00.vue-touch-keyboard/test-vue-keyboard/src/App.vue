@@ -20,12 +20,12 @@ li{
 <template>
   <div>
     <input type="text" placeholder="Text input" @focus="show" data-layout="normal" v-bind:value="hanzi"/>
-    <input type="text" placeholder="Text input" @focus="number" data-layout="normal" />
+    <input type="text" placeholder="Text input" @focus="otherInput" data-layout="compact" maxlength="18" />
     <vue-touch-keyboard class="keyboard" v-if="visible" :layout="layout" :cancel="hide" :accept="accept" :input="input"></vue-touch-keyboard>
     <div v-if="showZone">
-     <ul v-for="item in items">
-       <li @click="selectHanzi($index)">{{item}}</li>
-     </ul>
+      <ul v-for="item in items">
+        <li @click="selectHanzi($index)">{{item}}</li>
+      </ul>
     </div>
   </div>
 </template>
@@ -57,16 +57,20 @@ li{
           // alert("Input text: " + text);
           this.hide();
         },
-
         show(e) {
+
           this.input = e.target;
           this.layout = e.target.dataset.layout;
-          console.log(e.target.dataset.layout);
+
           if(e.target.dataset.layout == 'normal'){
             this.showZone = true;
             var tgtVal = e.target.value;
+            //去中文,数字
             var reg=/[0-9\u4E00-\u9FA5]/g;
-            var tgtVal=tgtVal.replace(reg,'');
+            var tgtVal = tgtVal.replace(reg,'');
+            //去空格
+            var reg_1 = /\s+/g;
+            var tgtVal = tgtVal.replace(reg_1,'');
             var _this = this;
             if(!!e.target.value){
               _this.items = [];
@@ -81,15 +85,28 @@ li{
                   _arr.forEach(function(val,idx,arr){
                     _this.items.push(val[0]);
                   });
+                },
+                error:function(data){
+                  // console.log("输入法请求错误");
+                  // 这个输入法的Api有点小问题,当请求失败时再调用一次请求函数;
+                  if(e.target.value.valueOf(" ") == -1){
+                    _this.show(e);
+                  }
                 }
               });
-          }
+            };
+
           }
           var nowValue = e.target.value;
           var reg = /[a-zA-Z0-9]/g;
           this.hanzi = nowValue.replace(reg,"");
           if (!this.visible)
-            this.visible = true
+            this.visible = true;
+        },
+
+        otherInput(e){
+          this.input = e.target;
+          this.layout = e.target.dataset.layout;
         },
 
         hide() {
@@ -99,7 +116,7 @@ li{
         selectHanzi(idx){
           this.hanzi += this.items[idx];
           this.showZone = false;
-        }
+        },
     },
     ready(){
     }
