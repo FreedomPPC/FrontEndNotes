@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    p{
+    	margin-top: 50px;
+    }
+    p::before {
+        content: open-quote;
+        font-size: 24pt;
+        text-align: center;
+        /*line-height: 42px;*/
+        color: #fff;
+        background: #ddd;
+        float: left;
+        /*position: relative;*/
+        /*top: 30px;*/
+    }
+
+    p::after {
+        content: close-quote;
+        font-size: 24pt;
+        text-align: center;
+        /*line-height: 42px;*/
+        color: #fff;
+        background: #ddd;
+        float: right;
+        /*position: relative;
+        bottom: 40px;*/
+    }
+    </style>
+</head>
+
+<body>
+    <p>Design is funny word,Some people think design means how it looks.But of course,if you dig deeper,it’s really how it works.</p>
+</body>
+
+</html>

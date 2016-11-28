@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="utf-8" />
+    <title>链接伪类选择符 E:link_CSS参考手册_web前端开发参考手册系列</title>
+    <meta name="author" content="Joy Du(飘零雾雨), dooyoe@gmail.com, www.doyoe.com" />
+    <style>
+        /*语法：
+    E:link { sRules }
+    说明：
+    设置超链接a在未被访问前的样式。
+    如果需要给超链接定义：访问前，鼠标悬停，当前被点击，已访问这4种伪类效果，而又没有按照一致的书写顺序，不同的浏览器可能会有不同的表现
+    超链接的4种状态，需要有特定的书写顺序才能生效。
+    超链接状态顺序：
+    a:link {}
+    a:visited {}
+    a:hover {}
+    a:active {}
+    注意，a:hover 必须位于 a:link 和 a:visited 之后，a:active 必须位于 a:hover 之后
+    可靠的顺序是：l(link)ov(visited)e h(hover)a(active)te, 即用喜欢(love)和讨厌(hate)两个词来概括*/
+
+        a:link {
+            color: #03c;
+        }
+
+        .external:link {
+            color: #f00;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li><a href="?" class="external">外部链接</a></li>
+        <li><a href="?">内部链接</a></li>
+        <li><a href="?" class="external">外部链接</a></li>
+        <li><a href="?">内部链接</a></li>
+    </ul>
+</body>
+
+</html>
+
+="external">外部链接</a>
+</li>
+<li><a href="?">内部链接</a></li>
+</ul>
+</body>
+
+</html>
+tml>

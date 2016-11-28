@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+body{ background:black;}
+#c1{ background:white;}
+#img1{ background:white;}
+</style>
+<script>
+window.onload = function(){
+	var oImg = document.getElementById('img1');
+	var oC = document.getElementById('c1');
+	var oGC = oC.getContext('2d');
+	
+	oGC.beginPath();
+	oGC.arc(100,100,50,0,360*Math.PI/180,false);
+	oGC.closePath();
+	oGC.fill();
+	
+	oGC.beginPath();
+	oGC.arc(200,200,50,0,360*Math.PI/180,false);
+	oGC.closePath();
+	oGC.fill();
+	
+	oC.onmousedown = function(ev){
+		var ev = ev || window.event;
+		var x = ev.clientX - oC.offsetLeft;
+		var y = ev.clientY - oC.offsetTop;
+		
+		if( oGC.isPointInPath(x,y) ){
+			alert(123);
+		}
+	};
+	
+};
+</script>
+</head>
+
+<body>
+<canvas id="c1" width="400" height="400"></canvas>
+<img id="img1" src="" />
+</body>
+</html>

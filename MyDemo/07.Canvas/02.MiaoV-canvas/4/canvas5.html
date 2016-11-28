@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+body{ background:black; color:white; font-size:30px;}
+#c1{ background:white;}
+</style>
+<script>
+window.onload = function(){
+	var oC = document.getElementById('c1');
+	var oGC = oC.getContext('2d');
+	
+	oGC.fillRect(0,0,100,100);
+	
+	var oImg = oGC.getImageData(0,0,100,100);
+	
+	//alert( getXY(oImg,3,5) );  
+	
+	//setXY( oImg,3,5,[255,0,0,255] );
+	
+	for(var i=0;i<oImg.width;i++){
+		setXY( oImg,i,5,[255,0,0,255] );
+	}
+	
+	oGC.putImageData(oImg,100,100);
+	
+	function getXY(obj,x,y){ //针对一行一列进行操作
+		
+		var w = obj.width;
+		var h = obj.height;
+		var d = obj.data;
+		
+		var color = [];
+		
+		color[0] = d[4*(y*w+x)];
+		color[1] = d[4*(y*w+x)+1];
+		color[2] = d[4*(y*w+x)+2];
+		color[3] = d[4*(y*w+x)+3];
+		
+		return color;
+		
+	}
+	
+	function setXY(obj,x,y,color){
+		var w = obj.width;
+		var h = obj.height;
+		var d = obj.data;
+		
+		
+		d[4*(y*w+x)] = color[0];
+		d[4*(y*w+x)+1] = color[1];
+	 	d[4*(y*w+x)+2] = color[2];
+		d[4*(y*w+x)+3] = color[3];
+		
+	}
+	
+	
+};
+</script>
+</head>
+
+<body>
+<canvas id="c1" width="400" height="400"></canvas>
+
+</body>
+</html>

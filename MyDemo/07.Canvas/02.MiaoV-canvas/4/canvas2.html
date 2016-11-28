@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+body{ background:black;}
+#c1{ background:white;}
+</style>
+<script>
+window.onload = function(){
+	var oC = document.getElementById('c1');
+	var oGC = oC.getContext('2d');
+	
+	
+	var oImg = oGC.createImageData(100,100);
+	
+	
+	for(var i=0;i<oImg.width*oImg.height;i++){
+		
+		oImg.data[4*i] = 255;
+		oImg.data[4*i+1] = 0;
+		oImg.data[4*i+2] = 0;
+		oImg.data[4*i+3] = 100;
+		
+	}
+	
+	oGC.putImageData(oImg,100,100);
+	
+};
+</script>
+</head>
+
+<body>
+<canvas id="c1" width="400" height="400"></canvas>
+</body>
+</html>

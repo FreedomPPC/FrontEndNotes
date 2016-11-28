@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+body{ background:black; color:white; font-size:30px;}
+#c1{ background:white;}
+</style>
+<script>
+window.onload = function(){
+	var oC = document.getElementById('c1');
+	var oGC = oC.getContext('2d');
+	
+	var yImg = new Image();
+	
+	yImg.onload = function(){
+		
+		draw(this);
+		
+	};
+	
+	yImg.src = '2.jpg';
+	
+	function draw(obj){
+		oC.width = obj.width;
+		oC.height = obj.height*2;
+		oGC.drawImage(obj,0,0);
+		
+		var oImg = oGC.getImageData(0,0,obj.width,obj.height);
+		
+		var w = oImg.width;
+		var h = oImg.height;
+		
+		var num = 5;
+		
+		var newImg = oGC.createImageData(obj.width,obj.height);
+		
+		var stepW = w/num;
+		var stepH = h/num;
+		
+		for(var i=0;i<stepH;i++){
+			for(var j=0;j<stepW;j++){
+				
+				var color = getXY(oImg,j*num+Math.floor(Math.random()*num),i*num+Math.floor(Math.random()*num));
+				
+				for(var k=0;k<num;k++){
+					for(var l=0;l<num;l++){
+						setXY(newImg,j*num+l,i*num+k,color);
+					}
+				}
+				
+			}
+		}
+		
+		oGC.putImageData(newImg,0,obj.height);
+		
+	}
+	
+	function getXY(obj,x,y){ //针对一行一列进行操作
+		
+		var w = obj.width;
+		var h = obj.height;
+		var d = obj.data;
+		
+		var color = [];
+		
+		color[0] = d[4*(y*w+x)];
+		color[1] = d[4*(y*w+x)+1];
+		color[2] = d[4*(y*w+x)+2];
+		color[3] = d[4*(y*w+x)+3];
+		
+		return color;
+		
+	}
+	
+	function setXY(obj,x,y,color){
+		var w = obj.width;
+		var h = obj.height;
+		var d = obj.data;
+		
+		
+		d[4*(y*w+x)] = color[0];
+		d[4*(y*w+x)+1] = color[1];
+	 	d[4*(y*w+x)+2] = color[2];
+		d[4*(y*w+x)+3] = color[3];
+		
+	}
+	
+};
+</script>
+</head>
+
+<body>
+<canvas id="c1" width="400" height="400"></canvas>
+
+</body>
+</html>

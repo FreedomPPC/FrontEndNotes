@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+body{ background:black;}
+#c1{ background:white;}
+</style>
+<script>
+
+window.onload = function(){
+	var oC = document.getElementById('c1');
+	var oGC = oC.getContext('2d');
+	
+	function toDraw(){
+		
+		var x = 200;
+		var y = 200;
+		var r = 150;
+		
+		oGC.clearRect(0,0,oC.width,oC.height);
+		
+		var oDate = new Date();
+		var oHours = oDate.getHours();
+		var oMin = oDate.getMinutes();
+		var oSen = oDate.getSeconds();
+		
+		var oHoursValue = (-90 + oHours*30 + oMin/2) * Math.PI/180;
+		var oMinValue = (-90 + oMin*6) * Math.PI/180;
+		var oSenValue = (-90 + oSen*6) * Math.PI/180;
+		
+		
+		/*oGC.moveTo(x,y);
+		
+		oGC.arc(x,y,r,0,6*Math.PI/180,false);
+		
+		oGC.moveTo(x,y);
+		
+		oGC.arc(x,y,r,6*Math.PI/180,12*Math.PI/180,false);*/
+		
+		oGC.beginPath();
+		
+		for(var i=0;i<60;i++){
+			oGC.moveTo(x,y);
+			oGC.arc(x,y,r,6*i*Math.PI/180,6*(i+1)*Math.PI/180,false);
+		}
+		
+		oGC.closePath();
+		
+		oGC.stroke();
+		
+		
+		
+		oGC.fillStyle = 'white';
+		
+		oGC.beginPath();
+		
+		oGC.moveTo(x,y);
+		oGC.arc(x,y,r*19/20,0,360*(i+1)*Math.PI/180,false);
+		
+		oGC.closePath();
+		
+		oGC.fill();
+		
+		
+		oGC.lineWidth = 3;
+		
+		oGC.beginPath();
+		
+		for(var i=0;i<12;i++){
+			oGC.moveTo(x,y);
+			oGC.arc(x,y,r,30*i*Math.PI/180,30*(i+1)*Math.PI/180,false);
+		}
+		
+		oGC.closePath();
+		
+		oGC.stroke();
+		
+		
+		oGC.fillStyle = 'white';
+		
+		oGC.beginPath();
+		
+		oGC.moveTo(x,y);
+		oGC.arc(x,y,r*18/20,0,360*(i+1)*Math.PI/180,false);
+		
+		oGC.closePath();
+		
+		oGC.fill();
+		
+		
+		oGC.lineWidth = 5;
+		
+		oGC.beginPath();
+		oGC.moveTo(x,y);
+		
+		oGC.arc(x,y,r*10/20,oHoursValue,oHoursValue,false);
+		
+		oGC.closePath();
+		oGC.stroke();
+		
+		oGC.lineWidth = 3;
+		oGC.beginPath();
+		oGC.moveTo(x,y);
+		
+		oGC.arc(x,y,r*14/20,oMinValue,oMinValue,false);
+		
+		oGC.closePath();
+		oGC.stroke();
+		
+		
+		oGC.lineWidth = 1;
+		oGC.beginPath();
+		oGC.moveTo(x,y);
+		
+		oGC.arc(x,y,r*19/20,oSenValue,oSenValue,false);
+		
+		oGC.closePath();
+		oGC.stroke();
+		
+		
+	}
+	
+	setInterval(toDraw,1000);
+	
+	toDraw();
+	
+};
+
+</script>
+</head>
+
+<body>
+<canvas id="c1" width="400" height="400"></canvas>
+</body>
+</html>
