@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="utf-8" />
+    <title>否定伪类选择符 E:not(s)_CSS参考手册_web前端开发参考手册系列</title>
+    <meta name="author" content="Joy Du(飘零雾雨), dooyoe@gmail.com, www.doyoe.com" />
+    <style>
+        /*匹配不含有s选择符的元素E*/
+
+        p:not(.abc) {
+            color: #f00;
+        }
+
+        p:not(#abc) {
+            font-size: 22px;
+        }
+    </style>
+</head>
+
+<body>
+    <p class="abc">否定伪类选择符 E:not(s)</p>
+    <p id="abc">否定伪类选择符 E:not(s)</p>
+    <p class="abcd">否定伪类选择符 E:not(s)</p>
+    <p>否定伪类选择符 E:not(s)</p>
+</body>
+
+</html>

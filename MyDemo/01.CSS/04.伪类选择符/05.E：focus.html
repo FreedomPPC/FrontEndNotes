@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="utf-8" />
+    <title>用户行为伪类选择符 E:focus_CSS参考手册_web前端开发参考手册系列</title>
+    <meta name="author" content="Joy Du(飘零雾雨), dooyoe@gmail.com, www.doyoe.com" />
+    <style>
+        /*设置对象在成为输入焦点（该对象的onfocus事件发生）时的样式。*/
+
+        h1 {
+            font-size: 16px;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        input:focus {
+            background: #f6f6f6;
+            color: #f60;
+            border: 1px solid #f60;
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>请聚焦到以下输入框</h1>
+    <form action="#">
+        <ul>
+            <li><input value="姓名" /></li>
+            <li><input value="单位" /></li>
+            <li><input value="年龄" /></li>
+            <li><input value="职业" /></li>
+        </ul>
+    </form>
+</body>
+
+</html>
