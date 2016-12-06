@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	//使用label语句可以在代码中添加标签,以便将来使用,
+	// 语法:
+	// label:statement
+
+	let numBreak = 0;
+	start:
+	for (let i = 0; i < 10; i++) {
+		for (let j = 0; j < 10; j++) {
+			if( i==5 && j==5 ){
+				break start;//break跳出循环,强制执行循环后面的语句;
+			}
+			numBreak++;
+		}
+	}
+	console.log("numBreak",numBreak);//55
+
+
+	let numContinue = 0;
+	startContinue:for( let i=0;i<10;i++){
+		for( let j=0;j<10;j++){
+			if(i==5 && j==5){
+				continue startContinue;//continue立即跳出循环,但是从顶层继续执行;
+			}
+			numContinue++;
+		}
+	}
+	console.log("numContinue",numContinue);//95  
+</script>
+</html>
