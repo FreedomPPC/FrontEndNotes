@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style media="screen">
+        .v-link-active-exact {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Hello App!</h1>
+        <p>
+            <a v-link="{ path: '/foo' }">Go to /foo</a>
+            <a v-link="{ path: '/foo/bar' }">Go to /foo/bar</a>
+            <a v-link="{ path: '/foo/baz' }">Go to /foo/baz</a>
+        </p>
+        <router-view></router-view>
+    </div>
+</body>
+<script src="../js/vue.js" charset="utf-8"></script>
+<script src="../js/vue-router.js" charset="utf-8"></script>
+<script type="text/javascript">
+    // define some components
+    var Foo = Vue.extend({
+        template: '<div class="foo">' +
+            '<h2>This is Foo!</h2>' +
+            '<router-view></router-view>' + // <- nested outlet
+            '</div>'
+    })
+
+    var Bar = Vue.extend({
+        template: '<p>This is bar!</p>'
+    })
+
+    var Baz = Vue.extend({
+        template: '<p>This is baz!</p>'
+    })
+
+    // configure router
+    var router = new VueRouter()
+
+    router.map({
+        '/foo': {
+            component: Foo,
+            // add a subRoutes map under /foo
+            subRoutes: {
+                '/': {
+                    // This component will be rendered into Foo's <router-view>
+                    // when /foo is matched. Using an inline component definition
+                    // here for convenience.
+                    component: {
+                        template: '<p>Default sub view for Foo</p>'
+                    }
+                },
+                '/bar': {
+                    // Bar will be rendered inside Foo's <router-view>
+                    // when /foo/bar is matched
+                    component: Bar
+                },
+                '/baz': {
+                    // same for Baz, but only when /foo/baz is matched
+                    component: Baz
+                }
+            }
+        }
+    })
+
+    // start app
+    var App = Vue.extend({})
+    router.start(App, '#app')
+</script>
+
+</html>

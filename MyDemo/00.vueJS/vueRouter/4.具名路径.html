@@ -1,129 +1,163 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-		<!--1.在组件内部使用<router-view>标签 2.在路由器对象中给组件定义子路由-->
-		<style type="text/css">
-			#mini{
-				background: #CCCCCC;
-			}
-		</style>
-	</head>
-	<body>
-		<div id="app">
-			<button v-link="{path:'/home'}">Home</button>
-			<button v-link="{path:'/about'}">About</button>
-			<div>
-				<router-view></router-view>
-			</div>
-			
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<!--1.在组件内部使用<router-view>标签 2.在路由器对象中给组件定义子路由-->
+	<style type="text/css">
+		#mini {
+			background: #CCCCCC;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="app">
+		<button v-link="{path:'/home'}">Home</button>
+		<button v-link="{path:'/about'}">About</button>
+		<div>
+			<router-view></router-view>
 		</div>
-		
-		
-		<template id="home">
+
+	</div>
+
+
+	<template id="home">
 			<h1 id="mini">Home</h1>
 			<p>{{msg}}</p>
-			
+
 			<div>
-				<a v-link="{path:'/home/news'}">News</a>
-				<a v-link="{path:'/home/messages'}">Messages</a>
+				<a v-link="{name:'newss',params:{newID:'newid01'}}">News</a>
+				<a @click="gotoMsg()">Messages</a>
 			</div>
 			<div>
 				<router-view></router-view>
 			</div>
-			
+
 		</template>
-		<template id="news">
+	<template id="news">
 			<ul>
 				<li v-link="{ name: 'detail', params: {id: '01'} }">New01</li>
 				<li v-link="{ name: 'detail', params: {id: '02'} }">New02</li>
 				<li v-link="{ name: 'detail', params: {id: '03'} }">New03</li>
+				<li @click="gogo()">New04</li>
 			</ul>
 			<div>
 				<!--具名路径的标签-->
 				<router-view></router-view>
 			</div>
-			
+
 		</template>
-		
-		<!--在有些情况下，给一条路径加上一个名字能够让我们更方便地进行路径的跳转，尤其是在路径较长的时候。
+
+	<!--在有些情况下，给一条路径加上一个名字能够让我们更方便地进行路径的跳转，尤其是在路径较长的时候。
 			我们再追加一个组件NewsDetail，该组件在访问/home/news/detail路径时被渲染-->
-		<template id="newsDetail">
+	<template id="newsDetail">
 			<div>
 				NewsDetail ---{{$route.params.id}}#######
 			</div>
 		</template>
-		<template id="messages">
+	<template id="messages">
 			<ul>
 				<li>Message01</li>
 				<li>Message02</li>
 				<li>Message03</li>
 			</ul>
 		</template>
-		
-		<template id="about">
+
+	<template id="about">
 			<h1>About</h1>
 			<p>this is about component</p>
 		</template>
-	</body>
-	<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
-	<script src="../js/vue-router.js" type="text/javascript" charset="utf-8"></script>
-	<script type="text/javascript">
-		var Home = Vue.extend({
-		template:"#home",
-		data:function(){
-			return{
-				msg:"This is Home component!"
+</body>
+<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/vue-router.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	var Home = Vue.extend({
+		template: "#home",
+		data: function() {
+			return {
+				msg: "This is Home component!"
+			}
+		},
+		methods: {
+			//普通路由
+			gotoMsg: function() {
+				this.$router.go('/home/messages');
 			}
 		}
-		});
-		//声明嵌套路由组件;
-		var News = Vue.extend({
-			template:"#news"
-		});
-		
-		//定义具名路径属性;
-		var NewsDetail = Vue.extend({
-			template:"#newsDetail"
-		});
-		
-		var Message = Vue.extend({
-			template:"#messages"
-		});
-		
-		var About = Vue.extend({
-				template: '#about'
-			})
-		
-		var router = new VueRouter();
-		
-		//映射
-		router.map({
-			'/home':{
-				component:Home,
-				//定义子路由;
-				subRoutes:{
-					'/news':{
-						name:'news',
-						component:News,
-						//具名路径映射
-						subRoutes:{
-							'detail/:id':{
-								name:'detail',
-								component:NewsDetail,
-							}
-						}
-					},
-					'/messages':{component:Message},
-				}
+	});
+	//声明嵌套路由组件;
+	var News = Vue.extend({
+		template: "#news",
+		methods: {
+			//具名路径
+			gogo: function() {
+				this.$router.go({
+					name: 'detail',
+					params: {
+						id: '04'
+					}
+				});
 			},
-			'/about':{component:About}
-		})
-		
-		router.redirect({'/':'/home'});
-		
-		var App = Vue.extend({});
-		router.start(App,'#app');
-	</script>
+
+		}
+	});
+
+	//定义具名路径属性;
+	var NewsDetail = Vue.extend({
+		template: "#newsDetail",
+
+	});
+
+	var Message = Vue.extend({
+		template: "#messages"
+	});
+
+	var About = Vue.extend({
+		template: '#about'
+	})
+
+	var router = new VueRouter();
+
+	//映射
+	router.map({
+		'/home': {
+			component: Home,
+			//定义子路由;
+			subRoutes: {
+				'/news/:newID': {
+					name: 'newss',
+					component: News,
+					//具名路径映射
+					subRoutes: {
+						'/detail/:id': {
+							name: 'detail',
+							component: NewsDetail,
+						}
+					}
+				},
+				'/messages': {
+					component: Message
+				},
+			}
+		},
+		'/about': {
+			component: About
+		}
+	})
+
+	router.redirect({
+		'/': '/home'
+	});
+
+	var App = Vue.extend({});
+	router.start(App, '#app');
+</script>
+
+</html>
+
+
+</script>
+
 </html>

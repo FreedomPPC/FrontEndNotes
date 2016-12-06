@@ -1,55 +1,109 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8" />
-	<title>testme</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		.custom-active-class {
+			color: orange;
+		}
+	</style>
 </head>
+
 <body>
 	<div id="app">
-		<button v-link="{path:'/home'}">Home</button>
-		<button v-link="{path:'/about'}">About</button>
-		
 		<div>
-			<router-view></router-view>
+			<h1>Hello App</h1>
+			<div>
+				<!-- 使用v-link进行导航 -->
+				<!-- 给当前点击的活跃链接添加类 -->
+				<!--
+					判断当前链接是否为活跃链接,一个带有指令 v-link="/a" 的元素，只要当前路径以 /a 开头，此元素即会被判断为活跃。
+					如果要匹配唯一路径,
+					连接是否活跃的匹配也可以通过 exact 内联选项来设置为只有当路径完全一致时才匹配：
+					<a v-link="{ path: '/a', exact: true }"></a>
+
+				 -->
+				<a href="javascript:void(0)" v-link="{path:'/foo',activeClass: 'custom-active-class'}">Go To Foo</a>
+				<a href="javascript:void(0)" v-link="{name:'barbar',params:{barId:'yhli'}}">Go To Bar</a>
+				<!-- 一个带有 replace: true 的链接被点击时将会触发 router.replace() 而不是 router.go()。由此产生的跳转不会留下历史记录： -->
+				<a href="" v-link="{path:'/home',replace: true,}">Go To Home Component</a>
+				<!-- <a href="" v-link="{path:'/home'}">Go To Home Component</a> -->
+
+				<a href="" v-link="{path:'/about'}">About Component</a>
+			</div>
 		</div>
+		<router-view></router-view>
 	</div>
-	
-	<template id="home">
-		<h1>Home</h1>
-		<p>{{msg}}</p>
-	</template>
-	
-	<template id="about">
-		<h1>About</h1>
-		<p>this is about component</p>
+	<template id="Foo">
+		<p v-link="{path:'/foo/fooSon'}">This is Foo</p>
+		<router-view></router-view>
 	</template>
 </body>
-<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
-<script src="../js/vue-router.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/vue.js"></script>
+<script src="../js/vue-router.js"></script>
 <script type="text/javascript">
-	var Home = Vue.extend({
-		template:"#home",
-		data:function(){
-			return{
-				msg:"This is Home component!"
+	// 定义组件
+	var Foo = Vue.extend({
+		template: '#Foo'
+	});
+	var FooSon = {
+		template: "<h1 style='color:deepskyblue'>I am Foo's Son</h1>"
+	};
+	// 定义组件,可以用vue.extend创建,也可以是一个选项对象
+
+	var Home = {
+		template: "<h1>This is Home Component</h1>"
+	};
+
+	var Bar = Vue.extend({
+		template: "<p>This is Bar</p>"
+	});
+
+	var About = {
+		template: "<h1 style='color:red'>About Componet</h1>"
+	};
+	//路由需要一个根组件,
+	var App = Vue.extend({});
+	//var App = {},
+	//创建一个路由器实例,
+	//创建路由器实例可以传入配置参数进行定制,为保持简单,这里使用默认设置;
+	var router = new VueRouter();
+
+	//定义路由规则;
+	//每条路由规则,应该映射到一个组件.这里的组件可以使用vue.extend创建的组件构造的构造函数
+	//也可以是一个选项对象;
+	router.map({
+		'/foo': {
+			component: Foo,
+			subRoutes: {
+				'/fooSon': {
+					component: FooSon
+				}
 			}
+		},
+		'/bar/:barId': {
+			name: 'barbar',
+			component: Bar
+		},
+		'/home': {
+			component: Home
+		},
+		'/about': {
+			component: About
 		}
 	});
-	
-	var About = Vue.extend({
-			template: '#about'
-		})
-	
-	var router = new VueRouter();
-	
-	router.map({
-		'/home':{component:Home},
-		'/about':{component:About}
-	})
-	
-	router.redirect({'/':'/home'});
-	
-	var App = Vue.extend({});
-	router.start(App,'#app');
+
+	//重定向,讲首页定为/foo
+	// router.redirect({
+	// 	'*': '/Foo'
+	// });
+
+	//启动路由
+	router.start(App, '#app');
 </script>
+
 </html>

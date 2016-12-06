@@ -26,12 +26,19 @@
         'card_id': 789,
         'card_ext': "小王"
     }];
-
+    //遍历数组
     $.each(cardList,function(idx,val){
     	val.cardID = val.card_id;
         delete val.card_id;
     })
     console.log(cardList);
+
+    //遍历对象
+    var cardList_2 = {name:"健健",age:90,gender:"male",address:"潜江"};
+    $.each(cardList_2,function(key,val){
+        console.log('key:',key);
+        console.log('value:',val);
+    });
     </script>
 </body>
 
