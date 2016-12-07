@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<h1>动态组件Lazy Load</h1>
+		<h2 v-link="'/home'">Go Home</h2>
+		<h2 v-link="'/about'" style="color:blue">Go About</h2>
+		<router-view></router-view>
+	</div>
+	<template id="home">
+		<h2 style="color:red" v-link="{path:'/home/homeson'}">I am Home Component</h2>
+		<router-view></router-view>
+
+	</template>
+</body>
+<script src="../js/vue.js"></script>
+<script src="../js/vue-router.js"></script>
+<script>
+	//使用webpack 和 browerify
+	var Home = {
+		template:"#home",
+	};
+	var HomeSon = {
+		template:"<p>I am Home Component's Son</p>"
+	};
+	var About = {
+		template:"<strong>About About</strong>"
+	}
+
+	var App = {};
+
+	const router = new VueRouter();
+
+	router.map({
+		'/about':{
+			component:About,
+		},
+		'/home':{
+			component:Home,
+			subRoutes:{
+				'/homeson':{
+					component:function(resolve){
+						resolve(HomeSon);
+						console.log(resolve);
+					}
+				}
+			}
+		},
+
+	})
+	router.redirect({'*':'/about'})
+	router.start(App,'#app')
+
+</script>
+</html>
