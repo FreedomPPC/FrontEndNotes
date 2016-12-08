@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="utf-8" />
+    <title>用户界面(UI)元素状态伪类选择符 E:disabled_CSS参考手册_web前端开发参考手册系列</title>
+    <meta name="author" content="Joy Du(飘零雾雨), dooyoe@gmail.com, www.doyoe.com" />
+    <style>
+        /*匹配用户界面上处于禁用状态的元素E。*/
+
+        li {
+            padding: 3px;
+        }
+
+        input[type="text"]:enabled {
+            border: 1px solid #090;
+            background: #fff;
+            color: #000;
+        }
+
+        input[type="text"]:disabled {
+            border: 1px solid #ccc;
+            background: #eee;
+            color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <form method="post" action="#">
+        <fieldset>
+            <legend>E:enabled与E:disabled</legend>
+            <ul>
+                <li><input type="text" value="可用状态" /></li>
+                <li><input type="text" value="可用状态" /></li>
+                <li><input type="text" value="禁用状态" disabled="disabled" /></li>
+                <li><input type="text" value="禁用状态" disabled="disabled" /></li>
+            </ul>
+        </fieldset>
+    </form>
+</body>
+
+</html>

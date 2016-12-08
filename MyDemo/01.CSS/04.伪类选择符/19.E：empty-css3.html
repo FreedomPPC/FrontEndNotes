@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="utf-8" />
+    <title>结构性伪类选择符 E:empty_CSS参考手册_web前端开发参考手册系列</title>
+    <meta name="author" content="Joy Du(飘零雾雨), dooyoe@gmail.com, www.doyoe.com" />
+    <style>
+        /*匹配没有任何子元素（包括text节点）的元素E。*/
+
+        p:empty {
+            height: 25px;
+            border: 1px solid #ddd;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="test">
+        <p>结构性伪类选择符 E:empty</p>
+        <p>
+            <!--我是一个空节点p，请注意我与其它非空节点p的外观有什么不一样-->
+        </p>
+        <p>结构性伪类选择符 E:empty</p>
+    </div>
+</body>
+
+</html>

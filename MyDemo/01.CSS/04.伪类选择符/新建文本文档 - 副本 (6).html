@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .tabs {
+        width: 300px;
+        height: 300px;
+        position: relative;
+    }
+
+    .tab {
+        float: left;
+        width: 80px;
+        height: 70px;
+        overflow: visible;
+    }
+
+    .tab label {
+        display: block;
+        line-height: 40px;
+        cursor: pointer;
+        font-size: 13px;
+    }
+
+    .tab input {
+        display: none;
+    }
+
+    .content {
+        position: absolute;
+        top: 40px;
+        left: 0;
+        width: 300px;
+        height: 260px;
+        z-index: 1;
+    }
+
+    .tab input:checked~.content {
+        z-index: 2;
+        background: #C9DAF7;
+    }
+</style>
+
+<body>
+    <div class="tabs">
+        <div class="tab">
+            <label for="check1">第1个选项卡</label>
+            <input id="check1" type="radio" name="tabs" checked="checked" />
+            <div class="content">
+                这里放置第1个选项卡的内容11111111111
+            </div>
+        </div>
+        <div class="tab">
+            <label for="check2">第2个选项卡</label>
+            <input id="check2" type="radio" name="tabs" />
+            <div class="content">
+                这里放置第2个选项卡的内容2222222222
+            </div>
+        </div>
+        <div class="tab">
+            <label for="check3">第3个选项卡</label>
+            <input id="check3" type="radio" name="tabs" />
+            <div class="content">
+                这里放置第3个选项卡的内容3333333333
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

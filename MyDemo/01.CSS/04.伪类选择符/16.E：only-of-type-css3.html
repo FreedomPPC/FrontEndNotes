@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="utf-8" />
+    <title>结构性伪类选择符 E:first-of-type_CSS参考手册_web前端开发参考手册系列</title>
+    <meta name="author" content="Joy Du(飘零雾雨), dooyoe@gmail.com, www.doyoe.com" />
+    <style>
+        /*
+          匹配同类型中的唯一一个同级兄弟元素E。
+        */
+
+        p:only-of-type {
+            color: #f00;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="test">
+        <div>我是一个div元素</div>
+        <p>我是一个p元素</p>
+        <!-- <p>我是一个p元素</p> -->
+    </div>
+</body>
+
+</html>

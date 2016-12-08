@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="utf-8" />
+    <title>结构性伪类选择符 E:nth-child(n)_CSS参考手册_web前端开发参考手册系列</title>
+    <meta name="author" content="Joy Du(飘零雾雨), dooyoe@gmail.com, www.doyoe.com" />
+    <style>
+        h1 {
+            font-size: 16px;
+        }
+
+        li:nth-child(2n+1) {
+            color: #f00;
+        }
+
+        li:nth-child(2n) {
+            color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>第二行要变成红色 <code>li:nth-child(2){color:#f00;}</code></h1>
+    <ul>
+        <li>结构性伪类选择符 E:nth-child(n)</li>
+        <li>结构性伪类选择符 E:nth-child(n)</li>
+        <li>结构性伪类选择符 E:nth-child(n)</li>
+    </ul>
+</body>
+
+</html>
