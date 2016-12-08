@@ -1,38 +1,38 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>无标题文档</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>无标题文档</title>
 
-<script>
-// 语法
-// array.splice(index,howmany,item1,.....,itemX)
-// 参数 Values
-// 参数	描述
-// index	必需。规定从何处添加/删除元素。
-// 该参数是开始插入和（或）删除的数组元素的下标，必须是数字。
-//
-// howmany	必需。规定应该删除多少元素。必须是数字，但可以是 "0"。
-// 如果未规定此参数，则删除从 index 开始到原数组结尾的所有元素。
-// item1, ..., itemX	可选。要添加到数组的新元素
-// 返回值
-// Type	描述
-// Array	如果从 arrayObject 中删除了元素，则返回的是含有被删除的元素的数组。
-var arr = [ 'TM', '钟毅', '张森', '杜鹏', 'Leo' ];
-// 删除、替换、添加
-console.log( arr.splice( 0 , 2, 'aaaaaa' ) );//返回的是删除的元素;
+    <script>
+        // 语法
+        // array.splice(index,howmany,item1,.....,itemX)
+        // 参数 Values
+        // 参数	描述
+        // index	必需。规定从何处添加/删除元素。
+        // 该参数是开始插入和（或）删除的数组元素的下标，必须是数字。
+        //
+        // howmany	必需。规定应该删除多少元素。必须是数字，但可以是 "0"。
+        // 如果未规定此参数，则删除从 index 开始到原数组结尾的所有元素。
+        // item1, ..., itemX	可选。要添加到数组的新元素
+        // 返回值
+        // Type	描述
+        // Array	如果从 arrayObject 中删除了元素，则返回的是含有被删除的元素的数组。
+        var arr = ['TM', '钟毅', '张森', '杜鹏', 'Leo'];
+        // 删除、替换、添加
+        console.log(arr.splice(0, 2, 'aaaaaa')); //返回的是删除的元素;
 
-// arr.splice( 0, 2, '莫涛 or 钟毅' );
+        // arr.splice( 0, 2, '莫涛 or 钟毅' );
 
-// console.log( arr.splice( 1, 0, '钟毅媳妇儿~', '钟毅媳妇们~' ) );
+        // console.log( arr.splice( 1, 0, '钟毅媳妇儿~', '钟毅媳妇们~' ) );
 
-console.log( arr );
-
-
-</script>
+        console.log(arr); //新数组
+    </script>
 
 </head>
 
 <body>
 </body>
+
 </html>
