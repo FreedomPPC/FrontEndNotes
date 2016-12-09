@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="utf-8" />
+    <title>E::selection_CSS参考手册_web前端开发参考手册系列</title>
+    <meta name="author" content="Joy Du(飘零雾雨), dooyoe@gmail.com, www.doyoe.com" />
+    <style>
+        /*
+          设置对象被选择时的样式。
+          需要注意的是，::selection只能定义被选择时的background-color，color及text-shadow(IE11尚不支持定义该属性)。
+          */
+        /*火狐*/
+
+        p::-moz-selection {
+            background: #000;
+            color: #f00;
+        }
+
+        p::selection {
+            background: #000;
+            color: #f00;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>选中下面的文字，看看它的颜色</h1>
+    <p>你选中这段文字后，看看它们的文本颜色和背景色，就能明白::selection的作用。</p>
+</body>
+
+</html>
