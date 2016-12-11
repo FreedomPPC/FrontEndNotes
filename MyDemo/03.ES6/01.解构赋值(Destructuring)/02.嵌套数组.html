@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+//   嵌套数组
+// 这种匹配模式也支持嵌套数组，只要保证赋值运算符 = 左侧的数组模式与右侧的数组结构相匹配即可。再次说明一下，= 左边的变量都会被赋上 = 右侧数组中位置与之相对应的值。 无论你怎么深层次地嵌套，仍可以对它们进行解构。
+  // Destructuring Nested Arrays
+   const avengers = [
+                       'Natasha Romanoff',
+                       ['Tony Stark', 'James Rhodes'],
+                       ['Steve Rogers', 'Sam Wilson']
+                    ];
+
+   // Avengers and their partners
+   const [blackWidow, [ironMan, warMachine], [cap, falcon]] = avengers;
+
+   // blackWidow = 'Natasha Romanoff'
+   // ironMan = 'Tony Stark'
+   // warMachine = 'James Rhodes'
+   // cap = 'Steve Rogers'
+   // falcon = 'Sam Wilson'
+
+   // Output warMachine:
+   console.log(warMachine);//James Rhodes
+  </script>
+</body>
+</html>
