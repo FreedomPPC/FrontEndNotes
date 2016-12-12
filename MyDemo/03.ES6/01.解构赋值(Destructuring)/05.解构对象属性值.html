@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+    const avengers = {
+        blackWidow: 'Natasha Romanoff',
+        ironManCharacters: {
+            couple: {
+                ironMan: 'Tony Stark',
+                hera: 'Pepper Potts'
+            }
+        }
+    };
+
+    const ironManProperties = {
+        family: {}
+    };
+
+    // 解构赋值必须被包含在 圆括号 内
+    //当我们在对一个已存在的变量进行解构时，
+    //一定要这样做，而不是去声明一个新的变量
+    ({
+        ironManCharacters: {
+            couple: ironManProperties.family
+        }
+    } = avengers);
+
+    console.log(ironManProperties.family);
+    console.log('ironManProperties',ironManProperties);
+    </script>
+</body>
+
+</html>

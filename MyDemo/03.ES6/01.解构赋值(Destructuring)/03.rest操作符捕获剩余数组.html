@@ -8,9 +8,11 @@
 </head>
 <body>
   <script type="text/javascript">
-  const avengers = ["Natasha Romanoff","Tony Stark","Steve Rogers"]
-  const [blackwindow,...theOthers] = avengers;
-  console.log(theOthers);  
+	  // 如果你想要获取特定的数组项，并且把剩余的项归在一个数组，那么你可以这样运用 rest操作符 来解构
+	  const avengers = ["Natasha Romanoff","Tony Stark","Steve Rogers"]
+	  const [blackwindow,...theOthers] = avengers;
+	  console.log(theOthers); //["Tony Stark","Steve Rogers"] ;
+    
   </script>
 </body>
 </html>

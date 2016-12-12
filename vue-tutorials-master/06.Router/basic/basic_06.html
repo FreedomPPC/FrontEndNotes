@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
-		<link rel="stylesheet" href="//bootswatch.com/flatly/bootstrap.css"/>
+		<link rel="stylesheet" href="../../../MyDemo/bower_components/bootstrap/dist/css/bootstrap.css" />
 		<link rel="stylesheet" href="assets/css/custom.css" />
 	</head>
 
@@ -87,7 +87,7 @@
 	<script src="js/vue.js"></script>
 	<script src="js/vue-router.js"></script>
 	<script>
-	
+
 		var well = new Vue({
 			el: '.well',
 			data: {
@@ -108,7 +108,7 @@
 				}
 			}
 		})
-	
+
 		function RouteHelper(name) {
 			var route = {
 				canReuse: function(transition) {
@@ -138,7 +138,7 @@
 			}
 			return route;
 		}
-		
+
 		var Home = Vue.extend({
 			template: '#home',
 			data: function() {

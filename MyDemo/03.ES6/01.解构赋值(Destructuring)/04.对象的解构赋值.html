@@ -7,9 +7,41 @@
 <body>
 
 	<script>
-		const {xiaoming:Person,mac:Computer} = {xiaoming:{name:"coder",age:18,gender:'male'},mac:{price:1000,size:"15inch"}};
-		document.write(JSON.stringify(Person)+"<br/>");
+		const { ironman } = { ironman:"Tony Stark" };
+		console.log(ironman);//"Tony Stark";
+
+		//===============================================
+		const { blackwindow:a } = { blackwindow:"Natasha Romanoff" };
+		console.log(a);//"Natasha Romannoff"
+
+		const { xiaoming,mac:Computer } = { xiaoming:{ name:"coder",age:18,gender:'male' },mac:{ price:1000,size:"15inch" } };
+		document.write(JSON.stringify(xiaoming)+"<br/>");
 		document.write(JSON.stringify(Computer));
+		console.log(mac);//not defined;
+
+
+		//================================================
+		const avengers = {
+		    ironManCharacters: {
+		      	couple: {
+				          ironMan: 'Tony Stark',
+				          hera: 'Pepper Potts',
+			      	}
+			    }
+		};
+
+		const {
+		   ironManCharacters: {
+		      couple
+		   }
+		} = avengers;
+
+		console.log(couple);
+		// {
+		// 		ironMan: 'Tony Stark',
+		// 		hera: 'Pepper Potts',
+		// }
 	</script>
 </body>
+
 </html>

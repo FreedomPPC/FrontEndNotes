@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+    // 不能对已经声明的变量进行解构
+
+	// 也就是说，你只能在对变量解构赋值的同时声明变量。
+    // Setup our object
+    const avengers = {
+        ironMan: 'Tony Stark',
+        cap: 'Steve Rogers',
+        blackWidow: 'Natasha Romanoff',
+        theHulk: 'Bruce Banner'
+    };
+
+    // Valid destructuring
+    const { ironMan } = avengers;
+
+    let { cap } = avengers;
+
+    var { blackWidow } = avengers;
+    // Invalid destructuring
+    // let theHulk;
+
+    // {
+    //     theHulk
+    // } = avengers;
+    // Error
+
+    //解决办法;
+    // 为何不能对一个已经声明的变量进行解构呢？那是因为这时如果你使用了花括号 { ，JavaScript会认为你是在声明一个 block。
+	// 解决的办法就是把整个解构赋值用一对 圆括号 括起来。
+	let theHulk;
+	({theHulk} = avengers);
+
+	console.log(ironMan,cap,blackWidow,theHulk);
+
+
+    </script>
+</body>
+
+</html>

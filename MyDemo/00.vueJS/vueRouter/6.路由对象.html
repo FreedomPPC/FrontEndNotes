@@ -23,34 +23,34 @@
 					并且当路由切换时，路由对象会被更新。
 
 					路由对象暴露了以下属性：
-					
-					$route.path 
+
+					$route.path
 					字符串，等于当前路由对象的路径，会被解析为绝对路径，如 "/home/news" 。
-					$route.params 
+					$route.params
 					对象，包含路由中的动态片段和全匹配片段的键值对
-					$route.query 
+					$route.query
 					对象，包含路由中查询参数的键值对。例如，对于 /home/news/detail/01?favorite=yes ，
 					会得到 $route.query.favorite == 'yes' 。
-					$route.router 
+					$route.router
 					路由规则所属的路由器（以及其所属的组件）。
-					$route.matched 
+					$route.matched
 					数组，包含当前匹配的路径中所包含的所有片段所对应的配置参数对象。
-					$route.name 
+					$route.name
 					当前路径的名字，如果没有使用具名路径，则名字为空。
 				-->
-			    <p>当前路径：{{$route.path}}</p>
-			    <p>当前参数：{{$route.params | json}}</p>
-			    <p>路由名称：{{$route.name}}</p>
-			    <p>路由查询参数：{{$route.query | json}}</p>
-			    <p>路由匹配项：{{$route.matched | json}}</p>
+			    <p>当前路径$route.path：{{$route.path}}</p>
+			    <p>当前参数$route.params | json：{{$route.params | json}}</p>
+			    <p>路由名称$route.name：{{$route.name}}</p>
+			    <p>路由查询参数$route.query | json：{{$route.query | json}}</p>
+			    <p>路由匹配项$route.matched | json：{{$route.matched | json}}</p>
 			</div>
 		</div>
-		
-		
+
+
 		<template id="home">
 			<h1 id="mini">Home</h1>
 			<p>{{msg}}</p>
-			
+
 			<div>
 				<a v-link="{path:'/home/news'}">News</a>
 				<a v-link="{path:'/home/messages'}">Messages</a>
@@ -58,7 +58,7 @@
 			<div>
 				<router-view></router-view>
 			</div>
-			
+
 		</template>
 		<template id="news">
 			<ul>
@@ -77,9 +77,9 @@
 				<!--具名路径的标签-->
 				<router-view></router-view>
 			</div>
-			
+
 		</template>
-		
+
 		<!--在有些情况下，给一条路径加上一个名字能够让我们更方便地进行路径的跳转，尤其是在路径较长的时候。
 			我们再追加一个组件NewsDetail，该组件在访问/home/news/detail路径时被渲染-->
 		<template id="newsDetail">
@@ -94,7 +94,7 @@
 				<li>Message03</li>
 			</ul>
 		</template>
-		
+
 		<template id="about">
 			<h1>About</h1>
 			<p>this is about component</p>
@@ -128,22 +128,22 @@
 				}
 			}
 		});
-		
+
 		//定义具名路径属性;
 		var NewsDetail = Vue.extend({
 			template:"#newsDetail"
 		});
-		
+
 		var Message = Vue.extend({
 			template:"#messages"
 		});
-		
+
 		var About = Vue.extend({
 				template: '#about'
 			})
-		
+
 		var router = new VueRouter();
-		
+
 		//映射
 		router.map({
 			'/home':{
@@ -166,9 +166,9 @@
 			},
 			'/about':{component:About}
 		})
-		
+
 		router.redirect({'/':'/home'});
-		
+
 		var App = Vue.extend({});
 		router.start(App,'#app');
 	</script>

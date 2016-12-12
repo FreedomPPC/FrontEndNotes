@@ -28,7 +28,7 @@
 
 				 -->
 				<a href="javascript:void(0)" v-link="{path:'/foo',activeClass: 'custom-active-class'}">Go To Foo</a>
-				<a href="javascript:void(0)" v-link="{name:'barbar',params:{barId:'yhli'}}">Go To Bar</a>
+				<a href="javascript:void(0)" v-link="{name:'barbar',params:{barId:'yhli'},activeClass: 'custom-active-class'}">Go To Bar</a>
 				<!-- 一个带有 replace: true 的链接被点击时将会触发 router.replace() 而不是 router.go()。由此产生的跳转不会留下历史记录： -->
 				<a href="" v-link="{path:'/home',replace: true,}">Go To Home Component</a>
 				<!-- <a href="" v-link="{path:'/home'}">Go To Home Component</a> -->

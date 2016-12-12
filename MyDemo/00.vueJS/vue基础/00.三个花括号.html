@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="app">
+		<h1 style="color:red">Hello Three Brace,{{{msg}}}</h1>
+		<h1>GoodBye Two Bracket,{{msg}}</h1>
+	</div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+	var vm = new Vue({
+		el:'.app',
+		data:{
+			msg:'<h2>三个大阔好的vue是用来解析带有html的字符串的,双括号解析不了</h2>'
+		}
+	});
+</script>
+</html>
