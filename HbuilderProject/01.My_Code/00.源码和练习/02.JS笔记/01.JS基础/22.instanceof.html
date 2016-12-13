@@ -13,6 +13,8 @@
 			function f(){return f;}
 			console.log(new f() instanceof f);//返回的是false;
 			//因为函数中返回的是f;如果函数返回的是函数或者变量,会覆盖new f();所以为false;
+			var arr3 = [];
+			console.log('arr3',(arr3 instanceof Array));
 		</script>
 	</body>
 </html>

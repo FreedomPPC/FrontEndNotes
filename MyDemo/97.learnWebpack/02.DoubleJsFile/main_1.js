@@ -1,0 +1,1 @@
+document.write('<h1 style="color:blue">First JS File</h1>');
