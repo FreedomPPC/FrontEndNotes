@@ -1,6 +1,6 @@
 <template lang="html">
   <div>
-    NewsDetail ---$route.params.id:{{$route.params.id}}#######
+    NewsDetail ---$route.params.id:<span>{{$route.params.id}}</span>#######
   </div>
 </template>
 
@@ -17,5 +17,8 @@ export default {
     margin-top: 2rem;
     padding: 5px;
     border:1px solid black;
+    span{
+      color: red;
+    }
   }
 </style>

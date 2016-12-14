@@ -11,6 +11,8 @@
         <p>当前参数$route.params:{{$route.params | json}}</p>
         <p>路由名称$route.name：{{$route.name}}</p>
         <p>路由查询参数$route.query | json：{{$route.query | json}}</p>
+        <p>路由匹配项$route.matched | json：{{$route.matched | json}}</p>
+        <p>{{$route.router}}</p>
       </div>
     </div>
     <div class="router">
@@ -23,10 +25,30 @@
 export default {
   data(){
     return{
-
+      search:''
     }
   },
   computed:{
+    search(){
+      return this.$route.query.favourite
+    }
+  },
+  watch:{
+    search(newVal){
+      if(newVal=='yunhao.li'){
+        // console.log(newVal);
+        // document.body.style.background = `rgb(${Math.floor(Math.random()*256)},${Math.floor(Math.random()*256)},${Math.floor(Math.random()*256)})`;
+        // document.body.style.background = '#ccc'
+
+      }else{
+        // document.body.style.background = '#fff'
+
+      }
+    }
+  },
+  ready(){
+    console.log(this.search);
+    console.log(this.$route.router);
   }
 }
 </script>
@@ -38,10 +60,12 @@ export default {
   .container{
     padding: 20px;
     display: flex;
+    height: 40vh;
     background-color: #ccc;
     overflow: hidden;
     .link{
       h1{
+        width: 13vw;
         margin-left: 2rem;
         padding: 5px;
         border: 1px solid black;
