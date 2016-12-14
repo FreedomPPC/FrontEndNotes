@@ -12,19 +12,19 @@
 	</head>
 	<body>
 		<div id="app">
+			<button v-link="{name:'myhome'}">具名路径写法</button>
 			<button v-link="{path:'/home'}">Home</button>
 			<button v-link="{path:'/about'}">About</button>
-			
 			<div>
 				<router-view></router-view>
 			</div>
 		</div>
-		
-		
+
+
 		<template id="home">
 			<h1 id="mini">Home</h1>
 			<p>{{msg}}</p>
-			
+
 			<div>
 				<a v-link="{path:'/home/news'}">News</a>
 				<a v-link="{path:'/home/messages/123'}">Messages</a>
@@ -47,9 +47,9 @@
 				<li>Message03</li>
 			</ul>
 		</template>
-		
-		
-		
+
+
+
 		<template id="about">
 			<h1>About</h1>
 			<p>this is about component</p>
@@ -73,16 +73,17 @@
 		var Message = Vue.extend({
 			template:"#messages"
 		});
-		
+
 		var About = Vue.extend({
 				template: '#about'
 			})
-		
+
 		var router = new VueRouter();
-		
+
 		//映射
 		router.map({
 			'/home':{
+				name:'myhome',
 				component:Home,
 				//定义子路由;
 				subRoutes:{
@@ -92,9 +93,9 @@
 			},
 			'/about':{component:About}
 		})
-		
+
 		router.redirect({'/':'/home'});
-		
+
 		var App = Vue.extend({});
 		router.start(App,'#app');
 	</script>

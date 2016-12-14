@@ -43,6 +43,7 @@
 			    <p>路由名称$route.name：{{$route.name}}</p>
 			    <p>路由查询参数$route.query | json：{{$route.query | json}}</p>
 			    <p>路由匹配项$route.matched | json：{{$route.matched | json}}</p>
+					<p>{{$route.router}}</p>
 			</div>
 		</div>
 
@@ -117,6 +118,7 @@
 			methods:{
 				viewDetail:function(){
 					this.$route.router.go({
+						// path:'/home/news/detail/',
 						name:'detail',
 						params:{
 							id:'02'
