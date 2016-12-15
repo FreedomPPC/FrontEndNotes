@@ -1,11 +1,11 @@
-<template lang="html">
+<template>
 	<div class="home">
 	  <p>I am Home Component</p>
 	  <button v-link="{path:'/home/news'}">News</button>
     <button v-link="{path:'/home/messages'}">Messages</button>
 
     <router-view></router-view>
-    
+
 	</div>
 </template>
 
