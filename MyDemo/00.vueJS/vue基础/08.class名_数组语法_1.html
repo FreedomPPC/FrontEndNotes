@@ -7,21 +7,31 @@
 			.classA{
 				color:red;
 			}
-		</style>
-		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
-		<script type="text/javascript">
-			window.onload = function(){
-				new Vue({
-					el:".static",
-					data: {
-					  classA: 'class-a',
-					  classB: 'class-b'
-					}
-				})
+			.active{
+				background: blue;
 			}
-		</script>
+		</style>
+
 	</head>
 	<body>
 		<div class="static" v-bind:class="[classA, classB]">111</div>
+		<ul v-for="item in items">
+			<li v-bind:class="{'active':$index==0}">{{item}}</li>
+		</ul>
 	</body>
+	<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+				new Vue({
+					el:"body",
+					data: {
+					  classA: 'class-a',
+					  classB: 'class-b',
+					  items:[
+					  	'xiaoming',
+					  	'xiaofang',
+					  	'xiaoqiang'
+					  ]
+					}
+				})
+		</script>
 </html>

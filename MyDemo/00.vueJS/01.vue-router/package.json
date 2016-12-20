@@ -10,7 +10,7 @@
     "build": "rm -rf ./dist/* &&cross-env NODE_ENV=production ./node_modules/.bin/webpack -p -c --progress",
     "build2": "rm -rf ./dist/* &&cross-env NODE_ENV=production ./node_modules/.bin/webpack -d -c --progress",
     "test": "karma start",
-    "start": "webpack-dev-server --inline --open --port 3000",
+    "start": "webpack-dev-server --colors --progress --watch --inline --open --port 3000",
     "build3":"webpack -p --progress"
   },
   "keywords": [],
