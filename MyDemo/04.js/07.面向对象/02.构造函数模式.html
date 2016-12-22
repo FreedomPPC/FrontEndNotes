@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+    function Person(name,age,job){//1.构造函数的首字母大写,没有像工厂方式那样显示的创建一个对象
+      this.name = name;//2.直接将属性和方法赋值给了this
+      this.age = age;
+      this.job = job;
+      this.sayName = function(){
+        console.log(this.name);
+      }
+      //3.没有return语句
+    }
+
+    var person1 = new Person('Nicholas','29','coder');
+    var person2 = new Person('Greg','29','Doctor');
+
+    //person1的构造函数是Person
+    console.log(person1.constructor == Person);//true
+    console.log(person2.constructor == Person);//true
+
+    //person1是Person的实例
+    console.log(person1 instanceof Person)//true;
+    console.log(person1 instanceof Object)//true;
+    console.log(person1 instanceof Person)//true;
+
+
+  </script>
+</body>
+</html>

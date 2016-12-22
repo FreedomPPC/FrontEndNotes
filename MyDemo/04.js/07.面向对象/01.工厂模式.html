@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function createPerson(name,age,gender){
+      let person = new Object();//1.new 一个对象
+      person.name = name;
+      person.age = age;
+      person.gender = gender;
+      person.sayName = function(){
+        console.log(this.name);
+      }
+      return person;//2.返回一个对象
+    }
+    let person1 = createPerson('健健',18,'male');//3.调用函数,创建对象
+    console.log(person1);
+    console.log(person1.sayName());
+  </script>
+</body>
+</html>
