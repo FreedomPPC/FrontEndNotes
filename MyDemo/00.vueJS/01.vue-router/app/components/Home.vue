@@ -11,6 +11,12 @@
 
 <script>
 export default {
+	route:{
+    activate:function(transition){
+      console.log(transition.from);
+      transition.next();
+    }
+  },
 }
 </script>
 

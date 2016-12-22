@@ -37,6 +37,9 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+   new webpack.BannerPlugin('This file is created by haoguo94D')
+  ],
   devServer: {
     historyApiFallback: true,
     noInfo: true

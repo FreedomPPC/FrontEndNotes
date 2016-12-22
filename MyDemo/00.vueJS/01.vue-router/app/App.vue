@@ -15,6 +15,10 @@
         <p>{{$route.router}}</p>
       </div>
     </div>
+    <div>
+      <p>PATH FROM:<span>{{pathFrom}}</span>></p>
+      <p>PATH To<span>{{pathTo}}</span></p>
+    </div>
     <div class="router">
       <router-view></router-view>
     </div>
@@ -46,9 +50,10 @@ export default {
       }
     }
   },
+  
   ready(){
-    console.log(this.search);
-    console.log(this.$route.router);
+    // console.log(this.search);
+    // console.log(this.$route.router);
   }
 }
 </script>
