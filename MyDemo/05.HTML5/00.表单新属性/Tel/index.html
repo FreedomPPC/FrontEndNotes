@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>International Telephone Input</title>
+    <link rel="stylesheet" href="lib/css/intlTelInput.css">
+    <link rel="stylesheet" href="lib/css/demo.css">
+    <style>
+        .iti-flag {
+            background-image: url("lib/img/flags.png");
+        }
+    </style>
+</head>
+
+<body>
+    <h1>International Telephone Input</h1>
+    <form>
+        <input id="mobile-number" type="tel" placeholder="e.g. +1 702 123 4567">
+        <button type="submit">Submit</button>
+    </form>
+
+    <!-- Load jQuery from CDN so can run demo immediately -->
+    <script src="lib/js/jquery.min.js"></script>
+    <script src="lib/js/intlTelInput.js"></script>
+    <script>
+        $("#mobile-number").intlTelInput({
+            // allowDropdown: false,
+            // autoHideDialCode: false,
+            // autoPlaceholder: "off",
+            // dropdownContainer: "body",
+            // excludeCountries: ["us"],
+            // geoIpLookup: function(callback) {
+            //   $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+            //     var countryCode = (resp && resp.country) ? resp.country : "";
+            //     callback(countryCode);
+            //   });
+            // },
+            // initialCountry: "auto",
+            // nationalMode: false,
+            // numberType: "MOBILE",
+            // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
+            // preferredCountries: ['cn', 'jp'],
+            // separateDialCode: true,
+            // utilsScript: "build/js/utils.js"
+        });
+        // console.log($('.dial-code'))
+        var $telCode = $('.country');
+        console.log($telCode);
+        for (var i = 0; i < $telCode.length; i++) {
+            $telCode[i].onclick = function() {
+                console.log($(this)[0].dataset.dialCode);
+                $("#mobile-number").val(`+{$(this)[0].dataset.dialCode}`);
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -14,6 +14,9 @@
         <p>路由匹配项$route.matched | json：{{$route.matched | json}}</p>
         <p>{{$route.router}}</p>
       </div>
+      <div class="ipt">
+        <input type="tel" name="" value="">
+      </div>
     </div>
     <div>
       <p>PATH FROM:<span>{{pathFrom}}</span>></p>
@@ -50,7 +53,7 @@ export default {
       }
     }
   },
-  
+
   ready(){
     // console.log(this.search);
     // console.log(this.$route.router);
@@ -79,4 +82,5 @@ export default {
       }
     }
   }
+  // .iti-flag {background-image: url("../images/flags.png");}
 </style>

@@ -1,8 +1,9 @@
 var webpack = require('webpack');
 var path = require('path');
+
 module.exports = {
     //唯一入口   __dirname是node.js的一个全局变量,它指向当前执行脚本所在的目录;
-    entry:__dirname + "/app/app.js",
+    entry:__dirname + "/app.js",
     //输出
     output:{
         path:__dirname + "/public",//打包后的文件存放的地方
@@ -45,11 +46,24 @@ module.exports = {
           },
           {
               test:/\.css$/,
-              loader: "style-loader!css-loader?modules"//添加对样式表的处理
+              loader: "style-loader!css-loader"//添加对样式表的处理
+          },
+          {
+            test:/\.(scss|sass)$/,
+            loader:'style!css!sass',
+          },
+          {
+            test: /\.(png|gif|jpe?g)$/,
+            loader: 'file-loader?name=./images/[hash].[ext]',
+          },
+          {
+              test: /\.html$/,
+              loader: 'html',
+          },
+          {
+              test: /\.json$/,
+              loader: 'json',
           }
         ]
     },
-    plugins: [
-     new webpack.BannerPlugin('This file is created by haoguo94D')
-    ],
 }
