@@ -49,27 +49,6 @@
         margin-left: 16px;
 
       }
-    }
-    .loading-succ {
-      width: 284px;
-      height: 138px;
-      background-size:284px 138px;
-      background-image:url('../images/loading.png');
-      .circle {
-        margin: 25px auto 0;
-        border-radius: 48px;
-        width: 60px;
-        height: 60px;
-        overflow: hidden;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        .fa {
-          font-size: 70px;
-          color: #fff;
-          margin-top: 3px;
-        }
-      }
       .success-word {
         color: #fff;
         text-align: center;
@@ -77,7 +56,6 @@
         font-size: 22px;
         margin-left: 16px;
       }
-
     }
   }
 </style>
@@ -103,10 +81,8 @@
         <span class="words">LOADING</span>
       </div>
       <!-- 认证成功 -->
-      <div class="loading-succ" v-if="afterLoading">
-        <p class="circle">
-          <i class="fa fa-check-square" aria-hidden="true"></i>
-        </p>
+      <div class="loading" v-if="afterLoading">
+        <i class="fa fa-check-circle" aria-hidden="true"></i>
         <p class="success-word">
           认证成功！
         </p>
