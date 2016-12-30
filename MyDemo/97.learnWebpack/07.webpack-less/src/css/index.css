@@ -1,0 +1,11 @@
+body {
+    background: red;
+    display: flex;
+}
+.good {
+    width: 100px;
+    height: 100px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-image: url(../img/good.png);
+}
