@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
-const HtmlwebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   //第一步,只有一个入口文件
   // entry:__dirname+'/src/app.js',
@@ -33,7 +33,7 @@ module.exports = {
     // })
     //=======================================================
     //第四步,可以根据已有的html模板生成html
-    new HtmlwebpackPlugin({
+    new HtmlWebpackPlugin({
       // chunks:['check'],
       title: 'template html',
       filename: 'templateHtml.html',
