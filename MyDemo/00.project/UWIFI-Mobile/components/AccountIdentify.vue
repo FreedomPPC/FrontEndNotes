@@ -63,7 +63,6 @@ import LogoSlogen from './fragments/LogoSlogen.vue';
 import TechSupport from './fragments/TechSupport.vue';
 import OtherType from './fragments/GoOtherLineType.vue';
 import BodyComponent from './fragments/Body.vue';
-
 export default {
   name:'message',
   data(){

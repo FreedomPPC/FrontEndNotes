@@ -17,7 +17,8 @@ const state = {
 // 创建一个对象存储一系列我们接下来要写的 mutation 函数
 const mutations = {
   //放置我们的状态变更函数
-  // 在我们的 vuex/actions.js 文件里我们 dispatch 了一个叫做 INCREMENT 的 mutation，但是我们还没有写它所对应的具体操作。我们现在就来做这个事。
+  // 在我们的 vuex/actions.js 文件里我们 dispatch 了一个叫做 INCREMENT 的 mutation，
+  //但是我们还没有写它所对应的具体操作。我们现在就来做这个事。
   // mutations的第一个参数是当前的state
   // 你可以在函数里修改state
   INCREMENT(state,amount){
