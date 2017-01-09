@@ -2,9 +2,11 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-  entry: './main.js',
+  entry: {
+    'app':'./main.js',
+  },
   output:{
-    filename: 'bundle.js'
+    filename: '[name]-[hash].js'
   },
   module:{
     loaders:[
