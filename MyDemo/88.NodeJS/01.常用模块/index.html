@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        h1 {
+            color: #f00;
+            margin: 0 auto;
+        }
+
+        .title {
+            display: block;
+        }
+
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1 class="title">NODE JS SERVER REQUEST</h1>
+        <button type="">SHOW ME</button>
+    </div>
+</body>
+<script>
+    const btn = document.getElementsByTagName('button')[0];
+    const title = document.getElementsByClassName('title')[0];
+    btn.onclick = function() {
+        if (title.className == 'title') {
+            title.removeAttribute('class', 'title');
+            title.setAttribute('class', 'hide');
+        } else {
+            title.setAttribute('class', 'title');
+        }
+    }
+</script>
+
+</html>

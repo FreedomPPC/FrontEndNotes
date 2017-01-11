@@ -7,6 +7,9 @@ const server = http.createServer(function(req,res){
     //回调函数接受request reponse对象;
     //request 获取http请求的method和url;
     console.log(req.method,req.url);
+    //打印
+    //GET: /
+    //GET: /favicon.ico
     //将http响应的200写入response,同时设置Content-type:text/html;
     res.writeHead(200,{'Content-Type':'text/html'});
     //将http响应的html内容写入response;
