@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        // 遍历数组要怎么做，可能你首先想到的会是for循环，当然for循环在JavaScript 刚萌生的时候就出现了，想到它也是理所当然的
+        var a = [
+            [1, 2],
+            [3, 4], 5
+        ]
+        for (var i = 0; i < a.length; i++) {
+            console.log(a[i]);
+        }
+        // for循环略显臃肿，
+
+        // 在ES5中有了forEach来遍历数组，似乎变得简洁了许多
+
+        a.forEach(function(value) {
+                console.log(value);
+            })
+            // but，forEach不能使用 break 语句中断循环，也不能使用 return 语句返回到外层函数，似乎是鸡肋，用的地方有限
+
+        // 最后主角出场了，duang~duang~duang，for-of循环，ES6新增特性
+
+        for (var value of a) {
+            console.log(value);
+        }
+        // 简洁的同时弥补了forEach的不足，for-of的功能不仅仅用于遍历数组，它还可以
+
+        // 1、遍历字符串
+        // 2、遍历类数组对象
+        // 3、支持 Map 和 Set 对象遍历
+    </script>
+</body>
+
+</html>

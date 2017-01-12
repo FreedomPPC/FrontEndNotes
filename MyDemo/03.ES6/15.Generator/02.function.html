@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        //斐波那契数列 0 1 1 2 3 5 8 13 21 34 ...
+        function fib(max) {
+            var t,
+                a = 0,
+                b = 1,
+                arr = [0, 1];
+
+            while (arr.length < max) {
+                t = a + b;
+                a = b;
+                b = t;
+                arr.push(t);
+            }
+            return arr;
+        }
+
+        console.log(fib(5)); //[0,1,1,2,3];
+        console.log(fib(10)); //[0, 1, 1, 2, 3, 5, 8, 13, 21, 34];
+        //缺陷:函数只能返回一次，所以必须返回一个Array。
+        //换成generator就不一样了;就可以一次返回一个数，不断返回多次;
+    </script>
+</body>
+
+</html>

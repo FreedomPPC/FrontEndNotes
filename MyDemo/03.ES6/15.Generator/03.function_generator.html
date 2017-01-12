@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        function* fib(max) {
+            var t,
+                a = 0,
+                b = 1,
+                n = 1;
+
+            while (n < max) {
+                yield a;
+                t = a + b;
+                a = b;
+                b = t;
+                n++;
+            }
+            yield a;
+        }
+
+        var FIB = fib(5); //fib {[[GeneratorStatus]]: "suspended", [[GeneratorReceiver]]: Window}
+        for (var x of fib(5)) {
+            console.log(x);
+        }
+    </script>
+
+</body>
+
+</html>
+
+</body>
+
+</html>

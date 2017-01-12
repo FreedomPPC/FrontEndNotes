@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        //01.用于数组构造和解构
+        let cold = ['autumn', 'winter'];
+        let warm = ['spring', 'summer'];
+
+        //构造一个数组
+        let season = [...warm, ...cold];
+        console.log(season); //['spring', 'summer','autumn', 'winter'];
+
+        //解构一个数组
+        let otherSeasons, autumn;
+        [autumn, ...otherSeasons] = cold;
+        console.log(autumn); //'autumn'
+        console.log(otherSeasons); //['winter']
+
+        //代表一个数组的函数参数;
+        cold.push(...warm);
+        console.log(cold); //['autumn','winter','spring','summer'];
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 函数在执行过程中，如果没有遇到return语句（函数末尾如果没有return，就是隐含的return undefined;），
+        // 控制权无法交回被调用的代码。
+
+        // generator和函数不同的是，generator由function*定义（注意多出的*号），
+        // 并且，除了return语句，还可以用yield返回多次。
+
+        //yield [ji:ld] vt.屈服,出产,产生,放弃 vi.屈服,投降 n.产量,收益
+        function* foo(x) {
+                yield x + 1;
+                yield x + 2;
+                return x + 3;
+            }
+            // 直接调用一个generator和调用函数不一样，foo(1)仅仅是创建了一个generator对象，还没有去执行它。
+            // next()方法会执行generator的代码，然后，每次遇到yield x;就返回一个对象{value: x, done: true/false}，
+            // 然后“暂停”。返回的value就是yield的返回值，done表示这个generator是否已经执行结束了。如果done为true，
+            // 则value就是return的返回值。
+            // 当执行到done为true时，这个generator对象就已经全部执行完毕，不要再继续调用next()了。
+            // 第二个方法是直接用for ... of循环迭代generator对象，这种方式不需要我们自己判断done：
+        var b = foo(1);
+        //想要输出放回的
+        // console.log(b.next()); //{value:2,done:false}
+        // console.log(b.next()); //{value:3,done:false}
+        // console.log(b.next()); //{value:4,done:true}
+        //注意:yield的done都是返回的false,return的done才会是true;
+
+        for (var y of b) {
+            console.log(y); //依次2,3;不会打印return的返回
+        }
+    </script>
+</body>
+
+</html>
+</body>
+
+</html>
+</body>
+
+</html>
+</body>
+
+</html>
