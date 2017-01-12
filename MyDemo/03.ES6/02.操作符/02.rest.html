@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //rest操作符主要用于获取传递给函数的参数列表
+        function countArguments(...argus) {
+            console.log(argus.length);
+
+            for (var a of argus) {
+                console.log(a);
+            }
+        }
+        countArguments('hello', '...rest', 'ES6-javascript');
+
+        function testRest(x, y, ...rest) {
+            for (var a of rest) {
+                console.log(a);
+            }
+        }
+        testRest(1, 2) //木有rest的值;
+        testRest(3, 4, 5, 6)
+    </script>
+</body>
+
+</html>

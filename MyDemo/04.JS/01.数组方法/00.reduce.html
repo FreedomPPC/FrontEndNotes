@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        // 再看reduce的用法。Array的reduce()把一个函数作用在这个Array的[x1, x2, x3...]上，
+        // 这个函数必须接收两个参数，reduce()把结果继续和序列的下一个元素做累积计算，其效果就是：
+        // [x1, x2, x3, x4].reduce(f) = f(f(f(x1, x2), x3), x4)
+
+        function product(arr) {
+            var pub = arr.reduce(function(x, y) {
+                return x * y;
+            })
+            return pub;
+        }
+        var arr1 = [1, 2, 3, 4];
+        console.log(product(arr1));
+    </script>
+</body>
+
+</html>

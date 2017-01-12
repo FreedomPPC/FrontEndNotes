@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        'use strict';
+        var arr = ['1', 'hello', '', undefined, null, 'world'];
+        var b = arr.filter(function(s) {
+            return s && s.trim(); //trim去掉空格,IE9不支持;
+        });
+        console.log(b);
+
+
+        var arr = ['A', 'B', 'C'];
+        var r = arr.filter(function(element, index, self) {
+            console.log(element); // 依次打印'A', 'B', 'C'
+            console.log(index); // 依次打印0, 1, 2
+            console.log(self); // self就是变量arr
+            return true;
+        });
+    </script>
+</body>
+
+</html>
+
+
+</html>

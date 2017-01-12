@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        //ES6提供了新的数据结构Set。它类似于数组，但是成员的值都是唯一的，没有重复的值。
+        // Set本身是一个构造函数，用来生成Set数据结构。
+        var s = new Set();
+        var arr = [1, 2, 3, 4, 4, 5, 5]
+        arr.map((val) => {
+            s.add(val);
+        })
+        console.log(typeof s); //object
+        console.log(s); //set(5) {1,2,3,4,5}
+        console.log([...s]); //[1,2,3,4,5],set可用于数组去重
+
+        //第二种数组去重,Array.from方法可以将Set结构转为数组。
+        var _arr = Array.from(new Set(arr))
+        console.log(_arr);
+    </script>
+</body>
+
+</html>
+>

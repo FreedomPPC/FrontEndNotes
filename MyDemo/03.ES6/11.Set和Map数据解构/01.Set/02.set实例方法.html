@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        // Set结构的实例有以下属性。
+        // Set.prototype.constructor： 构造函数， 默认就是Set函数。
+        // Set.prototype.size： 返回Set实例的成员总数。
+        // Set实例的方法分为两大类： 操作方法（ 用于操作数据） 和遍历方法（ 用于遍历成员）。 下面先介绍四个操作方法。
+        // add(value)： 添加某个值， 返回Set结构本身。
+        // delete(value)： 删除某个值， 返回一个布尔值， 表示删除是否成功。
+        // has(value)： 返回一个布尔值， 表示该值是否为Set的成员。
+        // clear()： 清除所有成员， 没有返回值。
+        // 上面这些属性和方法的实例如下。
+        s.add(1).add(2).add(2);
+        // 注意2被加入了两次
+
+        s.size // 2
+
+        s.has(1) // true
+        s.has(2) // true
+        s.has(3) // false
+
+        s.delete(2);
+        s.has(2) // false
+        // 下面是一个对比， 看看在判断是否包括一个键上面， Object结构和Set结构的写法不同。
+        // 对象的写法
+        var properties = {
+            'width': 1,
+            'height': 1
+        };
+
+        if (properties[someName]) {
+            // do something
+        }
+
+        // Set的写法
+        var properties = new Set();
+
+        properties.add('width');
+        properties.add('height');
+
+        if (properties.has(someName)) {
+            // do something
+        }
+    </script>
+</body>
+
+</html>
