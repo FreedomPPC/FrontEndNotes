@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let p1 = new Promise(function(resolve, reject) {
+        setTimeout(resolve, 500, 'P1');
+    });
+
+    let p2 = new Promise((resolve, reject) => {
+        setTimeout(resolve, 500, 'P2');
+    });
+
+    // 除了串行执行若干异步任务外，Promise还可以并行执行异步任务。用Promise.all()实现
+    Promise.all([p1, p2]).then(function(results) {
+        console.log(results); //获得一个Array:["p1","p2"];
+    });
+</script>
+
+</html>

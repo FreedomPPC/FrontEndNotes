@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        class Person {
+            contructor(name) {
+                this.name = name;
+            }
+            showName() {
+                console.log(this.name);
+            }
+        }
+
+        //继承
+        class Man extends Person {
+            constructor(name, gender) {
+                super(name); //super调用父类的构造方法
+                this.name = name;
+                this.gender = gender;
+            }
+
+            showGender() {
+                console.log(this.gender);
+            }
+        }
+
+        const Tony = new Man('tony', 'Male');
+        console.log('Tony.name...:' + Tony.name);
+        Tony.showName();
+        Tony.showGender();
+    </script>
+</body>
+
+</html>

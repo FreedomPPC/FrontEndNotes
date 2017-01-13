@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    const promise = new Promise(function(resolve.reject) {
+        console.log('promise');
+        resolve();
+    });
+    promise.then(function() {
+        console.log('resolve');
+    });
+
+    console.log('hi');
+    console.log('hello');
+    console.log('world');
+    //promise
+    //hi
+    //hello
+    //world
+    //resolve
+    // 上面代码中，Promise新建后立即执行，所以首先输出的是“Promise”。
+    // 然后，then方法指定的回调函数，将在当前脚本所有同步任务执行完才会执行，所以“Resolved”最后输出。
+</script>
+
+</html>

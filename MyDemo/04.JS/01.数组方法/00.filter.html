@@ -25,10 +25,20 @@
             console.log(self); // self就是变量arr
             return true;
         });
+
+
+        //数组去重
+        var
+            r,
+            arr = ['apple', 'strawberry', 'banana', 'pear', 'apple', 'orange', 'orange', 'strawberry'];
+        console.log(arr.indexOf('apple'));
+        r = arr.filter(function(ele, idx, arr) {
+            return arr.indexOf(ele) === idx;
+            // 去除重复元素依靠的是indexOf总是返回第一个元素的位置，
+            // 后续的重复元素位置与indexOf返回的位置不相等，因此被filter滤掉了。
+        });
+        console.log(r);
     </script>
 </body>
-
-</html>
-
 
 </html>

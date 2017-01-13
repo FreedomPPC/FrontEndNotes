@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="test-promise-log2">
+        <li>嘟嘟嘟!</li>
+        <li>嚓嚓嚓!</li>
+        <li>咔咔咔!</li>
+        <li>噗噗噗!</li>
+    </ul>
+</body>
+<script type="text/javascript">
+    'use strict';
+    //如果多个任务并行可以这样
+    var logging = document.getElementById('test-promise-log2');
+    while (logging.children.length > 1) {
+        logging.removeChild(logging.children[logging.children.length - 1]);
+    }
+
+    function log(s) {
+        var p = document.createElement('p');
+        p.innerHTML = s;
+        logging.appendChild(p);
+    }
+
+    //0.5s后返回input*input的结果
+    function multipul(input) {
+        return new Promise(function(resolve, reject) {
+            log('calculating:' + input + 'x' + input + '...');
+            setTimeout(resolve, 500, input * input);
+        });
+    }
+
+    //0.5秒后返回input+input的计算结果
+    function sum(input) {
+        return new Promise(function(resolve, reject) {
+            log(`calculating:${input}+${input}...`);
+            setTimeout(resolve, 500, input + input);
+        });
+    }
+
+    var p = new Promise(function(resolve, reject) {
+        log('start new Promise');
+        resolve(123);
+    });
+
+    //多个任务执行
+    //job1.then(job2).the(job3).catch(handleerror)
+    p.then(multipul).then(sum).then(multipul).then(sum).then(function(result) {
+        log('go result:' + result)
+    })
+</script>
+
+</html>

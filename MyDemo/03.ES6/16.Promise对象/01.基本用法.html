@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+</body>
+<script>
+    // promise对象一创建就立即执行;
+    // Promise构造函数接受一个函数作为参数，该函数的两个参数分别是resolve和reject。
+    // 它们是两个函数，由JavaScript引擎提供，不用自己部署。
+    // resolve函数的作用是，将Promise对象的状态从“未完成”变为“成功”（即从Pending变为Resolved），
+    // 在异步操作成功时调用，并将异步操作的结果，作为参数传递出去；reject函数的作用是，
+    // 将Promise对象的状态从“未完成”变为“失败”（即从Pending变为Rejected），在异步操作失败时调用，
+    // 并将异步操作报出的错误，作为参数传递出去。
+    let num = 15;
+    let promise = new Promise(function(resolve, reject) {
+        console.log(resolve);
+        console.log(reject);
+        if (num <= 10) {
+            num++;
+            resolve(num); //如果成功,就把参数传递出去;
+        } else {
+            num--;
+            reject(num); //如果失败,就把参数传递出去;
+        }
+    });
+
+    // Promise实例生成以后，可以用then方法分别指定Resolved状态和Reject状态的回调函数。
+    // then方法可以接受两个回调函数作为参数。第一个回调函数是Promise对象的状态变为Resolved时调用，
+    // 第二个回调函数是Promise对象的状态变为Reject时调用。其中，第二个函数是可选的，不一定要提供。
+    // 这两个函数都接受Promise对象传出的值作为参数。
+    //1.
+    // promise.then(function(value) {
+    //     console.log(value);
+    // }, function(value) {
+    //     console.log(value);
+    // });
+    //2.
+    promise.then(function(value) {
+        console.log("resolve" + value);
+    }).catch(function(value) {
+        console.log("reject" + value);
+    })
+
+
+    //====================================
+    //====================================
+    //
+    function timeout(ms) {
+        return new Promise(function(resolve, reject) {
+            setTimeout(resolve, ms, 'done');
+        })
+    }
+
+    timeout(2000).then((value) => {
+        console.log(value); //2s之后,done;
+    })
+</script>
+
+</html>
