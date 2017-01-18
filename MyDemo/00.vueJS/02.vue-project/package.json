@@ -1,7 +1,7 @@
 {
-  "name": "my-webpack-simple-demo",
+  "name": "vue-project",
   "description": "A Vue.js project",
-  "author": "keepfool <crmug@outlook.com>",
+  "author": "yunhao.li",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --hot",

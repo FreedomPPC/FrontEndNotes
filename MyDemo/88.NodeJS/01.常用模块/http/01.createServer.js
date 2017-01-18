@@ -13,7 +13,7 @@ const server = http.createServer(function(req,res){
     //将http响应的200写入response,同时设置Content-type:text/html;
     res.writeHead(200,{'Content-Type':'text/html'});
     //将http响应的html内容写入response;
-    res.end('<h1>Hello NodeJS HTTP Server</h1>')
+    res.end('<h1>Hello NodeJS HTTP Server</h1>');
 
 });
 
