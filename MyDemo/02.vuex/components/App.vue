@@ -10,23 +10,17 @@
 import Display from './Display.vue'
 import Increment from './Increment.vue'
 import store from '../store/store.js'
-import $ from 'jquery'
 export default {
 	data:function(){
 		return{
-
+			
 		}
 	},
-
+	
   components: {
     Display: Display,
     Increment: Increment
   },
-  store:store, //根组件加入store,让它的子组件和store连接
-  ready(){
-    //测试导入jquery
-    // console.log($('body'));
-    // $('body').css({'background':'deepskyblue'});
-  }
+  store:store //根组件加入store,让它的子组件和store连接
 }
 </script>

@@ -7,3 +7,7 @@ export function getCount (state) {
 };
 
 export const getDouble = state => state.doubleCount;
+
+export const getDivide = state => state.divideThree;
+
+export const getPlus = state => state.plus;

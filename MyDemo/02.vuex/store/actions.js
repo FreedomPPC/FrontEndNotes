@@ -1,3 +1,4 @@
+import * as types from './mutation_types.js';
 // 第二步：创建 action
 
 // action 是一种专门用来被 component 调用的函数。action 函数能够通过分发相应的 mutation 函数，
@@ -24,3 +25,12 @@ export const doubleCounter = function({dispatch,state}) {
 //function increment(store){
 //  store.dispatch('INCREMENT')
 //}
+
+//引入常量
+export const divideThree = function({dispatch,state}) {
+    dispatch(types.DIVIDE_THREE,3);
+}
+
+export const plusPlus = ({dispatch,state}) => {
+    dispatch(types.PLUS_PLUS,1);
+}

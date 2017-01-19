@@ -4,6 +4,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
+//常量命名之后，在store文件中也要import;
+import { DIVIDE_THREE,PLUS_PLUS } from './mutation_types.js';
 // 告诉 vue “使用” vuex
 Vue.use(Vuex)
 
@@ -12,6 +14,8 @@ const state = {
   //放置初始状态
   count:0,
   doubleCount:0,
+  divideThree:0,
+  plus:0
 }
 
 // 创建一个对象存储一系列我们接下来要写的 mutation 函数
@@ -29,6 +33,13 @@ const mutations = {
   },
   DOUBLE(state,amount){
   	state.doubleCount = state.count*amount;
+  },
+  //如果actions用了常量，mutations函数的写法就不一样了；
+  [DIVIDE_THREE](state,amount){
+    state.divideThree = state.count/amount;
+  },
+  [PLUS_PLUS](state,amount){
+    state.plus = state.count+amount;
   }
 }
 

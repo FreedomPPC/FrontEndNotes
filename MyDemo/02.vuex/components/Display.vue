@@ -19,11 +19,13 @@
   <div>
     <h3>Count is {{ counterValue }}</h3>
     <h1>DoubleCount is {{doubleValue}}</h1>
+    <h1>DivideThree is {{DivideThreeValue}}</h1>
+    <h1>Plus++ is:{{plusValue}}</h1>
   </div>
 </template>
 
 <script>
-import { getCount,getDouble} from '../store/getters'
+import { getCount,getDouble,getDivide} from '../store/getters'
 export default {
 vuex: {
     getters: {
@@ -32,7 +34,9 @@ vuex: {
       // counterValue: getCount
       // 第二种写法,因为在根组件导入了store;所以子组件也识别;
       counterValue: state => state.count,
-      doubleValue: getDouble
+      doubleValue: getDouble,
+      DivideThreeValue: state => state.divideThree,
+      plusValue: state => state.plus
     }
 }
 
