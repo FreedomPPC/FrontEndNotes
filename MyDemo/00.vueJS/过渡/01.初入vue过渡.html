@@ -1,51 +1,56 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-		<style>
-			/* 必需 */
-			.expand-transition {
-			  transition: all 1s ease;
-			  height: 200px;
-			  width: 200px;
-			  padding: 5px;
-			  background-color:deepskyblue;
-			  overflow: hidden;
-			}
 
-			/* .expand-enter 定义进入的开始状态 */
-			/* .expand-leave 定义离开的结束状态 */
-			.expand-enter, .expand-leave {
-			  	/*height: 0;*/
-			    transform: scale(0.2);
-					opacity: 0;
-					/*width: 0;*/
-					/*height: 0;*/
-					transform-origin:230px 230px;
-			    /*opacity: 1;*/
-			}
-			button{
-				position:fixed;
-				top:220px;
-				left:225px;
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		/* 必需 */
 
-			}
-		</style>
-	</head>
-	<body>
-		<div id="app">
-		   <div v-if="show" transition="expand">Hello Vue Transition</div>
-		   <button v-on:click="show=!show">Toggle</button>
-		</div>
-	</body>
-	<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
-	<script type="text/javascript">
-		var vm = new Vue({
-			el:"#app",
-		  data:{
-		    show:true
-		  }
-		})
-	</script>
+		.expand-transition {
+			transition: all 1s ease;
+			height: 200px;
+			width: 200px;
+			padding: 5px;
+			background-color: deepskyblue;
+			overflow: hidden;
+		}
+		/* .expand-enter 定义进入的开始状态 */
+		/* .expand-leave 定义离开的结束状态 */
+
+		.expand-enter,
+		.expand-leave {
+			/*height: 0;*/
+			transform: scale(0.2);
+			opacity: 0;
+			/*width: 0;*/
+			/*height: 0;*/
+			transform-origin: 230px 230px;
+			/*opacity: 1;*/
+		}
+
+		button {
+			position: fixed;
+			top: 220px;
+			left: 225px;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="app">
+		<div v-if="show" transition="expand">Hello Vue Transition</div>
+		<button v-on:click="show=!show">Toggle</button>
+	</div>
+</body>
+<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	var vm = new Vue({
+		el: "#app",
+		data: {
+			show: true
+		}
+	})
+</script>
+
 </html>

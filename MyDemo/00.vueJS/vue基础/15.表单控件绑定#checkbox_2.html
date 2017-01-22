@@ -1,30 +1,33 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
-		<script type="text/javascript">
-			window.onload = function(){
-				new Vue({
-				  el: '#example',
-				  data: {
-				    checkedNames: []
-				  }
-				})
-			}
-		</script>
-	</head>
-	<body>
-		<div id="example">
-			<input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
-			<label for="jack">Jack</label>
-			<input type="checkbox" id="john" value="John" v-model="checkedNames">
-			<label for="john">John</label>
-			<input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
-			<label for="mike">Mike</label>
-			<br>
-			<span>Checked names: {{ checkedNames | json }}</span>
-		</div>
-	</body>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		window.onload = function() {
+			new Vue({
+				el: '#example',
+				data: {
+					checkedNames: []
+				}
+			})
+		}
+	</script>
+</head>
+
+<body>
+	<div id="example">
+		<input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+		<label for="jack">Jack</label>
+		<input type="checkbox" id="john" value="John" v-model="checkedNames">
+		<label for="john">John</label>
+		<input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+		<label for="mike">Mike</label>
+		<br>
+		<span>Checked names: {{ checkedNames | json }}</span>
+	</div>
+</body>
+
 </html>

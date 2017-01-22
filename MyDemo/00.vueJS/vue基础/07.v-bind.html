@@ -16,7 +16,7 @@
         	.active{
         		background: red;
         	}
-        	
+
         </style>
     </head>
     <body>
@@ -26,9 +26,10 @@
                     <a href="javascripit:void(0)" v-bind:class="activeNumber === n + 1 ? 'active' : ''">{{ n + 1 }}</a>
                 </li>
             </ul>
+            <input type="txt" v-bind:disabled="true" placeholder="v-bind:disabled">
         </div>
     </body>
-    <script src="js/vue.js"></script>
+    <script src="../js/vue.js"></script>
     <script>
         var vm = new Vue({
             el: '#app',
