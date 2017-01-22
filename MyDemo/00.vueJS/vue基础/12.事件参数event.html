@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <form action="">
+            <input type="text" v-model="val" placeholder="输入no不跳转">
+            <input type="button" value="gogogo" @click="goTo($event)">
+        </form>
+    </div>
+</body>
+<script src="../js/vue.js" charset="utf-8"></script>
+<script type="text/javascript">
+    const vm = new Vue({
+        el: 'body',
+        data: {
+            val: ''
+        },
+        methods: {
+            goTo: function(event) {
+                console.log(event);
+                // return false;
+            }
+        }
+    });
+</script>
+
+</html>

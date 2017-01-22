@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--也可以使用 v-for 遍历对象。除了 $index 之外，作用域内还可以访问另外一个特殊变量 $key。  -->
+    <ul id="repeat-object" class="demo">
+        <li v-for="value in object">
+            {{ $key }} : {{ value }}
+        </li>
+    </ul>
+    <!-- 例外一种 -->
+    <div v-for="(key,val) in object">
+        <p>{{key}}:{{val}}</p>
+    </div>
+    <!-- 值域 v-for -->
+    <div style="display:flex">
+        <div v-for="n in 10" style="margin-left:10px">
+            <h1>{{n}}</h1>
+        </div>
+    </div>
+</body>
+<script src="../js/vue.js" charset="utf-8"></script>
+<script type="text/javascript">
+    new Vue({
+        el: 'body',
+        data: {
+            object: {
+                FirstName: 'John',
+                LastName: 'Doe',
+                Age: 30
+            }
+        }
+    })
+</script>
+
+</html>

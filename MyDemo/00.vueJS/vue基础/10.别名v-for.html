@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #tpl{
+            margin-top: 20px;
+            background-color: #f00;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <ul v-for="(idx,item) in items">
+            <li>{{idx}}-{{item.msg}}</li>
+        </ul>
+
+        <template v-for="room in roomList">
+            <div id="tpl">
+                <p>{{room.num}}</p>
+                <p>第-{{$index}}-个模块</p>
+            </div>
+        </template>
+    </div>
+</body>
+<script src="../js/vue.js" charset="utf-8"></script>
+<script type="text/javascript">
+    const vm = new Vue({
+        el:"#app",
+        data:{
+            items:[
+                {msg:'Foo'},
+                {msg:'Bar'}
+            ],
+            roomList:[
+                {num:607},
+                {num:308}
+            ]
+        }
+    });
+</script>
+</html>
