@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	div{
+		display: none;
+	}
+	.show{
+		display: block;
+	}
+	.active{
+		background-color: yellow;
+	}
+	</style>
+</head>
+<body>
+	<input type="button" value="tab1" class="active">
+	<input type="button" value="tab2">
+	<input type="button" value="tab3">
+	<div class="show">div1</div>
+	<div>div2</div>
+	<div>div3</div>
+	<script type="text/javascript">
+	"use strict"
+	/*
+		let特性：
+			1、不允许重复声明
+			2、没有预解析。
+			3、块级作用域
+
+		一对{}包括的区域称为代码块
+	块级作用域指一个变量或者函数只在该区域才起作用。
+	
+		从块的开始到声明这段的区域 暂存死区
+
+	*/
+	// console.log(a);
+	// var a = 1;
+	// // var a = 3;
+	// // let b = 2;
+	// console.log(b);
+	// let b = 3;
+
+	// {
+
+	// 	let a = 1;
+
+
+	// }
+	// console.log(a);
+
+	// for(var i=0;i<10;i++){
+	// 	(function(i){
+	// 		setTimeout(function(){
+	// 			console.log(i);
+	// 		})
+	// 	})(i)
+	// }
+	// for(let i=0;i<10;i++){
+	// 	setTimeout(function(){
+	// 			console.log(i);
+	// 		})
+	// }
+	var tabs = document.getElementsByTagName('input');
+	var divs = document.getElementsByTagName('div');
+
+	for(let i=0;i<tabs.length;i++){
+		
+		tabs[i].onclick = function(){
+			for(var j=0;j<tabs.length;j++){
+				divs[j].className = '';
+				tabs[j].className = '';
+			}
+			this.className = 'active';
+			divs[i].className = 'show';
+		}
+	}
+	
+	</script>
+</body>
+</html>

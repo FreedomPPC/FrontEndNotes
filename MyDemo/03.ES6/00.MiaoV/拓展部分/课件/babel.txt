@@ -1,0 +1,36 @@
+﻿
+安装babel
+npm install --global babel-cli  安装babel-cli工具
+
+配置文件
+echo { presets: ["es2015"] }> .babelrc
+
+在根目录创建.babelrc文件并写入文件内容{presets: ['es2015']}
+
+安装webpack和babel的一些依赖。
+npm install webpack -g  安装webpack
+npm install --save-dev babel-loader babel-core
+npm install babel-preset-es2015 --save-dev
+
+module.exports = {
+	entry:{main:"./es6/main.js"},
+	output:{
+		path:__dirname,
+		filename:"[name].js"
+	},
+	module: {
+		loaders: [{ 
+			test: /\.js$/, 
+			exclude: /node_modules/, 
+			babel-loaderadersader: "babel-loader" 
+		}]
+	}
+}
+
+单独的文件转换
+babel es6.js -o es5.js
+babel es6.js --out-file es5.js
+多个文件转换
+babel -d es5/  es6/
+
+webpack
