@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- 当指令使用字面量修饰符,值将按普通字符串处理并传递 -->
+	<!-- 給update方法,update方法只调用一次因为普通字符串不能 -->
+	<!-- 影响数据变化 -->
+	<div id="demo" v-demo.literal="foo bar baz"></div>
+	
+	<!-- 如果不加literal这个参数 log出来的结果是undefined-->
+	<div v-demo="foo bar baz"></div>
+
+	<!-- 不加literal 传参数必须是data中的变量 -->
+	<div v-demo="msg"></div>
+</body>
+	<script src="../js/vue.js"></script>
+	<script>
+		Vue.directive('demo',function(value){
+			console.info(value);
+		});
+
+		const demo = new Vue({
+			el:'body',
+			data:{
+				msg:"传入指令的是变量"
+			}
+		})
+	</script>
+</html>

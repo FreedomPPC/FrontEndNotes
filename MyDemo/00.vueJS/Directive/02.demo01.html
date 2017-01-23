@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- 如果指令需要多个值,可以传入一个js对象 -->
+	<!-- 指令可以使用合法的js表达式 -->
+	<div id="demo" v-demo="{color:'white',text:'hello'}"></div>
+</body>
+	<script src="../js/vue.js"></script>
+	<script>
+		Vue.directive('demo',function(value){
+			console.info(value.color);
+			console.info(value.text);
+		});
+
+		const demo = new Vue({
+			el:'#demo'
+		})
+	</script>
+</html>
