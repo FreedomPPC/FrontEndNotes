@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #app{
+            display: flex;
+        }
+        img{
+            width: 200px;
+            height: 200px;
+            display: inline;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        
+        <div  v-for="val in lists">
+            <img v-img="val.url" src="" alt="">
+        </div>
+    </div>
+    <!-- <div v-for="val in lists">
+        <img :src="val.url" alt="">
+    </div> -->
+</body>
+<script src="../js/vue2/vue.js" charset="utf-8"></script>
+<script type="text/javascript">
+    //全局注册指令,必须在注册Vue实例之前
+    Vue.directive('img', {
+        //inserted 当绑定元素插入到DOM中
+        inserted: function(el, binding) {
+            var color = Math.floor(Math.random() * 1000000);
+            el.style.backgroundColor = '#' + color; //设置随机背景颜色;
+            var img = new Image();
+            img.src = binding.value; //获得传给指令的值
+            img.onload = function() {
+                el.style.backgroundImage = 'url(' + binding.value + ')';
+            }
+        }
+    });
+    new Vue({
+        el: '#app',
+        data:{
+            lists:[
+                {
+                    url:'http://img2.niutuku.com/desk/1207/1011/ntk123346.jpg',
+                },{
+                    url:'http://img2.niutuku.com/desk/1207/1011/ntk123346.jpg',
+                },{
+                    url:'http://img2.niutuku.com/desk/1207/1011/ntk123346.jpg'
+                }
+            ]
+        }
+    });
+
+</script>
+
+</html>
