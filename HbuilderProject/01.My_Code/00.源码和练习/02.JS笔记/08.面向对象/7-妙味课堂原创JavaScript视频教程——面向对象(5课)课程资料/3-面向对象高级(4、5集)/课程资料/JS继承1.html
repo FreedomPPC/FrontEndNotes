@@ -12,12 +12,12 @@ function Person(name, sex)
 
 Person.prototype.showName=function ()
 {
-	alert(this.name);
+	console.log(this.name);
 };
 
 Person.prototype.showSex=function ()
 {
-	alert(this.sex);
+	console.log(this.sex);
 };
 
 //-------------------------------------
@@ -27,7 +27,7 @@ function Worker(name, sex, job)
 	//this->new出来的Worker对象
 	//构造函数伪装		调用父级的构造函数——为了继承属性
 	Person.call(this, name, sex);
-	
+
 	this.job=job;
 }
 
@@ -36,7 +36,7 @@ Worker.prototype=Person.prototype;
 
 Worker.prototype.showJob=function ()
 {
-	alert(this.job);
+	console.log(this.job);
 };
 
 var oW1=new Worker('blue', '男', '打杂的');

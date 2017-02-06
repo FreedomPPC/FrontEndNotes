@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+</head>
+<script>
+    //多态的基本概念:一个引用类型在不同情况下的多种状态;
+
+    function Master(name) {
+        this.name = name;
+    }
+
+    Master.prototype.feed = function(animal, food) {
+        console.log(`主人${this.name}给他家的${animal.name}喂${food.name}`);
+    }
+
+    //动物
+    function Animal(name) {
+        this.name = name;
+    }
+
+    function Cat(name) {
+        //call写法
+        // Animal.call(this, name);
+        //非call写法
+        this.animal = Animal;
+        this.animal(name);
+    }
+
+    function Dog(name) {
+        Animal.call(this, name);
+    }
+
+    //食物
+    function Food(name) {
+        this.name = name;
+    }
+
+    function Fish(name) {
+        Food.call(this, name);
+    }
+
+    function Bone(name) {
+        Food.call(this, name);
+    }
+    //实例化
+
+    var cat = new Cat('波斯猫');
+    var fish = new Fish('秋刀鱼');
+    let dog = new Dog('中华田园犬');
+    let bone = new Bone('Beef')
+    //主人
+    var master = new Master('Natasha');
+
+    master.feed(cat, fish);
+    master.feed(dog, bone);
+
+    //多态有利于代码的维护和发展;这里我们考虑换个参数,而我们可以看到Master的feed函数不需要
+    //变化;多态用途在于做面向对象编程开发时,需要有一个方法不变,但他接受的参数类型变化时,就可以使用多态;
+</script>
+
+</html>
+</script>
+</body>
+
+</html>

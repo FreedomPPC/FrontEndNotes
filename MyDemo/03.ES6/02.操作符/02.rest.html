@@ -24,7 +24,20 @@
             }
         }
         testRest(1, 2) //木有rest的值;
-        testRest(3, 4, 5, 6)
+        testRest(3, 4, 5, 6) //5 6
+
+        //arguments;
+        function testArgu() {
+            console.log('arguments:' + arguments.length);
+        }
+
+        //箭头函数中不支持arguments;
+        var testRest = (...rest) => {
+            console.log('...rest:' + rest.length);
+            console.log(arguments.length); //arguments is not define;
+        }
+        testArgu(1, 2, 3, 4);
+        testRest(1, 2, 3, 4, 5);
     </script>
 </body>
 

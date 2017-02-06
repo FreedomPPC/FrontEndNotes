@@ -4,15 +4,27 @@
 <head>
     <meta charset="utf-8">
     <title>菜鸟教程(runoob.com)</title>
+    <style>
+    input:nth-of-type(2){
+        position: fixed;
+        right: 0;
+        top: 80%;
+    }
+    </style>
     <script>
     function scrollWindow() {
-        window.scrollTo(100, 500);
+        window.scrollTo(0, 500);
+    }
+
+    function backToTop(){
+        window.scrollTo(0,0)
     }
     </script>
 </head>
 
 <body>
     <input type="button" onclick="scrollWindow()" value="滚动条" />
+    <input type="button" onclick="backToTop()" value="回到顶部">
     <p>滚动 滚动 滚动 滚动 滚动 滚动 滚动 滚动</p>
     <br>
     <br>

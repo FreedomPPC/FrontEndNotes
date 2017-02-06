@@ -21,6 +21,11 @@
     let person1 = createPerson('健健',18,'male');//3.调用函数,创建对象
     console.log(person1);
     console.log(person1.sayName());
+
+    let person2 = createPerson('健健',18,'male');
+
+    console.log(person1.sayName == person2.sayName)//false;
+    // 因为每个对象都是重新new的,所以不相等.而原型链就不存在这个问题. 
   </script>
 </body>
 </html>

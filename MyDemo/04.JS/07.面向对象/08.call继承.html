@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script type="text/javascript">
+    function Person(name, sex) {
+        this.name = name;
+        this.sex = sex;
+    }
+    Person.prototype.showName = function() {
+        console.log(this.name);
+    }
+    Person.prototype.showSex = function() {
+        console.log(this.sex);
+    }
+
+    function Worker(name, sex,job) {
+        // this.name = name;
+        // this.sex = sex;
+        Person.call(this, name, sex);
+        this.job = job;
+    }
+    Worker.prototype = Person.prototype;//要用到call方法
+    // Worker.prototype = new Person('健健', '男');//不需要call方法,要传参,不然worker获取不到
+
+    Worker.prototype.showJob = function(){
+      console.log(this.job);
+    }
+    // var oW1=new Worker('', '', '打杂的');//不需要call
+
+    var oW1 = new Worker('健健','女','打杂的')//需要call
+    oW1.showName();
+    oW1.showSex();
+    oW1.showJob();
+
+    var ins = new Person();
+    console.log(ins);//可以看到原型方法中也有showJob方法,涉及到引用类型.子类影响到了父类
+
+</script>
+
+</html>
