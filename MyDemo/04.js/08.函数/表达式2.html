@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+//区别：
+//1.函数表达式可以直接后面加括号执行，而函数声明是不可以的
+//2.函数声明可以被提前解析出来的
+
+
+//function aaa(){ alert(1); }();
+
+//var a = function aaa(){ alert(1); }();
+
+//~function aaa(){ alert(1) }();
+
+
+/*if(true){
+	function aaa(){
+		alert(1);
+	}
+}
+else{	
+	function aaa(){
+		alert(2);
+	}
+}
+
+aaa();*/
+
+
+if(true){
+	var a = function aaa(){
+		alert(1);
+	}
+}
+else{	
+	var a = function aaa(){
+		alert(2);
+	}
+}
+
+a();
+
+
+
+
+</script>
+</head>
+
+<body>
+</body>
+</html>
