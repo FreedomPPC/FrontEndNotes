@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script type="text/javascript">
+    //ES5新增两个缩小数组的方法reduce()和reduceRight();
+    //reduce从前往后遍历;reduceRight从后往前遍历;
+    //两个方法都接受4个参数pre:前一个值;cur:当前值;index:项的索引和array:数组对象
+    var arr = [1, 2, 3, 4, 5];
+    var redeucResult = arr.reduce(function(pre, cur, index, array) {
+        console.log("pre:", pre);
+        console.log("cur:", cur);
+        return pre * cur;
+    });
+
+    console.log("redeucResult:" + redeucResult);
+
+    var redeucRightResult = arr.reduceRight(function(pre, cur, index, array) {
+        console.log("Rightpre:", pre);
+        console.log("Rightcur:", cur);
+        return pre * cur;
+    });
+    console.log("redeucRightResult:" + redeucRightResult);
+</script>
+
+</html>

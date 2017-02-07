@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script type="text/javascript">
+    //1.基本类型;Undefined,Null,Boolean,Number,String.......es6新增类字符串数据类型Symbol
+    //2.复杂类型: Objcet
+    var s = Symbol('foo');
+    console.log(s); //Symbol('foo'),传的参数起识别作用,无其他实意
+    console.log(typeof s); //symbol;
+
+    var o = 'Nicholas';
+    var t = true;
+    var th = 22;
+    var u;
+    var n = null;
+    var a = new Object();
+    var arr = [0];
+    var f = function() {}
+    //typeof 一共返回7种,string boolean,number,undefined,object,function,symbol
+    console.log(typeof o); //string;
+    console.log(typeof t); //boolean
+    console.log(typeof th); //number
+    console.log(typeof u); //undefined
+    console.log(typeof n); //object
+    console.log(typeof a); //object
+    console.log(typeof arr); //object
+    console.log(typeof f); //function
+
+    //++++++++++++++++++
+    //虽然在检测基本类型的时候,typeof是得力的助手,但是在检测引用类型的值时,这个操作符用处不大
+    //通常我们并不是想知道某个值是对象,而是想知道它是什么类型的对象.所以要用到instanceof操作符
+    var obj = new Object();
+    var arr = new Array();
+    var reg = new RegExp();
+
+    console.log(obj.constructor == Object); //obj的构造函数是Objcet
+    console.log(obj instanceof Object); //obj是Objcet的实例
+
+    console.log(arr.constructor == Array); //true
+    console.log(arr instanceof Array); //true
+
+    //构造函数的函数名
+    console.log(reg.constructor.name == "RegExp"); //true
+    console.log(reg instanceof RegExp); //true
+</script>
+
+
+</html>

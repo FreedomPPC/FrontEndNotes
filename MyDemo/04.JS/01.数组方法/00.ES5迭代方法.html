@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script type="text/javascript">
+    //ES5 数组迭代方法包括
+    var arr = [1, 2, 3, 4, 5, 4, 3, 2, 1];
+
+    // 1.every():对数组的每一项运行给定函数,如果该函数对每一项都返回true,则返回true;
+    var everyResult = arr.every(function(item, index, array) {
+        return (item > 2);
+    });
+    console.log('every:', everyResult); //false;
+
+    // 2.some():对数组的每一项运行给定函数,如果该函数对任一项返回true,则返回true;
+    var someResult = arr.some(function(item, index, array) {
+        return (item > 2);
+    });
+    console.log('some:', someResult); //true;
+
+    //3.filter();过滤,对数组的每一项给定函数,返回该函数会返回true的项组成的数组;
+    var foreachResult = arr.filter(function(item, index, array) {
+        return (item > 2);
+    });
+    console.log('filter:', foreachResult); //[3,4,5,4,3]
+    //4.forEach();遍历数组
+    var foreachResult = arr.forEach(function(item, index, array) {
+        console.log(`item:${item},index:${index},array:${array}`);
+    });
+    //5.map();对数组的每一项给定函数;返回每次函数调用的结果组成的数组;
+    var mapResult = arr.map(function(item, index, array) {
+        return item * 2;
+    });
+    console.log(mapResult);
+</script>
+
+</html>

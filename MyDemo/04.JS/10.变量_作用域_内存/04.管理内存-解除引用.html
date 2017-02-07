@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script type="text/javascript">
+    //确保占用少的内存可以让页面获取更好的性能.
+    //优化内存占用的最佳方式,就是为执行中的代码只保存必要的数据.一旦数据不在有用,最好将其值设为null;
+    //来释放其引用,这种做法叫解除引用(dereferencing).这一做法适用于大多数全局变量和全局对象的属性.
+    //而局部变量会在他们离开执行环境时自动被解除引用.
+
+    function createPerson(name) {
+        var localPerson = new Object();
+        localPerson.name = name;
+        return localPerson;
+    }
+    var globalPerson = createPerson('Natasha');
+
+    //当不用到 globalPerson时,手动解除globalPerson的引用
+    globalPerson = null;
+
+    //localPerson在函数执行完毕以后就离开了执行环境,不需要解除引用;
+    //而globalPerson则需要我们在不使用它的时候手工为它解除引用.
+    //解除一个值得引用并不意味着自动回收该值所在的内存.解除引用的真正作用是让值脱离执行环境
+    //以便垃圾收集器下次运行时将其收回.
+</script>
+
+
+</html>

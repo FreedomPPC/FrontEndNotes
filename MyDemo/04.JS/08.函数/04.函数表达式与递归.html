@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script type="text/javascript">
+    'use strict';
+
+    //因为严格模式下不可以使用arguments.callee;用命名函数表达式代替.
+    var factorial = function f(num) {
+        if (num <= 1) {
+            return 1;
+        } else {
+            return num * f(num - 1);
+        }
+    }
+
+    console.log(factorial(4));
+</script>
+
+</html>

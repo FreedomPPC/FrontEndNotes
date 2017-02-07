@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+</body>
+<script type="text/javascript">
+    // 区别:1.函数表达式可以在后面直接加括号执行,函数声明是不可以的;
+    // 2.函数声明预解析
+
+    //  1.函数声明不能加括号执行;
+    // function one() {
+    //     alert('one')
+    // }(); //语法报错,unexpected token();
+
+    //2.函数表达式加括号执行
+    var second = function two() {
+        console.log('two'); //two
+    }();
+
+    (function third() {
+        console.log('third'); //third
+    })();
+    //3.命名函数表达式调用;
+    const fourth = function four() {
+        console.log('fourth');
+    }
+    fourth();
+    // four();//外部不可以用命名函数表达式的函数名调用函数;但是内部可以调用
+
+    let fiveth = function five(num) {
+        if (num <= 1) {
+            return 1;
+        } else {
+            return num * five(num - 1);
+        }
+    }
+    console.log(fiveth(4)); //24
+</script>
+
+</html>

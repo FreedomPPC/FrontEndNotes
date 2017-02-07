@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script type="text/javascript">
+	var name = "The window";
+	var object = {
+		name: 'My Object',
+		getNameFuc: function() {
+			//var that = this;这样that就访问到了局部
+			return function() {
+
+				return this.name
+			}
+		}
+	}
+	console.log(object.getNameFuc()()); //The window;
+</script>
+
+</html>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script type="text/javascript">
+    //es5 只有全局作用域 和 函数作用域
+    if (true) {
+        var color = "red";
+    }
+    console.log(color);
+
+    if (true) {
+        //es6 let命令,块级作用域
+        let bg = 'blue';
+    }
+    console.log(bg); //bg is not defined
+</script>
+
+</html>
