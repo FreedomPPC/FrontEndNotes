@@ -1,0 +1,75 @@
+/**header**/
+
+.headerView {
+    background-color: white;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: -1px;
+    /*box-shadow: 0 20px 10px -24px rgba(0, 0, 0, .5);*/
+    z-index: 1111;
+    height: 80px;
+}
+.headerView .logoBox {}
+.headerView .logoBox img {
+    margin: 11px 25px;
+}
+.headerView .headerBars {
+    position: absolute;
+    top: 34px;
+    right: 10px;
+}
+.headerView .headerBars .who {}
+.headerView .headerBars .operator {
+    color: gray;
+}
+.headerView .headerBars .operator> span {
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+/**silderBox**/
+
+.silderBox {}
+.silderBox .menuItem {}
+.silderBox .menuItem .menuTitle {
+    color: #a0b0c1;
+    padding: 13px 0;
+    padding-left: 45px;
+    cursor: pointer;
+}
+.silderBox .menuItem .menuTitle * {
+    color: #a0b0c1;
+}
+.silderBox .menuItem .subMenus {}
+.subMenus a {
+    display: block;
+    padding: 13px 0;
+    padding-left: 15%;
+    cursor: pointer;
+    text-decoration: none;
+    color: #a0b0c1;
+}
+.menuSubAction span {
+   color: #a0b0c1;
+}
+.menuSubAction a {
+    display: block;
+    padding: 13px 0;
+    padding-left: 45px;
+    cursor: pointer;
+    text-decoration: none;
+    color: #a0b0c1;
+}
+.silderBox .menuItem .subMenus a:hover {
+    background: #405060;
+    color: white;
+}
+.menuicon {
+  position: absolute;
+  left: 20px;
+}
+.directicon {
+    position: absolute;
+    right: 20px;
+    font-size: 12px;
+    font-weight: normal;
+}

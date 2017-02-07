@@ -1,0 +1,62 @@
+.btn {
+  height: 33px;
+  line-height: 31px;
+  border-radius: 4px;
+  padding: 0 10px;
+  cursor: pointer;    vertical-align: 2px;
+}
+.btn .iconscope{
+vertical-align: -1px;
+margin-right: 3px;
+}
+.btn .iconscope span {font-size:16px;}
+.btn  .labelName{
+      /*vertical-align: top;*/
+}
+.btn-default {
+  background: -webkit-linear-gradient(white, #f2f2f2);
+   /* Safari 5.1 - 6.0 */
+   background: -o-linear-gradient(white, #f2f2f2);
+   /* Opera 11.1 - 12.0 */
+   background: -moz-linear-gradient(white, #f2f2f2);
+   /* Firefox 3.6 - 15 */
+   background: linear-gradient(white, #f2f2f2);
+   FILTER: progid: DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=white, endColorStr=#f2f2f2);
+   /*IE 6 7 8*/
+   /* 标准的语法（必须放在最后） */
+   border: 1px solid #ddd;
+}
+
+.btn-default:hover {
+    box-shadow: 0px 0px 8px -2px #ddd;border: 1px solid #c8c8c8;
+    background: -webkit-linear-gradient(#f2f2f2, white);
+     /* Safari 5.1 - 6.0 */
+     background: -o-linear-gradient(#f2f2f2, white);
+     /* Opera 11.1 - 12.0 */
+     background: -moz-linear-gradient(#f2f2f2, white);
+     /* Firefox 3.6 - 15 */
+     background: linear-gradient(#f2f2f2, white);
+     FILTER: progid: DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=#f2f2f2, endColorStr=white);
+}
+
+.btn-primary {
+  background:#e7551e;
+  color: white;
+}
+.btn-primary * {
+  color: white;
+}
+.btn-primary:hover {
+    background: #e2411b;
+}
+
+.btn-red {
+  background:#d70c18;
+  color: white;
+}
+.btn-red * {
+  color: white;
+}
+.btn-red:hover {
+    background: #e9101c;
+}

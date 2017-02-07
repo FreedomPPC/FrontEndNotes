@@ -1,0 +1,42 @@
+{
+  "apps": [{
+    "name": "web_substation",
+    "script": "development.js",
+    "instances" : "0",
+    "exec_mode" : "cluster",
+    "log_date_format": "YYYY-MM-DD HH:mm Z",
+    "watch": "./"
+  }],
+  "deploy":{
+    "pro":{
+      "user": "node",
+      "host": ["dev.brainqi.net"],
+      "ref": "origin/master",
+      "repo": "git@git.coding.net:brainqi/substation-admin-sys-api.git",
+      "path": "/var/nodejs/substation-admin-sys-api",
+      "ssh_options": "StrictHostKeyChecking=no",
+      "pre-deploy-local": "echo '    ○ 准备部署线上环境 …'",
+      "post-deploy": "npm install && NODE_ENV=production pm2 startOrRestart start-app.json"
+    },
+    "dev":{
+      "user": "root",
+      "host": "172.20.8.109",
+      "ref": "origin/master",
+      "repo": "git@git.coding.net:davych/substation.git",
+      "path": "/var/www/node/web_substation",
+      "ssh_options": "StrictHostKeyChecking=no",
+      "pre-deploy-local": "echo '    ○ 准备部署开发环境 …'",
+      "post-deploy" : "echo 'start web pages.'"
+    },
+    "staging":{
+      "user": "node",
+      "host": "172.20.8.110",
+      "ref": "origin/master",
+      "repo": "git@git.coding.net:brainqi/substation-admin-sys-api.git",
+      "path": "/var/www/node/substation-admin-sys-api",
+      "ssh_options": "StrictHostKeyChecking=no",
+      "pre-deploy-local": "echo '    ○ 准备部署预生产环境 …'",
+      "post-deploy" : "npm install && NODE_ENV=staging pm2 startOrRestart start-app.json"
+    }
+  }
+}

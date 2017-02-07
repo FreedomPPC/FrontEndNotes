@@ -1,0 +1,28 @@
+.panelBox {
+  border: 1px solid #ddd;
+  background-color: white;    margin-top:20px;
+      /*box-shadow: 0 20px 10px -24px rgba(0, 0, 0, .5);*/
+}
+
+.panelContainer {
+  padding: 12px;
+  min-height: 40px;
+}
+
+.panelTitle {
+  padding: 12px;
+  background-color: #f8f8f8;
+  border-bottom: 1px solid #ddd;
+}
+
+.panelFooter {
+    padding: 12px;
+}
+
+.pagePanel {
+  background-color: white;    padding: 20px;
+}
+
+.bottom {
+  padding-bottom: 0px;
+}

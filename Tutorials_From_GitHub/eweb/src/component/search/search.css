@@ -1,0 +1,22 @@
+.searchinfo {
+  /*padding: 15px 0 0 18px;*/
+}
+.searchinfo input {
+    width: 200px;
+}
+
+.searchinfo label {
+  margin-right: 15px;
+  min-width: 75px;
+  display: inline-block;
+  text-align: right;
+}
+
+.searchItem {
+  margin-bottom: 20px;
+  margin-right: 10px;
+}
+
+.searchbtn {
+  margin-bottom: 20px;
+}

@@ -1,0 +1,193 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: none;
+    font-size: 14px;
+    color: #232323;
+}
+span, a {
+    display: inline-block;
+    position: relative;
+}
+div, p, ul, li {
+    position: relative;
+}
+body {
+    background: white;
+    font-family: "Microsoft YaHei";
+}
+html, body {
+    height: 100%;
+}
+input {
+  border: 1px solid #ddd;
+padding: 8px 0;
+color: #888;
+border-radius: 4px;
+position: relative;
+text-indent: 12px;
+}
+input:hover, input:focus {
+    border: 1px solid #4a5b6d;
+}
+table {
+    background: white;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+table thead {    border-left: 1px solid #ddd;}
+table thead tr {
+    background: -webkit-linear-gradient(white, #f2f2f2);
+    /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(white, #f2f2f2);
+    /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(white, #f2f2f2);
+    /* Firefox 3.6 - 15 */
+    background: linear-gradient(white, #f2f2f2);
+    FILTER: progid: DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=white, endColorStr=#f2f2f2);
+    /*IE 6 7 8*/
+    /* 标准的语法（必须放在最后） */
+}
+table thead th {
+    text-align: center;
+    font-size: 13px;
+    font-weight: normal;
+    color: #333;
+    height: 40px;
+    border-bottom: 1px solid #ddd;
+}
+table tbody td {
+  color: #232323;
+  height: 40px;
+  text-align: center;
+  vertical-align: middle;
+  padding: 0 10px;
+  line-height: 22px;
+  border: 1px solid #ddd;
+}
+table tbody td span {
+    font-size: 13px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+/**全局样式**/
+
+
+/**渐隐**/
+
+:global(.fadeModal-enter) {
+    opacity: 0;
+}
+:global(.fadeModal-leave) {
+    opacity: 0;
+}
+:global(.fadeModal-enter .bounce) {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+:global(.fadeModal-leave .bounce) {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+:global(.app_container) {
+    padding-top: 80px;
+}
+:global(.app_header) {
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    top: 0;
+}
+
+:global(.needpaddingnull) {
+    padding: 20px 0;
+}
+:global(.needpadding) {
+  padding: 20px;
+  background-color: #e6e6e6;
+}
+:global(.needtop) {
+  margin-top: 20px;
+}
+:global(.app_left_menus_box) {
+    width: 200px;
+    position: fixed;
+    height: 100%;
+    border-top: 1px solid #ddd;
+    background: #4a5b6d;
+    z-index: 111;
+    color: #a0b0c1;
+}
+:global(.app_main_container) {
+    /*padding-left: 200px;*/
+    width: calc(100% - 200px);
+        float: right;
+}
+:global(.app_main_container .app_container_in) {
+    padding-top: 40px;
+    /*padding-bottom: 20px;*/
+}
+:global(.app_main_container .app_container_in .clear) {
+    clear: both;
+}
+:global(.app_main_container .subTitle) {
+    background-color: #f2f2f2;
+    padding: 0 20px;
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #ddd;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    top: 80px;
+}
+:global(.app_footer) {
+    background: #b9b9b9;
+    color: white;
+    text-align: center;
+    line-height: 50px;
+}
+:global(.app_left_menus_box .v-link-active) {
+    background: #405060;
+    color: white;
+}
+:global(.app_left_menus_box .v-link-active span) {
+    background: #405060;
+    color: white;
+}
+/*---滚动条默认显示样式--*/
+
+::-webkit-scrollbar-thumb {
+    background-color: #cacaca;
+    height: 50px;
+    outline-offset: -2px;
+    outline: 2px solid #fff;
+    -webkit-border-radius: 4px;
+    border: 2px solid #fff;
+}
+
+/*---鼠标点击滚动条显示样式--*/
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #4a5b6d;
+    height: 50px;
+    -webkit-border-radius: 4px;
+}
+
+/*---滚动条大小--*/
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+/*---滚动框背景样式--*/
+
+::-webkit-scrollbar-track-piece {
+    background-color: #fff;
+    -webkit-border-radius: 0;
+}
