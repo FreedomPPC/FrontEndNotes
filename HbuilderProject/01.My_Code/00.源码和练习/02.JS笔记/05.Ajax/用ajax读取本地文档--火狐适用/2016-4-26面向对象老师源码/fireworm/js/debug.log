@@ -1,9 +1,0 @@
-[0426/120510:ERROR:proxy_service_factory.cc(105)] Cannot use V8 Proxy resolver in single process mode.
-[0426/120921:ERROR:renderer_main.cc(227)] Running without renderer sandbox
-[0426/143023:WARNING:dhcp_proxy_script_adapter_fetcher_win.cc(264)] Error fetching PAC URL from DHCP: 2
-[0426/143023:WARNING:dhcp_proxy_script_adapter_fetcher_win.cc(264)] Error fetching PAC URL from DHCP: 2
-[0426/143032:WARNING:dhcp_proxy_script_adapter_fetcher_win.cc(264)] Error fetching PAC URL from DHCP: 2
-[0426/143032:WARNING:dhcp_proxy_script_adapter_fetcher_win.cc(264)] Error fetching PAC URL from DHCP: 2
-[0426/143435:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
-[0426/143523:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.
-[0426/143523:WARNING:dns_config_service_win.cc(653)] Failed to read DnsConfig.

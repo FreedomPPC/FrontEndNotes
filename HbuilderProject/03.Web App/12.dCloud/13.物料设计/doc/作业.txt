@@ -1,8 +1,0 @@
-/**今天作业**/
-1.使用dcloud实现拍照和摄像 并在标签里面显示
-
-2.使用dcloud mui实现一个移动端页面 并且能在actionsheet里面实现拍照并显示在页面中
-
-3.熟练使用amazeui的组件和demo
-
-4.熟练熟练使用materialize ui的demo
