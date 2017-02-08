@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script type="text/javascript">
+    语法: var expression = /pattern/flags;
+    每个正则表达式都可带一个或者多个标志(flags), 用以标明正则表达式的行为.
+    共有3个标志:
+        g-- - 表示全局(global) 模式, 即模式将被应用于所有字符串, 而非发现第一个匹配项时立即停止.
+    i-- - 表示不区分大小写(
+        case -insensitive) 模式.
+    m-- - 表示多行(multiline) 模式, 即在达到一行文本末尾时还会继续查找下一行中是否存在与模式匹配的项.
+    因此, 一个正则表达式就是一个模式与上述三个标志的组合体.不同组合产生不同的效果.
+
+    //匹配字符串中所有"at"的实例
+    var pattern1 = /at/g;
+
+    //匹配第一个"bat"或"cat",不区分大小写
+    var pattern2 = /[bc]at/i;
+
+    //匹配所有以".at"结尾的3个字符的组合,不区分大小写.
+    var pattern3 = /.at/gi;
+
+    构造函数表达, 第一个参数模式, 第二个参数可选, 传标志符.一般还是字面量模式要好.
+    如果要转义.构造函数模式要加\\.
+    var pattern4 = new RegExp('.ai', 'gi')
+</script>
+
+</html>
+区分大小写. var pattern = /.at/gi;
+</script>
+
+</html>
