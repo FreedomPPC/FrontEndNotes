@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #canvas {
+            background: deepskyblue;
+            width: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 使用这个标签必须先设定宽高,可以行间可以css设置属性 -->
+    <!-- 如果浏览器支持canvas,canvas标签里的内容是不显示的,如果不支持.可以告诉用户不支持 -->
+    <canvas id="canvas" width="300" height="300">浏览器不支持canvas</canvas>
+
+
+
+
+</body>
+<script type="text/javascript">
+    // 要在这块画布上绘图,需要获取绘图上下文.而取得绘图上下文的引用,需要调用getContext()
+    // 方法并传入上下文的名字.传入2d,就可以取得2d上下文对象
+    var drawing = document.getElementById('canvas');
+    var ctx = drawing.getContext('2d');
+</script>
+
+</html>
+tml>

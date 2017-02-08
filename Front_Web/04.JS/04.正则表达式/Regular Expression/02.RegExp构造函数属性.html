@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script type="text/javascript">
+    //长属性名:input;短属性名:$_;最近一次要匹配的字符串.Opera不支持;
+    //lastMatch;$&;最近的一次匹配项;opera不支持;
+    //lastParen;$+;最近一次匹配的捕获组.Opera不支持;
+    //leftContext;$`;input字符串中lastMatch之前的文本;
+    //multiline;$*;布尔值,表示是否所有表达式都使用过多行模式.IE和Opera不支持;
+    //rightContext;$';input字符串中lastMatch之后的文本.
+
+    var text = "this has been a short summer";
+    var pattern = /(.)hort/gm;
+
+    if (pattern.test(text)) {
+        console.log(RegExp.input); //this has been a short summer;
+        console.log(RegExp.leftContext); //this has been a
+        console.log(RegExp.rightContext); //summer
+        console.log(RegExp.lastMatch); //short
+        console.log(RegExp.lastParen); //s
+        console.log(RegExp["$*"]); //undefined
+    }
+</script>
+
+</html>

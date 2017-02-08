@@ -1,46 +1,49 @@
 <!doctype html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
 </head>
+
 <body>
 	<canvas id="cvs" height="400" width="400" style="background:red;"></canvas>
 	<script>
-	var cvs = document.querySelector("#cvs");
-	var ctx = cvs.getContext("2d");
-	var ball = {
-				x:25,
-				y:25,
-				xs:3,
-				ys:7,
-				r:25,
-				fs:"#fff"
-			};
+		var cvs = document.querySelector("#cvs");
+		var ctx = cvs.getContext("2d");
+		var ball = {
+			x: 25,
+			y: 25,
+			xs: 3,
+			ys: 7,
+			r: 25,
+			fs: "#fff"
+		};
 
-	  ball.draw = function(ctx){
-		  ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);
-		  ctx.beginPath();
-		  ctx.fillStyle = this.fs;
-		  ctx.arc(this.x,this.y,this.r,0,2*Math.PI,true);
-		  ctx.fill();
-		}
+		ball.draw = function(ctx) {
+			ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+			ctx.beginPath();
+			ctx.fillStyle = this.fs;
+			ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI, true);
+			ctx.fill();
+		};
 
-     ;(function(){
-  
-		  if(ball.x<25||ball.x>ctx.canvas.width-25){
-		    ball.xs*=-1;
-		  }
-		  ball.x+=ball.xs;
+		(function() {
 
-		  if(ball.y<25||ball.y>ctx.canvas.height-25){
-		    ball.ys*=-1;
-		  }
-		  ball.y+=ball.ys;
-		  
-		  ball.draw(ctx);
-		  timer=setTimeout(arguments.callee,20);
+			if (ball.x < 25 || ball.x > ctx.canvas.width - 25) {
+				ball.xs *= -1;
+			}
+			ball.x += ball.xs;
+
+			if (ball.y < 25 || ball.y > ctx.canvas.height - 25) {
+				ball.ys *= -1;
+			}
+			ball.y += ball.ys;
+
+			ball.draw(ctx);
+			timer = setTimeout(arguments.callee, 20);
 		})();
 	</script>
 </body>
+
 </html>

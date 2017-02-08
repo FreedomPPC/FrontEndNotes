@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: black;
+        }
+
+        #canvas {
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="300" height="300"></canvas>
+</body>
+<script type="text/javascript">
+    var oC = document.getElementById('canvas');
+
+    var oGC = oC.getContext('2d');
+
+    //fillStyle填充颜色,fillRect(x坐标,y坐标,矩形宽度,矩形高度);
+    oGC.fillStyle = 'red';
+    oGC.fillRect(50, 50, 100, 100);
+
+
+    //描边颜色,lineWidth:描边宽度,strokeRect(x坐标,y坐标,矩形描边宽度,矩形描边高度)
+    oGC.strokeStyle = 'blue';
+    oGC.lineWidth = 20;
+    oGC.strokeRect(100, 50, 100, 100);
+</script>
+
+</html>
+
+
+</html>
+
+</html>

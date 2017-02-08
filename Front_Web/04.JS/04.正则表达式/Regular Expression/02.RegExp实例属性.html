@@ -12,6 +12,19 @@
 
 </body>
 <script type="text/javascript">
+    //RegExp的每个实例都具有下列属性,通过这些属性可以取得有关模式的各种信息.
+    //global:boolean,表示是否设置了g标志
+    //ignoreCase:boolean,表示是否设置了i标志.
+    //lastIndex:整数,表示开始搜索下一个匹配项的字符位置,从零算起.
+    //multiline:boolean,表示是否设置了m标志.
+    //source:正则表达式的字符串表示,按照字面量形式而非传入构造函数中的的字符串模式返回.
+
+    const pattern1 = /\[bc\]at/i;
+    console.log(pattern1.global);
+    console.log(pattern1.ignoreCase);
+    console.log(pattern1.lastIndex);
+    console.log(pattern1.multiline);
+    console.log(pattern1.source, typeof pattern1.source);
 </script>
 
 </html>
