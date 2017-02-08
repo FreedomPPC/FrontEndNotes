@@ -1,15 +1,10 @@
-﻿.idea
 public/node_modules
 sftp-config.json
-public/app/modules/rodeo/script/mobile/rice_dumpling/node_modules
-public/app/modules/rodeo/script/mobile/boat/node_modules
 node_modules
 composer.lock
 vendor/
 sftp-config-alt.json
 .project
-
 ftpsync.settings
 SFTP
-/docs/PMS接口文档/Sunlight System 接口规范-2.0.0.doc
 .ftpconfig
