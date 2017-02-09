@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style media="screen">
+        div {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+        }
+
+        canvas {
+            background: deepskyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <canvas id="canvas" width="300" height="300"></canvas>
+    </div>
+</body>
+<script type="text/javascript">
+    //measureText可以把文本控制在某一个区域;
+    var c = document.querySelector('#canvas');
+    var ctx = c.getContext('2d');
+    //ctx.rotate(angel(弧度))
+    ctx.rotate(45*Math.PI/180);//旋转的角度转化弧度就是num*Math.PI/180 = num度
+    ctx.moveTo(0,0);
+    ctx.lineTo(40,0);
+    ctx.stroke();
+  
+
+
+</script>
+
+</html>
+
+</html>
