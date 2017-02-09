@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style media="screen">
+        div {
+            width: 500px;
+            height: 500px;
+            margin: 0 auto;
+        }
+
+        canvas {
+            background: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <canvas id="canvas" width="500" height="500"></canvas>
+    </div>
+</body>
+<script type="text/javascript">
+    var c = document.querySelector('#canvas');
+    var ctx = c.getContext('2d');
+    //字体的样式
+    ctx.font = "bold 16px Arial";
+    //文本对齐方式,start,end,left,right,和center.建议使用"start"和"end";
+    //不要使用left和right;因为前两者的意思更稳妥;能同时适合从左到右和从右到左显示的语言
+    ctx.textAlign = "center";
+    //表示文本的基线,top,hanging,middle,alphabetic,ideographic和bottom;
+    ctx.textBaseline = "middle";
+    //先定颜色,在绘制
+    ctx.fillStyle = "white";
+    //fillText和strokeText接受4个参数,('要绘制的文本字符串',x坐标,y坐标,可选的最大像素宽度);
+    ctx.fillText('Yunhao', 200, 200);
+
+    ctx.font = "bold 30px Consolas";
+    ctx.strokeStyle = "white";
+    ctx.strokeText('Yunhao', 150, 150);
+</script>
+
+</html>

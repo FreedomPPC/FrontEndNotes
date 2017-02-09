@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style media="screen">
+        div {
+            width: 500px;
+            height: 500px;
+            margin: 0 auto;
+        }
+
+        canvas {
+            background: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <canvas id="canvas" width="500" height="500"></canvas>
+    </div>
+</body>
+<script type="text/javascript">
+    var c = document.querySelector('#canvas');
+    var ctx = c.getContext('2d');
+
+    //扇形
+    ctx.beginPath();
+    ctx.arc(50, 50, 40, Math.PI, 2 * Math.PI, false);
+    ctx.moveTo(50, 50);
+    ctx.lineTo(10, 50);
+    ctx.moveTo(50, 50);
+    ctx.lineTo(90, 50);
+    ctx.strokeStyle = "white";
+
+    //arcTo;arcTo(x1,y1,x2,y2,radius):
+    //从上一点开始绘制一条曲线,到(x2,y2)为止,并且以给定的半径radius穿过(x1,y1);
+    ctx.moveTo(100, 100);
+    ctx.arcTo(200, 150, 300, 400, 70);
+    //bezierCurveTo(c1x,c1y,c2x,c2y,x,y):从上一点开始绘制一条曲线,
+    //到(x,y)为止,并且以(c1x,c1y)和(c2x,c2y)作为控制点.
+    ctx.moveTo(100, 300);
+    ctx.bezierCurveTo(200, 310, 220, 350, 250, 400);
+
+    ctx.fillStyle = 'white';
+
+    ctx.rect(400, 400, 50, 50);
+    ctx.fill();
+    ctx.stroke();
+</script>
+
+</html>

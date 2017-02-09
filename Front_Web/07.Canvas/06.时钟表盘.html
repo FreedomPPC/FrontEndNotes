@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div#container {
+            width: 400px;
+            height: 400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #canvas {
+            background-color: #fcc;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <canvas id="canvas" width="300" height="300"></canvas>
+    </div>
+</body>
+<script>
+    var c = document.querySelector('#canvas');
+    var ctx = c.getContext('2d');
+    // if(ctx.getContext)
+    //开始路径
+    ctx.beginPath();
+    //外圆(x,y.radius.startAngle,endAngle,false);
+    ctx.fillStyle = "pink"
+    ctx.arc(150, 150, 99, 0, 2 * Math.PI, false);
+    ctx.fill()
+    ctx.closePath();
+    //内圆,先移动坐标到内圆的某个点上,再画内圆.
+    ctx.moveTo(245, 150);
+    ctx.arc(150, 150, 95, 0, 2 * Math.PI, false)
+    //绘制时针
+    ctx.moveTo(150, 150);
+    ctx.lineTo(150, 95);
+    //绘制分针
+    ctx.moveTo(150, 150);
+    ctx.lineTo(70, 140);
+    ctx.strokeStyle = "red";
+    ctx.stroke();
+</script>
+
+</html>
