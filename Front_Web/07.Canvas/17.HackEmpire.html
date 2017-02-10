@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+</body>
+<script type="text/javascript">
+    var c = document.getElementById('canvas');
+    var ctx = c.getContext('2d');
+
+    c.height = window.innerHeight;
+    c.width = window.innerWidth;
+
+    var str = '0123456789';
+    var arr = str.split("");
+    var font_size = 16;
+
+    var cols = c.width / font_size;
+
+    var drops = [];
+    for (var i = 0; i < cols; i++) {
+        drops[i] = 0;
+    }
+    console.log(drops);
+
+    function hack() {
+        ctx.fillStyle = 'rgba(0,0,0,0.05)';
+        ctx.fillRect(0, 0, c.width, c.height);
+
+        //文字颜色;
+        ctx.fillStyle = 'lime';
+        ctx.font = `${font_size}px Arial`;
+
+        //逐行输出文字;
+        for (var i = 0; i < drops.length; i++) {
+            var text = arr[Math.floor(Math.random() * str.length)];
+            ctx.fillText(text, i * font_size, drops[i] * font_size);
+            if (drops[i] * font_size > c.height || Math.random() > 0.95) {
+                //重绘的时候,从y轴0的位置开始
+                drops[i] = 0;
+            }
+            drops[i]++;
+        }
+    }
+    setInterval(hack, 33);
+</script>
+
+</html>

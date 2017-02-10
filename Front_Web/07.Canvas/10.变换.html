@@ -8,36 +8,88 @@
     <title>Document</title>
     <style media="screen">
         div {
-            width: 300px;
-            height: 300px;
+            /*width: 300px;*/
+            /*height: 300px;*/
             margin: 0 auto;
         }
 
         canvas {
             background: deepskyblue;
+            display: block;
+            margin-top: 20px;
         }
     </style>
 </head>
 
 <body>
     <div>
-        <canvas id="canvas" width="300" height="300"></canvas>
+        <canvas id="canvas1" width="200" height="200"></canvas>
+        <canvas id="canvas2" width="200" height="200"></canvas>
+        <canvas id="canvas3" width="300" height="350"></canvas>
+        <canvas id="canvas4" width="300" height="350"></canvas>
     </div>
 </body>
 <script type="text/javascript">
     //measureText可以把文本控制在某一个区域;
-    var c = document.querySelector('#canvas');
+    var c = document.querySelector('#canvas1');
     var ctx = c.getContext('2d');
     //ctx.rotate(angel(弧度))
-    ctx.rotate(45*Math.PI/180);//旋转的角度转化弧度就是num*Math.PI/180 = num度
-    ctx.moveTo(0,0);
-    ctx.lineTo(40,0);
+    ctx.beginPath()
+    ctx.rotate(45 * Math.PI / 180); //旋转的角度转化弧度就是num*Math.PI/180 = num度
+    ctx.lineWidth = 10;
+    ctx.lineCap = 'round'; //线条样式,butt(默认) round(原型线帽) square(正方形线帽)
+    ctx.moveTo(0, 0);
+    ctx.lineTo(60, 0);
     ctx.stroke();
-  
+    ctx.closePath();
 
+    ctx.font = "26px solid Arail";
+    ctx.fillStyle = "red";
+    ctx.fillText("Rotate", 90, 0);
 
+    //scale(x,y)
+    var c2 = document.getElementById('canvas2');
+    var ctx2 = c2.getContext('2d');
+    ctx2.strokeRect(5, 5, 40, 40);
+    //此时,原点是(0,0);用translate(x,y);移动
+    ctx2.scale(2, 2);
+    ctx2.translate(10, 10);
+    ctx2.strokeRect(5, 5, 40, 40);
+
+    //tansform(a,b,c,d,e,f);(0,0,0,0,1,1)
+    //transfrom允许缩放,旋转,移动并倾斜当前环境;
+    //a:水平缩放绘图;b:水平倾斜绘图;c:垂直倾斜绘图;d:垂直缩放绘图;e:水平移动绘图;
+    //f:垂直移动绘图;
+    var c3 = document.getElementById('canvas3');
+    var ctx3 = c3.getContext('2d');
+    ctx3.fillStyle = 'red';
+    ctx3.fillRect(0, 0, 200, 100);
+
+    ctx3.transform(1, 0.5, -0.5, 1, 60, 10);
+    ctx3.fillStyle = "yellow";
+    ctx3.fillRect(0, 0, 200, 100);
+
+    ctx3.transform(1, 0.5, -0.5, 1, 60, 10);
+    ctx3.fillStyle = "blue";
+    ctx3.fillRect(0, 0, 200, 100);
+
+    //setTransform()和transform传一样的参数,只是会覆盖重置前一次矩阵
+    var c4 = document.getElementById('canvas4');
+    var ctx4 = c4.getContext('2d');
+    ctx4.fillStyle = 'red';
+    ctx4.fillRect(0, 0, 200, 100);
+
+    ctx4.setTransform(1, 0.5, -0.5, 1, 60, 10);
+    ctx4.fillStyle = "yellow";
+    ctx4.fillRect(0, 0, 200, 100);
+
+    // ctx4.setTransform(1, 0.5, -0.5, 1, 60, 10);
+    // ctx4.fillStyle = "brown";
+    // ctx4.fillRect(0, 0, 200, 100);
+
+    ctx4.setTransform(1, 0.5, -0.5, 1, 60, 10);
+    ctx4.fillStyle = "blue";
+    ctx4.fillRect(0, 0, 200, 100);
 </script>
-
-</html>
 
 </html>

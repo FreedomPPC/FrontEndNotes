@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style media="screen">
+        div {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+        }
+
+        canvas {
+            background: deepskyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <canvas id="canvas" width="300" height="300"></canvas>
+    </div>
+</body>
+<script type="text/javascript">
+    var c = document.querySelector('#canvas');
+    var ctx = c.getContext('2d');
+    //createImageData(width,height,imageData);
+    var imgData = ctx.createImageData(100, 100)
+    console.log(imgData);
+    var imgData = ctx.createImageData(100, 100);
+    for (var i = 0; i < imgData.data.length; i += 4) {
+        imgData.data[i + 0] = 255;
+        imgData.data[i + 1] = 0;
+        imgData.data[i + 2] = 0;
+        imgData.data[i + 3] = 255;
+    }
+    //把图像数据putImageData();
+    ctx.putImageData(imgData, 10, 10);
+</script>
+
+</html>
+
+</html>

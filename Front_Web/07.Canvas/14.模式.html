@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style media="screen">
+        #canvas1 {
+            background: deepskyblue;
+            display: block;
+            margin-top: 20px;
+        }
+
+        #myCanvas {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./images/smile.jpg" id="img" alt="">
+    <div>
+        <canvas id="canvas1" width="420" height="245"></canvas>
+        <canvas id="myCanvas" width="578" height="200"></canvas>
+    </div>
+</body>
+<script type="text/javascript">
+    var img = document.querySelector('#img');
+    var c = document.querySelector('#canvas1');
+    var ctx = c.getContext('2d');
+
+
+    //模式其实就是重复图像,可以用来填充或描边图像.调用createPattern()方法;
+    //第一个参数传html标签.img,video,或者另外一个canvas;第二个参数就是类似
+    //background,repeat,repeat-x,repeat-y,no-repeat;
+    //绘制矩形
+    img.onload = function() {
+        var pattern = ctx.createPattern(img, "repeat");
+        ctx.fillStyle = pattern;
+        ctx.fillRect(0, 0, c.width, c.height);
+    }
+
+    // 第二种写法
+    var canvas = document.getElementById('myCanvas');
+    var context = canvas.getContext('2d');
+    var imageObj = new Image();
+
+    imageObj.onload = function() {
+        var pattern = context.createPattern(imageObj, 'repeat')
+        context.fillStyle = pattern;
+        context.rect(0, 0, canvas.width, canvas.height);
+        context.fill();
+
+    }
+    imageObj.src = 'http://www.html5canvastutorials.com/demos/assets/wood-pattern.png';
+    // imageObj.src="./images/smile.jpg"
+</script>
+
+</html>
+
+</html>

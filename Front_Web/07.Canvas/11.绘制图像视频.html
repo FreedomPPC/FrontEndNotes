@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style media="screen">
+        #scream {
+            width: 400px;
+            height: 225px;
+        }
+
+        #fir {
+            width: 1000px;
+            overflow: hidden;
+        }
+
+        canvas {
+            background: deepskyblue;
+            display: block;
+            margin-top: 20px;
+        }
+
+        canvas:nth-of-type(2) {
+            margin-left: 20px;
+        }
+
+        video {
+            width: 400px;
+            height: 225px;
+            margin-left: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="display:flex" id="fir">
+        <img src="./images/desk_top.jpg" id="scream" alt="">
+        <video src="./images/japan.mp4" controls="" id="vie">
+    </video>
+    </div>
+    <div style="display:flex">
+        <canvas id="canvas1" width="420" height="245"></canvas>
+        <canvas id="canvas2" width="420" height="245"></canvas>
+    </div>
+</body>
+<script type="text/javascript">
+    var c = document.querySelector('#canvas1');
+    var ctx = c.getContext('2d');
+
+    var img = document.getElementById("scream");
+
+    img.onload = function() {
+        ctx.drawImage(img, 10, 10, 400, 225);
+    }
+
+    var c2 = document.querySelector('#canvas2');
+    var ctx2 = c2.getContext('2d');
+    var v = document.getElementById('vie');
+    v.addEventListener('play', function() {
+        var i = window.setInterval(function() {
+            ctx2.drawImage(v, 10, 10, 400, 225);
+        }, 20);
+    }, false);
+    v.addEventListener('pause', function() {
+        window.clearInterval(i);
+    }, false);
+    v.addEventListener('ended', function() {
+        clearInterval(i);
+    }, false);
+</script>
+
+</html>

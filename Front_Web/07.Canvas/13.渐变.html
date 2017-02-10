@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style media="screen">
+        canvas {
+            background: deepskyblue;
+            display: block;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="display:flex">
+        <canvas id="canvas1" width="420" height="245"></canvas>
+    </div>
+</body>
+<script type="text/javascript">
+    var c = document.querySelector('#canvas1');
+    var ctx = c.getContext('2d');
+    //第一步,调用createLinearGradient(x,y,x1,y1)方法;接受4个参数
+    //起点坐标(x,y);终点坐标(x1,y1).调用方法,就创建了一个指定大小
+    //的渐变;返回一个CanvasGradient对象的实例...对象创建以后,使用
+    //addColorStop()方法来指定色标.这个方法接受俩参数,色标位置和css颜色值;
+    //色标位置是0开始1结束;
+
+    //线性渐变
+    var gradient = ctx.createLinearGradient(40, 40, 70, 70);
+    gradient.addColorStop(0, "red");
+    gradient.addColorStop(0.5, "yellow");
+    gradient.addColorStop(1, "white");
+    //绘制矩形
+    ctx.fillStyle = "#ff0000";
+    ctx.fillRect(10, 10, 50, 50);
+
+    //绘制渐变矩形;
+    ctx.fillStyle = gradient;
+    ctx.fillRect(30, 30, 50, 50);
+
+    //径向渐变(放射渐变);
+    //createRadialGradient(x,y,r,x1,y1,r1);
+    //起点圆的圆心(x,y)和半径r;终点圆的圆心(x1,y1)和半径r1;
+    ctx.translate(100, 100);
+    var grd = ctx.createRadialGradient(100, 50, 5, 90, 60, 20);
+    grd.addColorStop(0, "white");
+    grd.addColorStop(0.5, "deepskyblue");
+    grd.addColorStop(1, "red");
+    ctx.fillStyle = grd;
+    ctx.fillRect(0, 0, 150, 100);
+</script>
+
+</html>
+
+</html>

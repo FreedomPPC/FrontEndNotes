@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style media="screen">
+        canvas {
+            background: deepskyblue;
+            display: block;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="display:flex">
+        <canvas id="canvas1" width="420" height="245"></canvas>
+    </div>
+</body>
+<script type="text/javascript">
+    var c = document.querySelector('#canvas1');
+    var ctx = c.getContext('2d');
+
+    //设置阴影
+    ctx.shadowOffsetX = 5; //阴影y轴偏移量;
+    ctx.shadowOffsetY = 5; //阴影y轴偏移量;
+    ctx.shadowBlur = 4; //阴影模糊度;
+    ctx.shadowColor = "rgba(0,0,0,0.5)"; //阴影颜色;
+
+    //绘制红色矩形
+    ctx.fillStyle = "#ff0000";
+    ctx.fillRect(5, 5, 100, 100);
+
+    //绘制蓝色矩形
+    ctx.fillStyle = "rgba(0,0,255,1)";
+    ctx.fillRect(130, 150, 50, 50);
+    //黄色框框
+    ctx.strokeStyle = "rgba(255,255,0,1)";
+    ctx.strokeRect(210, 20, 150, 150);
+</script>
+
+</html>

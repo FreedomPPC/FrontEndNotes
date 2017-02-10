@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style media="screen">
+        div {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+        }
+
+        canvas {
+            background: deepskyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <canvas id="canvas" width="300" height="300"></canvas>
+    </div>
+</body>
+<script type="text/javascript">
+    //measureText可以把文本控制在某一个区域;
+    var c = document.querySelector('#canvas');
+    var ctx = c.getContext('2d');
+
+    //通过getImageData(x,y,width,height)方法取得(x,y)坐标开始(width,height)区域大小的原始图像数据;
+    var imageData = ctx.getImageData(10, 10, 50, 50);
+    console.log(imageData); //data,width,height,
+    //data是个数组,保存图像中的每个像素的的数据.在data数组中,每个像素用4个元素来保存,分别表示红,绿,蓝,
+    //透明度值,red = data[0];green = data[1]; blue = data[2];
+</script>
+
+</html>
+
+</html>
