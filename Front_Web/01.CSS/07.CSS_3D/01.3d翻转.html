@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+      body{ perspective: 800px; transform-style: preserve-3d; }
+      #box{ width: 300px; height: 300px; margin: 0 auto; transform-style: preserve-3d; position: relative; transition: 2s; }
+      /*运动时间*/
+      /*当鼠标移动到上面时让他旋转180° */
+      #box:hover{ transform:rotateY(180deg);}
+      #box .bian{ width: 300px; height: 300px; text-align: center; line-height: 300px; font-size: 100px; position: absolute; }
+      /*//.mian相对与#box绝对定位 */
+      .zhi1{ background-color: red; transform:rotateY(180deg); }
+      /*设置后面的可适度为看不见*/
+      .zhi2{ background-color: yellow; backface-visibility: hidden; }
+      img{
+        width: 300px;
+        height: 300px;
+      }
+    </style>
+</head>
+
+<body style="background-color:#23d19d">
+    <div id="box">
+        <div class="bian zhi1"><img src="../img/venice.jpg" alt=""></div>
+        <div class="bian zhi2"><img src="../img/sunny.jpg" alt=""></div>
+    </div>
+</body>
+
+</html>
