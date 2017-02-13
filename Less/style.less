@@ -1,0 +1,27 @@
+// 全局安装less以后就可以在终端上编译less了;
+//01.npm install less@latest -g  全局安装最近的版本;
+//02.编写玩less以后直接编译less
+//lessc style.less style.css -x;编译压缩less;
+//这是在终端上使用;
+@radius:5px;
+@onepx:1px;
+body{
+    background: red;
+}
+h1{
+    margin-top:200px;
+    margin-left: 200px;
+    width: 400px;
+    transform: rotateZ(30deg);
+}
+// 函数计算,变量存储
+.test_arguments{
+    width: 100px+@onepx*30;
+    height: 100px;
+    background: antiquewhite;
+    border-radius: @radius;
+    border: @onepx*6 solid black;
+    // box-shadow: @arguments;
+    // -webkit-box-shadow:@arguments;
+    // -moz-box-shadow:@arguments
+}
