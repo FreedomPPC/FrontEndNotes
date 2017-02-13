@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.div {
+			width: 100px;
+			height: 100px;
+			background: #eee;
+			border: 1px solid black;
+			margin-top: 20px;
+		}
+
+		.both {
+			overflow: hidden;
+			resize: both;
+		}
+
+		.horizontal {
+			overflow: hidden;
+			resize: horizontal;
+		}
+
+		.vertical {
+			overflow: hidden;
+			resize: vertical;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="div both" contenteditable="">both</div>
+	<div class="div horizontal" contenteditable="">horizontal</div>
+	<div class="div vertical" contenteditable="">vertical</div>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style media="screen">
+        body {
+            transform-style: preserve-3d;
+        }
+
+        #container {
+            transform-style: preserve-3d;
+            perspective: 800px;
+            width: 200px;
+            height: 200px;
+            margin: 100px auto;
+        }
+
+        .box {
+            text-align: center;
+            line-height: 200px;
+            width: 200px;
+            height: 200px;
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, .2);
+            background-color: rgba(255, 255, 0, .1);
+            position: absolute;
+        }
+
+        .front {
+            transform-origin: bottom;
+            transform: rotateX(-45deg);
+        }
+
+        .back {
+            transform: rotateY(10deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div class="box front">TanslateZ-Front</div>
+        <!-- <div class="box back">Back</div> -->
+    </div>
+</body>
+
+</html>

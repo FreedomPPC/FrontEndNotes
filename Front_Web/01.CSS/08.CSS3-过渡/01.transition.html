@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /*transition IE 9及以下 不支持;火狐2.0-3.6不支持*/
+
+        #flex {
+            width: 100px;
+            height: 100px;
+            margin: 100px auto;
+            cursor: pointer;
+            background-color: #2cff00;
+            /*
+                tansition:transition-property transition-duration transiton-timing-function transition-delay
+                1.transition-property:检索或设置对象中的参与过渡的属性;默认为all;可以不设置.
+                2.transition-duration:检索或设置对象的持续时间,一定要设置!
+                3.transition-timing-function:检索或设置对象中过渡的动画类型,
+                    linear:线性过渡.
+                    ease:平滑过渡.
+                    ease-in:由慢到快.
+                    ease-out:由快到慢.
+                    ease-in-out:由慢到快到慢.
+                    cubic-beziser(<number>,<number>,<number>,<number>);number在[0,1]区间内.
+                4.transition-delay:延迟过渡时间.
+            */
+            transition: all 2s ease-in-out 0.5s;
+        }
+
+        #flex:hover {
+            width: 300px;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="flex">
+        Hover Boom
+    </div>
+</body>
+
+</html>

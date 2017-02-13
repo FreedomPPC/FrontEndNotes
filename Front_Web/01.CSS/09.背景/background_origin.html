@@ -1,0 +1,40 @@
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box {
+			background: yellow url(bg.png) left top no-repeat;
+			width: 673px;
+			height: 500px;
+			border: 3px solid red;
+			border: 10px solid rgba(255, 0, 0, 0.5);
+			padding: 20px;
+		}
+
+		.box1 {
+			background-origin: border-box;
+		}
+
+		.box2 {
+			background-origin: padding-box;
+		}
+
+		.box3 {
+			background-origin: content-box;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>border-box</h1>
+	<div class="box box1 "></div>
+	<h1>padding-box</h1>
+	<div class="box box2"></div>
+	<h1>content-box</h1>
+	<div class="box box3"></div>
+
+</body>
+
+</html>
