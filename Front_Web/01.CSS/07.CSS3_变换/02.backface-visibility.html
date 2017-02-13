@@ -1,33 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>backface-visibility</title>
-  <style>
-    body{
-      transform-style: preserve-3d;
-    }
-    div{
-      width: 300px;;
-      height: 300px;
-      transition: 0.6s
-    }
-    div:hover{
-      transform: rotateY(180deg);
-      /*当一个元素背对用户的时候是否可见.默认visible,还有hidden属性*/
-      backface-visibility: visible;
-    }
-    img{
-      width: 100%;
-      height: 100%;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>backface-visibility</title>
+    <style>
+        body {
+            transform-style: preserve-3d;
+        }
+
+        div {
+            width: 300px;
+            ;
+            height: 300px;
+            transition: 0.6s
+        }
+
+        div:hover {
+            transform: rotateY(180deg);
+            /*当一个元素背对用户的时候是否可见.默认visible,还有hidden属性*/
+            backface-visibility: visible;
+            ;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
 </head>
+
 <body>
-  <div>
-    <img src="../img/sunny.jpg" alt="">
-  </div>
+    <div>
+        <img src="../img/sunny.jpg" alt="">
+    </div>
 </body>
+
 </html>

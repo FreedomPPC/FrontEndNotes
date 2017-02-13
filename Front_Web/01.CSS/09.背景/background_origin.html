@@ -4,12 +4,14 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<style>
+		/*背景图像的位置*/
+
 		.box {
-			background: yellow url(bg.png) left top no-repeat;
-			width: 673px;
-			height: 500px;
-			border: 3px solid red;
-			border: 10px solid rgba(255, 0, 0, 0.5);
+			background: url("../img/sunny.jpg") no-repeat;
+			background-size: 100px 100px;
+			width: 273px;
+			height: 200px;
+			border: 10px dashed rgba(255, 0, 0, 0.5);
 			padding: 20px;
 		}
 
@@ -23,6 +25,7 @@
 
 		.box3 {
 			background-origin: content-box;
+			/*background-size: 20px 20px;*/
 		}
 	</style>
 </head>
@@ -33,7 +36,9 @@
 	<h1>padding-box</h1>
 	<div class="box box2"></div>
 	<h1>content-box</h1>
-	<div class="box box3"></div>
+	<div class="box box3">
+		Background-origin:content-box
+	</div>
 
 </body>
 

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		/*
+			设置背景图片的大小
+			background-size:length | persantage | cover | contain;
+			length:设置背景的宽高(px),如果只设置一个值.第二个值为auto
+			persantage:设置宽高百分比,如果只设置一个,第二个为auto.
+			cover:覆盖背景区域的最小大小;
+			contain:会保持图像的纵横比,将图像缩放至覆盖背景区域的最小大小.
+		*/
+
+		.box {
+			background: url("../img/venice.jpg") center no-repeat;
+			width: 373px;
+			height: 300px;
+			border: 10px dashed red;
+		}
+
+		.box1 {
+			background-size: contain;
+		}
+
+		.box2 {
+			background-size: cover;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>contain</h1>
+	<div class="box box1 "></div>
+	<h1>cover</h1>
+	<div class="box box2"></div>
+</body>
+
+</html>

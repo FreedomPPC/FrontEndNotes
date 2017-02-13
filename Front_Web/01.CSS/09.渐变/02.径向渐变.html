@@ -7,9 +7,33 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+<style>
+    div {
+        width: 400px;
+        height: 400px;
+        border-radius: 50%;
+        margin: 100px auto;
+        text-align: center;
+        line-height: 400px;
+        color: Red;
+        font-size: 30px;
+        /*径向渐变由中心定义,至少定义两种颜色*/
+        background: -webkit-radial-gradient(red 5%, green 15%, blue 60%);
+        /* Safari 5.1 - 6.0 */
+        background: -o-radial-gradient(red 5%, green 15%, blue 60%);
+        /* Opera 11.6 - 12.0 */
+        background: -moz-radial-gradient(red 5%, green 15%, blue 60%);
+        /* Firefox 3.6 - 15 */
+        background: radial-gradient(red 5%, green 15%, blue 60%);
+        /* 标准的语法 */
+        /*background-image: url(../img/sunny.jpg);*/
+        background-size: 100% 100%;
+    }
+</style>
 
 <body>
-
+    <div>
+    </div>
 </body>
 
 </html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        @keyframes go {
+            0% {
+                background: red;
+            }
+            25% {
+                background: yellow;
+            }
+            50% {
+                background: blue;
+            }
+            100% {
+                background: green;
+            }
+        }
+        /*
+            @keyframes:规定动画;
+            animation:所有动画属性的简写,除了animation-play-state属性;
+            animation-name:规定动画@keyframes的动画名称;
+            animation-duration:规定动画完成一个周期所花费的秒或毫秒;默认是0;
+
+            animation-timing-function:规定动画的速度曲线.默认是ease;
+                linear	动画从头到尾的速度是相同的.
+                ease	默认。动画以低速开始，然后加快，在结束前变慢.
+                ease-in	动画以低速开始.
+                ease-out	动画以低速结束.
+                ease-in-out	动画以低速开始和结束.
+                cubic-bezier(n,n,n,n)	在 cubic-bezier 函数中自己的值。可能的值是从 0 到 1 的数值。
+
+            animation-delay:规定动画何时开始.默认是0;
+            animation-iteration-count:规定动画被播放次数,默认是0;
+                数值n:动画播放n次;
+                infinite:动画播放无限次
+
+            animation-direction:规定动画是否在下一周期逆向的播放,默认是normal;
+                normal	默认值。动画按正常播放。
+                reverse	动画反向播放。
+                alternate	动画在奇数次（1、3、5...）正向播放，在偶数次（2、4、6...）反向播放。
+                alternate-reverse	动画在奇数次（1、3、5...）反向播放，在偶数次（2、4、6...）正向播放。
+                initial	设置该属性为它的默认值。请参阅 initial。
+                inherit	从父元素继承该属性。请参阅 inherit。
+
+
+            animation-play-state:规定动画是否在运行时暂停:默认是running;
+
+        */
+
+        div {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            background: #ccc;
+            text-align: center;
+            line-height: 200px;
+            animation: go 2s;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        @ketframes{ }
+    </div>
+</body>
+
+</html>

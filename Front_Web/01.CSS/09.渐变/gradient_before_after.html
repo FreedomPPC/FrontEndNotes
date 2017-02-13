@@ -1,84 +1,91 @@
-<html lang="en"><head>
+<html lang="en">
+
+<head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-<style type="text/css">
-	body {}
-.div{
-    width:100px;
-    height:100px;
-    
-    border-radius:50%;
-}
-.d1{
-    background:-webkit-radial-gradient(
-    #fff 0px,#fff 1px,
-    #f00 1px,#f00 10px,
-    #0f0 10px,#0f0 20px,
-    #00f 20px,#00f 30px,
-    #ff0 30px,#ff0 40px,
-    #f0f 40px,#f0f 50px,
-    #0ff 50px,#0ff 60px)
-}
+	<style type="text/css">
+		body {}
 
-.d2{
-    margin-top:10px;
-    width:100px;
-    height:65px;
-    background:-webkit-radial-gradient(30% 20%,#fff,#943);
-}
+		.div {
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			margin-left: 120px;
+			margin-top: 40px;
+		}
 
-.d3{
-/*     background:red; */
-    position:relative;
-    background-image:-webkit-linear-gradient(top,#fff 0px,#fff 50%,#000 50%);
-    box-shadow:0px 0px 5px ;
-}
-.d3:before{
-    position:absolute;
-    width:50%;
-    height:50%;
-    top:25%;
-    content:"";
-    background:-webkit-radial-gradient(#fff 0%,#fff 20%,#000 25%);
-    border-radius:50%;
-}
-.d3:after{
-    position:absolute;
-    width:50%;
-    height:50%;
-    top:25%;
-    right:0;
-    content:"";
-    background:-webkit-radial-gradient(#000 0%,#000 20%,#fff 25%);
-    border-radius:50%;
-}
+		.d1 {
+			background: -webkit-radial-gradient( #fff 0px, #fff 1px, #f00 1px, #f00 10px, #0f0 10px, #0f0 20px, #00f 20px, #00f 30px, #ff0 30px, #ff0 40px, #f0f 40px, #f0f 50px, #0ff 50px, #0ff 60px)
+		}
 
-.d4{
-    width:90px;
-    height:90px;
-    border-radius:0;
-    position:relative;
-    background: -webkit-linear-gradient(top,transparent 0%, transparent 30px,#f00 30px,#f00 60px,transparent 60px);
-}
+		.d2 {
+			margin-top: 10px;
+			width: 100px;
+			height: 65px;
+			background: -webkit-radial-gradient(30% 20%, #fff, #943);
+		}
 
-.d4:before{
-    content:"";
-    position:absolute;
-    height: 30px;
-    width: 100%;
-    background: -webkit-linear-gradient(left,transparent 0px,transparent 30px,#f00 30px,#f00 60px,transparent 60px);
-}
-.d4:after{
-    content:"";
-    position:absolute;
-    height: 30px;
-    width: 100%;
-    bottom: 0px;
-    background: -webkit-linear-gradient(left,#f00 0px,#f00 30px,transparent 30px,transparent 60px,#f00 60px);
-}
-	
-</style></head>
+		.d3 {
+			/*background:red; */
+			position: relative;
+			background-image: -webkit-linear-gradient(top, #fff 0px, #fff 50%, #000 50%);
+			box-shadow: 0px 0px 5px;
+		}
+
+		.d3:before {
+			position: absolute;
+			width: 50%;
+			height: 50%;
+			top: 25%;
+			content: "";
+			background: -webkit-radial-gradient(#fff 0%, #fff 20%, #000 25%);
+			border-radius: 50%;
+		}
+
+		.d3:after {
+			position: absolute;
+			width: 50%;
+			height: 50%;
+			top: 25%;
+			right: 0;
+			content: "";
+			background: -webkit-radial-gradient(#000 0%, #000 20%, #fff 25%);
+			border-radius: 50%;
+		}
+
+		.d4 {
+			width: 90px;
+			height: 90px;
+			border-radius: 0;
+			position: relative;
+			background: -webkit-linear-gradient(top, transparent 0%, transparent 30px, #f00 30px, #f00 60px, transparent 60px);
+		}
+
+		.d4:before {
+			content: "";
+			position: absolute;
+			height: 30px;
+			width: 100%;
+			background: -webkit-linear-gradient(left, transparent 0px, transparent 30px, #f00 30px, #f00 60px, transparent 60px);
+		}
+
+		.d4:after {
+			content: "";
+			position: absolute;
+			height: 30px;
+			width: 100%;
+			bottom: 0px;
+			background: -webkit-linear-gradient(left, #f00 0px, #f00 30px, transparent 30px, transparent 60px, #f00 60px);
+		}
+	</style>
+</head>
+
 <body>
-  <div class="d1 div"></div>
+	<div class="d1 div"></div>
 
-<div class="d2 div"></div><div class="d3 div"></div><div class="d4 div"></div></body></html>
+	<div class="d2 div"></div>
+	<div class="d3 div"></div>
+	<div class="d4 div"></div>
+</body>
+
+</html>

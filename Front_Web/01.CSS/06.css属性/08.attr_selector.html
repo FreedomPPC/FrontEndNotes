@@ -1,63 +1,62 @@
-<html lang="en"><head>
+<html lang="en">
+
+<head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-<style type="text/css">
-	
-	form {}
+	<style type="text/css">
+		form {}
 
-[id]{
-    background:red;
-}
+		[id] {
+			background: red;
+		}
 
-[type=text]{
-    background:blue;
-}
+		[type=text] {
+			background: blue;
+		}
 
-[type*=m]{
-    background:green;
-}
+		[type*=m] {
+			background: green;
+		}
 
-[id^=c]{
-    background:yellow
-}
+		[id^=c] {
+			background: yellow
+		}
 
-[id$=abc]{
-    background:black;
-}
+		[id$=abc] {
+			background: black;
+		}
+		/**
+		[k~=v]
 
-/**
-[k~=v]
+		**/
 
-**/
-[class~=go]{
-    border:3px solid black;
-}
+		[class~=go] {
+			border: 3px solid black;
+		}
 
+		[class|=go] {
+			font-size: 50px;
+		}
+	</style>
+</head>
 
-[class|=go]{
-  font-size:50px;
-}
-
-</style></head>
 <body>
 	<form action="#" autocomplete="off">
-  <p id="aaa" class="ago">p11111</p>
-  <p id="kc" class=" go-for">p11111</p>
-		地址：<input type="url"> <br>
-		数字: <input type="number" value="3" min="3" max="9" step="2"><br>
-		范围: <input type="range" min="0" max="20" value="1" step="10"><br>
-		颜色：<input type="color"><br>
-		搜索：<input type="search" name="search" autofocus=""> <br>
-		邮箱：<input type="email"> <br>
-		日期：<input type="date"> <br>
-		时间：<input type="time"> <br>
-		照片：<input type="file" multiple=""><br>
-		本地化日期+时间：<input type="datetime-local"> <br>
-		周：<input type="week"> <br>
-		月：<input type="month"> <br><br><br><br>
-		姓名：<input type="text" pattern="[a-z]+" title="只能输入字母小写" placeholder="只能输入小写字母">
+		<p id="aaa" class="ago">p11111</p>
+		<p id="kc" class=" go-for">p11111</p>
+		地址：<input type="url"> <br> 数字: <input type="number" value="3" min="3" max="9" step="2"><br> 范围: <input type="range" min="0" max="20" value="1" step="10"><br> 颜色：
+		<input type="color"><br> 搜索：
+		<input type="search" name="search" autofocus=""> <br> 邮箱：
+		<input type="email"> <br> 日期：
+		<input type="date"> <br> 时间：
+		<input type="time"> <br> 照片：
+		<input type="file" multiple=""><br> 本地化日期+时间：
+		<input type="datetime-local"> <br> 周：
+		<input type="week"> <br> 月：
+		<input type="month"> <br><br><br><br> 姓名：
+		<input type="text" pattern="[a-z]+" title="只能输入字母小写" placeholder="只能输入小写字母">
 		<input type="submit" value="GO!!!">
-		
+
 		<!--
 
                适用于数值型表单
@@ -85,4 +84,18 @@
 
 
 
-</body></html>
+</body>
+
+</html>
+-->
+</form>
+
+
+
+
+
+
+
+</body>
+
+</html>

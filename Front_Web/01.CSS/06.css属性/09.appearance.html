@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style media="screen">
+        /*目前很多浏览器不是特别支持*/
+
+        div {
+            width: 200px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            margin-left: 100px;
+            margin-top: 20px;
+        }
+
+        div:nth-child(1) {
+            -webkit-appearance: button;
+            -moz-appearance: button;
+            appearance: button;
+        }
+
+        div:nth-child(2) {
+            -webkit-appearance: window;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        Appearance!Button!
+    </div>
+    <div>
+        Appearance!iCon
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 150px;
+            border: 1px solid #ccc;
+            margin: 0 auto;
+            margin-top: 20px;
+            text-align: center;
+            line-height: 150px;
+            font-size: 20px;
+        }
+
+        div:nth-child(1) {
+            background: -webkit-radial-gradient(circle, red, yellow, green);
+            /* Safari 5.1 - 6.0 */
+            background: -o-radial-gradient(circle, red, yellow, green);
+            /* Opera 11.6 - 12.0 */
+            background: -moz-radial-gradient(circle, red, yellow, green);
+            /* Firefox 3.6 - 15 */
+            background: radial-gradient(circle, red, yellow, green);
+            /* 标准的语法（必须放在最后） */
+        }
+
+        div:nth-child(2) {
+            background: -webkit-radial-gradient(red, yellow, green);
+            /* Safari 5.1 - 6.0 */
+            background: -o-radial-gradient(red, yellow, green);
+            /* Opera 11.6 - 12.0 */
+            background: -moz-radial-gradient(red, yellow, green);
+            /* Firefox 3.6 - 15 */
+            background: radial-gradient(red, yellow, green);
+            /* 标准的语法（必须放在最后） */
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        Circle
+    </div>
+
+    <div>
+        Ellipse是默认形状
+    </div>
+</body>
+
+</html>

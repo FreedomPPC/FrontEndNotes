@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #grad1 {
+            height: 150px;
+            width: 150px;
+            background: -webkit-radial-gradient(60% 55%, closest-side, blue, green, yellow, black);
+            /* Safari 5.1 - 6.0 */
+            background: -o-radial-gradient(60% 55%, closest-side, blue, green, yellow, black);
+            /* Opera 11.6 - 12.0 */
+            background: -moz-radial-gradient(60% 55%, closest-side, blue, green, yellow, black);
+            /* Firefox 3.6 - 15 */
+            background: radial-gradient(60% 55%, closest-side, blue, green, yellow, black);
+            /* 标准的语法（必须放在最后） */
+        }
+
+        #grad2 {
+            height: 150px;
+            width: 150px;
+            background: -webkit-radial-gradient(60% 55%, farthest-side, blue, green, yellow, black);
+            /* Safari 5.1 - 6.0 */
+            background: -o-radial-gradient(60% 55%, farthest-side, blue, green, yellow, black);
+            /* Opera 11.6 - 12.0 */
+            background: -moz-radial-gradient(60% 55%, farthest-side, blue, green, yellow, black);
+            /* Firefox 3.6 - 15 */
+            background: radial-gradient(60% 55%, farthest-side, blue, green, yellow, black);
+            /* 标准的语法（必须放在最后） */
+        }
+
+        #grad3 {
+            height: 150px;
+            width: 150px;
+            background: -webkit-radial-gradient(60% 55%, closest-corner, blue, green, yellow, black);
+            /* Safari 5.1 - 6.0 */
+            background: -o-radial-gradient(60% 55%, closest-corner, blue, green, yellow, black);
+            /* Opera 11.6 - 12.0 */
+            background: -moz-radial-gradient(60% 55%, closest-corner, blue, green, yellow, black);
+            /* Firefox 3.6 - 15 */
+            background: radial-gradient(60% 55%, closest-corner, blue, green, yellow, black);
+            /* 标准的语法（必须放在最后） */
+        }
+
+        #grad4 {
+            height: 150px;
+            width: 150px;
+            background: -webkit-radial-gradient(60% 55%, farthest-corner, blue, green, yellow, black);
+            /* Safari 5.1 - 6.0 */
+            background: -o-radial-gradient(60% 55%, farthest-corner, blue, green, yellow, black);
+            /* Opera 11.6 - 12.0 */
+            background: -moz-radial-gradient(60% 55%, farthest-corner, blue, green, yellow, black);
+            /* Firefox 3.6 - 15 */
+            background: radial-gradient(60% 55%, farthest-corner, blue, green, yellow, black);
+            /* 标准的语法（必须放在最后） */
+        }
+    </style>
+</head>
+
+<body>
+
+    <h3>径向渐变 - 不同尺寸大小关键字的使用</h3>
+
+    <p><strong>closest-side：</strong></p>
+    <div id="grad1"></div>
+
+    <p><strong>farthest-side：</strong></p>
+    <div id="grad2"></div>
+
+    <p><strong>closest-corner：</strong></p>
+    <div id="grad3"></div>
+
+    <p><strong>farthest-corner（默认）：</strong></p>
+    <div id="grad4"></div>
+
+    <p><strong>注意：</strong> Internet Explorer 9 及之前的版本不支持渐变。</p>
+
+</body>
+
+</html>
