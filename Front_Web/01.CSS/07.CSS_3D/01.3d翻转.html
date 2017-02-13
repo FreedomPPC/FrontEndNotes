@@ -2,31 +2,76 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <style>
-      body{ perspective: 800px; transform-style: preserve-3d; }
-      #box{ width: 300px; height: 300px; margin: 0 auto; transform-style: preserve-3d; position: relative; transition: 2s; }
-      /*运动时间*/
-      /*当鼠标移动到上面时让他旋转180° */
-      #box:hover{ transform:rotateY(180deg);}
-      #box .bian{ width: 300px; height: 300px; text-align: center; line-height: 300px; font-size: 100px; position: absolute; }
-      /*//.mian相对与#box绝对定位 */
-      .zhi1{ background-color: red; transform:rotateY(180deg); }
-      /*设置后面的可适度为看不见*/
-      .zhi2{ background-color: yellow; backface-visibility: hidden; }
-      img{
-        width: 300px;
-        height: 300px;
-      }
-    </style>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    /* entire container, keeps perspective */
+
+    .flip-container {
+      perspective: 1000;
+    }
+    /* flip the pane when hovered */
+
+    .flip-container:hover .flipper,
+    .flip-container.hover .flipper {
+      transform: rotateY(180deg);
+
+    }
+
+    .flip-container,
+    .front,
+    .back {
+      width: 320px;
+      height: 480px;
+      margin:100px auto;
+      overflow: hidden;
+    }
+    /* flip speed goes here */
+
+    .flipper {
+      transition: 0.6s;
+      transform-style: preserve-3d;
+      position: relative;
+    }
+    /* hide back of pane during swap */
+
+    .front,
+    .back {
+      backface-visibility: hidden;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    /* front pane, placed above back */
+
+    .front {
+      z-index: 2;
+    }
+    /* back, initially hidden pane */
+
+    .back {
+      transform: rotateY(180deg);
+    }
+    img{
+      width: 100%;
+      height: 100%;
+    }
+  </style>
 </head>
 
 <body style="background-color:#23d19d">
-    <div id="box">
-        <div class="bian zhi1"><img src="../img/venice.jpg" alt=""></div>
-        <div class="bian zhi2"><img src="../img/sunny.jpg" alt=""></div>
+  <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+    <div class="flipper">
+      <div class="front">
+        <!-- 前面内容 -->
+        <img src="../img/venice.jpg" alt="">
+      </div>
+      <div class="back">
+        <!-- 背面内容 -->
+        <img src="../img/sunny.jpg" alt="">
+      </div>
     </div>
+  </div>
 </body>
 
 </html>

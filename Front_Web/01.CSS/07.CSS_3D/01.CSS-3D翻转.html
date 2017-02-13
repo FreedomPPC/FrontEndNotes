@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body{
+      /*transform-style:flat | preserve-3d 分别表示呈现3d场景与否*/
+      transform-style: preserve-3d;
+      /*井深,值越小,表示离你眼睛越近的感觉*/
+      perspective: 800px;
+      /*指定井深的中心点*/
+      perspective-origin: center center;
+    }
+    .reversal{
+      transform-style: preserve-3d;
+      /*指定变换的中心点默认center,center*/
+      transform-origin: 40% center;
+      margin: 100px auto;
+      position: relative;
+      transition: .6s;
+      width: 300px;
+      height: 300px;
+
+    }
+    .box{
+      position: absolute;
+    }
+    .flip_2{
+      transform: rotateY(180deg);
+      backface-visibility: hidden;
+    }
+    .reversal:hover{
+      transform: rotateY(180deg);
+    }
+    img{
+      width: 300px;
+      height: 300px
+    }
+  </style>
+</head>
+<body>
+  <div class="reversal">
+    <div class="box flip_1">
+      <img src="../img/venice.jpg" alt="">
+    </div>
+    <div class="box flip_2">
+      <img src="../img/sunny.jpg" alt="">
+    </div>
+  </div>
+</body>
+</html>
