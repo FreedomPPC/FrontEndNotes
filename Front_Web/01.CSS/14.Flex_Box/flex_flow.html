@@ -1,44 +1,51 @@
-<html lang="en"><head>
+<html lang="en">
+
+<head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-<style type="text/css">
-	.flex {
-    display: flex;
-    height: 300px;
-    background: #eee;
-}
+	<style type="text/css">
+		.flex {
+			display: flex;
+			height: 300px;
+			width: 100px;
+			border: 1px solid black;
+			background: #eee;
+			flex-flow: row-reverse wrap-reverse;
+		}
 
-.flex-item {
-    width:100px;
-    background:red;
-    margin:10px;
-}
+		.flex-item {
+			width: 100px;
+			background: deepskyblue;
+			margin: 10px;
+			font-size: 20px;
+		}
 
-.flex-item.f1{
-    height:40px;
-}
+		.flex-item.f1 {
+			height: 40px;
+		}
 
-.flex-item.f2{
-    height:80px;
-}
-.flex-item.f3{
-    height:30px;
-}
-.flex-item.f4{
-    height:60px;
-}
+		.flex-item.f2 {
+			height: 80px;
+		}
 
-</style></head>
+		.flex-item.f3 {
+			height: 30px;
+		}
+	</style>
+</head>
+
 <body>
 	<h1>
-		
+		flex-flow是集合属性<br>
 		flex-flow:flex-direction flex-wrap;
-		
+
 	</h1>
-  <div class="flex">
-    <div class="flex-item f1"></div>
-    <div class="flex-item f2"></div>
-    <div class="flex-item f3"></div>
-    
-  </div>
-</body></html>
+	<div class="flex">
+		<div class="flex-item f1">A</div>
+		<div class="flex-item f2">B</div>
+		<div class="flex-item f3">C</div>
+
+	</div>
+</body>
+
+</html>

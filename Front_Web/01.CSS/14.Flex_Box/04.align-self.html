@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>菜鸟教程(runoob.com)</title>
+    <style>
+        /*
+        CSS 语法
+        align-self: auto|stretch|center|flex-start|flex-end|baseline|initial|inherit;
+        属性值
+        auto	默认值。元素继承了它的父容器的 align-items 属性。如果没有父容器则为 "stretch"。
+        stretch	元素被拉伸以适应容器。
+        center	元素位于容器的中心。
+        flex-start	元素位于容器的开头。
+        flex-end	元素位于容器的结尾。
+        baseline	元素位于容器的基线上。
+        initial	设置该属性为它的默认值。
+        inherit	从父元素继承该属性。
+        */
+
+        #main {
+            width: 220px;
+            height: 300px;
+            border: 1px solid black;
+            display: -webkit-flex;
+            /* Safari */
+            -webkit-align-items: flex-start;
+            /* Safari 7.0+ */
+            display: flex;
+            align-items: flex-start;
+        }
+
+        #main div {
+            -webkit-flex: 1;
+            /* Safari 6.1+ */
+            flex: 1;
+        }
+
+        #myBlueDiv {
+            -webkit-align-self: center;
+            /* Safari 7.0+ */
+            align-self: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <div style="background-color:coral;">红色</div>
+        <div style="background-color:lightblue;" id="myBlueDiv">蓝色</div>
+        <div style="background-color:lightgreen;">带有更多内容的绿色 div</div>
+    </div>
+    <div>
+        <button>Auto</button>
+        <button>Stretch</button>
+        <button>Flex_end</button>
+        <button>Flex_start</button>
+        <button>Center</button>
+        <button>Baseline</button>
+        <button>Initial</button>
+        <button>Inherit</button>
+    </div>
+    <p><b>注意:</b> align-self 属性重写了容器的 align-items 属性。</p>
+    <p><b>注意:</b> Internet Explorer 10 及更早版本浏览器不支持 align-items 属性。</p>
+    <p><b>注意:</b> Safari 7.0 及更新版本通过 -webkit-align-items 属性支持该属性。</p>
+
+</body>
+<script type="text/javascript">
+    var arr = ['auto', 'stretch', 'flex-end', 'flex-start', 'center', 'baseline', 'initial', 'inherit'];
+    var btn = document.querySelectorAll('button');
+    var myBlueDiv = document.querySelector('#myBlueDiv');
+    //let块级作用域写法
+    // for (let i = 0; i < btn.length; i++) {
+    //     btn[i].onclick = function() {
+    //         myBlueDiv.style.alignSelf = arr[i];
+    //     }
+    // }
+
+    //====================
+    //闭包写法
+    for (var i = 0; i < arr.length; i++) {
+        btn[i].onclick = (function(i) {
+            return function() {
+                console.log(i);
+                myBlueDiv.style.alignSelf = arr[i];
+            }
+        })(i)
+    }
+</script>
+
+</html>

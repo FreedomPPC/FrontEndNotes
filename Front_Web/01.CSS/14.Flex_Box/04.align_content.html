@@ -1,91 +1,143 @@
-<html lang="en"><head>
+<html lang="en">
+
+<head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-<style type="text/css">
-	.flex {
-    display: flex;
-    height: 300px;
-    background: #eee;
-}
+	<style type="text/css">
+		body {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+		}
 
-.flex-item {
-    width:100px;
-    background:red;
-    margin:10px;
-}
+		h1 {
+			width: 100vw;
+		}
 
-.flex-item.f1{
-    height:40px;
-}
+		.flex {
+			/*display: flex;*/
+			height: 230px;
+			width: 120px;
+			background: #eee;
+			border: 1px solid black;
+			display: flex;
+			flex-wrap: wrap;
+		}
 
-.flex-item.f2{
-    height:80px;
-}
-.flex-item.f3{
-    height:30px;
-}
-.flex-item.f4{
-    height:60px;
-}
+		.flex-item {
+			width: 120px;
+			text-align: center;
+		}
 
-</style><style type="text/css">
-	.flex.start {
-    align-content: flex-start;
-}
+		.flex-item.f1 {
+			height: 60px;
+			background: rgb(255, 127, 80);
+			line-height: 60px;
+		}
 
-.flex.end {
-    align-content: flex-end;
-}
+		.flex-item.f2 {
+			height: 80px;
+			background: rgb(240, 140, 130);
+			line-height: 80px
+		}
 
-.flex.around {
-    align-content: space-around;
-}
+		.flex-item.f3 {
+			height: 50px;
+			background: rgb(211, 211, 211);
+			line-height: 50px;
+		}
 
-.flex.between {
-    align-content: space-between;
-}
+		.flex.stretch {
+			align-content: stretch;
+		}
 
-.flex.stretch {
-    align-content: stretch;
-}
-	
-</style></head>
+		.flex.center {
+			align-content: center;
+		}
+
+		.flex.start {
+			align-content: flex-start;
+		}
+
+		.flex.end {
+			align-content: flex-end;
+		}
+
+		.flex.around {
+			align-content: space-around;
+		}
+
+		.flex.between {
+			align-content: space-between;
+		}
+	</style>
+</head>
+
 <body>
-	
-  <h1>align-content  等价于justify-content的旋转90度后的结果</h1>
-<p>flex-start</p><p>flex</p>
 
-<div class="flex start">
-    <div class="flex-item f1"></div>
-    <div class="flex-item f2"></div>
-    <div class="flex-item f3"></div>
-    
-  </div><p>end</p>
-<div class="flex end">
-    <div class="flex-item f1"></div>
-    <div class="flex-item f2"></div>
-    <div class="flex-item f3"></div>
-    
-  </div>
-<p>space-around</p>
-<div class="flex around">
-    <div class="flex-item f1"></div>
-    <div class="flex-item f2"></div>
-    <div class="flex-item f3"></div>
-    
-  </div>
-<p>space-between</p>
-<div class="flex between">
-    <div class="flex-item f1"></div>
-    <div class="flex-item f2"></div>
-    <div class="flex-item f3"></div>
-    
-  </div>
-<p>stretch</p>
-<div class="flex stretch">
-    <div class="flex-item f1"></div>
-    <div class="flex-item f2"></div>
-    <div class="flex-item f3"></div>
-    
-  </div>
-</body></html>
+	<h1>align-content  等价于justify-content的旋转90度后的结果</h1>
+	<div class="container">
+		<p>stretch</p>
+		<p>拉伸适应容器</p>
+		<div class="flex stretch">
+			<div class="flex-item f1">FLEX_ONE</div>
+			<div class="flex-item f2">FLEX_TWO</div>
+			<div class="flex-item f3">FLEX_THREE</div>
+		</div>
+	</div>
+	<div class="container">
+		<p>center</p>
+		<p>位于容易中心</p>
+		<div class="flex center">
+			<div class="flex-item f1">FLEX_ONE</div>
+			<div class="flex-item f2">FLEX_TWO</div>
+			<div class="flex-item f3">FLEX_THREE</div>
+		</div>
+	</div>
+	<div class="container">
+		<p>flex-start</p>
+		<p>位于容易开头</p>
+		<div class="flex start">
+			<div class="flex-item f1">FLEX_ONE</div>
+			<div class="flex-item f2">FLEX_TWO</div>
+			<div class="flex-item f3">FLEX_THREE</div>
+		</div>
+	</div>
+	<div class="container">
+		<p>end</p>
+		<p>位于容器结尾</p>
+		<div class="flex end">
+			<div class="flex-item f1">FLEX_ONE</div>
+			<div class="flex-item f2">FLEX_TWO</div>
+			<div class="flex-item f3">FLEX_THREE</div>
+		</div>
+	</div>
+	<div class="container">
+		<p>space-around</p>
+		<p>位于各行之前、之间、之后<br>都留有空白的容器内。</p>
+		<div class="flex around">
+			<div class="flex-item f1">FLEX_ONE</div>
+			<div class="flex-item f2">FLEX_TWO</div>
+			<div class="flex-item f3">FLEX_THREE</div>
+
+		</div>
+	</div>
+	<div class="container">
+		<p>space-between</p>
+		<p>项目位于各行之间留<br>有空白的容器内。</p>
+		<div class="flex between">
+			<div class="flex-item f1">FLEX_ONE</div>
+			<div class="flex-item f2">FLEX_TWO</div>
+			<div class="flex-item f3">FLEX_THREE</div>
+		</div>
+	</div>
+
+
+
+
+
+
+</body>
+
+</html>
+l>

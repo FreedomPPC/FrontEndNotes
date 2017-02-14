@@ -1,59 +1,80 @@
-<html lang="en"><head>
+<html lang="en">
+
+<head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-<style type="text/css">
-	.flex {
-    display: flex;
-    height: 300px;
-    background: #eee;
-}
+	<style type="text/css">
+		.flex {
+			display: flex;
+			height: 300px;
+			background: #eee;
+			width: 300px;
+			border: 1px solid black;
+		}
 
-.flex-item {
-    width:100px;
-    background:red;
-    margin:10px;
-    flex-grow: 1;
-}
+		.flex-item {
+			width: 100px;
+			background: red;
+			margin: 10px;
+		}
 
-.flex-item.f1{
-    height:40px;
-}
+		.flex-item.f1 {
+			height: 40px;
+		}
 
-.flex-item.f2{
-    height:80px;
-}
-.flex-item.f3{
-    height:30px;
-}
-.flex-item.f4{
-    height:60px;
-}
+		.flex-item.f2 {
+			height: 80px;
+		}
 
-</style><style type="text/css"></style></head>
+		.flex-item.f3 {
+			height: 30px;
+		}
+
+		.column {
+			flex-direction: column;
+		}
+
+		.column-reverse {
+			flex-direction: column-reverse;
+		}
+
+		.row {
+			/*默认值*/
+			flex-direction: row;
+		}
+
+		.row-reverse {
+			flex-direction: row-reverse;
+		}
+	</style>
+</head>
+
 <body>
-  <h1>flex-direction</h1>
-  <p>column</p>
-  <div class="flex column">
-    <div class="flex-item f1">1</div>
-    <div class="flex-item f2">2</div>
-    <div class="flex-item f3">3</div>
-  </div>
-  <p>column-reverse</p>
-  <div class="flex column-reverse">
-    <div class="flex-item f1">1</div>
-    <div class="flex-item f2">2</div>
-    <div class="flex-item f3">3</div>
-  </div>
-  <p>row</p>
-  <div class="flex row">
-    <div class="flex-item f1">1</div>
-    <div class="flex-item f2">2</div>
-    <div class="flex-item f3">3</div>
-  </div>
-  <p>row reverse</p>
-  <div class="flex row-reverse">
-    <div class="flex-item f1">1</div>
-    <div class="flex-item f2">2</div>
-    <div class="flex-item f3">3</div>
-  </div>
-</body></html>
+	<h1>flex-direction</h1>
+	<p>column</p>
+	<div class="flex column">
+		<div class="flex-item f1">1</div>
+		<div class="flex-item f2">2</div>
+		<div class="flex-item f3">3</div>
+	</div>
+	<p>column-reverse</p>
+	<div class="flex column-reverse">
+		<div class="flex-item f1">1</div>
+		<div class="flex-item f2">2</div>
+		<div class="flex-item f3">3</div>
+	</div>
+	<p>row</p>
+	<div class="flex row">
+		<div class="flex-item f1">1</div>
+		<div class="flex-item f2">2</div>
+		<div class="flex-item f3">3</div>
+	</div>
+	<p>row-reverse</p>
+	<div class="flex row-reverse">
+		<div class="flex-item f1">1</div>
+		<div class="flex-item f2">2</div>
+		<div class="flex-item f3">3</div>
+	</div>
+</body>
+
+</html>
