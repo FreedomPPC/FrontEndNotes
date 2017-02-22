@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        // 1.递增,递减在后
+        //先进行运算,再进行自增自减;
+        var num1 = 2;
+        var num2 = 20;
+        var num3 = num1-- + num2;
+        console.log(num3); //22;
+        var num4 = num1 + num2;
+        console.log(num4); //21;
+
+        //2.递增,递减在前
+        //递增在后,先递增 再运算
+        var count1 = 3;
+        var count2 = 6;
+        var count3 = ++count1 + count2;
+        console.log('count3', count3); //10;
+    </script>
+</body>
+
+</html>

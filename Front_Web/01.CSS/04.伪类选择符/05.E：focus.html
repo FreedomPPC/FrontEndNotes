@@ -31,12 +31,16 @@
     <h1>请聚焦到以下输入框</h1>
     <form action="#">
         <ul>
-            <li><input value="姓名" /></li>
+            <li><input value="姓名" id="one" /></li>
             <li><input value="单位" /></li>
             <li><input value="年龄" /></li>
             <li><input value="职业" /></li>
         </ul>
     </form>
 </body>
+<script type="text/javascript">
+    var one = document.getElementById('one');
+    one.focus()
+</script>
 
 </html>

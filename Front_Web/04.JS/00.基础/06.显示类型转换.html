@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        //做显示类型转换时,最简单的方法就是使用Boolean(),Number(),String()或Object()函数;
+        //当不用new运算符调用这些函数时,他们会作为类型转换函数做类型转换..
+        Number('3') // => 3;
+        String(false) // => "false";
+        //除了null 和 undefined 之外,任何值都有toString()方法,
+        false.toString() // => "false";
+
+        Boolean([]); //true;
+
+        var num = Object(3);
+        console.log(num, typeof(num));
+
+
+        var count = 123.986;
+        console.log(count.toFixed(2), count.toFixed(5), typeof(count.toFixed(2))); //"123.97",string;保留多少位小数,变字符串;有四舍五入
+        //toExponential();指数计数法,将数字转化成指数计数的字符串
+        console.log(count.toExponential(1), count.toExponential(4)); //1.2e+2 1.2399e+2;
+        //toPrecision(),指定有效数字.转化字符串
+        console.log(count.toPrecision(10)); //123.9860000
+
+        //parseInt()可以接受第二个可选参数,表示指定数字转换的基数;合法的取值范围是2~36;
+        parseInt('11', 2); //3 (1*2+1);
+        parseInt('ff', 16); //255 (15*16 + 15);
+        parseInt('zz', 36); //1295 (35*36 + 35);
+        parseInt('077', 8); //63 (7*8 + 7);
+        parseInt('077', 10); //77 (7*10 + 7)
+
+        //如果第一个非空格字符是非法直接量,将最终返回NaN;
+        console.log(parseInt('3x2d')); //3
+        console.log(parseInt('-12.34')); //-12
+        console.log(parseInt('.1')); //NaN;
+        console.log(parseFloat('.1')); //0.1
+        console.log(parseFloat('$77.77')); //NaN,数字不能以$开头;
+        console.log(parseInt('f3f')); //NaN;首字母是字母就是NaN
+        console.log(parseFloat('f3f')); //NaN;
+        console.log(parseInt('0xf3f')); //3903
+    </script>
+</body>
+
+</html>

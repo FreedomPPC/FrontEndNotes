@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+	// 隐式转换
+	console.log('57' == 57); //true; 字符串先变数字,再判断;
+	console.log(undefined == null); //都隐式转换成0了;
+	console.log('57' * 1, typeof('57' * 1)); //57 number;
+	console.log('5' + 1, typeof('5' + 1)); //'51' string
+
+	var str1 = '2';
+	var str2 = 'z';
+	var boo1 = true;
+	var boo2 = false;
+	var f = 1.1;
+	var obj = {
+		valueOf: function() {
+			return -1;
+		}
+	}
+	console.log(str1++, str1); //字符串先变数字,再++
+	console.log(str2++, str2);
+	console.log(boo1++, boo1); //true变1再++;
+	console.log(boo2++, boo2); //false变0再++;
+	console.log(f--, f); //0.10000000000000009
+	console.log(obj--, obj); //应用于对象时,先调用对象的valueof()方法,提供一个可供操作的值,然后再递增递减
+</script>
+
+</html>
