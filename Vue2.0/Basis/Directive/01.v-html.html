@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <div v-html="msg"></div>
+        <button :disabled="someDynamicCondition">Button</button>
+    </div>
+</body>
+<script src="../../js/vue.js">
+</script>
+<script type="text/javascript">
+    //vue 1.0三个大括号才能解析html;
+    //vue 2.0就是v-html指令
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            msg: '<h3>vue 1.0三个大括号才能解析html,vue 2.0就是v-html指令</h3>',
+            someDynamicCondition: true, //为false的话 该属性会被移除,
+
+
+        }
+    })
+</script>
+
+</html>

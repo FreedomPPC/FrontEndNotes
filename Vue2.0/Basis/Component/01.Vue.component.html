@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <ol>
+            <todo-item v-for="item in todoList" v-bind:todo='item'></todo-item>
+        </ol>
+    </div>
+</body>
+<script src="../../js/vue.js" charset="utf-8"></script>
+<script type="text/javascript">
+    //在vue里,一个组件拥有预定义选项的一个vue实例:
+    //Vue.component('组件名',{});
+    Vue.component('todo-item', {
+        props: ['todo'],
+        template: '<li>{{todo.text}}</li>'
+    });
+
+    const App = new Vue({
+        el: '#app',
+        data: {
+            todoList: [{
+                    text: 'Vegetables',
+                },
+                {
+                    text: 'Cheese',
+                },
+                {
+                    text: 'Whatever else humans are supposed to eat'
+                }
+            ]
+        }
+    });
+</script>
+
+</html>
