@@ -3,28 +3,29 @@
 
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Document</title>
 	<style media="screen">
-		body {
-			color: #f00;
+		li:focus {
+			color: red;
+			outline: none;
 		}
 	</style>
 </head>
 
 <body>
-	<script>
-		var updateCustomerData = {
-			IDNO: "440104199008081338",
-			Model: 8,
-			PIN: "",
-			endDate: "20261128",
-			name: "张三丰",
-			startDate: "20161128",
-		};
-		console.log(updateCustomerData);
-		console.log(JSON.stringify(updateCustomerData));
-		console.log(JSON.parse(JSON.stringify(updateCustomerData)))
-	</script>
+	<ul id=p>
+		<li>用上下键选中1</li>
+		<li>用上下键选中2</li>
+		<li>用上下键选中3</li>
+	</ul>
 </body>
+<script type="text/javascript">
+	var uls = document.getElementById('p')
+	var lis = uls.getElementsByTagName("li");
+	lis[1].tabIndex = -1;
+	lis[1].focus();
+</script>
 
 </html>
