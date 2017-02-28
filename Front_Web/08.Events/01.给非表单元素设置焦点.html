@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Document</title>
+    <style media="screen">
+        li:focus {
+            color: red;
+            font-size: 20px;
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>li__1</li>
+        <li>li__2</li>
+        <li>li__3</li>
+    </ul>
+</body>
+<script type="text/javascript">
+    // 一般情况下只有表单元素和链接a有焦点事件,给其他元素设置焦点就要用到tabIndex属性;
+    var oUL = document.querySelector('ul');
+    var aLi = document.querySelectorAll('li');
+
+    aLi[1].tabIndex = -1;
+    aLi[1].focus();
+</script>
+
+</html>
