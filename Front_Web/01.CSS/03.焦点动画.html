@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="../../bower_components/jquery/dist/jquery.js">
+    </script>
+    <title>Document</title>
+    <style media="screen">
+        a {
+            width: 50px;
+            height: 200px;
+            background: rgb(130, 130, 130);
+            border: 1px solid black;
+            display: inline-block;
+            /*margin-left: 15px;*/
+        }
+
+        a:hover {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <a href=""></a>
+        <a href=""></a>
+        <a href=""></a>
+        <a href=""></a>
+        <a href=""></a>
+        <a href=""></a>
+    </div>
+</body>
+<script type="text/javascript">
+    var arr = $('a');
+    for (let i = 0; i < arr.length; i++) {
+        arr[i].onmouseover = function() {
+            $(this).animate({
+                'margin-left': ''
+            })
+            $(this).siblings().animate({
+                "margin-left": "10px"
+            });
+        }
+        arr[i].onmouseout = function() {
+            $(this).siblings().animate({
+                "margin-left": "0"
+            });
+        }
+    }
+</script>
+
+</html>

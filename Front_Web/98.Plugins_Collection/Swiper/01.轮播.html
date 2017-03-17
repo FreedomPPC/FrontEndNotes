@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="../../../bower_components/swiper/dist/css/swiper.css">
+	<script src="../../../bower_components/swiper/dist/js/swiper.js"></script>
+	<style media="screen">
+      .swiper{
+        height:283px
+      }
+      .swiper-container{
+        height: 100%;
+      }
+      .swiper-slide:nth-of-type(1){
+        background: aquamarine;
+      }
+      .swiper-slide:nth-of-type(2){
+        background: brown;
+      }
+      .swiper-slide:nth-of-type(3){
+        background: chartreuse;
+      }
+    </style>
+</head>
+<body>
+	<div class="swiper">
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">Slide 1</div>
+          <div class="swiper-slide">Slide 2</div>
+          <div class="swiper-slide">Slide 3</div>
+        </div>
+         <div class="swiper-pagination"></div>
+      </div>
+    </div>
+</body>
+<script>
+	var mySwiper = new Swiper('.swiper-container',{
+		pagination : '.swiper-pagination',
+		//pagination : '#swiper-pagination1',
+	})
+</script>
+</html>
