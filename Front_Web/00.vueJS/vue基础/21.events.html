@@ -22,11 +22,11 @@
             'hook:created': function() {
                 console.log('created!')
             },
-            greeting: function(msg) {
+            'greeting': function(msg) {
                 console.log(msg)
             },
             // 也可以是方法的名字
-            bye: 'sayGoodbye'
+            bye: 'sayGoodbye'//触发methods中的事件
         },
         methods: {
             sayGoodbye: function() {
@@ -36,6 +36,7 @@
     }) // -> created!
     vm.$emit('greeting', 'hi!') // -> hi!
     vm.$emit('bye') // -> goodbye!
+    //vm.$emit() 触发当前实例上的事件。附加参数都会传给监听器回调。
 </script>
 
 </html>

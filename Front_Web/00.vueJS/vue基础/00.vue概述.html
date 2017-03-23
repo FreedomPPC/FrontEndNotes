@@ -17,6 +17,9 @@
 		<div>
 			{{Chrome_Devtools}}
 		</div>
+		<div v-text="info==0?'哈哈':'呵呵' ">
+			
+		</div>
 	</div>
 </body>
 <script src="../js/vue.js"></script>
@@ -28,7 +31,8 @@
 		el:"#demo",
 		data:{
 			message:"Vue.js",
-			Chrome_Devtools:exampleData.data
+			Chrome_Devtools:exampleData.data,
+			info:0,
 		}
 	});
 </script>
