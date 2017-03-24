@@ -27,7 +27,16 @@
 		.box {
 			width: 132px;
 			border: 1px solid #000;
+			/*允许对长单词进行拆分，并换行到下一行：*/
 			word-wrap: break-word;
+			/*normal 只在允许的断字点换行（浏览器保持默认处理）。
+			 break-word 在长单词或 URL 地址内部进行换行。*/
+		}
+
+		.normal {
+			width: 100px;
+			border: 1px solid red;
+			word-wrap: normal;
 		}
 	</style>
 	<style type="text/css"></style>
@@ -36,7 +45,9 @@
 <body>
 	just for fun;
 	<div class="box">alkdsfjfdsalkfklsdfjlkdsajfkads</div>
-
+	<div class="normal">
+		just for funnnnnnnnnny;let it be;
+	</div>
 
 </body>
 

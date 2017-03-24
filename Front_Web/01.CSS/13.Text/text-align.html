@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        p {
+            width: 400px;
+            height: 20px;
+            border: 1px solid black;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .left {
+            text-align: left;
+        }
+
+        .right {
+            text-align: right;
+        }
+
+        .justify {
+            text-align: justify;
+            /*貌似用不了要通过text-jusitify判断,但是浏览器都不识别*/
+            -ms-text-justify: inter-word;
+            text-justify: inter-word;
+        }
+
+        .inherit {
+            text-align: inherit;
+        }
+    </style>
+</head>
+
+<body>
+    <p class="center" title="center">浔阳江头夜送客,枫叶荻花秋瑟瑟!</p>
+    <p class="left" title="left">浔阳江头夜送客,枫叶荻花秋瑟瑟!</p>
+    <p class="right" title="right">浔阳江头夜送客,枫叶荻花秋瑟瑟!</p>
+    <p class="justify" title="两端对齐">浔阳江头夜送客,枫叶荻花秋瑟瑟!</p>
+    <p class="inherit" title="继承">浔阳江头夜送客,枫叶荻花秋瑟瑟!</p>
+</body>
+
+</html>
