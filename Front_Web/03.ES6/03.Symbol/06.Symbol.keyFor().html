@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        // 函数作用：返回一个以被登记在全局环境中的symbol值的key，没有就返回undefined。
+        // 注意这句话的一个关键词：“被登记在全局环境中”，也就是说这个symbol值是被Symbol.for( )创建的，
+        // 不是被Symbol( )创建的。
+        let n1 = Symbol.for('name');
+        console.log(Symbol.keyFor(n1));
+        //结果：name
+
+        let n2 = Symbol('age');
+        console.log(Symbol.keyFor(n2));
+    </script>
+</body>
+
+</html>

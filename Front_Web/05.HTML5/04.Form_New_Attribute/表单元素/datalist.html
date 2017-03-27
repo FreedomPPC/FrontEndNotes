@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        datalist {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <datalist> 元素规定输入域的选项列表。 -->
+    <form action="demo.php" method="get">
+        <input type="text" list="browsers" name="browsers">
+        <datalist id="browsers">
+            <option value="Internet Explorer">1</option>
+            <option value="FireFox">2</option>
+            <option value="Chrome">3</option>
+            <option value="Safari">4</option>
+            <option value="Opera">5</option>
+        </datalist>
+        <input type="submit" value="Submit">
+    </form>
+    <p><strong>注意:</strong> Internet Explorer 9（更早 IE 版本），Safari 不支持 datalist 标签。</p>
+</body>
+
+</html>

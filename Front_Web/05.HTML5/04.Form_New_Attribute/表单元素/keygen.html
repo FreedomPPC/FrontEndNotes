@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <keygen> 元素的作用是提供一种验证用户的可靠方法。
+       <keygen>标签规定用于表单的密钥对生成器字段。
+       当提交表单时，会生成两个键，一个是私钥，一个公钥。
+       私钥（private key）存储于客户端，公钥（public key）则被发送到服务器。
+       公钥可用于之后验证用户的客户端证书（client certificate）。 -->
+
+    <form action="http://www.baidu.com" method="get">
+        用户名:<input type="text" name="username" /><br/> 加密:
+        <keygen name="security" challenge="challenge" />
+        <input type="submit" />
+    </form>
+    <p><strong>注意:</strong> Internet Explorer 不支持 keygen 标签。</p>
+</body>
+
+</html>

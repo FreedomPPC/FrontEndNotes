@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        //1.symbol用来干嘛;
+        //解决对象属性名冲突;
+
+        //程序员a 写了这个对象,里面有个属性名a;
+        var obj = {
+            a: 555
+        };
+
+        //第二天 b程序员改这个文件,但是不知道obj对面里面有a属性;
+        // 所以添加了一个a属性;然后就覆盖了.bug就产生了.
+        obj.a = 666;
+
+        console.log(obj);
+
+
+        //symbol入门
+        let sm = Symbol();
+
+        console.log(sm); //Symbol();
+
+        console.log(typeof sm); //symbol;
+
+        //================
+        let sm1 = Symbol();
+        let sm2 = Symbol();
+        console.log(sm1 === sm2); //false  相当于 Symbol('sm1') === Symbol('sm2')  => false;
+
+        let sm3 = Symbol('sm');
+        let sm4 = Symbol('sm');
+
+        console.log(sm3 === s4); //false 即使传的参数一模一样也不相等
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        // 函数作用：根据参数名，去全局环境中搜索是否有以该参数为名的symbol值，
+        // 有就返回它，没有就以该参数名来创建一个新的symbol值。
+
+        let n1 = Symbol.for('name');
+        let n2 = Symbol.for('name');
+        console.log(n1 === n2);
+        // 两者在创建symbol值的时候有什么不同吗？它们的区别是：
+        // Symbol.for( )创建的symbol值会被登记在全局环境中，供以后用Symbol.for( )来搜索，
+        // 而Symbol( )创建的变量就没有这样的效果了。
+
+        //  也就是说，用Symbol( )创建的symbol值，以后用Symbol.for( )去搜索， 是找不到的
+        let n3 = Symbol('age');
+        let n4 = Symbol.for('age');
+        console.log(n3 === n4);
+        //false;
+    </script>
+</body>
+
+</html>

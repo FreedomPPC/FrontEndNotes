@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        //定义一个symbol类型的变量name
+        let name = Symbol();
+
+        //定义一个含有两种类型属性的对象
+        let person = {
+            [name]: "张三", //symbol类型
+            "age": 12 //string类型
+        };
+
+        Object.keys(person); //结果：["age"]
+
+        for (let key in person) {
+            console.log(key);
+        }
+        //打印结果：age
+
+        // for (let val of person) {
+        //     console.log(val);
+        // }//报错Uncaught TypeError: person[Symbol.iterator] is not a function
+
+
+        //++++++++++++++++++++++++++++
+
+        //getOwnPropertySymbols();
+        //定义两个symbol类型的变量name，age
+        let nameL = Symbol("nameL");
+        let ageP = Symbol("ageP");
+
+
+        let personal = {
+            [nameL]: "张三", //symbol类型
+            [ageP]: 12 //symbol类型
+        };
+
+        console.log(Object.getOwnPropertySymbols(personal));
+    </script>
+</body>
+
+</html>

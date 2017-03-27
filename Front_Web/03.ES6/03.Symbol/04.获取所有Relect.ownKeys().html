@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        //获取对象所有key
+        let person = {
+            [Symbol('name')]: "张三",
+            "age": 21
+        };
+
+        console.log(Reflect.ownKeys(person));
+        //结果：["age",Symbol(name)]
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let name = Symbol();
+        let person = {
+            [name]: "张三"
+        };
+
+
+        console.log(person[name]);
+        //结果：张三
+
+        console.log(person.name);
+        //结果：undefined
+
+        //注意:当symbol值作为对象的属性名的时候，不能用点运算符获取对应的值。
+        //因为用点运算符的话，会导致javascript把后面的属性名为理解为一个字符串类型，
+        // 而不是symbol类型。
+
+
+
+        //=======================
+        let nameT = Symbol();
+        let person = {};
+
+        person.nameT = "张三";
+
+        person[nameT]; //结果：undefined
+        person['nameT']; //结果：张三
+        person.nameT; //结果：张三
+    </script>
+</body>
+
+</html>
