@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /*above:表示生成的倒影在对象（原图）的上方； below:表示生成的倒影在对象（原图）的下方； left:表示生成的倒影在对象(原图)的左侧； right:表示生成的倒影在对象(原图)的右侧； */
+
+
+        #container {
+            width: 200px;
+            height: 200px;
+            /*添加遮罩层必须是png格式的*/
+            -webkit-box-reflect: below 10px url(http://cdn.w3cplus.com/sites/default/files/blogs/2014/1405/css-masking.png);
+            /*padding-bottom: 10px;*/
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        p {
+            margin: 300px auto;
+            font-size: 30px;
+            /*倒影还可以用渐变*/
+            -webkit-box-reflect: below 5px -webkit-linear-gradient(top,rgba(250,250,250,0.5),rgba(250,250,250,.0) 50%,rgba(250,250,250,1));
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <img src="./img/sunny.jpg" alt="">
+    </div>
+
+    <p>乐享生活！</p>
+</body>
+
+</html>
