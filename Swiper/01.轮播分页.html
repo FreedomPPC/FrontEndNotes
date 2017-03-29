@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../bower_components/swiper/dist/css/swiper.min.css">
+    <script src= "../bower_components/swiper/dist/js/swiper.min.js">
+    </script>
+    <style>
+		.swiper-container{
+			width: 500px;
+			height: 200px;
+
+		}
+		.swiper-slide:nth-of-type(1){
+			background: red;
+		}
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+	<div class="swiper-container">
+	  <div class="swiper-wrapper">
+	    <div class="swiper-slide" style="background: deepskyblue">slider1</div>
+	    <div class="swiper-slide" style="background: red">slider2</div>
+	    <div class="swiper-slide" style="background: deeppink">slider3</div>
+	  </div>
+	  <div class="swiper-pagination"></div>
+	</div>
+<script> 
+var mySwiper = new Swiper('.swiper-container', {
+	autoplay: 1000,//可选选项，自动滑动
+	loop:true,
+	pagination : '.swiper-pagination',
+	// paginationType : 'fraction',
+	// paginationType : 'progress',
+	// paginationType : 'custom',
+})
+</script>
+</body>
+
+</html>
