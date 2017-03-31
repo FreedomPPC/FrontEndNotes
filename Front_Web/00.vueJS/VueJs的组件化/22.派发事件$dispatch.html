@@ -51,6 +51,9 @@
 				<input v-model="msg" />
 				<button v-on:click="notify">Dispatch Event</button>
 			</div>
+			<div class="flex-box">
+				<p @click="poem()">浔阳江头夜送客，枫叶荻花秋瑟瑟。</p>
+			</div>
 		</template>
 
 		<script src="../js/vue.js"></script>
@@ -74,7 +77,11 @@
 							this.$dispatch('child-msg', this.msg);
 							this.msg = ''
 						}
+					},
+					poem:function(){
+						this.$dispatch('showPoet');
 					}
+
 				}
 			})
 
@@ -87,6 +94,9 @@
 				events: {
 					'child-msg': function(msg) {
 						this.messages.push(msg)
+					},
+					'showPoet':function() {
+						alert('白居易!')
 					}
 				}
 			})

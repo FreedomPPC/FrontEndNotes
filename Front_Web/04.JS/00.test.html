@@ -1,108 +1,43 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
- <head>
-  <title> new document </title>
-  <meta name="generator" content="editplus" />
-  <meta name="author" content="" />
-  <meta name="keywords" content="" />
-  <meta name="description" content="" />
-   
-  <style>
-  .main{width:600px;padding: 0 auto;}
-  .tabs{width:100%;}
-   
-  .tabs .left{
-    width:9%;
-    float:left;
-    border:1px solid #ddd;
-    line-height:32px;
-  }
-  .tabs .center{
-    width:80%;
-    float:left;
-    border:1px solid #ddd;
-    overflow:hidden;
-    height:32px;
-    line-height:32px;
-  }
-  .tabs .center .tab{
-    width:12%;
-    float:left;
-    border:1px solid #ddd;
-    display:inline-block;
-    line-height:32px;
-     
-  }
-  .tabs .center  .hide{
-    display:none;
-  }
-  .tabs .right{
-    width:10%;
-    float:right;
-    border:1px solid #ddd;
-    line-height:32px;
-  }
-  
- 
-  </style>
- 
-  <script src ="../../bower_components/jquery/dist/jquery.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>`1</title>
+</head>
+<body>
   <script>
- 
-  $("document").ready(function(){
-    $(".tabs").each(function(){
-        var _this =$(this);
-        $(this).find(".left").click(function(){
-            var tabs=$(".center>.hide");
-            if(tabs.length>0)
-            {
-                tabs.last().removeClass("hide");
-            }
-        });
-        $(this).find(".right").click(function(){
-            var center=_this.find(".center");
-            var tabs=center.children();
-            var first=null;
-            tabs.each(function(){
-                if($(this).attr("class").indexOf("hide")>0)
-                {
-                    first=$(this);
-                }
-            })
-            if(first==null)
-            {
-                tabs.first().addClass("hide");;
-            }
-            else
-            {
-                first.next().addClass("hide");
-            }
-             
-        });
-    })
-   
-  })
+    // function exist(nums,target) {
+    //   let arrIdx = []
+    //   for(let i=0,len=nums.length;i<len;i++){
+    //     var index = nums.indexOf(target - nums[i]);
+
+    //     if(index !== -1 && index !== i ){
+    //       arrIdx.push(i);
+    //     }
+    //   }
+    //   return arrIdx;
+    // }
+
+    function exist(nums,target){
+      let arrIdx = []
+      for(let i=0,len=nums.length;i<len-1;i++){
+        for(let j=1;j<len;j++){
+          if(target == nums[i]+nums[j] &&  i !== j){
+                arrIdx.push(i);
+                arrIdx.push(j);
+          }
+        }
+      }
+
+      var setArr = new Set(arrIdx);
+      var setArr = [...setArr]
+      return setArr;
+    }
+    var nums = [2,7,11,15,6,3];
+    var target = 14;
+
+    var result = exist(nums,target)
+    console.log(result);
   </script>
- </head>
- 
- <body>
-    <div class="main">
-      <div class="tabs">
-            <div class=" left "><<</div>
-            <div class="center">
-                <div class="tab">1</div>
-                <div class="tab">2</div>
-                <div class="tab">3</div>
-                <div class="tab">4</div>
-                <div class="tab">5</div>
-                <div class="tab">6</div>
-                <div class="tab">7</div>
-                <div class="tab">8</div>
-                <div class="tab">9</div>
-                <div class="tab">10</div>
-            </div>
-            <div class=" right">>></div>
-        </div>
-    </div>
- </body>
+</body>
 </html>
