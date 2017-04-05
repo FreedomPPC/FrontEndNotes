@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #div {
+            width: 200px;
+            height: 200px;
+            margin: 100px auto;
+            border: 1px solid #ccc;
+            box-shadow: 2px 2px 10px black;
+        }
+
+        #listdiv {
+            width: 200px;
+            height: 200px;
+            margin: 100px auto;
+            border: 1px solid #ccc;
+            box-shadow: 2px 2px 10px black;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+
+        <div v-bind:id="dynamicID">
+            绑定id
+        </div>
+        <div v-bind:id="'list'+id">
+
+        </div>
+    </div>
+</body>
+<script src="../../../js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            dynamicID: 'div',
+            id: 'div',
+        }
+    })
+</script>
+
+</html>
