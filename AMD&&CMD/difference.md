@@ -36,3 +36,17 @@ define(['./a', './b'], function(a, b) {
 
 3. AMD 的 API 默认是一个当多个用，CMD 的 API 严格区分，推崇职责单一。比如 AMD 里，require 分全局 require 和局部 require，都叫 require。CMD 里，没有全局 require，而是根据模块系统的完备性，提供 seajs.use 来实现模块系统的加载启动。CMD 里，每个 API 都简单纯粹。
 4. 还有一些细节差异，具体看这个规范的定义就好，就不多说了。另外，SeaJS 和 RequireJS 的差异，可以参考：https://github.com/seajs/seajs/issues/277
+5. 定义模块的方式不同  
+  > 使用define定义一个函数类型模块，RequireJS的模块可以是JS对象，函数或其它任何类型（CommonJS/SeaJS则只能是JS对象）
+
+  ```JavaScript
+  //AMD requirejs
+  define();
+  //CMD seajs
+
+  define(function(require,exports,module){
+
+  });
+
+  define({})
+  ```
