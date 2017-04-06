@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box {
+            height: 200px;
+            width: 200px;
+            padding: 5px;
+            background-color: deepskyblue;
+            overflow: hidden;
+        }
+
+        button {
+            position: fixed;
+            top: 220px;
+            left: 225px;
+        }
+        /* 可以设置不同的进入和离开动画 */
+        /* 设置持续时间和动画函数 */
+
+        .bounce-enter-active {
+            animation: bounce-in .5s;
+        }
+
+        .bounce-leave-active {
+            animation: bounce-out .5s;
+        }
+
+        @keyframes bounce-in {
+            0% {
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1.5);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes bounce-out {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.5);
+            }
+            100% {
+                transform: scale(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <transition name="bounce">
+            <div class="box" v-if="show">Hello Vue Transition</div>
+        </transition>
+        <button v-on:click="show=!show">Toggle</button>
+    </div>
+</body>
+<script src="../../js/vue.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            show: true
+        }
+    })
+</script>
+
+</html>

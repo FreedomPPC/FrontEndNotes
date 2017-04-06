@@ -1,31 +1,32 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<title></title>
-	</head>
-	<body>
-		<div id="app">
-		    <p>{{message}}</p>
-			<input type="text" v-model="message" />
-			<pre> 
+
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+</head>
+
+<body>
+	<div id="app">
+		<p>{{message}}</p>
+		<input type="text" v-model="message" />
+		<pre>
 			 {{ $data | json}}
 			</pre>
-		</div>
-	</body>
-	<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
-	<script type="text/javascript">
-		
-		var data = {
-		    message: 'hello Vue!'
-		}
-		// 创建一个 ViewModel 实例
-		var vm = new Vue({
-		    // 选择目标元素
-		    el: '#app',
-		    // 提供初始数据
-		    data: data
-		})
-		
-	</script>
+	</div>
+</body>
+<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	var data = {
+		message: 'hello Vue!'
+	}
+	// 创建一个 ViewModel 实例
+	var vm = new Vue({
+		// 选择目标元素
+		el: '#app',
+		// 提供初始数据
+		data: data
+	})
+</script>
+
 </html>

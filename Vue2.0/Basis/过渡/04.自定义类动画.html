@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../../bower_components/animate.css/animate.css">
+    <style>
+        .box {
+            height: 200px;
+            width: 200px;
+            padding: 5px;
+            background-color: deepskyblue;
+            overflow: hidden;
+        }
+
+        button {
+            position: fixed;
+            top: 220px;
+            left: 225px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <transition name="custom-classes-transition" enter-active-class="animated tada" leave-active-class="animated rotateOut">
+            <div class="box" v-if="show">Hello Vue Transition</div>
+        </transition>
+        <button v-on:click="show=!show">Toggle</button>
+    </div>
+</body>
+<script src="../../js/vue.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            show: true
+        }
+    })
+</script>
+
+</html>

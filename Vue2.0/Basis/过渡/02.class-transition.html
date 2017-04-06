@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box {
+            height: 200px;
+            width: 200px;
+            padding: 5px;
+            background-color: deepskyblue;
+            overflow: hidden;
+        }
+
+        button {
+            position: fixed;
+            top: 220px;
+            left: 225px;
+        }
+        /* 可以设置不同的进入和离开动画 */
+        /* 设置持续时间和动画函数 */
+
+        .slide-fade-enter-active {
+            transition: all .3s ease;
+        }
+
+        .slide-fade-leave-active {
+            transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+        }
+
+        .slide-fade-enter,
+        .slide-fade-leave-active {
+            transform: translateX(20px);
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <transition name="slide-fade">
+            <div class="box" v-if="show">Hello Vue Transition</div>
+        </transition>
+        <button v-on:click="show=!show">Toggle</button>
+    </div>
+</body>
+<script src="../../js/vue.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            show: true
+        }
+    })
+</script>
+
+</html>
