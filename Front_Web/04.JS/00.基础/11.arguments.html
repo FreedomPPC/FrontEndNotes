@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+</body>
+<script>
+  (function(){
+    console.log(arguments);
+    console.log(typeof arguments.slice);
+    console.log(foo());
+    console.log(bar);
+    function foo(){
+      console.log('hello');
+    }
+
+    var foo = 'abc';
+
+    var bar = function(){
+      console.log('world');
+    }
+    function foo(){
+      console.log('hi');
+    }
+
+    console.log(typeof foo);
+    console.log(typeof bar);
+  })(1,2,3);
+</script>
+</html>

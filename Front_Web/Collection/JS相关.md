@@ -1,0 +1,6 @@
+### 1. [JS垃圾回收机制](http://www.cnblogs.com/hustskyking/archive/2013/04/27/garbage-collection.html)
+### 2. [HTTP协议详解](http://kb.cnblogs.com/page/130970/)
+### 3. [WebSocket协议](http://javascript.ruanyifeng.com/htmlapi/websocket.html)
+### 4. [WebWorker](http://www.alloyteam.com/2015/11/deep-in-web-worker/)
+### 5. [JavaScript常用设计模式](http://www.cnblogs.com/tugenhua0707/p/5198407.html#3652990)
+### 6. [this指针](http://javascript.ruanyifeng.com/oop/this.html)

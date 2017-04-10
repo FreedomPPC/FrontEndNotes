@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+  <a href="http://es6.ruanyifeng.com/#docs/function#箭头函数">箭头函数</a>
+  <ul>
+    <li>this</li>
+  </ul>
+</body>
+<script type="text/javascript">
+    //1.箭头函数的this对象；就是定义时所在的对象；而不是使用时所在的对象；
+    function foo() {
+        // setTimeout(() => {
+        //     console.log('id:', this.id);
+        // }, 100);
+
+        setTimeout(function(){
+          console.log('id:', this.id);//21 非箭头函数；this指向使用时所在的对象；运行时所在的作用域时window
+        },100)
+    }
+
+    var id = 21;
+
+    foo.call({
+        id: 42
+    });
+
+   var oLi = document.querySelector('li');
+   function click(){
+    //  oLi.onclick = function(){
+    //    console.log(this);
+    //  }
+    oLi.onclick = ()=>{
+      console.log(this);//指向window 箭头函数  this指向定义时所在的对象；
+    }
+   }
+
+   click();
+  var vue = {
+    ppp:()=>{
+      console.log(this);//window;
+    }
+  }
+  vue.ppp();
+</script>
+
+</html>
