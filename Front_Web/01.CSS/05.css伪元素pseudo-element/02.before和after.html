@@ -5,37 +5,50 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <style>
-    p{
-    	margin-top: 50px;
-    }
-    p::before {
-        content: open-quote;
-        font-size: 24pt;
-        text-align: center;
-        /*line-height: 42px;*/
-        color: #fff;
-        background: #ddd;
-        float: left;
-        /*position: relative;*/
-        /*top: 30px;*/
-    }
+        p {
+            margin-top: 50px;
+        }
 
-    p::after {
-        content: close-quote;
-        font-size: 24pt;
-        text-align: center;
-        /*line-height: 42px;*/
-        color: #fff;
-        background: #ddd;
-        float: right;
-        /*position: relative;
+        p::before {
+            content: open-quote;
+            font-size: 24pt;
+            text-align: center;
+            /*line-height: 42px;*/
+            color: #fff;
+            background: #ddd;
+            float: left;
+            /*position: relative;*/
+            /*top: 30px;*/
+        }
+
+        p::after {
+            content: close-quote;
+            font-size: 24pt;
+            text-align: center;
+            /*line-height: 42px;*/
+            color: #fff;
+            background: #ddd;
+            float: right;
+            /*position: relative;
         bottom: 40px;*/
-    }
+        }
+
+        h2::before {
+            content: attr(data-title);
+            /*display: none;*/
+            color: red;
+        }
+
+        h2::before:hover {}
     </style>
 </head>
 
 <body>
     <p>Design is funny word,Some people think design means how it looks.But of course,if you dig deeper,it’s really how it works.</p>
+    <h2 data-title="Hello World!">Hello World</h2>
 </body>
+<script>
+    var oH2 = document.querySelector('h2');
+</script>
 
 </html>

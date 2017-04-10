@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #container {
+            width: 350px;
+            border: 1px solid black;
+            margin: 0 auto;
+        }
+
+        img {
+            /*display: block;*/
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+
+        <img class="lazy" alt="" width="350" height="200" data-original="../../../images/1.jpg" />
+        <img class="lazy" alt="" width="350" height="200" data-original="../../../images/1.jpg" />
+        <img class="lazy" alt="" width="350" height="200" data-original="../../../images/1.jpg" />
+        <img class="lazy" alt="" width="350" height="200" data-original="../../../images/1.jpg" />
+        <img class="lazy" alt="" width="350" height="200" data-original="../../../images/1.jpg" />
+        <img class="lazy" alt="" width="350" height="200" data-original="../../../images/1.jpg" />
+        <img class="lazy" alt="" width="350" height="200" data-original="../../../images/1.jpg" />
+        <img class="lazy" alt="" width="350" height="200" data-original="../../../images/1.jpg" />
+        <img class="lazy" alt="" width="350" height="200" data-original="../../../images/1.jpg" />
+        <img class="lazy" alt="" width="350" height="200" data-original="../../../images/1.jpg" />
+        <img class="lazy" alt="" width="350" height="200" data-original="../../../images/1.jpg" />
+        <img class="lazy" alt="" width="350" height="200" data-original="../../../images/1.jpg" />
+    </div>
+    <script type="text/javascript" src="../../../bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../bower_components/jquery_lazyload/jquery.lazyload.js"></script>
+</body>
+<script type="text/javascript">
+    $(function() {
+        $("#container img.lazy").lazyload({
+            effect: "fadeIn"
+        });
+
+    });
+</script>
+
+</html>
