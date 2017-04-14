@@ -50,13 +50,20 @@
 					apiUrl: 'http://211.149.193.19:8080/api/customers'
 				},
 				ready: function() {
-					this.getCustomers()
+					this.getCustomers();
+					this.meizuUrl();
 				},
 				methods: {
 					getCustomers: function() {
 						this.$http.jsonp(this.apiUrl).then(function(response){
 							this.$set('gridData', response.data)
-						})
+						});
+					},
+					meizuUrl:function() {
+						this.$http.jsonp("http://mgc.meizu.com/public/gift/detail/945",{emulateJSON:true}).then(function(response){
+							// this.$set('gridData', response.data)
+							console.log(response);
+						});
 					}
 				}
 			})

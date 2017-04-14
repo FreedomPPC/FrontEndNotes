@@ -11,6 +11,15 @@ module.exports = {
     resolveLoader: {
       root: path.join(__dirname, 'node_modules'),
     },
+		resolve:{
+			//extensions配置 是不用写文件后缀名；
+			extensions:['','.vue','.js'],
+			//相对路径的简写；用参数存起来
+			alias:{
+				home:'./Home',
+			}
+
+		},
 	devtool: '#eval-source-map',
 	devServer:{
         //本地服务器所加载的页面所在的目录,一般指向根目录下的index.html文件,这里把index.html放在public下;

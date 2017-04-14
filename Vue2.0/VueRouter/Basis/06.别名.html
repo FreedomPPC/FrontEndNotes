@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue路由2.0</title>
+    <style>
+        .router-link-active {
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Hello App!</h1>
+        <p>
+            <!-- 使用 router-link 组件来导航. -->
+            <!-- 通过传入 `to` 属性指定链接. -->
+            <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
+            <router-link to="/foo">Go to Foo</router-link>
+            <router-link to="/bar">Go to Bar</router-link>
+        </p>
+        <!-- 路由出口 -->
+        <!-- 路由匹配到的组件将渲染在这里 -->
+        <router-view></router-view>
+    </div>
+</body>
+<script src="../../bower_components/vue/dist/vue.js"></script>
+<script src="../../bower_components/vue-router/dist/vue-router.js"></script>
+<script>
+    // 别名的功能让你可以自由地将 UI 结构映射到任意的 URL，而不是受限于配置的嵌套路由结构。
+    const Home = {
+        template: '<div><h1>Home</h1><router-view></router-view></div>'
+    }
+    const Foo = {
+        template: '<div>foo</div>'
+    }
+    const Bar = {
+        template: '<div>bar</div>'
+    }
+    const Baz = {
+        template: '<div>baz</div>'
+    }
+
+    const router = new VueRouter({
+        //在服务器环境下；调整为h5模式；路径变化和hash模式还是有区别的
+        mode: 'history',
+        // base: __dirname,
+        routes: [{
+            path: '/home',
+            component: Home,
+            children: [
+                // absolute alias
+                {
+                    path: 'foo',
+                    component: Foo,
+                    alias: '/foo'
+                },
+                // relative alias (alias to /home/bar-alias)
+                {
+                    path: 'bar',
+                    component: Bar,
+                    alias: 'bar-alias'
+                },
+                // multiple aliases
+                {
+                    path: 'baz',
+                    component: Baz,
+                    alias: ['/baz', 'baz-alias']
+                }
+            ]
+        }]
+    })
+
+    const app = new Vue({
+        router,
+        template: `
+          <div id="app">
+            <h1>Route Alias</h1>
+            <ul>
+              <li><router-link to="/foo">
+                /foo (renders /home/foo)
+              </router-link></li>
+              <li><router-link to="/home/bar-alias">
+                /home/bar-alias (renders /home/bar)
+              </router-link></li>
+              <li><router-link to="/baz">
+                /baz (renders /home/baz)</router-link>
+              </li>
+              <li><router-link to="/home/baz-alias">
+                /home/baz-alias (renders /home/baz)
+              </router-link></li>
+            </ul>
+            <router-view class="view"></router-view>
+          </div>
+          `
+    }).$mount('#app')
+</script>
+
+</html>

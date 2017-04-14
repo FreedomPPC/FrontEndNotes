@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue路由2.0</title>
+    <style>
+        .router-link-active {
+            color: red;
+        }
+        
+        span {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1 @click="goHome()">Go Home</h1>
+        <h1 @click="goAbout()">Go About</h1>
+        <router-link :to="/foo">Go Foo</router-link>
+        <router-link :to="/bar">Go Bar</router-link>
+        <router-view></router-view>
+    </div>
+</body>
+<script src="../../../bower_components/vue/dist/vue.js"></script>
+<script src="../../../bower_components/vue-router/dist/vue-router.js"></script>
+<script>
+    //vue2.0的重定向；
+
+    const Home = {
+        template: `<h2>I am <span>Home</span> Component!</h2>`
+    }
+    const About = {
+        template: `<h2>I am <span>About</span> Component!</h2>`
+    }
+
+    const routes = [{
+        //默认首页 只需要设置一个'/';
+        path: '/',
+        name: 'home',
+        component: Home,
+    }, {
+        path: '/about/:id',
+        name: 'about',
+        component: About,
+    }]
+
+    const router = new VueRouter({
+        routes
+    })
+
+    //全局钩子函数；
+    router.beforeEach((to, from, next) => {
+        console.log('from', from);
+        console.log('to', to);
+        next();
+    })
+    const app = new Vue({
+        router,
+        methods: {
+            goHome: function() {
+                router.push({
+                    name: 'home'
+                });
+            },
+            goAbout: function() {
+                router.push('/about/1');
+            }
+        }
+    }).$mount('#app')
+</script>
+
+</html>
