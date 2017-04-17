@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		
+		// 终极神器，完全冻结对象
+		var o = {
+			a:'小明'
+		};
+
+		o.b = '小红';
+
+		console.log(o);
+
+		Object.freeze(o);
+
+		o.c = "小刚";
+
+		console.log(o);//小刚没附加上
+
+	</script>
+</body>
+</html>
