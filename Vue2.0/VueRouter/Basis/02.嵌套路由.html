@@ -8,7 +8,7 @@
         .router-link-active {
             color: black;
         }
-
+        
         h1 {
             color: red;
         }
@@ -18,15 +18,15 @@
 <body>
     <div id="app">
         <p>
-            <router-link to="/user/foo">/user/foo</router-link>
+            <router-link :to="{ name: 'user', params: { userId: 123 }}">/user/foo</router-link>
             <!-- <router-link to="/user/foo/profile">/user/foo/profile</router-link> -->
             <!-- <router-link to="/user/foo/posts">/user/foo/posts</router-link> -->
         </p>
         <router-view></router-view>
     </div>
 </body>
-<script src="../../bower_components/vue/dist/vue.js"></script>
-<script src="../../bower_components/vue-router/dist/vue-router.js"></script>
+<script src="../../../bower_components/vue/dist/vue.js"></script>
+<script src="../../../bower_components/vue-router/dist/vue-router.js"></script>
 <script>
     const User = {
         template: `
@@ -40,10 +40,21 @@
         methods: {
             profile: function() {
                 // console.log(this.$route);
-                router.push('/user/foo/profile')
+                router.push({
+                    name: 'profile',
+                    params: {
+                        id: 456
+                    }
+                })
             },
             posts: function() {
-                router.push('/user/foo/posts')
+                router.push({
+                    path: '/user/foo/posts',
+                    query: {
+                        paln: 'private'
+                    },
+
+                })
             }
         }
     }
@@ -60,7 +71,8 @@
 
     const router = new VueRouter({
         routes: [{
-            path: '/user/:id',
+            path: '/user/:userId',
+            name: 'user',
             component: User,
             children: [
                 // UserHome will be rendered inside User's <router-view>
@@ -73,7 +85,8 @@
                 // UserProfile will be rendered inside User's <router-view>
                 // when /user/:id/profile is matched
                 {
-                    path: 'profile',
+                    path: 'profile/:id',
+                    name: 'profile',
                     component: UserProfile
                 },
 

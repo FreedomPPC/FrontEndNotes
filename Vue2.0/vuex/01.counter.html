@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 400px;
+            height: 400px;
+            background-color: #fcc;
+            margin: 100px auto;
+        }
+        
+        button {
+            padding: 8px 10px;
+            font-size: 14px;
+            margin: 10px 10px;
+        }
+        
+        h1,
+        h2 {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="increment()">+</button>
+        <button @click="decrement()">-</button>
+        <button @click="doubleIncrement()">double</button>
+        <button @click="clearCount()" :disabled="clearOrNo=='Disabled'">{{clearOrNo}}</button>
+        <h1>{{count}} is {{evenOrOdd}}</h1>
+        <h1>LOAD</h1>
+        <h2>{{myStatus.name}}</h2>
+        <h2>{{myStatus.profession}} </h2>
+    </div>
+    <script src="../../bower_components/vue/dist/vue.js"></script>
+    <script src="./lib/vuex.js"></script>
+    <script>
+        //Mutation用常量保存；使用常量替代 mutation 事件类型在各种 Flux 实现中是很常见的模式。
+        // 这样可以使 linter 之类的工具发挥作用，同时把这些常量放在单独的文件中
+        // 可以让你的代码合作者对整个 app 包含的 mutation 一目了然：
+        const DOUBLE_INCREMENT = 'DOUBLE_INCREMENT';
+        const INCREMENT = 'INCREMENT';
+
+        const store = new Vuex.Store({
+            state: {
+                count: 0,
+                myStatus: {
+
+                }
+            },
+            mutations: {
+                [INCREMENT]: state => state.count++,
+                decrement: state => state.count--,
+                [DOUBLE_INCREMENT]: (state, payload) => state.count *= payload.mount,
+                clearCount: state => state.count = 0,
+                loadMyStatus(state, payload) {
+                    Object.assign(state.myStatus, payload);
+                }
+            },
+            actions: {
+                incrementAsync({
+                    commit
+                }) {
+                    //额外参数 payload 载荷
+                    commit(DOUBLE_INCREMENT, {
+                        mount: 2
+                    });
+                },
+                clearAllCount({
+                    commit
+                }) {
+                    commit('clearCount');
+                },
+
+                loadMyStatus(state, payload) {
+                    let data = {
+                        name: 'Tony Stark',
+                        profession: 'Iron Man',
+                    }
+
+                    state.commit('loadMyStatus', data)
+                }
+            },
+            getters: {
+                evenOrOdd: function(state) {
+                    return state.count % 2 == 0 ? 'EVEN' : 'ODD';
+                },
+                clearOrNo(state) {
+                    return state.count !== 0 ? 'CLEAR' : 'Disabled'
+                },
+            }
+        })
+
+        const app = new Vue({
+            el: '#app',
+            computed: {
+                count() {
+                    return store.state.count
+                },
+                evenOrOdd() {
+                    //computed 获取 getters
+                    return store.getters.evenOrOdd;
+                },
+                clearOrNo() {
+                    return store.getters.clearOrNo;
+                },
+                myStatus() {
+                    return store.state.myStatus;
+                }
+            },
+            methods: {
+                increment() {
+                    //mutation 通过 commit 触发;
+                    store.commit(INCREMENT);
+                },
+                decrement() {
+                    store.commit('decrement')
+                },
+                doubleIncrement() {
+                    //action的 函数 要通过 分发dispatch来触发；
+                    store.dispatch('incrementAsync');
+                },
+                clearCount() {
+                    store.dispatch('clearAllCount');
+                },
+                getMyStatus() {
+                    store.dispatch('loadMyStatus');
+                    console.log(this.myStatus)
+
+                }
+
+            },
+            created: function() {
+                this.getMyStatus()
+            },
+        })
+    </script>
+</body>
+
+</html>
