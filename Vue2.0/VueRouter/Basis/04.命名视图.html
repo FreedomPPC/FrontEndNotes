@@ -27,9 +27,10 @@
         <router-view class="view three" name="b"></router-view>
     </div>
 </body>
-<script src="../../bower_components/vue/dist/vue.js"></script>
-<script src="../../bower_components/vue-router/dist/vue-router.js"></script>
+<script src="../../../bower_components/vue/dist/vue.js"></script>
+<script src="../../../bower_components/vue-router/dist/vue-router.js"></script>
 <script>
+    //有时候想展示多个视图；而不是嵌套展示
     const Foo = {
         template: '<div>foo</div>'
     }
@@ -43,24 +44,22 @@
     const router = new VueRouter({
         // mode: 'history',
         routes: [{
-                path: '/',
-                // a single route can define multiple named components
-                // which will be rendered into <router-view>s with corresponding names.
-                components: {
-                    default: Foo,
-                    a: Bar,
-                    b: Baz
-                }
-            },
-            {
-                path: '/other',
-                components: {
-                    default: Baz,
-                    a: Bar,
-                    b: Foo
-                }
+            path: '/',
+            // a single route can define multiple named components
+            // which will be rendered into <router-view>s with corresponding names.
+            components: {
+                default: Foo,
+                a: Bar,
+                b: Baz
             }
-        ]
+        }, {
+            path: '/other',
+            components: {
+                default: Baz,
+                a: Bar,
+                b: Foo
+            }
+        }]
     })
 
     new Vue({

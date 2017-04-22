@@ -3,12 +3,24 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+	<style>
+	/*去除number输入框 箭头*/
+	/*chrome*/
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button{
+        -webkit-appearance: none !important;
+        margin: 0;
+    }
+    /*firefox*/
+    input[type="number"]{-moz-appearance:textfield;}
+	</style>
 </head>
 <body>
 
 	<form>
 		<!-- number 中的max指规定表单的输入的最大最小值 -->
 		<input type="number" max="10" min="1">
+		<input type="tel">
 		<input type="submit">
 	</form>
 </body>
