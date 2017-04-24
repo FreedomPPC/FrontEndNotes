@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .container{
+      width: 600px;
+      height: 600px;
+      border: 1px solid black;
+      margin: 10px auto;
+    }
+    input[type="text"]{
+      margin: 10px 10px;
+      height: 30px;
+      width: 200px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div class="container">
+      <input type="text" v-model="value">
+      <button @click="add()">ADD</button>
+      <ul v-for="item in aLis">
+        <li>
+          <input type="checkbox" v-model="1">
+          {{item}}
+          <button @click="delSingle($index)">X</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <script src="../../bower_components/vue/dist/vue.js"></script>
+  <script>
+    var VM = new Vue({
+      el:'#app',
+      data:{
+        value:'',
+        aLis:[
+          '批量删除'
+        ]
+      },
+      methods:{
+        add(){
+          this.aLis.push(this.value);
+          this.value = ''
+        },
+        delSingle(idx){
+          this.aLis.splice(idx,1);
+        }
+      }
+    })
+  </script>
+
+</body>
+</html>
