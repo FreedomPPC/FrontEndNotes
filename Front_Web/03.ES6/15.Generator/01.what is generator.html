@@ -29,7 +29,7 @@
             // 当执行到done为true时，这个generator对象就已经全部执行完毕，不要再继续调用next()了。
             // 第二个方法是直接用for ... of循环迭代generator对象，这种方式不需要我们自己判断done：
         var b = foo(1);
-        //想要输出放回的
+        //想要输出返回的
         // console.log(b.next()); //{value:2,done:false}
         // console.log(b.next()); //{value:3,done:false}
         // console.log(b.next()); //{value:4,done:true}
