@@ -1,12 +1,9 @@
-function timeout(ms) {
-    return new Promise((resolve) => {
-        setTimeout(resolve, ms);
-    });
+async function gen() {
+    var r1 = await 'r1';
+    var r2 = await 'r2';
+    var r3 = await 'r3';
+
+    console.log([r1, r2, r3].join('\n'));
 }
 
-async function asyncPrint(value, ms) {
-    await timeout(ms);
-    console.log(value)
-}
-
-asyncPrint('hello world', 500);
+gen();
