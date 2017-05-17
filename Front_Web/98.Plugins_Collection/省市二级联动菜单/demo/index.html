@@ -1,0 +1,193 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>cxSelect 联动下拉菜单 &raquo; 在线演示 - 前端开发仓库</title>
+    <style>
+        body {
+            background: #ddd;
+            font: 14px/1.7 tahoma, '\5fae\8f6f\96c5\9ed1', sans-serif;
+        }
+        
+        h1,
+        h2,
+        h3 {
+            font-size: 36px;
+            line-height: 1;
+        }
+        
+        h2 {
+            font-size: 24px;
+        }
+        
+        h3 {
+            font-size: 18px;
+        }
+        
+        fieldset {
+            margin: 2em 0;
+        }
+        
+        fieldset legend {
+            font-weight: bold;
+            font-size: 16px;
+            line-height: 2;
+        }
+        
+        select,
+        button {
+            padding: 0.5em;
+        }
+        
+        a {
+            color: #06f;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: #00f;
+        }
+        
+        .wrap {
+            width: 900px;
+            margin: 0 auto;
+            padding: 20px 50px;
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <h1>cxSelect 联动下拉菜单</h1>
+
+        <h2>示例</h2>
+        <p>如果无法通过 AJAX 获取数据，请运行在服务器环境下。</p>
+
+
+        <fieldset id="city_china_val">
+            <legend>设置默认值及选项标题</legend>
+            <p>所在地区：
+                <select class="province other" data-first-title="选择省">
+                    <option value="">请选择</option>
+                    <option value="浙江省" selected>浙江省</option>
+                </select>
+                <select class="city" data-first-title="选择市">
+                    <option value="">请选择</option>
+                    <option value="杭州市" selected>杭州市</option>
+                </select>
+                <select class="area" data-first-title="选择地区">
+                    <option value="">请选择</option>
+                    <option value="西湖区" selected>西湖区</option>
+                </select>
+            </p>
+        </fieldset>
+
+
+
+        <script src="http://cdn.staticfile.org/jquery/1.11.3/jquery.min.js"></script>
+        <!-- <script src="http://cdn.staticfile.org/zepto/1.0/zepto.min.js"></script> -->
+        <script src="js/jquery.cxselect.min.js"></script>
+        <script>
+            (function() {
+                var urlChina = 'js/cityData.min.json';
+
+                $.cxSelect.defaults.url = urlChina;
+
+
+                // 设置默认值及选项标题
+                var data = $('#city_china_val').cxSelect({
+                    selects: ['province', 'city', 'area'],
+                    emptyStyle: 'none'
+                });
+                console.log(data);
+
+                // cxSelectApi = $.cxSelect(apiBox, {
+                //   selects: ['province', 'city', 'area']
+                // });
+
+                // $('body').on('click', 'button', function() {
+                //     var _name = this.name;
+                //     var _value = this.value;
+
+                //     switch (_name) {
+                //         case 'attach':
+                //             cxSelectApi.attach();
+                //             break;
+
+                //         case 'detach':
+                //             cxSelectApi.detach();
+                //             break;
+
+                //         case 'clear':
+                //             cxSelectApi.clear();
+                //             break;
+
+                //         case 'required':
+                //             cxSelectApi.setOptions({
+                //                 required: _value == 1 ? false : true
+                //             });
+                //             this.value = _value == 1 ? 0 : 1;
+                //             break;
+
+                //         case 'emptyStyle':
+                //             if (_value === 'none') {
+                //                 _value = 'hidden';
+                //             } else if (_value === 'hidden') {
+                //                 _value = '';
+                //             } else {
+                //                 _value = 'none';
+                //             };
+                //             cxSelectApi.setOptions({
+                //                 emptyStyle: _value
+                //             });
+                //             this.value = _value;
+                //             break;
+
+                //         case 'firstTitle':
+                //             _value = _value === '请选择' ? '选择吧' : '请选择';
+                //             cxSelectApi.setOptions({
+                //                 firstTitle: _value
+                //             });
+                //             this.value = _value;
+                //             break;
+
+                //         case 'setSelect':
+                //             cxSelectApi.setOptions({
+                //                 selects: _value === 'a' ? ['province', 'city', 'area'] : ['first', 'second', 'third', 'fourth', 'fifth']
+                //             });
+                //             this.value = _value === 'a' ? 'b' : 'a';
+                //             break;
+
+                //         case 'setData':
+                //             if (_value === 'china' || _value === 'global') {
+                //                 // $.ajax({
+                //                 //   url: this.value === 'china' ? urlChina : urlGlobal,
+                //                 //   type: 'GET',
+                //                 //   dataType: 'json'
+                //                 // }).done(function(data, textStatus, jqXHR) {
+                //                 cxSelectApi.setOptions({
+                //                     url: this.value === 'china' ? urlChina : urlGlobal,
+                //                     // data: data
+                //                 });
+                //                 // }).fail(function(jqXHR, textStatus, errorThrown) {
+                //                 // });
+
+                //             } else if (this.value === 'custom') {
+                //                 cxSelectApi.setOptions({
+                //                     data: dataCustom
+                //                 });
+                //             };
+                //             break;
+
+                //             // not default
+                //     };
+                // });
+            })();
+        </script>
+</body>
+
+</html>

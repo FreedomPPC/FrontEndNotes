@@ -1,0 +1,23 @@
+{
+  "name": "jquery.cSelect",
+  "main": "jquery.cSelect.js",
+  "version": "2.0.0",
+  "homepage": "https://github.com/melbon/jquery.cSelect",
+  "authors": [
+    "melbon <mario@vidov.it>"
+  ],
+  "description": "This is a plugin that creates custom select boxes and uses native select methods.",
+  "keywords": [
+    "custom",
+    "select",
+    "select"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
