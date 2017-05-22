@@ -103,89 +103,17 @@
                     selects: ['province', 'city', 'area'],
                     emptyStyle: 'none'
                 });
-                console.log(data);
 
-                // cxSelectApi = $.cxSelect(apiBox, {
-                //   selects: ['province', 'city', 'area']
-                // });
+                $.ajax({
+                    url: 'http://reader.res.meizu.com/reader/articlecontent/20170517/1495008609132005.json',
+                    success: function(res) {
+                        console.log(res);
 
-                // $('body').on('click', 'button', function() {
-                //     var _name = this.name;
-                //     var _value = this.value;
+                    }
+                })
 
-                //     switch (_name) {
-                //         case 'attach':
-                //             cxSelectApi.attach();
-                //             break;
 
-                //         case 'detach':
-                //             cxSelectApi.detach();
-                //             break;
 
-                //         case 'clear':
-                //             cxSelectApi.clear();
-                //             break;
-
-                //         case 'required':
-                //             cxSelectApi.setOptions({
-                //                 required: _value == 1 ? false : true
-                //             });
-                //             this.value = _value == 1 ? 0 : 1;
-                //             break;
-
-                //         case 'emptyStyle':
-                //             if (_value === 'none') {
-                //                 _value = 'hidden';
-                //             } else if (_value === 'hidden') {
-                //                 _value = '';
-                //             } else {
-                //                 _value = 'none';
-                //             };
-                //             cxSelectApi.setOptions({
-                //                 emptyStyle: _value
-                //             });
-                //             this.value = _value;
-                //             break;
-
-                //         case 'firstTitle':
-                //             _value = _value === '请选择' ? '选择吧' : '请选择';
-                //             cxSelectApi.setOptions({
-                //                 firstTitle: _value
-                //             });
-                //             this.value = _value;
-                //             break;
-
-                //         case 'setSelect':
-                //             cxSelectApi.setOptions({
-                //                 selects: _value === 'a' ? ['province', 'city', 'area'] : ['first', 'second', 'third', 'fourth', 'fifth']
-                //             });
-                //             this.value = _value === 'a' ? 'b' : 'a';
-                //             break;
-
-                //         case 'setData':
-                //             if (_value === 'china' || _value === 'global') {
-                //                 // $.ajax({
-                //                 //   url: this.value === 'china' ? urlChina : urlGlobal,
-                //                 //   type: 'GET',
-                //                 //   dataType: 'json'
-                //                 // }).done(function(data, textStatus, jqXHR) {
-                //                 cxSelectApi.setOptions({
-                //                     url: this.value === 'china' ? urlChina : urlGlobal,
-                //                     // data: data
-                //                 });
-                //                 // }).fail(function(jqXHR, textStatus, errorThrown) {
-                //                 // });
-
-                //             } else if (this.value === 'custom') {
-                //                 cxSelectApi.setOptions({
-                //                     data: dataCustom
-                //                 });
-                //             };
-                //             break;
-
-                //             // not default
-                //     };
-                // });
             })();
         </script>
 </body>
