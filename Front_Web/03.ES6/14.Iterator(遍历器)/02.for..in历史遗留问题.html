@@ -15,14 +15,23 @@
         var a = ['A', 'B', 'C'];
         a.name = 'Hello';
         for (var x in a) {
-            alert(x); // '0', '1', '2', 'name'
+            console.log(x); // '0', '1', '2', 'name'
         }
         // for ... in循环将把name包括在内，但Array的length属性却不包括在内。
         // for ... of循环则完全修复了这些问题，它只循环集合本身的元素：
         var a = ['A', 'B', 'C'];
         a.name = 'Hello';
         for (var x of a) {
-            alert(x); // 'A', 'B', 'C'
+            console.log(x); // 'A', 'B', 'C'
+        }
+
+
+        var obj = {
+            name: 'aaa',
+            age: 18
+        };
+        for (let y in obj) {
+            console.log(y);
         }
     </script>
 </body>

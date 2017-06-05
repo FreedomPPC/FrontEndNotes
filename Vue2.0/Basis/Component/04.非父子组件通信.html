@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .foo {
+            border: 1px solid black;
+            width: 200px;
+            height: 100px;
+            margin-top: 10px;
+        }
+        
+        h1 {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <foo></foo>
+        <Bar></Bar>
+    </div>
+    <script src="../../js/vue.js"></script>
+    <script>
+        // 如果2个组件不是父子组件那么如何通信呢？这时可以通过eventHub来实现通信. 
+        // 所谓eventHub就是创建一个事件中心，相当于中转站，可以用它来传递事件和接收事件.
+
+        let Bus = new Vue(); //创建事件中心；
+
+        const Foo = {
+            template: `<div class="foo" @click="isClicked">Foo Component <h1>{{msg}}</h1></div>`,
+            data() {
+                return {
+                    msg: 'I am Foo'
+                }
+            },
+            methods: {
+                isClicked() {
+                    Bus.$emit('isClicked', '呵呵哒丶'); //foo组件触发事件
+                }
+            }
+        }
+
+        const Bar = {
+            template: `<div class="foo">Bar Component <h1>{{msg}}</h1></div>`,
+            data() {
+                return {
+                    msg: 'I am Bar'
+                }
+            },
+            methods: {
+
+            },
+            created() {
+
+                //bar组件接受事件；参数
+                Bus.$on('isClicked', function(id) {
+                    console.log("Bar 组件接受参数：" + id);
+                })
+            }
+        }
+
+
+
+
+        const VM = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            components: {
+                Foo,
+                Bar
+            }
+        })
+    </script>
+</body>
+
+</html>

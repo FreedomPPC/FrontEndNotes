@@ -19,7 +19,10 @@
         el: '#app',
         data: {
             firstName: 'Mark',
-            lastName: 'Tune'
+            lastName: 'Tune',
+            testObj: {
+                test: ''
+            }
         },
         computed: {
             fullName: {
@@ -33,6 +36,11 @@
                 }
 
             }
+        },
+        created() {
+            // console.log(this.$set);
+            this.$set(this.testObj, 'test', '我去！');
+            console.log(this.testObj);
         }
     })
 </script>

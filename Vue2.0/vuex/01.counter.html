@@ -8,8 +8,8 @@
     <title>Document</title>
     <style>
         div {
-            width: 400px;
-            height: 400px;
+            width: 500px;
+            height: 500px;
             background-color: #fcc;
             margin: 100px auto;
         }
@@ -24,6 +24,10 @@
         h2 {
             margin-left: 10px;
         }
+        
+        h3 {
+            color: red;
+        }
     </style>
 </head>
 
@@ -37,7 +41,10 @@
         <h1>LOAD</h1>
         <h2>{{myStatus.name}}</h2>
         <h2>{{myStatus.profession}} </h2>
+        <hr/>
+        <h3 @click="testSingleActions">testAjax -- {{ajaxMsg}}</h3>
     </div>
+    <script src="../js/jquery-2.1.0.js"></script>
     <script src="../../bower_components/vue/dist/vue.js"></script>
     <script src="./lib/vuex.js"></script>
     <script>
@@ -52,7 +59,9 @@
                 count: 0,
                 myStatus: {
 
-                }
+                },
+                //通过请求；把数据赋值给msg
+                msg: ''
             },
             mutations: {
                 [INCREMENT]: state => state.count++,
@@ -61,6 +70,12 @@
                 clearCount: state => state.count = 0,
                 loadMyStatus(state, payload) {
                     Object.assign(state.myStatus, payload);
+                },
+
+                //请求mutation
+
+                ajaxRequest(state, payload) {
+                    state.msg = payload;
                 }
             },
             actions: {
@@ -79,12 +94,39 @@
                 },
 
                 loadMyStatus(state, payload) {
-                    let data = {
-                        name: 'Tony Stark',
-                        profession: 'Iron Man',
-                    }
+                    // let data = {
+                    //     name: 'Tony Stark',
+                    //     profession: 'Iron Man',
+                    // }
 
-                    state.commit('loadMyStatus', data)
+                    state.commit('loadMyStatus', payload);
+                },
+                //action 写函数；
+                ajaxRequest({
+                    commit
+                }, payload) {
+                    $.ajax({
+                        url: './abc.txt',
+                        type: 'get',
+                        success: function(req) {
+
+                            commit('ajaxRequest', req);
+                        }
+                    });
+                },
+
+                //不写mutations；只写actions；
+                testSingleActions({
+                    commit
+                }, payload) {
+                    $.ajax({
+                        url: './abc.txt',
+                        type: 'get',
+                        success: function(req) {
+
+                            console.log(req);
+                        }
+                    });
                 }
             },
             getters: {
@@ -99,6 +141,9 @@
 
         const app = new Vue({
             el: '#app',
+            data: {
+                ajaxMsg: '',
+            },
             computed: {
                 count() {
                     return store.state.count
@@ -112,6 +157,9 @@
                 },
                 myStatus() {
                     return store.state.myStatus;
+                },
+                ajaxMsg() {
+                    return store.state.msg;
                 }
             },
             methods: {
@@ -130,15 +178,29 @@
                     store.dispatch('clearAllCount');
                 },
                 getMyStatus() {
-                    store.dispatch('loadMyStatus');
+                    let data = {
+                        name: 'Tony Stark',
+                        profession: 'Iron Man',
+                    }
+                    store.dispatch('loadMyStatus', data);
                     console.log(this.myStatus)
 
+                },
+                asyncRequest() {
+                    store.dispatch('ajaxRequest', this.ajaxMsg);
+                },
+                testSingleActions() {
+                    store.dispatch('testSingleActions')
                 }
+
 
             },
             created: function() {
-                this.getMyStatus()
+                this.getMyStatus();
+
+                this.asyncRequest();
             },
+
         })
     </script>
 </body>

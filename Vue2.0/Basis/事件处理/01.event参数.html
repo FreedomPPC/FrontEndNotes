@@ -10,7 +10,7 @@
 
 <body>
     <div id="app">
-        <button @click="greet">Greet</button>
+        <button @click="greet($event)">Greet</button>
     </div>
 </body>
 <script src="../../js/vue.js"></script>
@@ -28,7 +28,7 @@
         }
     });
     //通过实例调用才能访问原生event；
-    VM.greet();
+    // VM.greet();
 </script>
 
 </html>

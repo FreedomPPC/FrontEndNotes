@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>子组件向父组件传递数据</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <h1>{{total}}</h1>
+        <button-counter v-on:increment="totalCount"></button-counter>
+        <button-counter v-on:increment="totalCount"></button-counter>
+
+    </div>
+</body>
+<script src="../../js/vue.js" charset="utf-8"></script>
+<script type="text/javascript">
+    //父传子通过props;子级传父级通过emit event;
+    const ButtonCounter = {
+        template: `<button v-on:click='increment'>{{count}}</button>`,
+        data: function() {
+            return {
+                count: 2
+            }
+        },
+        methods: {
+            increment() {
+                this.count++;
+                //可以接受参数；可以不用通过事件触发；
+                this.$emit('increment', this.count);
+            }
+        }
+    }
+
+    const VM = new Vue({
+        el: '#app',
+        data: {
+            total: 0
+        },
+        methods: {
+            totalCount(count) {
+                this.total = count;
+            }
+        },
+        components: {
+            ButtonCounter,
+        },
+        created() {
+            this.totalCount()
+        }
+    })
+</script>
+
+</html>

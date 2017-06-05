@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Vue路由2.0</title>
+    <title>路由元信息</title>
     <style>
         .router-link-active {
             color: red;
@@ -18,8 +18,6 @@
 
 <body>
     <div id="app">
-        <!--<h1 @click="goHome()">Go Home</h1>-->
-        <!--<h1 @click="goAbout()">Go About</h1>-->
         <router-link to="/foo">Go Foo</router-link>
         <router-view></router-view>
     </div>
@@ -27,49 +25,24 @@
 <script src="../../../bower_components/vue/dist/vue.js"></script>
 <script src="../../../bower_components/vue-router/dist/vue-router.js"></script>
 <script>
-    //vue2.0的重定向；
-
-    const Home = {
-        template: `<h2>I am <span>Home</span> Component!</h2>`
-    }
-    const About = {
-        template: `<h2>I am <span>About</span> Component!</h2>`
+    //vue2.0的路由元信息；
+    const Store = {
+        name: "store",
     }
 
     const Foo = {
         template: `<div>
         <h3>Foo Component</h3>
-        <router-link to="/foo/bar">Go Bar</router-link>
-        <router-view></router-view>
-          
         </div>`
     }
 
-    const Bar = {
-        template: `<h3>Bar Component</h3>`,
-    };
-
-
     const routes = [{
-        //默认首页 只需要设置一个'/';
-        path: '/',
-        name: 'home',
-        component: Home,
-    }, {
-        path: '/about/:id',
-        name: 'about',
-        component: About,
-    }, {
         path: '/foo',
         component: Foo,
-        children: [{
-            path: 'bar',
-            component: Bar,
-            // a meta field 匹配路由记录
-            meta: {
-                requiresAuth: true
-            }
-        }]
+        meta: {
+            requiresAuth: true,
+            name: 'ha'
+        }
 
     }]
 
@@ -84,14 +57,10 @@
     const app = new Vue({
         router,
         methods: {
-            goHome: function() {
-                router.push({
-                    name: 'home'
-                });
-            },
-            goAbout: function() {
-                router.push('/about/1');
-            }
+
+        },
+        created() {
+            console.log(this.$route);
         }
     }).$mount('#app')
 </script>

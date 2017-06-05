@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="saveSession()">session</button>
+    <button onclick="logSession()">Log session</button>
+    <script>
+        var arr = [{
+            name: '小黄',
+            age: 17
+        }, {
+            name: '小马',
+            age: 14
+        }];
+
+        function saveSession() {
+
+            window.sessionStorage.setItem('array', JSON.stringify(arr));
+        }
+
+        function logSession() {
+
+            var session = window.sessionStorage.getItem('array');
+            console.log(session);
+        }
+
+        window.onload = function() {
+            window.sessionStorage.removeItem('array');
+        }
+    </script>
+</body>
+
+</html>
