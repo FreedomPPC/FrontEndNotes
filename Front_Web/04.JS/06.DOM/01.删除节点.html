@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../../../bower_components/jquery/dist/jquery.min.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <p class="italic">1</p>
+    <p class="italic">2</p>
+    <p class="italic">3</p>
+    <p class="italic">4</p>
+    <p class="italic">5</p>
+
+    <button class="btn1">RemoveJS</button>
+    <button class="btn2">RemoveJQ</button>
+    
+  </div>
+  <script>
+    //js方法
+    var oBtn = document.querySelector('.btn1');
+
+    var aP = document.querySelectorAll('.italic');
+    oBtn.onclick = function(){
+     for(var i=0,len=aP.length;i<len;i++){
+       aP[i].parentNode.removeChild(aP[i])
+     }
+    }
+    //jquery
+    var btn2 = $('.btn2');
+
+    btn2.on('click',function(){
+      $('.italic').each(function(){
+        $(this).remove();
+      })
+    })
+  
+  
+  </script>
+</body>
+</html>
