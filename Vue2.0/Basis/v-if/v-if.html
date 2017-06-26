@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+        <input type="" name="" value="" v-model="radio" @blur="check()">
+        <span v-if="!show">哈哈哈哈哈！</span>
+    </div>
+    <script src="../../js/vue.js"></script>
+    <script>
+        var VM = new Vue({
+            el: '#app',
+            data: {
+                radio: '',
+                show: true,
+            },
+            methods: {
+                check: function() {
+                    if (this.radio == '123') {
+                        this.show = false;
+                    } else {
+                        this.show = true;
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
