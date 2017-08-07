@@ -2,41 +2,41 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
 </head>
 
 <body>
-    <div id="app">
-        <h1>对象迭代</h1>
-        <ul>
-            <li v-for="value in object">{{value}}</li>
-        </ul>
+  <div id="app">
+    <h1>对象迭代</h1>
+    <ul>
+      <li v-for="value in object">{{value}}</li>
+    </ul>
 
-        <ul>
-            <li v-for="(value,key,index) in object">{{key}}：{{value}}---{{index+1}}</li>
-        </ul>
+    <ul>
+      <li v-for="(value,key,index) in object">{{key}}：{{value}}---{{index+1}}</li>
+    </ul>
 
-        <h1>整数迭代</h1>
-        <ul>
-            <li v-for="n in 10">{{n}}</li>
-        </ul>
-    </div>
+    <h1>整数迭代</h1>
+    <ul>
+      <li v-for="(n,index ) in 10">{{n}}--{{index}}</li>
+    </ul>
+  </div>
 </body>
 <script src="../../../js/vue.js"></script>
 <script type="text/javascript">
-    var VM = new Vue({
-        el: "#app",
-        data: {
-            object: {
-                FirstName: 'John',
-                LastName: 'Doe',
-                Age: 30,
-            }
-        }
-    })
+  var VM = new Vue({
+    el: "#app",
+    data: {
+      object: {
+        FirstName: 'John',
+        LastName: 'Doe',
+        Age: 30,
+      }
+    }
+  })
 </script>
 
 </html>

@@ -9,7 +9,7 @@ const readFile = function(fileName) {
     })
 }
 
-function* gen() {
+var gen = function* () {
     const f1 = yield readFile('./one.txt');
     const f2 = yield readFile('./two.txt');
 

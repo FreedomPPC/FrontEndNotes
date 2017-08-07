@@ -5,13 +5,13 @@
     <meta charset="utf-8">
     <title>Vue路由2.0</title>
     <style>
-        .router-link-active {
-            color: black;
-        }
-
-        h1 {
-            color: red;
-        }
+    .router-link-active {
+        color: black;
+    }
+    
+    h1 {
+        color: red;
+    }
     </style>
 </head>
 
@@ -20,51 +20,47 @@
         <!-- <a href="/">&larr; Examples index</a> -->
     </div>
 </body>
-<script src="../../bower_components/vue/dist/vue.js"></script>
-<script src="../../bower_components/vue-router/dist/vue-router.js"></script>
-
+<script src="../../../bower_components/vue/dist/vue.js"></script>
+<script src="../../../bower_components/vue-router/dist/vue-router.js"></script>
 <script>
-    const Home = {
-        template: `
+const Home = {
+    template: `
           <h1>This is Home Component</h1>
         `
-    }
-    const Foo = {
-        template: `
+}
+const Foo = {
+    template: `
           <h1>This is Foo Component</h1>
         `
-    }
+}
 
-    const Bar = {
-        template: `
+const Bar = {
+    template: `
           <h1>This is Bar Component {{$route.params.id}}</h1>
         `
-    }
+}
 
-    const router = new VueRouter({
-        // mode: 'history',
-        //命名的意义在于；跳转的时候不需要写全路径；而只需要写个变量就行 {name:home};就可以了
-        routes: [{
-                path: '/',
-                name: 'home',
-                component: Home
-            },
-            {
-                path: '/foo',
-                name: 'foo',
-                component: Foo
-            },
-            {
-                path: '/bar/:id',
-                name: 'bar',
-                component: Bar
-            }
-        ]
-    })
+const router = new VueRouter({
+    // mode: 'history',
+    //命名的意义在于；跳转的时候不需要写全路径；而只需要写个变量就行 {name:home};就可以了
+    routes: [{
+        path: '/',
+        name: 'home',
+        component: Home
+    }, {
+        path: '/foo',
+        name: 'foo',
+        component: Foo
+    }, {
+        path: '/bar/:id',
+        name: 'bar',
+        component: Bar
+    }]
+})
 
-    const app = new Vue({
-        router,
-        template: `
+const app = new Vue({
+    router,
+    template: `
           <div id="app">
             <h1>Named Routes</h1>
             <p>Current route name: {{ $route.name }}</p>
@@ -76,12 +72,7 @@
             <router-view class="view"></router-view>
           </div>
         `
-    }).$mount('#app')
+}).$mount('#app')
 </script>
-
-
-
-
-
 
 </html>

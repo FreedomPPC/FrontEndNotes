@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../../bower_components//jquery/dist/jquery.js"></script>
+	<style>
+		 #a1 {
+                width: 200px;
+                height: 200px;
+                background-color: #333;
+                color: #fff;
+                position: relative;
+                margin-top: 50px;
+            }
+            
+            #a1:after {
+                /*content: attr(data-num);*/
+                content: ' ';
+                line-height: 50px;
+                text-align: center;
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                /*background-color: red;*/
+                background: url('../../images/1.jpg');
+                background-size: 150px 150px; 
+                position: absolute;
+                top: -20px;
+                right: -20px;
+            }
+	</style>
+</head>
+<body>
+	<div data-num='22' id="a1">33333</div>
+	<script>
+		 $('#a1').click(function() {
+            var n = $("#a1").attr('data-num');
+            $("#a1").attr('data-num', ++n);
+        });
+
+	</script>
+</body>
+</html>

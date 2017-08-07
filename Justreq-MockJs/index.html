@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+  <input onclick="getUsersList()" type="button" value="Reload Users List">
+  <ul id="users-list"></ul>
+  <script>
+    function getUsersList() {
+      $.get('http://127.0.0.1:8080/getUsersList.do', function(data) {
+        var list = data.list || [];
+        $('#users-list').empty();
+        for (var i = 0; i < list.length; i++) {
+          $('#users-list').append('<li><a href="#" data-id="' + list[i].id + '">' + list[i].name + '</a></li>');
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>

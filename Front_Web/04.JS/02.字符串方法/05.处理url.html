@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    var str = `http://192.168.5.200:8081/web-apph5/hybrid/invite-download/invite-download.html
+    ?env=online&inviteTime=1501056063&inviteCode=386127&nickName=&#128525;春风十里不如&flag=share`;
+
+    var questionIdx = str.indexOf('?');
+    var leaver_str = str.substr(questionIdx)
+    console.log('questionIdx', questionIdx);
+    console.log('leaver_str', leaver_str);
+  </script>
+</body>
+
+</html>

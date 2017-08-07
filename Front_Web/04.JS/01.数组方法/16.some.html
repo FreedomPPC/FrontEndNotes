@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+    //some() 方法测试数组中的某些元素是否通过由提供的函数实现的测试。
+    const isBiggerThan10 = (element, index, array) => {
+        return element > 10;
+    }
+
+    [2, 5, 8, 1, 4].some(isBiggerThan10);
+    // false
+
+    [12, 5, 8, 1, 4].some(isBiggerThan10);
+    // true
+    </script>
+</body>
+
+</html>

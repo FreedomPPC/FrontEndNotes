@@ -7,18 +7,3 @@ async function gen() {
 }
 
 gen();
-
-function pro() {
-    return new Promise(function(resolve, reject) {
-        var num = 10;
-        if (num < 0) {
-            num++;
-            resolve(num);
-        } else {
-            num--;
-            reject(num);
-        }
-    })
-}
-
-console.log(pro());
