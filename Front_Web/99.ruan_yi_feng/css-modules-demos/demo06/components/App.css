@@ -1,7 +1,0 @@
-@value colors: "./colors.css";
-@value blue, red, green from colors;
-
-.title {
-  color: red;
-  background-color: blue;
-}

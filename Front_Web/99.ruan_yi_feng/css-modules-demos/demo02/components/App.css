@@ -1,7 +1,0 @@
-.title {
-  color: red;
-}
-
-:global(.title) {
-  color: green;
-}

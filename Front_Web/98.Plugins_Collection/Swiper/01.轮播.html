@@ -34,11 +34,22 @@
          <div class="swiper-pagination"></div>
       </div>
     </div>
+    <h1 onclick="ppp()">点我</h1>
 </body>
 <script>
 	var mySwiper = new Swiper('.swiper-container',{
 		pagination : '.swiper-pagination',
+    initialSlide: 1,
+    loop: true,
 		//pagination : '#swiper-pagination1',
 	})
+  function ppp(){
+    var mySwiper = new Swiper('.swiper-container',{
+    pagination : '.swiper-pagination',
+    initialSlide: 0,
+    loop: true,
+    //pagination : '#swiper-pagination1',
+  })
+  }
 </script>
 </html>

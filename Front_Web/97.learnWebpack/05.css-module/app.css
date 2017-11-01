@@ -1,8 +1,0 @@
-.h1 {
-  color: red;
-}
-
-/*全局的class名*/
-:global(.h2) {
-  color: blue;
-}

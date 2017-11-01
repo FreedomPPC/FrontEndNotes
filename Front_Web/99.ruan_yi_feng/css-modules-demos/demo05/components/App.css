@@ -1,4 +1,0 @@
-.title {
-  composes: className from './another.css';
-  color: red;
-}

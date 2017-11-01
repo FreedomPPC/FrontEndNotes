@@ -1,9 +1,0 @@
-@font-face {
-    font-family: 'PingFangLight';
-    src: url('../fonts/PingFangLight.eot');
-    src: url('../fonts/PingFangLight.eot') format('embedded-opentype'),
-         url('../fonts/PingFangLight.woff2') format('woff2'),
-         url('../fonts/PingFangLight.woff') format('woff'),
-         url('../fonts/PingFangLight.ttf') format('truetype'),
-         url('../fonts/PingFangLight.svg#PingFangLight') format('svg');
-}
