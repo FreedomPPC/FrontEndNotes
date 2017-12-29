@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>让图片的标题和图片显示更舒畅</p>
+    <figure>
+        <figcaption>Venice -- Beautiful City</figcaption>
+        <img src="../images/venice.jpg" alt="">
+    </figure>
+</body>
+<script>
+    var oImg = document.querySelector('img');
+    oImg.style.cssText = "width:200px"
+    var i = 0;
+    oImg.onclick = function(){
+        i++;
+        console.log(i);
+    }
+</script>
+</html>
