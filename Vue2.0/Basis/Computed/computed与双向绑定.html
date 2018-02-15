@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            border: 1px solid #333;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div v-for="supplier in formData.supplierList" class="box">
+            <div>
+                <label for="goods-total-price">商品总价：</label>
+                <input type="number" id="goods-total-price" v-model="supplier.goodsTotalPrice" min="0">
+                <span>{{supplier.goodsTotalPrice}}</span>
+            </div>
+
+            <div>
+                <label for="express-price">运费：</label>
+                <input type="number" id="express-price" v-model="supplier.expressPrice" min="0">
+                <span>{{supplier.expressPrice}}</span>
+            </div>
+
+            <div>
+                <label for="supplier-total-price">小计：</label>
+                <input type="number" id="supplier-total-price" @change="updateSupplierTotalPrice(supplier.supplierTotalPrice)" v-model="supplier.supplierTotalPrice" min="0">
+                <span>{{supplier._supplierTotalPrice}}</span>
+            </div>
+
+        </div>
+        <h1>原价：{{totalPrice}}</h1>
+        <h1>实价：{{particalTotalPrice}}</h1>
+    </div>
+    <script src="../../js/vue.js"></script>
+    <script>
+        var VM = new Vue({
+            el: '#app',
+            data: {
+                formData: {
+                    supplierList: [{
+                            goodsTotalPrice: 0,
+                            expressPrice: 0,
+                            supplierTotalPrice: 0,
+                            _supplierTotalPrice: 0,
+                            goodsList: [{
+                                price: 10,
+                                num: 2,
+                            }]
+                        }, {
+                            goodsTotalPrice: 0,
+                            expressPrice: 0,
+                            supplierTotalPrice: 0,
+                            _supplierTotalPrice: 0,
+
+                            goodsList: [{
+                                price: 20,
+                                num: 2,
+                            }]
+                        }
+
+                    ]
+                },
+                particalTotalPrice: 0,
+            },
+            computed: {
+                totalPrice: {
+                    set: function(newValue) {
+                        console.log(newValue);
+                        var list = this.formData.supplierList;
+                        var total = 0;
+                        for (var supplier of list) {
+
+                            total += supplier.supplierTotalPrice;
+
+                        }
+                        this.particalTotalPrice = total;
+                    },
+                    get: function() {
+                        var list = this.formData.supplierList;
+                        var total = 0;
+                        for (var supplier of list) {
+                            supplier.goodsTotalPrice = 0;
+                            supplier._supplierTotalPrice = 0;
+                            for (var goods of supplier.goodsList) {
+                                supplier.goodsTotalPrice += (goods.num * goods.price);
+                            }
+                            supplier._supplierTotalPrice = supplier.goodsTotalPrice + supplier.expressPrice
+                            supplier.supplierTotalPrice = supplier._supplierTotalPrice;
+                            total += supplier._supplierTotalPrice
+                        }
+                        this.particalTotalPrice = total;
+                        return total;
+                    }
+                }
+            },
+            methods: {
+                updateSupplierTotalPrice(val) {
+                    this.totalPrice = this.totalPrice;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

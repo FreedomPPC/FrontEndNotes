@@ -10,37 +10,47 @@
 
 <body>
     <div id="app">
-        {{fullName}}
+        <input type="text" v-model='a'>{{b}}
+        <input type="button" value="修改b的值" @click='updateData'>
+        <input type="text" v-model='c'>
     </div>
 </body>
 <script src="../../js/vue.js"></script>
 <script>
     var VM = new Vue({
         el: '#app',
-        data: {
-            firstName: 'Mark',
-            lastName: 'Tune',
-            testObj: {
-                test: ''
+        methods: {
+            updateData: function() {
+                this.b = this.b; //给 b 重新赋值时就会调用  b 的  set  属性,从而改变 c 的值
+            }
+        },
+        data() {
+            return {
+                a: '1:30',
+                c: ''
             }
         },
         computed: {
-            fullName: {
-                get: function() {
-                    return this.firstName + ' ' + this.lastName;
+            b: {
+                get: function() { //通过a的值改变b的值
+                    var time = this.a;
+                    time = time ? time.split(':') : '';
+                    let hours = time[0];
+                    let minutes = time[time.length - 1];
+                    return parseInt(hours) * 60 + parseInt(minutes);
                 },
-                set: function(newValue) {
-                    var names = newValue.split(' ')
-                    this.firstName = names[0]
-                    this.lastName = names[names.length - 1]
+                set: function(newValue) { //通过b值的改变,设置 c  的值
+                    let newTimes = newValue;
+                    console.log(newValue);
+                    let hoursTime = parseInt(newTimes) / 60;
+                    let minutesTime = parseInt(newTimes) % 60;
+                    newTimes = newTimes + '';
+                    hoursTime = hoursTime + '';
+                    hoursTime = hoursTime ? hoursTime.split('.') : '';
+                    this.c = hoursTime[0] + ':' + minutesTime;
+                    console.log(hoursTime[0] + ':' + minutesTime);
                 }
-
             }
-        },
-        created() {
-            // console.log(this.$set);
-            this.$set(this.testObj, 'test', '我去！');
-            console.log(this.testObj);
         }
     })
 </script>
