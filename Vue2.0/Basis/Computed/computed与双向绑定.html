@@ -51,7 +51,7 @@
                             goodsTotalPrice: 0,
                             expressPrice: 0,
                             supplierTotalPrice: 0,
-                            _supplierTotalPrice: 0,
+                            // _supplierTotalPrice: 0,
                             goodsList: [{
                                 price: 10,
                                 num: 2,
@@ -60,7 +60,7 @@
                             goodsTotalPrice: 0,
                             expressPrice: 0,
                             supplierTotalPrice: 0,
-                            _supplierTotalPrice: 0,
+                            // _supplierTotalPrice: 0,
 
                             goodsList: [{
                                 price: 20,
@@ -75,7 +75,7 @@
             computed: {
                 totalPrice: {
                     set: function(newValue) {
-                        console.log(newValue);
+                        console.log("set",newValue);
                         var list = this.formData.supplierList;
                         var total = 0;
                         for (var supplier of list) {
