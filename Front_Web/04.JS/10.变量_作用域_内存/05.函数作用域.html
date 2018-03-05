@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// 变量的作用域有关；解析就是c = 6; b=c; var a = b; b和c全局变量。
+		(function (){
+			let a = b = c = 6;
+		})()
+		console.log('b-'+b,'c-'+c); // b = 6 c=6; 
+		// console.log(a); //a is not defined;
+
+
+		// 同理
+		function aaa(){
+			var d = e = f = 6;
+			window.g = 7;
+		}
+		 //如果函数不执行，就找不到变量，
+		 aaa() 
+
+		console.log('e-'+e,'g-'+g);
+	</script>
+</body>
+</html>

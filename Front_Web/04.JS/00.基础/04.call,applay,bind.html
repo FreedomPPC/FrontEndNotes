@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        a{
+            padding: 5px;
+            border: 1px solid #333;
+            margin-left: 20px;
+            border-radius: 2px;
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+    <a>Bind点击</a>
+    <a>Call或者Apply点击</a>
+    <script>
+        // 【一个对象 A】的方法被【另一个对象 B】【引用】的时候（请注意 引用 的意思，区分调用 ）；
+        // 【对象A】的方法内的this作用域就不指向【对象A】了，
+        // 这个时候你再用this.XX项调用【对象A】的某个属性就会发生错误。
+        const oA = document.querySelectorAll('a')[0];
+        let person = {
+            name: 'Kobe',
+            showName: function(){
+                console.log(this.name);
+                // console.log(this.tagName);
+            }
+        }
+        
+        // 一、这种情况tagName输出的是'A';所以说明这个时候showName方法的this指向是A标签
+        // 因为对象person的方法被oA对象引用。
+        oA.onclick = person.showName;
+
+        // 但是我们想要得是点击A标签显示的是person的name；
+        // 第一种解决方法：onclick的时候该用匿名函数，在匿名函数内调用对象person的方法；
+        // 但是这种方法显得好low；不优雅
+        oA.onclick = function(){
+            person.showName()
+        }
+
+        // 第二种解决方法
+        // 因为引用，onclick改变了对象person的showName方法的this指向。
+        // 所以我们要在引用的时候绑定新的引用
+        oA.onclick = person.showName.bind(person);
+
+
+        // ===================================================
+        // 调用
+        // 这个时候你可以看到打开页面，浏览器控制台就会马上输出  “jessinca”，“25”；
+        // 然后，你再点击的时候，根本不会，再输出的；ok，这就是 【调用】含义；
+        let callPerson = {
+            name: 'Hello',
+            setYourAge: function(age, name){
+                console.log(age);
+                console.log(name);
+            }
+        }
+
+        const callA = document.querySelectorAll('a')[1];
+        callA.onclick = callPerson.setYourAge.call(callA,'jessinca',25);
+
+        // call和apply是调用对象方法的意思；也就是说下面的3句代码其实实现是一样的；
+        callPerson.setYourAge.call(callPerson,'jessinca',25);
+        callPerson.setYourAge.apply(callPerson,['jessinca',25]);
+        callPerson.setYourAge('jessinca',25);
+
+
+        // bind是引用，不会立即执行，点击一次A标签就执行一次。
+        // apply和call是调用,直接执行，点击了A也不会执行。
+
+    </script>
+</body>
+</html>

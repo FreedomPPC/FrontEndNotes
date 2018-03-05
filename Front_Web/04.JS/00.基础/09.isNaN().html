@@ -10,7 +10,7 @@
 
 <body>
     <script type="text/javascript">
-        // isNaN判断参数是否为NaN;首先将参数转化,如果转换为的参数仍然部位Number才返回true;
+        // isNaN判断参数是否为NaN;首先将参数转化,如果转换为的参数仍然Number才返回true;
         console.log(isNaN(undefined)); //true;
 
         console.log(isNaN(null)); //false null是0;
@@ -22,6 +22,24 @@
         console.log(isNaN([])); //false 空数组转化为空字符串 "" == 0 为true;空字符串为true;
 
         console.log(isNaN({})); //true
+
+        console.log(isNaN(NaN)); //true
+
+        console.log(isNaN(23)); //false
+
+        console.log(isNaN('ds')); //true
+
+        console.log(isNaN('32131sdasd')); //true
+
+        console.log(NaN === NaN); //false
+
+        console.log(NaN === undefined); //false
+
+        console.log(undefined === undefined); //false
+
+        console.log(typeof NaN); //number
+        
+        console.log(Object.prototype.toString.call(NaN)); //[object Number]
     </script>
 </body>
 

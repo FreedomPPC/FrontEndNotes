@@ -27,8 +27,12 @@
     // 注释：您可使用负值从数组的尾部选取元素。
     // 注释：如果 end 未被规定，那么 slice() 方法会选取从 start 到数组结尾的所有元素
     let Arr = ['xiaoming', 'jianjian', 'haoguo'];
-    document.write(Arr.slice(1) + "<br>");
-    document.write(Arr.slice(1, 2));
+
+    let arr_sub1 = Arr.slice(1);
+    let arr_sub2 = Arr.slice(1, 2);
+
+    console.log('arr_sub1',arr_sub1); //  ["jianjian", "haoguo"]
+    console.log('arr_sub2',arr_sub2); // ["jianjian"]
 </script>
 
 </html>
