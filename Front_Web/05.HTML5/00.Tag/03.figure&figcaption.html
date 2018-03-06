@@ -1,25 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        div{
+            padding: 10px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+    </style>
 </head>
+
 <body>
-    <p>让图片的标题和图片显示更舒畅</p>
-    <figure>
-        <figcaption>Venice -- Beautiful City</figcaption>
-        <img src="../images/venice.jpg" alt="">
-    </figure>
+    <div>
+        <p>figure和figcaption</p>
+        <p>让图片的标题和图片显示更舒畅</p>
+        <figure>
+            <figcaption>Venice -- Beautiful City</figcaption>
+            <img src="../images/venice.jpg" alt="">
+        </figure>
+
+        <figure>
+            <figcaption>Venice -- Beautiful City</figcaption>
+            <img src="../images/venice.jpg" alt="" width="200">
+        </figure>
+    </div>
+
+    <div>
+        <p>正常显示</p>
+        <section>
+            <p>Venice -- Beautiful City</p>
+            <img src="../images/venice.jpg" alt="" width="200">
+        </section>
+    </div>
 </body>
 <script>
     var oImg = document.querySelector('img');
     oImg.style.cssText = "width:200px"
     var i = 0;
-    oImg.onclick = function(){
+    oImg.onclick = function() {
         i++;
         console.log(i);
     }
 </script>
+
 </html>
