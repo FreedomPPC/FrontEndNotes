@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var person = {
+            _name: 'Nicholas',
+            get name() {
+                console.log('get this._name', this._name);
+                return this._name;
+            },
+            set name(n) {
+                console.log('参数n', n);
+                this._name = n;
+                console.log(this.name);
+            }
+        }
+
+        console.log('调用person.name会执行get', person.name); //第一次读
+
+        person.name = 'Tony'; //第二次写,执行set,执行完set就执行get
+    </script>
+</body>
+
+</html>
