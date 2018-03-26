@@ -1,20 +1,23 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>无标题文档</title>
-<script>
-/*function aaa(){
-	alert(1);
-}
-aaa();*/
-
-(function aaa(){
-	alert(1);
-})();
-</script>
+	<meta charset="UTF-8">
+	<title>Document</title>
 </head>
-
 <body>
+	<script>
+		(function(){
+			var now = new Date();
+			if(now.getMonth()==0 && now.getDate()==1){
+				console.log('Happy New Year');
+			}
+		})();
+		// 把上面这段代码放到全局作用域中，可以来确定哪天是1月1日；
+		// 如果到了这一天，就会像用户显示祝贺新年的消息；
+		// 其中变量now现在是匿名函数的局部变量，而我们不必再全局作用域中创建他；
+
+		// 这种做法可以减少闭包占用的内存问题；因为没有指向匿名函数的y信用；
+		// 只要函数执行完毕，就可以立即销毁其作用域链了；
+	</script>
 </body>
 </html>
