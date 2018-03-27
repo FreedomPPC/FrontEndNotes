@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Object.getOwnPropertyNames()</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // Object.getOwnPropertyNames()可以得到所有的实例属性，不论它是否可枚举
+        function Person() {
+
+        }
+
+        Person.prototype.name = 'Nicholas';
+        Person.prototype.age = 29;
+        Person.prototype.job = 'Software Engineer';
+        Person.prototype.sayName = function() {
+            console.log(this.sayName);
+        }
+
+        var person1 = new Person();
+
+        var keys = Object.getOwnPropertyNames(Person.prototype);
+        console.log(keys); // ["constructor", "name", "age", "job", "sayName"];
+
+        console.log(Object.getOwnPropertyNames(person1)); // [];
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Object.keys()</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        // Object.keys()这个方法接收一个对象作为参数，返回一个包含所有可枚举属性的字符串数组
+        function Person() {
+
+        }
+
+        Person.prototype.name = 'Nicholas';
+        Person.prototype.age = 29;
+        Person.prototype.job = 'Software Engineer';
+        Person.prototype.sayName = function() {
+            console.log(this.sayName);
+        }
+
+        var person1 = new Person();
+        var keys = Object.keys(Person.prototype);
+        console.log(keys); //["name","age","job","sayName"];
+
+        var key2 = Object.keys(person1);
+        // person1的属性和方法都是继承的构造函数的原型对象的。所以没有可枚举的属性和方法。
+        console.log(key2); // [];
+
+        person1.name = 'Greg';
+
+        var key3 = Object.keys(person1);
+        console.log(key3); // ["name"];
+    </script>
+</body>
+
+</html>

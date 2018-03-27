@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>hasOwnProperty</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // 通过使用hasOwnProperty()方法来判断对象访问的是实例属性还是原型属性
+        function Person(){
+
+        }
+
+        Person.prototype.name = 'Nicholas';
+        Person.prototype.age = 29;
+        Person.prototype.job = 'Software Engineer';
+        Person.prototype.sayName = function(){
+            console.log(this.sayName);
+        }
+
+        var person1 = new Person();
+        var person2 = new Person();
+
+        console.log(person1.hasOwnProperty('name'));//false;访问是原型属性；
+        // 当为对象实例添加一个属性的时候，这个属性就会自动屏蔽原型对象中保存的同名属性
+        // 添加的这个属性只会阻止我么访问原型中的那个属性，但不会修改那个属性。即使设置
+        // 这个属性为null，也只会在实例中设置这个属性，而不会恢复指向原型的连接。
+        // 不过使用delete操作符则可以完全删除实例属性，从而让我们重新访问原型中的属性。
+        person1.name = 'Greg';
+        console.log(person1.hasOwnProperty('name'));//true;
+        delete person1.name;
+        console.log(person1.name); // Nicholas;
+        console.log(person2.name); // Nicholas;
+
+
+        // isPrototypeOf();确定对象之间是否存在关系；如果[[Prototype]](__proto__)
+        // 指向调用isPrototypeOf()方法的对象（Person.prototype），就返回true；
+
+        console.log(Person.prototype.isPrototypeOf(person1)); // true;
+
+        // 解决了构造函数的问题
+        console.log(person1.sayName === person2.sayName); // true;
+
+        // 实例内部包含一个指针（__proto__）指向构造函数的原型对象；
+        // 注意：这个连接存在于实例与原型对象之间，而不是存在于实例与构造函数之间。
+        console.log(person1.__proto__ === Person.prototype); //true;
+
+    </script>
+</body>
+</html>

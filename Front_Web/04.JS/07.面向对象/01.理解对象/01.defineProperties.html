@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        // 定义多个属性,如果不制定configurable,enumerable,默认为false
+        var book = {};
+        Object.defineProperties(book, {
+            _year: {
+                configurable: true,
+                enumerable: true,
+                writable: true,
+                value: 2004,
+            },
+            edition: {
+                configurable: true,
+                enumerable: true,
+                writable: true,
+                value: 1,
+            },
+            year: {
+                configurable: true,
+                enumerable: true,
+                get: function(){
+                    return this._year;
+                },
+                set: function(newValue){
+                    if(newValue > 2004){
+                        this._year = newValue;
+                        this.edition += newValue - 2004;
+                    }
+                }
+            }
+        })
+        console.log(book.year); //get,
+        book.year = 2005;
+        for(var val in book){
+            console.log(val);
+        }
+        delete book.year
+        console.log(book);
+
+    </script>
+</body>
+</html>

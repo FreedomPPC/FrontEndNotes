@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>优化原型模式创建对象</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // 前面原型模式中，重复写了很多person.prototype,为了减少不必要的输入，
+        // 也为了从视觉上更好的封装原型的功能，更常见的做法是用一个包含所有属性和方法的
+        // 对象字面量来重写整个原型对象
+        function Person(){
+
+        }
+        // 第一种写法
+        console.log("======第一种写法======");
+        Person.prototype = {
+            name: "Nicholas",
+            age: 29,
+            job: "Software Engineer",
+            sayName: function(){
+                console.log(this.name);
+            }
+        }
+        var person1  = new Person();
+        console.log('第一种写法person1.constructor--', person1.constructor); //指向的是Object
+        // 注意：我们每创建一个函数，就会同事创建它的prototype对象，整个对象会自动获得constructor属性。
+        // 而我们在这里的语法相当于重写了默认的prototyped对象，因此constructor属性也就变成了新对象的
+        // constructor属性（指向Object构造函数），不再指向Person构造函数。尽管此时instanceOf返回正确
+        // 的结果，但是constructor已经无法确定对象的类型了。
+        console.log(person1 instanceof Person); // true;
+        console.log(person1 instanceof Object); // true;
+
+        console.log(person1.constructor == Object); // true;
+        console.log(person1.constructor == Person); // false;
+
+        // 第二种写法
+        console.log("======第二种写法======");
+        function Person(){
+
+        }
+        Person.prototype = {
+            constructor: Person,
+            name: "Nicholas",
+            age: 29,
+            job: "Software Engineer",
+            sayName: function(){
+                console.log(this.name);
+            }
+
+        }
+        var person1 = new Person();
+        console.log('第一种写法person1.constructor--', person1.constructor); //指向的是Person
+        console.log(person1 instanceof Person); // true;
+        console.log(person1 instanceof Object); // true;
+
+        console.log(person1.constructor == Object); // false;
+        console.log(person1.constructor == Person); // true;
+
+        // 这种写法会使Person.prototype的constructor属性变成可枚举
+        console.log(Object.keys(Person.prototype)); //["constructor", "name", "age", "job", "sayName"];
+
+        // 第三种写法
+        console.log("======第三种写法======");
+        function Person(){
+
+        }
+        Person.prototype = {
+            name: "Nicholas",
+            age: 29,
+            job: "Software Engineer",
+            sayName: function(){
+                console.log(this.name);
+            }
+
+        }
+        Object.defineProperty(Person.prototype, 'constructor', {
+            enumerable: false,
+            value: Person,
+        })
+        var person1 = new Person();
+        console.log('第一种写法person1.constructor--', person1.constructor); //指向的是Person
+        console.log(person1 instanceof Person); // true;
+        console.log(person1 instanceof Object); // true;
+
+        console.log(person1.constructor == Object); // false;
+        console.log(person1.constructor == Person); // true;
+
+        // 原型模式的完美写法
+        console.log(Object.keys(Person.prototype)); //["name", "age", "job", "sayName"];
+        console.log(Object.getOwnPropertyNames(Person.prototype)); //["name", "age", "job", "sayName", "constructor"]
+    </script>
+</body>
+</html>
