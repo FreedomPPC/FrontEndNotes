@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 如果原型对象中的属性值有引用类型，实例对该属性做处理。就会影响原型对象的属性
+
+        function Person() {
+
+        }
+
+        Person.prototype = {
+            constructor: Person,
+            name: 'Nicholas',
+            age: 29,
+            job: 'Software Engineer',
+            friends: ['Greg'],
+        }
+
+        var person1 = new Person();
+        var person2 = new Person();
+
+        person1.friends.push('Tony');
+        console.log(person1);
+        console.log(person1.friends === person2.friends); // true
+    </script>
+</body>
+
+</html>

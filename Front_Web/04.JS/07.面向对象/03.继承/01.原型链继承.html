@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>原型链继承</title>
+</head>
+
+<body>
+    <script>
+        function SuperType() {
+            this.property = true;
+        }
+
+        SuperType.prototype.getSuperValue = function() {
+            return this.property;
+        }
+
+        function SubType() {
+            this.subproperty = false;
+        }
+
+        console.log("未继承以前");
+        console.log("SuperType.prototype", SuperType.prototype);
+        console.log("SubType.prototype", SubType.prototype);
+
+        // 继承，相当于构造函数的实例赋值给了子类的原型对象。
+        // SubType.prototype = {
+        //     property: true,
+        //     __proto__: {
+        //         getSuperValue:function(){
+        //             ...
+        //         },
+        //         constructor: function SuperType(){
+        //             ...
+        //         }
+        //         __proto__:{
+        //             constructor: function Object(){
+        //                 ...
+        //             }
+        //         }
+        //     }
+        // }
+
+        // 实现原型链继承的本质是重写了原型对象。而这个重写的原型对象的constructor指向SuperType
+        // 所以instance的构造函数指向的是SuperType
+        SubType.prototype = new SuperType();
+        console.log("继承以后");
+        console.log("SubType.prototype", SubType.prototype);
+
+        SubType.prototype.getSubValue = function() {
+            return this.subproperty;
+        }
+
+        var instance = new SubType();
+        console.log('instance', instance);
+        console.log('调用getSuperValue方法', instance.getSuperValue()); // true;
+        // 调用getSuperValue方法是采用的和前面原型属性类似的搜索查询。
+        // 第一步查询实例，第二步查询SubType.prototype,第三步查询SuperType.prototype
+        // 如果一直找不到属性和方法，要搜索至原型链的末端才会停下来。
+
+        console.log(instance instanceof Object);  // true
+        console.log(instance instanceof SuperType); // true
+        console.log(instance instanceof SubType); // true
+
+        console.log(Object.prototype.isPrototypeOf(instance));    // true
+        console.log(SuperType.prototype.isPrototypeOf(instance)); // true
+        console.log(SubType.prototype.isPrototypeOf(instance)); // true
+
+    </script>
+</body>
+
+</html>

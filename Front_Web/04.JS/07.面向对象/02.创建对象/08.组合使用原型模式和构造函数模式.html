@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组合使用原型模式和构造函数模式</title>
+</head>
+
+<body>
+    <script>
+        // 创建自定义类型最常见的方式就是，组合使用原型模式和构造函数模式。
+        // 构造函数模式用于定于实例属性，而原型模式用于定义方法和共享的属性。
+        // 结果每个实例都会有自己的一份实例属性的副本，但同时又共享着对方法的引用，
+        // 最大的节省了内存。另外，这种混成模式还支持向构造函数传递参数；
+        // 可谓集两种模式之长。
+
+        function Person(name, age, job) {
+            this.name = name;
+            this.age = age;
+            this.job = job;
+            this.friends = ["Shelby", "Court"];
+        }
+
+        Person.prototype = {
+            constructor: Person,
+            sayName: function() {
+                console.log(this.name);
+            }
+        }
+
+        var person1 = new Person("Nicholas", 29, "Software Engineer");
+        var person2 = new Person("Greg", 27, "Doctor");
+
+        person1.friends.push("Van");
+        console.log(person1.friends);
+        console.log(person2.friends);
+
+        console.log(person1.friends === person2.friends); //false;
+        console.log(person1.sayName === person2.friends); // ture;
+
+        // 在这个例子中， 实例属性都是在构造函数中定义， 而由所有实例共享的属性
+        // constructor和方法sayName() 则是在原型中定义。 而修改person1.friends（ 向其中添加一个新字符串），
+        // 并不会影响到person2.friends， 因为他们分别引用了不同的数组。
+    </script>
+</body>
+
+</html>
