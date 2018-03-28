@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script type="text/javascript">
+    function Person(name, gender) {
+        this.name = name;
+        this.gender = gender;
+    }
+    Person.prototype.showName = function() {
+        console.log(this.name);
+    }
+    Person.prototype.showgender = function() {
+        console.log(this.gender);
+    }
+
+    function Worker(name,gender,job) {
+        Person.call(this, name, gender);
+        this.job = job;
+    }
+    // 构造函数实现继承的缺点就是继承不到分类原型链上的方法和属性，所以我们要借助组合方式来实现继承。
+    console.log(Worker.prototype);
+
+</script>
+
+</html>

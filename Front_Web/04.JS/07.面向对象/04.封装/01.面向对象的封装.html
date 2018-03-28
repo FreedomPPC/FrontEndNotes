@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>面向对象的封装</title>
+</head>
+<body>
+    <script>
+        /**
+         * 封装就是把抽象出来的属性和对属性的操作封装在一起，属性被保护在内部，
+         * 外部，只有通过被授权的操作（函数），才能操作属性
+         *
+         * 1.公有：对外公开
+         * 2.私有：只有类里面才能访问
+         */
+        function Employee(){
+            this.name = "Nicholas";
+            var salary = 3000;
+            this.getSalary = function(){ //公有方法，特权方法，访问了私有属性
+                return salary;
+            }
+            this.display = function(){
+                return show();
+            }
+            function show(){ //私有方法
+                return name+"---"+salary;
+            }
+        }
+        var emp = new Employee();
+        console.log(emp);
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+</body>
+<script type="text/javascript">
+    function SuperType() {
+        this.property = true;
+        this.colors = ["red", "yellow", "blue"]
+    }
+    SuperType.prototype.getSupervalue = function() {
+        return this.property;
+    }
+
+    function SubType() {
+        SuperType.call(this)
+        this.subproperty = false;
+    }
+    console.log("继承以前",SubType.prototype);
+
+    SubType.prototype = Object.create(SuperType.prototype);
+    SubType.prototype.constructor = SubType;
+    SubType.prototype.sayProperty = function(){
+        console.log(this.property);
+    }
+
+    /**
+     * 前面说到了Object.create()方法，使用现有对象，提供给新对象的__proto__;
+     * 这样可以理解为把SuperType.prototype塞到了SubType.prototype.__proto__里面。
+     * 而不是直接引用的关系。所以子类原型链添加方法。父类是不会有滴。
+     */
+     console.log("继承以后",SubType.prototype);
+
+     var sub = new SubType();
+     console.log(sub.constructor); // SubType;
+
+     console.log(sub instanceof SubType); // true;
+     console.log(sub instanceof SuperType); // true;
+
+
+    var superType = new SuperType();
+    console.log(superType);
+    superType.sayProperty(); //报错，父类没有这个方法。
+
+
+</script>
+
+</html>

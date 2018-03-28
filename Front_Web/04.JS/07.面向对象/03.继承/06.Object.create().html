@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Object.create()</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // Object.create()方法创建一个新对象，使用现有的对象来提供新创建的对象的__proto__。
+        // 接受两个参数，第一个参数用作新对象原型的对象，另一个为新对象定义的额外的属性，和Object.defineProperties()的
+        // 第二个参数类似
+        // 
+        var person = {
+            isHuman: false,
+            name: 'Greg',
+        }
+        //
+        var nicholas = Object.create(person, {
+            name: {
+                value: 'pp'
+            }
+        });
+
+        // 相当于
+        // var nicholas = {};
+        // nicholas.__proto__ = person;
+        console.log(nicholas);
+
+
+        // 类似继承
+        function Animal(){
+
+        }
+        function Dog(){
+
+        }
+
+        // Dog.prototype = Object.create(Animal.prototype);
+        // 这种写法是把Animal.prototype当做Dog.prototype.__proto__。我们都知道Animal.prototype === Animal实例.__proto__;
+        Dog.prototype = new Animal(); //等价上面的写法，这种写法是 Dog.prototype = Animal实例.__proto__;
+        var rect = new Dog();
+        console.log(rect);
+    </script>
+</body>
+</html>

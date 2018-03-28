@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组合继承优化-1</title>
+</head>
+
+<body>
+    <script>
+        function SuperType(name) {
+            this.name = name;
+            this.colors = ["red", "yellow", "blue"]
+        }
+        SuperType.prototype.sayName = function() {
+            console.log(this.name);
+        }
+
+        function SubType(name, age) {
+            // SuperType.call(this,name);
+            SuperType.apply(this, [name]); //父级构造函数执行第二次
+            this.age = age;
+        }
+        // SubType.prototype = new SuperType(); //父级构造函数执行第一次
+        /**
+         * 避免构造函数执行多次
+         * 子类通过call或者apply已经继承了父类构造函数里的属性和方法，只需要继承父类原型对象就好就好了
+         * 其实new SuperType().__proto__ ===  SuperType.prototype;
+         */
+        SubType.prototype = SuperType.prototype;
+
+        var sub = new SubType("nicholas", 29);
+        console.log(sub);
+        console.log(sub.constructor); //SuperType,
+        /**
+         * 因为重写了子类的原型对象，子类原型对象的构造函数属性，继承了父类的。
+         * 子类实例的构造函数是父类，这不是我们想要的。
+         */
+        SubType.prototype.sayName = function(){
+            console.log(this.name);
+        }
+
+        var superType = new SuperType("Greg");
+        superType.sayName(); // Greg;
+        /**
+         * 明明在子类原型上添加方法，为什么父类也会有该方法呢？
+         * 因为对象的引用，SubType.prototype = SuperType.prototype;这种写法
+         * 子类在原型链上会影响父类。
+         */
+        /**
+         * 因为这两个原因，我们需要对这种继承写法，做进一步优化。
+         */
+    </script>
+</body>
+
+</html>
