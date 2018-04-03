@@ -1,17 +1,60 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-	</head>
-	<body>
-		<h4>Cookie</h4>
-		数据存储到计算机中，通过浏览器控制添加与删除数据
-		Cookie的特点
-		<h4>存储限制</h4>
-		域名100个cookie,每组值大小4KB
-		客户端、服务器端，都会请求服务器（头信息）
-		页面间的cookie是共享
 
-	</body>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <button class="set-1">设置COOKIE-UserName</button>
+    <button class="set-2">设置COOKIE-PassWord</button>
+    <button class="get">获取COOKIE</button>
+    <script>
+    // Cookie
+    // 数据存储到计算机中，通过浏览器控制添加与删除数据
+    // Cookie的特点
+    // 存储限制
+    // 域名100个cookie,每组值大小4KB
+    // 客户端、服务器端，都会请求服务器（头信息）
+    // 页面间的cookie是共享
+    // Cookie具有时效性
+    var oSet1 = document.querySelector('.set-1');
+    var oSet2 = document.querySelector('.set-2');
+    var oGet = document.querySelector('.get');
+
+    function getCookie(c_name) {
+        if (document.cookie.length > 0) {
+            c_start = document.cookie.indexOf(c_name + "=")
+            if (c_start != -1) {
+                c_start = c_start + c_name.length + 1
+                c_end = document.cookie.indexOf(";", c_start)
+                if (c_end == -1) c_end = document.cookie.length
+                return unescape(document.cookie.substring(c_start, c_end))
+            }
+        }
+        return ""
+    }
+
+    function setCookie(c_name, value, expiredays) {
+        var exdate = new Date()
+        exdate.setDate(exdate.getDate() + expiredays)
+        document.cookie = c_name + "=" + escape(value) +
+            ((expiredays == null) ? "" : ";expires=" + exdate.toGMTString())
+    }
+
+    function checkCookie() {
+        username = getCookie('username')
+        if (username != null && username != "") { alert('Welcome again ' + username + '!') } else {
+            username = prompt('Please enter your name:', "")
+            if (username != null && username != "") {
+                setCookie('username', username, 365)
+            }
+        }
+    }
+    checkCookie();
+
+    </script>
+</body>
+
 </html>
