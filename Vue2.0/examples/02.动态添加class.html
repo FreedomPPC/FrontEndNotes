@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+		.my-active{
+			background-color: red;
+		}
+	</style>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+        	<li v-for="item in items" @click="addClass($event)">{{item.name}}</li>
+        </ul>
+    </div>
+    <script src="../../bower_components/vue/dist/vue.js"></script>
+    <script>
+    var VM = new Vue({
+        el: '#app',
+        data: {
+            items:[
+            	{
+            		name: '健健',
+            	},
+            	{
+            		name: '健锅',
+            	}
+            ]
+        },
+        methods:{
+        	addClass(item){
+        		// item.active = item.active==1?0:1;
+        		item.target.className = item.target.className=='my-active'?'':'my-active';
+
+        		console.log(item.target.className);
+        	}
+        }
+        
+    })
+    </script>
+</body>
+
+</html>

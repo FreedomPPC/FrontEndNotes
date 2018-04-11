@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .ajax-zone {
+        width: 400px;
+        height: 200px;
+        border: 1px solid #333;
+    }
+    </style>
+</head>
+
+<body>
+    <figure>
+        <figcaption>Ajax工作原理</figcaption>
+        <img src="./ajax.gif" alt="">
+    </figure>
+    <div class="ajax-zone">
+        <button>Ajax请求</button>
+        <p class="poem"></p>
+    </div>
+    <script type="text/javascript">
+    // Ajax的原理简单来说通过XmlHttpRequest对象来向服务器发异步请求，
+    // 从服务器获得数据，然后用javascript来操作DOM而更新页面。
+
+    const getJSON = function(url) {
+        const promise = new Promise(function(resolve, reject) {
+            const handler = function() {
+                if (this.readyState !== 4) {
+                    return;
+                }
+                if (this.status === 200) {
+                    resolve(this.responseText);
+                } else {
+                    reject(new Error(this.statusText));
+                }
+            };
+            const client = new XMLHttpRequest();
+            client.open("GET", url);
+            client.onreadystatechange = handler;
+            // client.responseType = "json";
+            // client.setRequestHeader("Accept", "application/json");
+            client.send();
+
+        });
+
+        return promise;
+    };
+    var btn = document.querySelector('button');
+    btn.addEventListener('click', function(){
+
+        getJSON("./abc.txt").then(function(value) {
+            console.log('Contents: ' + value);
+            document.querySelector('.poem').innerHTML = value;  
+        }, function(error) {
+            console.error('出错了', error);
+        });
+    }, false)
+    </script>
+</body>
+
+</html>
