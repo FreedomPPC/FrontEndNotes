@@ -28,6 +28,14 @@
     // Ajax的原理简单来说通过XmlHttpRequest对象来向服务器发异步请求，
     // 从服务器获得数据，然后用javascript来操作DOM而更新页面。
 
+
+    // 设置Cookie，请求会发送Cookie
+    var date1 = new Date();
+    var date2 = new Date(date1);
+    date2.setDate(date1.getDate() + 30);
+    document.cookie = "username=John Smith; expires="+date2;
+    document.cookie = "gener=male;"
+
     const getJSON = function(url) {
         const promise = new Promise(function(resolve, reject) {
             const handler = function() {
@@ -40,12 +48,15 @@
                     reject(new Error(this.statusText));
                 }
             };
-            const client = new XMLHttpRequest();
-            client.open("GET", url);
+            const client = new XMLHttpRequest(); //IE 5 IE 5  new ActiveXObject("Microsoft.XMLHTTP");
+            client.open("POST", url);
             client.onreadystatechange = handler;
             // client.responseType = "json";
             // client.setRequestHeader("Accept", "application/json");
-            client.send();
+            client.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            // var data = new FormData();
+            // data.append("name","Nicholas")
+            client.send("name=123");
 
         });
 
@@ -56,7 +67,7 @@
 
         getJSON("./abc.txt").then(function(value) {
             console.log('Contents: ' + value);
-            document.querySelector('.poem').innerHTML = value;  
+            document.querySelector('.poem').innerHTML = value;
         }, function(error) {
             console.error('出错了', error);
         });

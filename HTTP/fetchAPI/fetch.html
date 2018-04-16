@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+
+    </div>
+    <script type="text/javascript">
+        document.cookie = "username=PP";
+        // console.log(document.cookie);
+
+        // fetch发送请求默认是不发送cookie的，不管是同域还是跨域；那么问题就来了，
+        // 对于那些需要权限验证的请求就可能无法正常获取数据，这时可以配置其credentials项，其有3个值：
+        // omit: 默认值，忽略cookie的发送
+        // same-origin: 表示cookie只能同域发送，不能跨域发送
+        // include: cookie既可以同域发送，也可以跨域发送
+
+        fetch('./data.json', {credentials: 'include'} ).then(function(response) {
+            // response.setDateHeader('222')
+            return response.json();
+        }).then(function(data) {
+            console.log(data);
+        }).catch(function(error) {
+            console.log(error);
+        });
+    </script>
+</body>
+
+</html>
