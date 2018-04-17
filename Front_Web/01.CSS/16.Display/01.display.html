@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .inline{
+            background-color: red;
+        }
+        .inline-box{
+            width: 1000px;
+            height: 1000px;
+            border: 1px solid;
+            display: inline;
+            padding-top: 20px;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>display:inline</h2>
+    <p>display:inline设置宽高无效，text-align无效</p>
+    <div class="inline">
+        <div class="inline-box">Inline</div>
+        <div class="inline-box">Inline</div>
+    </div>
+
+
+    <h2>display:inline-block</h2>
+    <p>
+        inline-block为 CSS 2.1 新增的属性。
+        inline-block既具有block的宽高特性又具有inline的同行元素特性。
+        通过inline-block结合text-align: justify
+        还可以实现固定宽高的列表两端对齐布局，
+    </p>
+    <div class="inline">
+        <div class="inline-block-box">Inline</div>
+        <div class="inline-block-box">Inline</div>
+    </div>
+</body>
+</html>
