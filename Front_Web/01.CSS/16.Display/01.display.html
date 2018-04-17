@@ -6,6 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
         .inline{
             background-color: red;
         }
@@ -15,6 +19,18 @@
             border: 1px solid;
             display: inline;
             padding-top: 20px;
+            margin-left: 20px;
+        }
+
+
+        .inline-block{
+            text-align: justify;
+        }
+        .inline-block-box{
+            width: 100px;
+            height: 100px;
+            border: 1px solid;
+            display: inline-block;
             margin-left: 20px;
         }
     </style>
@@ -35,9 +51,41 @@
         通过inline-block结合text-align: justify
         还可以实现固定宽高的列表两端对齐布局，
     </p>
-    <div class="inline">
-        <div class="inline-block-box">Inline</div>
-        <div class="inline-block-box">Inline</div>
+    <div class="inline-block">
+        <div class="inline-block-box">Inline-block</div>
+        <div class="inline-block-box">Inline-block</div>
+        <div class="inline-block-box">Inline-block</div>
+        <div class="inline-block-box">Inline-block</div>
+        <div class="inline-block-box">Inline-block</div>
+    </div>
+
+    <div class="table">
+        <style>
+            .table{
+                margin-top: 10px;
+                display: table;
+                width: 100%;
+                border-collapse: collapse; /*为表格设置合并边框模型*/
+            }
+            .tr{
+                display: table-row;
+            }
+            .td{
+                display: table-cell;
+                border: 1px solid;
+            }
+        </style>
+
+        <div class="tr tr1">
+            <div class="td">head1</div>
+            <div class="td">head2</div>
+            <div class="td">head3</div>
+        </div>
+        <div class="tr tr2">
+            <div class="td">head1</div>
+            <div class="td">head2</div>
+            <div class="td">head3</div>
+        </div>
     </div>
 </body>
 </html>
