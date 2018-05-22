@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="number" v-model.number='form.a' @input="focusEvent()">
+    </div>
+</body>
+<script src="../../js/vue.js"></script>
+<script>
+    var VM = new Vue({
+        el: '#app',
+        methods: {
+            focusEvent(){
+                let str = this.form.a;
+                console.log(str);
+                this.$set(this.form,'a',str.toString().replace(/[^0-9]/g,''));
+                console.log('aa',this.form.a);
+            }
+        },
+        data() {
+            return {
+                form:{
+                    a: 0,
+                }
+            }
+        },
+        computed: {
+           
+        }
+    })
+</script>
+
+</html>
