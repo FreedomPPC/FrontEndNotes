@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+            类相当于实例的原型，所有在类中定义的方法，都会被实例继承。如果在一个方法前，
+            加上static关键字，就表示该方法不会被实例继承，而是直接通过类来调用，这就称为
+            “静态方法”
+        */
+        class Foo {
+            static classMethod(){
+                console.log("static method");
+            }
+        }
+
+        Foo.classMethod(); // static method;
+
+        
+    </script>
+</body>
+
+</html>
