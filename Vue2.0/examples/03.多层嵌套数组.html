@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
+    <style>
+        .box{
+            background-color:deepskyblue;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div v-for="(plat, key) in plats" class="box">
+            <div v-for="titem in plats[key]">
+                {{titem}}
+                <!-- <div v-for="ban in titem['banners']">{{ban}}</div> -->
+            </div>
+        </div>
+    </div>
+    <script src="./nesting.js"></script>
+    <script src="../js/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                plats: plats
+            },
+            created() {
+                console.log(this.plats);
+            },
+        })
+    </script>
+</body>
+</html>

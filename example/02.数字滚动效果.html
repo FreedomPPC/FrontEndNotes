@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.num {
+
+			width: 20px;
+			height: 20px;
+			position: relative;
+			display: inline-block;
+			overflow: hidden;
+		}
+
+		span {
+
+			display: inline-block;
+			line-height: 20px;
+			text-align: center;
+			overflow: hidden;
+		}
+
+		span i {
+
+			width: 20px;
+			height: 20px;
+			display: block;
+			text-align: center;
+			font-style: normal;
+		}
+	</style>
+</head>
+
+<body>
+	<form>
+		<div class="form-group">
+			<label for="num">输入数字</label>
+			<input type="text" class="form-control" id="numinput" placeholder="输入数字" value="32">
+		</div>
+		<button type="button" class="btn btn-default" onclick="play(document.querySelector('#numinput').value)">提交</button>
+	</form>
+	<div id="num"></div>
+	<script>
+		var dom = document.querySelector("#num");
+		// dom.innerHTML='3223'
+		dom.style.color = 'red'
+
+
+		function play(num) {
+			var threshold = 10
+			var html = ''
+			var arr = String(num).split('')
+			var len = arr.length
+			for (var i = 0; i < len; i++) {
+				if (arr[i] == '.') {
+					html += "."
+					continue
+				}
+				html += '<div id="num_' + i + '" class="num" data-id="' + i + '">';
+				html += retuen10(threshold)
+				html += '</div>'
+			}
+			document.querySelector("#num").innerHTML = html
+			var num = document.querySelectorAll(".num");
+			var spanHeight = num[0].querySelector('span').offsetHeight;
+			var numlen = num.length;
+			for (var j = 0; j < numlen; j++) {
+				var newi = document.createElement('i')
+				newi.innerHTML = arr[num[j].getAttribute("data-id")];
+				num[j].querySelector("span").appendChild(newi)
+				num[j].querySelector("span").style.webkitTransition = 'all ' + (.9 + j * .1) + 's ease-in .1s'
+				num[j].querySelector("span").style.webkitTransform = 'translate3d(0,-' + spanHeight + 'px,0)'
+
+			}
+		}
+
+		function retuen10(num) {
+			var html = ''
+			html += "<span>"
+			for (var i = 0; i < num; i++) {
+				for (var j = 0; j < 10; j++) {
+					html += '<i>' + j + '</i>'
+				}
+			}
+			html += "</span>"
+			return html
+		}
+
+	</script>
+</body>
+
+</html>

@@ -7,11 +7,21 @@
   <title>Document</title>
 </head>
 <body>
-  <p></p>
   <script>
-    var oP = document.getElementsByTagName('p')[0];
-    var str = decodeURIComponent("&#128514");
-    oP.innerHTML = str;
+    function aaa(f) {
+      if (f === 1) {
+        return false;
+      } else {
+        return 1;
+      }
+    }
+
+    function bbb(f) {
+      aaa(f);
+      console.log(1);
+    }
+
+    bbb(1);
   </script>
 </body>
 </html>
