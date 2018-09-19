@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../flexible/font-size.js"></script>
+    <link rel="stylesheet" href="./swiper4.3.3/swiper-4.3.3.min.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .swiper-slide{
+            font-size: 16px;
+            height: 60px;
+        }
+        .box{
+            width: 40px;
+            height: 40px;
+            border-radius: 40px;
+            background-color: deepskyblue;
+            line-height: 40px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="box">1</div>
+            </div>
+            <div class="swiper-slide">
+                <div class="box">2</div>
+            </div>
+            <div class="swiper-slide">
+                <div class="box">3</div>
+            </div>
+            <div class="swiper-slide">
+                <div class="box">4</div>
+            </div>
+            <div class="swiper-slide">
+                <div class="box">5</div>
+            </div>
+        </div>
+    </div>
+    <script src="./swiper4.3.3/swiper-4.3.3.min.js"></script>
+    <script>
+        var slides = document.querySelectorAll('.swiper-slide');
+        console.log(slides);
+        for(var i=0; i<slides.length; i++){
+            slides[i].style.width = document.body.clientWidth / 4 + 'px';
+        }
+        var mySwiper = new Swiper('.swiper-container', {
+            slidesPerView: 'auto',
+            centeredSlides: true,
+        })
+    </script>
+</body>
+
+</html>
