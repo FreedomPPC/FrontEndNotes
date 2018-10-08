@@ -46,10 +46,12 @@
         }
 
         .as-table-cell {
+            display: table;
+        }
+        .as-table-cell span {
             display: table-cell;
             text-align: center;
             vertical-align: middle;
-            left: 10px;
         }
 
     </style>
@@ -58,8 +60,6 @@
 <body>
     <h5>line-height</h5>
     <div class="as-origin">查看详情</div>
-
-
     <h5>flex</h5>
     <div class="as-flex">
         查看详情
@@ -67,7 +67,7 @@
 
     <h5>table-cell</h5>
     <div class="as-table-cell">
-        查看详情
+        <span>查看详情</span>
     </div>
 </body>
 
